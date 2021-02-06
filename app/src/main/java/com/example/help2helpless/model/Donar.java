@@ -1,6 +1,34 @@
 package com.example.help2helpless.model;
 
-public class Donar {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class Donar implements Parcelable {
+    protected Donar(Parcel in) {
+        dname = in.readString();
+        professions = in.readString();
+        dcontact = in.readString();
+        demail = in.readString();
+        presentaddr = in.readString();
+        zilla = in.readString();
+        thana = in.readString();
+        mdonation_aamount = in.readString();
+        usernm = in.readString();
+        passwrd = in.readString();
+    }
+
+    public static final Creator<Donar> CREATOR = new Creator<Donar>() {
+        @Override
+        public Donar createFromParcel(Parcel in) {
+            return new Donar(in);
+        }
+
+        @Override
+        public Donar[] newArray(int size) {
+            return new Donar[size];
+        }
+    };
+
     public String getDname() {
         return dname;
     }
@@ -103,5 +131,24 @@ public class Donar {
         this.mdonation_aamount = mdonation_aamount;
         this.usernm = usernm;
         this.passwrd = passwrd;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeString(dname);
+        parcel.writeString(professions);
+        parcel.writeString(dcontact);
+        parcel.writeString(demail);
+        parcel.writeString(presentaddr);
+        parcel.writeString(zilla);
+        parcel.writeString(thana);
+        parcel.writeString(mdonation_aamount);
+        parcel.writeString(usernm);
+        parcel.writeString(passwrd);
     }
 }

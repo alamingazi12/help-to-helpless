@@ -1,6 +1,7 @@
 package com.example.help2helpless.network;
 
 import com.example.help2helpless.model.AdminResponse;
+import com.example.help2helpless.model.DealerResponse;
 import com.example.help2helpless.model.DonarResponse;
 
 import retrofit2.Call;
@@ -14,5 +15,7 @@ public  interface ApiInterface {
 
     @GET("donarsignin.php")
     Call<DonarResponse> getDonarResponse(@Query("username") String username, @Query("password") String  password);
+    @GET("dealer_login.php")
+    Call<DealerResponse> getDealerResponse(@Query("username") String username, @Query("password") String  password);
 
 }

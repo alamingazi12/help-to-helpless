@@ -1,10 +1,31 @@
 package com.example.help2helpless.model;
 
-public class Admin {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class Admin implements Parcelable {
 
     String id;
     String aname;
     String apass;
+
+    protected Admin(Parcel in) {
+        id = in.readString();
+        aname = in.readString();
+        apass = in.readString();
+    }
+
+    public static final Creator<Admin> CREATOR = new Creator<Admin>() {
+        @Override
+        public Admin createFromParcel(Parcel in) {
+            return new Admin(in);
+        }
+
+        @Override
+        public Admin[] newArray(int size) {
+            return new Admin[size];
+        }
+    };
 
     public String getId() {
         return id;
@@ -36,5 +57,17 @@ public class Admin {
         this.id = id;
         this.aname = aname;
         this.apass = apass;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeString(id);
+        parcel.writeString(aname);
+        parcel.writeString(apass);
     }
 }

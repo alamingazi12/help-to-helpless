@@ -18,12 +18,15 @@
         <activity android:name=".DonarRegisterActivity">
 
         </activity>
-
-        <activity android:name=".DonarLogin">
+        <activity android:name=".DealerLoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+
+        <activity android:name=".DonarLogin">
+
         </activity>
 
         <activity android:name=".AdminLogin">
