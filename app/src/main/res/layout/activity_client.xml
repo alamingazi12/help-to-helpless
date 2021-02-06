@@ -1,0 +1,316 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_margin="7dp"
+    android:layout_height="match_parent"
+    tools:context=".ClientActivity">
+
+        <androidx.core.widget.NestedScrollView
+            android:fillViewport="true"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <TextView
+                    android:layout_marginTop="50dp"
+                    android:padding="10dp"
+                    android:fontFamily="sans-serif-condensed-light"
+                    android:focusable="true"
+                    android:textColor="@color/colorOrange"
+                    android:textSize="30dp"
+                    android:gravity="center"
+                    android:text="Client SignUp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+                 <com.google.android.material.textfield.TextInputLayout
+                     android:layout_width="match_parent"
+                     android:focusable="true"
+                     android:id="@+id/cname"
+                     android:layout_marginTop="10dp"
+                     android:focusableInTouchMode="true"
+                     android:layout_height="wrap_content">
+                       <com.google.android.material.textfield.TextInputEditText
+                           android:hint="Name"
+                           android:ems="10"
+                           android:layout_width="match_parent"
+                           android:layout_height="wrap_content">
+                       </com.google.android.material.textfield.TextInputEditText>
+                 </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:focusable="true"
+                    android:layout_marginTop="10dp"
+                    android:id="@+id/fname"
+                    android:focusableInTouchMode="true"
+                    android:layout_height="wrap_content">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:hint="Father/Husband"
+                        android:ems="10"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                    </com.google.android.material.textfield.TextInputEditText>
+                </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:focusable="true"
+                    android:id="@+id/cprofesion"
+                    android:layout_marginTop="10dp"
+                    android:focusableInTouchMode="true"
+                    android:layout_height="wrap_content">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:hint="Profession"
+                        android:ems="10"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                    </com.google.android.material.textfield.TextInputEditText>
+                </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:focusable="true"
+                    android:id="@+id/cage"
+                    android:layout_marginTop="10dp"
+                    android:focusableInTouchMode="true"
+                    android:layout_height="wrap_content">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:hint="Client Age"
+                        android:ems="10"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                    </com.google.android.material.textfield.TextInputEditText>
+                </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:focusable="true"
+                    android:id="@+id/mincome"
+                    android:layout_marginTop="10dp"
+                    android:focusableInTouchMode="true"
+                    android:layout_height="wrap_content">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:hint="Monthly Income"
+                        android:ems="10"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                    </com.google.android.material.textfield.TextInputEditText>
+                </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:focusable="true"
+                    android:id="@+id/incomesrc"
+                    android:layout_marginTop="10dp"
+                    android:focusableInTouchMode="true"
+                    android:layout_height="wrap_content">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:hint="Income Source"
+                        android:ems="10"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                    </com.google.android.material.textfield.TextInputEditText>
+                </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:focusable="true"
+                    android:id="@+id/nsons"
+                    android:layout_marginTop="10dp"
+                    android:focusableInTouchMode="true"
+                    android:layout_height="wrap_content">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:hint="Num of Son"
+                        android:ems="10"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                    </com.google.android.material.textfield.TextInputEditText>
+                </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:focusable="true"
+                    android:id="@+id/ndaughter"
+                    android:layout_marginTop="10dp"
+                    android:focusableInTouchMode="true"
+                    android:layout_height="wrap_content">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:hint="Num of Daughter"
+                        android:ems="10"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                    </com.google.android.material.textfield.TextInputEditText>
+                </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:focusable="true"
+                    android:id="@+id/gurdian"
+                    android:layout_marginTop="10dp"
+                    android:focusableInTouchMode="true"
+                    android:layout_height="wrap_content">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:hint="Guardian"
+                        android:ems="10"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                    </com.google.android.material.textfield.TextInputEditText>
+                </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:focusable="true"
+                    android:id="@+id/gurdian_num"
+                    android:layout_marginTop="10dp"
+                    android:focusableInTouchMode="true"
+                    android:layout_height="wrap_content">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:hint="Guardian Mobile No"
+                        android:ems="10"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                    </com.google.android.material.textfield.TextInputEditText>
+                </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:focusable="true"
+                    android:id="@+id/cbk_num"
+                    android:layout_marginTop="10dp"
+                    android:focusableInTouchMode="true"
+                    android:layout_height="wrap_content">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:hint="Client Mobile No (Bkash)"
+                        android:ems="10"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                    </com.google.android.material.textfield.TextInputEditText>
+                </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:focusable="true"
+                    android:id="@+id/deasese"
+                    android:layout_marginTop="10dp"
+                    android:focusableInTouchMode="true"
+                    android:layout_height="wrap_content">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:hint="Disease Name"
+                        android:ems="10"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                    </com.google.android.material.textfield.TextInputEditText>
+                </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:focusable="true"
+                    android:id="@+id/mcost"
+                    android:layout_marginTop="10dp"
+                    android:focusableInTouchMode="true"
+                    android:layout_height="wrap_content">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:hint="Monthly Medicine Cost"
+                        android:ems="10"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                    </com.google.android.material.textfield.TextInputEditText>
+                </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:focusable="true"
+                    android:id="@+id/caddress"
+                    android:layout_marginTop="10dp"
+                    android:focusableInTouchMode="true"
+                    android:layout_height="wrap_content">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:hint="Address"
+                        android:ems="10"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                    </com.google.android.material.textfield.TextInputEditText>
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:focusable="true"
+                    android:id="@+id/ccontact"
+                    android:layout_marginTop="10dp"
+                    android:focusableInTouchMode="true"
+                    android:layout_height="wrap_content">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:hint="Client Number"
+                        android:ems="10"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                    </com.google.android.material.textfield.TextInputEditText>
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:focusable="true"
+                    android:id="@+id/dcontact"
+                    android:layout_marginTop="10dp"
+                    android:focusableInTouchMode="true"
+                    android:layout_height="wrap_content">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:hint="Dealer Mobile No"
+                        android:ems="10"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                    </com.google.android.material.textfield.TextInputEditText>
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+<TextView
+    android:layout_width="0dp"
+    android:padding="10dp"
+    android:textSize="18sp"
+    android:text="Client Photo"
+    android:layout_gravity="center"
+    android:layout_weight="1"
+    android:layout_height="wrap_content"/>
+                    <RelativeLayout
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+
+                        android:layout_height="wrap_content">
+                        <ImageView
+                            android:layout_centerHorizontal="true"
+                            android:id="@+id/cimage"
+                            android:layout_width="120dp"
+                            android:layout_height="120dp"/>
+                        <Button
+
+                            android:layout_below="@id/cimage"
+                            android:id="@+id/pic_image"
+                            android:text="Browse"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginTop="5dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+                    </RelativeLayout>
+
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/client_signup"
+                    android:padding="15dp"
+                    android:layout_marginTop="50dp"
+                    android:layout_marginBottom="70dp"
+                    android:textColor="#fff"
+                    android:text="Sign Up"
+                    android:fontFamily="sans-serif-condensed"
+                    android:background="@drawable/button_style"
+                    android:textSize="25sp"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginRight="30dp"
+                    android:gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+            </LinearLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+
+</LinearLayout>
