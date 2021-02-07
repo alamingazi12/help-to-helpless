@@ -1,6 +1,8 @@
 package com.example.help2helpless.adapter;
 
 import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +11,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.help2helpless.ApprovedActivity;
 import com.example.help2helpless.R;
 import com.example.help2helpless.model.Dealer;
 
@@ -31,10 +34,20 @@ public class RequestAdapter extends RecyclerView.Adapter<RequestAdapter.RequestV
 
     @Override
     public void onBindViewHolder(@NonNull RequestViewHolder holder, int position) {
-                Dealer dealer=dealersList.get(position);
+                final Dealer dealer=dealersList.get(position);
         holder.name.setText(dealer.getName());
         holder.shpname.setText(dealer.getShopnme());
         holder.address.setText(dealer.getShpnmthana());
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(context, ApprovedActivity.class);
+                Bundle bundle=new Bundle();
+                bundle.putParcelable("deler",dealer);
+                intent.putExtras(bundle);
+                context.startActivity(intent);
+            }
+        });
     }
 
     @Override
