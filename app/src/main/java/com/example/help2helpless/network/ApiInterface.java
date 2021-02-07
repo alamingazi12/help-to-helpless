@@ -18,4 +18,7 @@ public  interface ApiInterface {
     @GET("dealer_login.php")
     Call<DealerResponse> getDealerResponse(@Query("username") String username, @Query("password") String  password);
 
+    @GET("temp_dealer_fetch.php")
+    Call<DealerResponse> getAlldealers();
+
 }
