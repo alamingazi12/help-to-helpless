@@ -21,4 +21,7 @@ public  interface ApiInterface {
     @GET("temp_dealer_fetch.php")
     Call<DealerResponse> getAlldealers();
 
+    @GET("fetchdealer.php")
+    Call<DealerResponse> fetchAllDealers(@Query("zilla") String zilla);
+
 }
