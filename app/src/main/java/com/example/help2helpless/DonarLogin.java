@@ -1,5 +1,6 @@
 package com.example.help2helpless;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -54,9 +55,14 @@ public class DonarLogin extends AppCompatActivity {
           public void onResponse(Call<DonarResponse> call, Response<DonarResponse> response) {
               donars=response.body().getUsers();
              if(donars.size()>0){
+                 Donar donar=donars.get(0);
 
-
-                 Toast.makeText(DonarLogin.this,"Loged in Successfully",Toast.LENGTH_LONG).show();
+                 // Toast.makeText(AdminLogin.this,"Loged in Successfully",Toast.LENGTH_LONG).show();
+                 Intent intent=new Intent(DonarLogin.this,DonarDashBoardActivity.class);
+                 Bundle bundle=new Bundle();
+                 bundle.putParcelable("obj",donar);
+                 intent.putExtras(bundle);
+                 startActivity(intent);
              }else{
                  Toast.makeText(DonarLogin.this,"Wrong Username and Password",Toast.LENGTH_LONG).show();
 

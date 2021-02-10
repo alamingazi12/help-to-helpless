@@ -36,7 +36,7 @@ public class DealerRegActivity extends AppCompatActivity {
   TextInputLayout dname,fname,dladdress,phone,bks,mail,shpname,thana,Zilla,regno,nid,uname,password;
   Bitmap nid_bitmap,regno_bitmap;
 
-    String url="https://apps.help2helpless.com/dealerinsert.php";
+    String url="https://apps.help2helpless.com/temp_dealerinsert.php";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -157,7 +157,7 @@ public class DealerRegActivity extends AppCompatActivity {
                     params.put("shoppic",imageToString(regno_bitmap));
                     params.put("regno",dlregno);
                     params.put("nid",dlnid);
-                    params.put("nidpic",nid_bitmap);
+                    params.put("nidpic",imageToString(nid_bitmap));
                     params.put("username",dluname);
                     params.put("password",dlpass);
 
