@@ -14,29 +14,33 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".AddDealerActivity"></activity>
+        <activity android:name=".DiscountActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".AddDealerActivity" />
         <activity android:name=".DonarDashBoardActivity" />
         <activity android:name=".DealerRegActivity" />
         <activity android:name=".ApprovedActivity" />
         <activity android:name=".DealerRequestActivity" />
         <activity android:name=".DonarRegisterActivity" />
         <activity android:name=".DealerLoginActivity" />
-        <activity android:name=".DonarLogin" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+        <activity android:name=".DonarLogin">
 
         </activity>
         <activity android:name=".AdminDashBoardActivity" />
-        <activity android:name=".AdminLogin">
-
-        </activity>
+        <activity android:name=".AdminLogin"></activity>
         <activity android:name=".ClientActivity" />
         <activity
             android:name=".MainActivity"
             android:theme="@style/AppTheme.NoActionBar" />
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>

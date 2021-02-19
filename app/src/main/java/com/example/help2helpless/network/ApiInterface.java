@@ -1,6 +1,7 @@
 package com.example.help2helpless.network;
 
 import com.example.help2helpless.model.AdminResponse;
+import com.example.help2helpless.model.ClientResponse;
 import com.example.help2helpless.model.DealerResponse;
 import com.example.help2helpless.model.DonarResponse;
 
@@ -23,5 +24,9 @@ public  interface ApiInterface {
 
     @GET("fetchdealer.php")
     Call<DealerResponse> fetchAllDealers(@Query("zilla") String zilla);
+    //search_client.php
+
+    @GET("search_client.php")
+    Call<ClientResponse> fetchClient(@Query("cnumber") String cnumber,@Query("dnumber") String dnumber);
 
 }

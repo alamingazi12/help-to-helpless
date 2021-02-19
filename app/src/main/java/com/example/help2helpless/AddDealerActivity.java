@@ -7,13 +7,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
 
 import com.example.help2helpless.adapter.DealerAdapter;
-import com.example.help2helpless.adapter.RequestAdapter;
 import com.example.help2helpless.model.Dealer;
 import com.example.help2helpless.model.DealerResponse;
 import com.example.help2helpless.model.Donar;
 import com.example.help2helpless.network.ApiClient;
 import com.example.help2helpless.network.ApiInterface;
-
 import java.util.ArrayList;
 
 import retrofit2.Call;
@@ -49,7 +47,7 @@ public class AddDealerActivity extends AppCompatActivity {
              public void onResponse(Call<DealerResponse> call, Response<DealerResponse> response) {
                 dealerslist= response.body().getDealers();
                 if(dealerslist.size()>0){
-                    DealerAdapter dealerAdapter=new DealerAdapter(dealerslist,AddDealerActivity.this);
+                    DealerAdapter dealerAdapter=new DealerAdapter(dealerslist,AddDealerActivity.this,donar.getDcontact());
                     dealer_add_container.setAdapter(dealerAdapter);
                 }else{
 

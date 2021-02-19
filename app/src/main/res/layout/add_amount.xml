@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dp">
+
+
+
+
+
+
+
+
+
+    <TextView
+         android:id="@+id/text"
+         android:padding="10dp"
+         android:text="Add Amount"
+         android:gravity="center"
+         android:textColor="#f4a261"
+          android:layout_marginTop="10dp"
+        android:fontFamily="@font/electrolize"
+        android:textSize="22sp"
+        android:paddingBottom="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+
+    <EditText
+        android:layout_below="@+id/text"
+        android:id="@+id/addamount"
+        android:layout_margin="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+        android:layout_alignParentStart="true"
+
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="10dp"
+
+        android:paddingLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:fontFamily="sans-serif-condensed-medium"
+
+        android:padding="5dp"
+        android:hint=" Enter Amount"
+        android:textColor="#000"
+        android:textSize="24dp" />
+
+    <LinearLayout
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:layout_below="@+id/addamount"
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+
+        <Button
+            android:id="@+id/selectok"
+            android:layout_width="0dp"
+            android:layout_height="35dp"
+            android:layout_below="@+id/datetext"
+            android:layout_margin="5dp"
+            android:layout_weight="1"
+            android:background="@drawable/butttonstyle"
+            android:fontFamily="@font/electrolize"
+            android:text="Ok"
+            android:textColor="#fff" />
+        <Button
+            android:textColor="#ffff"
+            android:layout_margin="5dp"
+            android:layout_weight="1"
+            android:layout_below="@+id/datetext"
+            android:id="@+id/selectcancel"
+            android:layout_width="0dp"
+            android:layout_height="35dp"
+            android:fontFamily="@font/electrolize"
+
+            android:background="@drawable/button_style_cancel"
+            android:text="Cancel" />
+
+    </LinearLayout>
+
+</RelativeLayout>

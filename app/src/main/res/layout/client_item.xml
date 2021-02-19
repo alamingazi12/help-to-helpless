@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:id="@+id/cl_image"
+                android:layout_margin="10dp"
+                android:layout_width="80dp"
+                android:src="@drawable/abc_vector_test"
+                android:layout_height="70dp"/>
+               <TextView
+                   android:textStyle="bold"
+                   android:textSize="18dp"
+                   android:text="alamin Gazi"
+                   android:layout_marginLeft="10dp"
+                   android:layout_marginTop="16dp"
+                   android:layout_toEndOf="@+id/cl_image"
+                   android:id="@+id/cl_name"
+
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"/>
+            <TextView
+                android:textSize="16dp"
+                android:text="Khulna ,Fultala"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_toEndOf="@+id/cl_image"
+                android:id="@+id/cl_address"
+                android:layout_below="@+id/cl_name"
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+
+</LinearLayout>
