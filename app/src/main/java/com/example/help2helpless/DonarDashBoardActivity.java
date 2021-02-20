@@ -3,6 +3,7 @@ package com.example.help2helpless;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -12,6 +13,7 @@ import com.example.help2helpless.model.Donar;
 public class DonarDashBoardActivity extends AppCompatActivity {
    Button show_dealers;
     Donar donar;
+    SharedPreferences donarinfo;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,5 +37,8 @@ public class DonarDashBoardActivity extends AppCompatActivity {
 
     private void initAll() {
         show_dealers=findViewById(R.id.show_dealers);
+        donarinfo=this.getSharedPreferences("donarinfo",0);
+        String username=donarinfo.getString("uname",null);
+
     }
 }

@@ -49,12 +49,13 @@
         android:background="@drawable/login_btn_style"
         android:focusable="true"
         android:fontFamily="monospace"
-        android:text="Sign In"
+        android:text="Login"
+        android:textAllCaps="false"
 
 
 
         android:textColor="#ffffff"
-        android:textSize="20dp"
+        android:textSize="17dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/dsername"
         app:layout_constraintHorizontal_bias="0.496"

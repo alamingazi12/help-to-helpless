@@ -1,11 +1,17 @@
 package com.example.help2helpless;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -28,6 +34,7 @@ public class DonarRegisterActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_donar_register);
+        setFontToActionBar();
         intAll();
 
         donar_sign.setOnClickListener(new View.OnClickListener() {
@@ -37,6 +44,24 @@ public class DonarRegisterActivity extends AppCompatActivity {
             }
         });
     }
+
+    private void setFontToActionBar() {
+        TextView tv = new TextView(DonarRegisterActivity.this);
+        RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams(ActionBar.LayoutParams.WRAP_CONTENT, ActionBar.LayoutParams.WRAP_CONTENT);
+        tv.setLayoutParams(lp);
+        tv.setText("Donar Registration");
+        tv.setTextSize(24);
+        tv.setGravity(Gravity.CENTER);
+        tv.setTextColor(Color.parseColor("#ffffff"));
+        Typeface tf = Typeface.createFromAsset(getAssets(), "fonts/Titillium-Regular.otf");
+        tv.setTypeface(tf);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+        getSupportActionBar().setCustomView(tv);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+    }
+
 
     private void intAll() {
         dname=findViewById(R.id.dname);

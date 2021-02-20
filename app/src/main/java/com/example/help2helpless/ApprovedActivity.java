@@ -48,7 +48,7 @@ public class ApprovedActivity extends AppCompatActivity {
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-               sendSMS();
+               //sendSMS();
             }
         });
 

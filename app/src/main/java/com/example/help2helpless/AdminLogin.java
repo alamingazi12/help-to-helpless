@@ -1,13 +1,19 @@
 package com.example.help2helpless;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.help2helpless.model.Admin;
@@ -32,6 +38,7 @@ public class AdminLogin extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_adminlogin);
+        setFontToActionBar();
         initAll();
         admin_login.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -39,6 +46,23 @@ public class AdminLogin extends AppCompatActivity {
                 login();
             }
         });
+    }
+
+    private void setFontToActionBar() {
+        TextView tv = new TextView(AdminLogin.this);
+        RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams(ActionBar.LayoutParams.WRAP_CONTENT, ActionBar.LayoutParams.WRAP_CONTENT);
+        tv.setLayoutParams(lp);
+        tv.setText("Admin Login");
+        tv.setTextSize(24);
+        tv.setGravity(Gravity.CENTER);
+        tv.setTextColor(Color.parseColor("#ffffff"));
+        Typeface tf = Typeface.createFromAsset(getAssets(), "fonts/Titillium-Regular.otf");
+        tv.setTypeface(tf);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+        getSupportActionBar().setCustomView(tv);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
     }
 
     private void login() {

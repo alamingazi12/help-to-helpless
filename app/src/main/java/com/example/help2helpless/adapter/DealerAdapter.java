@@ -2,6 +2,7 @@ package com.example.help2helpless.adapter;
 
 import android.app.AlertDialog;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -38,7 +39,7 @@ public class DealerAdapter extends RecyclerView.Adapter<DealerAdapter.DealerView
     AlertDialog dialog;
     View DialogueView;
     Dealer   dealer;
-   String dealer_phone;
+    String dealer_phone;
     EditText amount;
 
     public DealerAdapter(ArrayList<Dealer> dealers, Context context,String donar_contact) {
@@ -66,7 +67,7 @@ public class DealerAdapter extends RecyclerView.Adapter<DealerAdapter.DealerView
             public void onClick(View view) {
                 Dealer dealer1=dealers.get(position);
                 dealer_phone=dealer1.getPhone();
-                Log.d("phone",dealer_phone);
+                //Log.d("phone",dealer_phone);
                 /*
                 Intent intent=new Intent(context, ApprovedActivity.class);
                 Bundle bundle=new Bundle();
@@ -116,7 +117,7 @@ public class DealerAdapter extends RecyclerView.Adapter<DealerAdapter.DealerView
                         String result=jsonObject.getString("response");
                         if(result.equals("success")){
 
-                            Toast.makeText(context,"You registered"+result,Toast.LENGTH_LONG).show();
+                            Toast.makeText(context,"Dealer Added Successfully",Toast.LENGTH_LONG).show();
                             dialog.dismiss();
                         }
                         else{
@@ -142,8 +143,11 @@ public class DealerAdapter extends RecyclerView.Adapter<DealerAdapter.DealerView
                 public byte[] getBody() throws AuthFailureError {
                     JSONObject params = new JSONObject();
                     try {
-                        Log.d("phone",dealer_phone);
-                        params.put("dnr_cont",donar_contact);
+                   SharedPreferences donarinfo=context.getSharedPreferences("donarinfo",0);
+                        String dcontact=donarinfo.getString("contact",null);
+
+                        Log.d("phone",dcontact);
+                        params.put("dnr_cont",dcontact);
                         params.put("dealer_cont",dealer_phone);
                         params.put("amount",amount.getText().toString());
 

@@ -14,29 +14,30 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".DiscountActivity">
+        <activity android:name=".DealerActivity"></activity>
+        <activity android:name=".DiscountActivity"></activity>
+        <activity android:name=".AddDealerActivity" android:parentActivityName=".DonarDashBoardActivity"/>
+        <activity android:name=".DonarDashBoardActivity" />
+        <activity android:name=".DealerRegActivity" android:parentActivityName=".MainActivity"/>
+        <activity android:name=".ApprovedActivity" />
+        <activity android:name=".DealerRequestActivity" />
+        <activity android:name=".DonarRegisterActivity"
+            android:parentActivityName=".MainActivity"/>
+        <activity android:name=".DealerLoginActivity" android:parentActivityName=".MainActivity" />
+        <activity android:name=".DonarLogin" android:parentActivityName=".MainActivity"></activity>
+        <activity android:name=".AdminDashBoardActivity" android:parentActivityName=".AdminLogin" />
+        <activity android:name=".AdminLogin" android:parentActivityName=".MainActivity"/>
+        <activity android:name=".ClientActivity" />
+        <activity
+            android:autoRemoveFromRecents="true"
+            android:name=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".AddDealerActivity" />
-        <activity android:name=".DonarDashBoardActivity" />
-        <activity android:name=".DealerRegActivity" />
-        <activity android:name=".ApprovedActivity" />
-        <activity android:name=".DealerRequestActivity" />
-        <activity android:name=".DonarRegisterActivity" />
-        <activity android:name=".DealerLoginActivity" />
-        <activity android:name=".DonarLogin">
-
-        </activity>
-        <activity android:name=".AdminDashBoardActivity" />
-        <activity android:name=".AdminLogin"></activity>
-        <activity android:name=".ClientActivity" />
-        <activity
-            android:name=".MainActivity"
-            android:theme="@style/AppTheme.NoActionBar" />
 
         <meta-data
             android:name="preloaded_fonts"

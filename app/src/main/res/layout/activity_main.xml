@@ -14,7 +14,8 @@
        android:layout_height="match_parent">
        <androidx.appcompat.widget.Toolbar
            android:id="@+id/toolbar"
-           app:title="@string/app_name"
+
+           app:title="Help to Helpless"
            app:titleTextColor="#ffffff"
            android:background="@color/colorOrange"
            android:layout_width="match_parent"

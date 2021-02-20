@@ -1,13 +1,20 @@
 package com.example.help2helpless;
 
+import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.PersistableBundle;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.help2helpless.model.Dealer;
@@ -32,6 +39,7 @@ public class DealerLoginActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dealer_login);
+        setFontToActionBar();
         initAll();
         dealer_login.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -42,6 +50,23 @@ public class DealerLoginActivity extends AppCompatActivity {
         
     }
 
+    private void setFontToActionBar() {
+        TextView tv = new TextView(DealerLoginActivity.this);
+        RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams(ActionBar.LayoutParams.WRAP_CONTENT, ActionBar.LayoutParams.WRAP_CONTENT);
+        tv.setLayoutParams(lp);
+        tv.setText("Dealer Login");
+        tv.setTextSize(24);
+        tv.setGravity(Gravity.CENTER);
+        tv.setTextColor(Color.parseColor("#ffffff"));
+        Typeface tf = Typeface.createFromAsset(getAssets(), "fonts/Titillium-Regular.otf");
+        tv.setTypeface(tf);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+        getSupportActionBar().setCustomView(tv);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+    }
+
     private void login() {
         ApiInterface apiInterface= ApiClient.getApiClient(DealerLoginActivity.this).create(ApiInterface.class);
         Call<DealerResponse> dealerResponseCall=apiInterface.getDealerResponse(dealeruname.getText().toString(),dealerpass.getText().toString());
@@ -50,7 +75,10 @@ public class DealerLoginActivity extends AppCompatActivity {
         public void onResponse(Call<DealerResponse> call, Response<DealerResponse> response) {
             dealers=response.body().getDealers();
             if(dealers.size()>0){
+
                 Toast.makeText(DealerLoginActivity.this," You Loged in Successfully",Toast.LENGTH_LONG).show();
+                Intent intent=new Intent(DealerLoginActivity.this,DealerActivity.class);
+                startActivity(intent);
             }else {
                 Toast.makeText(DealerLoginActivity.this,"Wrong Username and Password",Toast.LENGTH_LONG).show();
             }

@@ -1,18 +1,24 @@
 package com.example.help2helpless;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.Color;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Base64;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -41,7 +47,7 @@ public class DealerRegActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dealer_reg);
-
+        setFontToActionBar();
         initAll();
         signup.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -61,6 +67,23 @@ public class DealerRegActivity extends AppCompatActivity {
              browseImage2();
          }
      });
+    }
+
+    private void setFontToActionBar() {
+        TextView tv = new TextView(DealerRegActivity.this);
+        RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams(ActionBar.LayoutParams.WRAP_CONTENT, ActionBar.LayoutParams.WRAP_CONTENT);
+        tv.setLayoutParams(lp);
+        tv.setText("Dealer Registration");
+        tv.setTextSize(24);
+        tv.setGravity(Gravity.CENTER);
+        tv.setTextColor(Color.parseColor("#ffffff"));
+        Typeface tf = Typeface.createFromAsset(getAssets(), "fonts/Titillium-Regular.otf");
+        tv.setTypeface(tf);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+        getSupportActionBar().setCustomView(tv);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
     }
 
     private void initAll() {

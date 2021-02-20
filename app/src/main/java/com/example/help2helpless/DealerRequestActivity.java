@@ -1,7 +1,5 @@
 package com.example.help2helpless;
-
 import android.os.Bundle;
-
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -12,9 +10,7 @@ import com.example.help2helpless.model.Dealer;
 import com.example.help2helpless.model.DealerResponse;
 import com.example.help2helpless.network.ApiClient;
 import com.example.help2helpless.network.ApiInterface;
-
 import java.util.ArrayList;
-
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -27,7 +23,7 @@ public class DealerRequestActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.dealer_request_activity);
         initAll();
-        fetchAllDealer();
+        //fetchAllDealer();
     }
 
     private void fetchAllDealer() {
@@ -50,6 +46,12 @@ public class DealerRequestActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        fetchAllDealer();
     }
 
     private void initAll() {

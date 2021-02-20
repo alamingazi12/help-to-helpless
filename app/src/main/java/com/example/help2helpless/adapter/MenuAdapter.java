@@ -10,16 +10,18 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.core.view.GravityCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 
-import com.example.help2helpless.MainActivity;
+import com.example.help2helpless.AdminLogin;
+import com.example.help2helpless.DealerLoginActivity;
+import com.example.help2helpless.DealerRegActivity;
+import com.example.help2helpless.DonarLogin;
+import com.example.help2helpless.DonarRegisterActivity;
 import com.example.help2helpless.R;
 import com.example.help2helpless.model.MenuItem;
-
 import java.util.ArrayList;
 
 public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.MenuViewHolder> {
@@ -47,26 +49,35 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.MenuViewHolder
              holder.view.setVisibility(View.INVISIBLE);
          }
 
-         final MenuItem menuItem=items.get(position);
-         if(menuItem.getName().equals("Chosen Currency")){
+        final MenuItem menuItem=items.get(position);
 
-             SharedPreferences sharedPreferences=context.getSharedPreferences("Currency",Context.MODE_PRIVATE);
-
-
-             holder.currency.setVisibility(View.VISIBLE);
-             holder.currency.setText(sharedPreferences.getString("cvalue",null));
-
-         }
          holder.itemimage.setImageResource(menuItem.getImage());
          holder.itemname.setText(menuItem.getName());
          holder.itemView.setOnClickListener(new View.OnClickListener() {
              @Override
              public void onClick(View v) {
+                 if(menuItem.getName().equals("Admin Panel")){
+                    Intent intent=new Intent(context, AdminLogin.class);
+                    context.startActivity(intent);
+                 }
+                 if(menuItem.getName().equals("Dealer")){
+                     Intent intent=new Intent(context, DealerLoginActivity.class);
+                     context.startActivity(intent);
 
-
-
-
-
+                 }
+                 if(menuItem.getName().equals("Donar")){
+                     Intent intent=new Intent(context, DonarLogin.class);
+                     context.startActivity(intent);
+                 }
+                 if(menuItem.getName().equals("Dealer Registration")){
+                     Intent intent=new Intent(context, DealerRegActivity.class);
+                     context.startActivity(intent);
+                 }
+                 if(menuItem.getName().equals("Donar Registration")){
+                     Intent intent=new Intent(context, DonarRegisterActivity.class);
+                     context.startActivity(intent);
+                 }
+                 //Donar Registration
 
              }
          });
