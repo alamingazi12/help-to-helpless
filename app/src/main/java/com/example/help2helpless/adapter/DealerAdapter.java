@@ -29,7 +29,9 @@ import com.example.help2helpless.model.Dealer;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class DealerAdapter extends RecyclerView.Adapter<DealerAdapter.DealerViewHolder> {
     ArrayList<Dealer> dealers;
@@ -145,10 +147,16 @@ public class DealerAdapter extends RecyclerView.Adapter<DealerAdapter.DealerView
                     try {
                    SharedPreferences donarinfo=context.getSharedPreferences("donarinfo",0);
                         String dcontact=donarinfo.getString("contact",null);
+                        Date date=new Date();
+                        SimpleDateFormat sdf=new SimpleDateFormat("dd-MM-yyyy, HH:mm");
+                        String today=sdf.format(date);
 
+                        String pdatarr[]=today.split("-");
                         Log.d("phone",dcontact);
                         params.put("dnr_cont",dcontact);
                         params.put("dealer_cont",dealer_phone);
+                        params.put("month",getMonthString(pdatarr[1]));
+                        params.put("year",pdatarr[2]);
                         params.put("amount",amount.getText().toString());
 
 
@@ -170,6 +178,52 @@ public class DealerAdapter extends RecyclerView.Adapter<DealerAdapter.DealerView
             requestQueue.add(stringRequest);
 
 
+    }
+
+    private String getMonthString(String s) {
+
+        String monthName=null;
+
+        switch (s){
+            case "01":
+                monthName="January";
+                break;
+            case "02":
+                monthName="February";
+                break;
+            case "03":
+                monthName="March";
+                break;
+            case "04":
+                monthName="April";
+                break;
+            case "05":
+                monthName="May";
+                break;
+            case "06":
+                monthName="June";
+                break;
+            case "07":
+                monthName="July";
+                break;
+            case "08":
+                monthName="August";
+                break;
+            case "09":
+                monthName="September";
+                break;
+            case "10":
+                monthName="October";
+                break;
+            case "11":
+                monthName="November";
+                break;
+            case "12":
+                monthName="December";
+                break;
+
+        }
+        return monthName;
     }
 
     @Override
