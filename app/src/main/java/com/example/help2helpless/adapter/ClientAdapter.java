@@ -2,11 +2,13 @@ package com.example.help2helpless.adapter;
 
 import android.app.AlertDialog;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -28,10 +30,13 @@ import com.squareup.picasso.Picasso;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class ClientAdapter extends RecyclerView.Adapter<ClientAdapter.ClientViewHolder> {
     ArrayList<Client> clientList;
+    EditText amount;
     View DialogueView;
     AlertDialog dialog;
     String url="https://apps.help2helpless.com/add_discount.php";
@@ -69,6 +74,7 @@ public class ClientAdapter extends RecyclerView.Adapter<ClientAdapter.ClientView
         AlertDialog.Builder builder=new AlertDialog.Builder(context);
         DialogueView=LayoutInflater.from(context).inflate(R.layout.add_discount,null);
         Button button_ok= DialogueView.findViewById(R.id.selectok);
+        amount=DialogueView.findViewById(R.id.addamount);
         Button button_cancel=DialogueView.findViewById(R.id.selectcancel);
         button_ok.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -130,12 +136,17 @@ public class ClientAdapter extends RecyclerView.Adapter<ClientAdapter.ClientView
             public byte[] getBody() throws AuthFailureError {
                 JSONObject params = new JSONObject();
                 try {
+                 SharedPreferences   dealerlogininfo=context.getSharedPreferences("dealerinfo",0);
+                    Date date=new Date();
+                    SimpleDateFormat sdf=new SimpleDateFormat("dd-MM-yyyy, HH:mm");
+                    String today=sdf.format(date);
 
-                    params.put("cl_contact","01354232516");
-                    params.put("dlr_contact","01629630487");
-                    params.put("month","july");
-                    params.put("year","2021");
-                    params.put("amount","210");
+                    String pdatarr[]=today.split("-");
+                    params.put("cl_contact",cnumber);
+                    params.put("dlr_contact",dealerlogininfo.getString("contact",null));
+                    params.put("month",getMonthString(pdatarr[1]));
+                    params.put("year",pdatarr[2]);
+                    params.put("amount",amount.getText().toString());
 
 
                 } catch (JSONException e) {
@@ -156,6 +167,53 @@ public class ClientAdapter extends RecyclerView.Adapter<ClientAdapter.ClientView
         requestQueue.add(stringRequest);
 
 
+    }
+
+
+    private String getMonthString(String s) {
+
+        String monthName=null;
+
+        switch (s){
+            case "01":
+                monthName="January";
+                break;
+            case "02":
+                monthName="February";
+                break;
+            case "03":
+                monthName="March";
+                break;
+            case "04":
+                monthName="April";
+                break;
+            case "05":
+                monthName="May";
+                break;
+            case "06":
+                monthName="June";
+                break;
+            case "07":
+                monthName="July";
+                break;
+            case "08":
+                monthName="August";
+                break;
+            case "09":
+                monthName="September";
+                break;
+            case "10":
+                monthName="October";
+                break;
+            case "11":
+                monthName="November";
+                break;
+            case "12":
+                monthName="December";
+                break;
+
+        }
+        return monthName;
     }
     public class ClientViewHolder extends RecyclerView.ViewHolder {
         TextView cname,address;

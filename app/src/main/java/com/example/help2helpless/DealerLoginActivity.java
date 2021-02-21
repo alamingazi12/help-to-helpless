@@ -1,6 +1,7 @@
 package com.example.help2helpless;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
@@ -31,7 +32,8 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class DealerLoginActivity extends AppCompatActivity {
-
+    SharedPreferences dealerlogininfo;
+    SharedPreferences.Editor dealer_editor;
     ArrayList<Dealer> dealers;
     Button dealer_login;
     EditText dealeruname,dealerpass;
@@ -74,13 +76,18 @@ public class DealerLoginActivity extends AppCompatActivity {
         @Override
         public void onResponse(Call<DealerResponse> call, Response<DealerResponse> response) {
             dealers=response.body().getDealers();
-            if(dealers.size()>0){
 
-                Toast.makeText(DealerLoginActivity.this," You Loged in Successfully",Toast.LENGTH_LONG).show();
+            if(dealers.size()>0){
+                Dealer dealer=  dealers.get(0);
+                dealer_editor.putString("contact", dealer.getPhone());
+                dealer_editor.putString("uname", dealer.getUsernm());
+                dealer_editor.putString("Zilla", dealer.getShpnmzilla());
+                dealer_editor.apply();
+               // Toast.makeText(DealerLoginActivity.this," You Loged in Successfully",Toast.LENGTH_LONG).show();
                 Intent intent=new Intent(DealerLoginActivity.this,DealerActivity.class);
                 startActivity(intent);
             }else {
-                Toast.makeText(DealerLoginActivity.this,"Wrong Username and Password",Toast.LENGTH_LONG).show();
+                Toast.makeText(DealerLoginActivity.this,"Something wrong",Toast.LENGTH_LONG).show();
             }
         }
 
@@ -94,6 +101,8 @@ public class DealerLoginActivity extends AppCompatActivity {
     }
 
     private void initAll() {
+        dealerlogininfo=getSharedPreferences("dealerinfo",0);
+        dealer_editor=dealerlogininfo.edit();
         dealeruname=findViewById(R.id.dlrname);
         dealerpass=findViewById(R.id.dlrpass);
         dealer_login=findViewById(R.id.dlr_login);
