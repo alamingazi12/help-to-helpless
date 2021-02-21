@@ -1,5 +1,4 @@
 package com.example.help2helpless.adapter;
-
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -148,7 +147,7 @@ public class DealerAdapter extends RecyclerView.Adapter<DealerAdapter.DealerView
                    SharedPreferences donarinfo=context.getSharedPreferences("donarinfo",0);
                         String dcontact=donarinfo.getString("contact",null);
                         Date date=new Date();
-                        SimpleDateFormat sdf=new SimpleDateFormat("dd-MM-yyyy, HH:mm");
+                        SimpleDateFormat sdf=new SimpleDateFormat("dd-MM-yyyy");
                         String today=sdf.format(date);
 
                         String pdatarr[]=today.split("-");

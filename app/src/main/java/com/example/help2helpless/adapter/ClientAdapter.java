@@ -138,7 +138,7 @@ public class ClientAdapter extends RecyclerView.Adapter<ClientAdapter.ClientView
                 try {
                  SharedPreferences   dealerlogininfo=context.getSharedPreferences("dealerinfo",0);
                     Date date=new Date();
-                    SimpleDateFormat sdf=new SimpleDateFormat("dd-MM-yyyy, HH:mm");
+                    SimpleDateFormat sdf=new SimpleDateFormat("dd-MM-yyyy");
                     String today=sdf.format(date);
 
                     String pdatarr[]=today.split("-");

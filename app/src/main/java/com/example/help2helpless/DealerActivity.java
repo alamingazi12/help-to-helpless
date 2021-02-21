@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 
 import com.example.help2helpless.model.Client;
+import com.example.help2helpless.model.Dealer;
 
 public class DealerActivity extends AppCompatActivity {
    Button client_sign;
@@ -23,6 +24,15 @@ public class DealerActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+     Button discount_btn=findViewById(R.id.button_discount);
+        discount_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(DealerActivity.this,DiscountActivity.class);
+                startActivity(intent);
+            }
+        });
+
     }
 
     private void initAll() {

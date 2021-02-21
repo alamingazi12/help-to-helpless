@@ -8,7 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
+
 
 import com.example.help2helpless.adapter.ClientAdapter;
 import com.example.help2helpless.model.Client;
