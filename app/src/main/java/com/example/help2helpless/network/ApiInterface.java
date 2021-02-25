@@ -3,7 +3,10 @@ package com.example.help2helpless.network;
 import com.example.help2helpless.model.AdminResponse;
 import com.example.help2helpless.model.Amount;
 import com.example.help2helpless.model.ClientResponse;
+import com.example.help2helpless.model.DealerAvgPaid;
+import com.example.help2helpless.model.DealerBalance;
 import com.example.help2helpless.model.DealerResponse;
+import com.example.help2helpless.model.DealerTDonation;
 import com.example.help2helpless.model.DonarAllDonation;
 import com.example.help2helpless.model.DonarBalance;
 import com.example.help2helpless.model.DonarResponse;
@@ -48,5 +51,13 @@ public  interface ApiInterface {
 
 
     //Dealer Dashboard Api
+    //dlr_contact
+    @GET("avg_dlrdonation.php")
+    Call<DealerAvgPaid> getDealerAvgDonation(@Query("dlrcontact") String dlrcontact);
 
+    @GET("dealer_balance.php")
+    Call<DealerBalance> getDealerBalance(@Query("dlr_contact") String dlr_contact);
+
+    @GET("total_dealer_donation.php")
+    Call<DealerTDonation> getTotalDealerDonation(@Query("dlr_contact") String dlr_contact);
 }
