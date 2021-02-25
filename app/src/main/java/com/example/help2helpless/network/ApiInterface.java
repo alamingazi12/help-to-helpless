@@ -1,6 +1,7 @@
 package com.example.help2helpless.network;
 
 import com.example.help2helpless.model.AdminResponse;
+import com.example.help2helpless.model.Amount;
 import com.example.help2helpless.model.ClientResponse;
 import com.example.help2helpless.model.DealerResponse;
 import com.example.help2helpless.model.DonarResponse;
@@ -11,10 +12,10 @@ import retrofit2.http.Query;
 
 public  interface ApiInterface {
 
-    @GET("admin_login.php")
+    @GET("adminlogin.php")
     Call<AdminResponse> getAdminResponse(@Query("username") String username,@Query("password") String  password);
 
-    @GET("donarsignin.php")
+    @GET("donar_login.php")
     Call<DonarResponse> getDonarResponse(@Query("username") String username, @Query("password") String  password);
     @GET("dealer_login.php")
     Call<DealerResponse> getDealerResponse(@Query("username") String username, @Query("password") String  password);
@@ -28,5 +29,8 @@ public  interface ApiInterface {
 
     @GET("search_client.php")
     Call<ClientResponse> fetchClient(@Query("cnumber") String cnumber,@Query("dnumber") String dnumber);
+
+    @GET("fetchamount.php")
+    Call<Amount> getAmount();
 
 }

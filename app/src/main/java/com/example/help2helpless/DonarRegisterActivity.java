@@ -3,6 +3,7 @@ package com.example.help2helpless;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
@@ -88,8 +89,9 @@ public class DonarRegisterActivity extends AppCompatActivity {
                     JSONObject jsonObject=new JSONObject(response);
                     String result=jsonObject.getString("response");
                     if(result.equals("success")){
-
-                        Toast.makeText(DonarRegisterActivity.this,"You registered"+result,Toast.LENGTH_LONG).show();
+                        Toast.makeText(DonarRegisterActivity.this,"You registered Successfully",Toast.LENGTH_LONG).show();
+                        Intent intent=new Intent(DonarRegisterActivity.this,DonarLogin.class);
+                        startActivity(intent);
                     }
                     else{
 
@@ -115,18 +117,16 @@ public class DonarRegisterActivity extends AppCompatActivity {
                 JSONObject params = new JSONObject();
                 try {
 
-
                     String name=dname.getEditText().getText().toString();
                     String professions=profession.getEditText().getText().toString();
                     String contact=dcontacts.getEditText().getText().toString();
                     String email=mail.getEditText().getText().toString();
-
                     String addres=presentaddres.getEditText().getText().toString();
                     String dthana=thana.getEditText().getText().toString();
                     String dzilla=dZilla.getEditText().getText().toString();
                     String amount=amounts.getEditText().getText().toString();
-                    String username=uname.getEditText().getText().toString();
-                    String password=pass.getEditText().getText().toString();
+                    String username=uname.getEditText().getText().toString().trim();
+                    String password=pass.getEditText().getText().toString().trim();
 
 
                     params.put("name",name);
@@ -139,7 +139,6 @@ public class DonarRegisterActivity extends AppCompatActivity {
                     params.put("donation",amount);
                     params.put("uname",username);
                     params.put("passwrd",password);
-
 
 
                 } catch (JSONException e) {

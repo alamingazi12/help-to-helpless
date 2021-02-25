@@ -1,8 +1,6 @@
 package com.example.help2helpless;
-
 import android.app.AlertDialog;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
@@ -27,12 +25,19 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.help2helpless.model.Admin;
+import com.example.help2helpless.model.Amount;
+import com.example.help2helpless.network.ApiClient;
+import com.example.help2helpless.network.ApiInterface;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class AdminDashBoardActivity extends AppCompatActivity {
 
@@ -48,11 +53,38 @@ public class AdminDashBoardActivity extends AppCompatActivity {
         setFontToActionBar();
       Bundle bundle= getIntent().getExtras();
       Admin admin=bundle.getParcelable("obj");
-      initAll();
+       initAll();
+       getAmount();
       add_amount_donar.setOnClickListener(new View.OnClickListener() {
           @Override
           public void onClick(View view) {
               createDialoge();
+          }
+      });
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        getAmount();
+    }
+
+    private void getAmount() {
+        Log.d("value","running");
+        ApiInterface apiInterface= ApiClient.getApiClient(AdminDashBoardActivity.this).create(ApiInterface.class);
+        Call<Amount> amountCall =apiInterface.getAmount();
+       amountCall.enqueue(new Callback<Amount>() {
+          @Override
+          public void onResponse(Call<Amount> call, Response<Amount> response) {
+              Amount amounts=response.body();
+              Log.d("amount:",amounts.getValue());
+
+          }
+
+          @Override
+          public void onFailure(Call<Amount> call, Throwable t) {
+              Log.d("amount:","something wrong");
+              Toast.makeText(AdminDashBoardActivity.this," something wrong"+amount,Toast.LENGTH_SHORT).show();
           }
       });
     }
