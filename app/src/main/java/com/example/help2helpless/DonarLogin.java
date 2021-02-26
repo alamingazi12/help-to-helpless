@@ -23,6 +23,7 @@ import com.example.help2helpless.model.Donar;
 import com.example.help2helpless.model.DonarResponse;
 import com.example.help2helpless.network.ApiClient;
 import com.example.help2helpless.network.ApiInterface;
+import com.google.android.material.textfield.TextInputLayout;
 
 import java.util.ArrayList;
 
@@ -33,7 +34,7 @@ import retrofit2.Response;
 public class DonarLogin extends AppCompatActivity {
     ArrayList<Donar> donars;
     Button donar_login;
-    EditText dusernme,dpasswrd;
+    TextInputLayout dusernme,dpasswrd;
 
     SharedPreferences donarsharedpreference;
     SharedPreferences.Editor editor;
@@ -79,7 +80,7 @@ public class DonarLogin extends AppCompatActivity {
 
     private void login() {
         ApiInterface apiInterface= ApiClient.getApiClient(DonarLogin.this).create(ApiInterface.class);
-        Call<DonarResponse> donarResponseCall=apiInterface.getDonarResponse(dusernme.getText().toString(),dpasswrd.getText().toString());
+        Call<DonarResponse> donarResponseCall=apiInterface.getDonarResponse(dusernme.getEditText().getText().toString(),dpasswrd.getEditText().getText().toString());
         donarResponseCall.enqueue(new Callback<DonarResponse>() {
           @Override
           public void onResponse(Call<DonarResponse> call, Response<DonarResponse> response) {

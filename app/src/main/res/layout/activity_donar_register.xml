@@ -3,6 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:background="#f8f9fa"
+    android:theme="@style/Theme.MaterialComponents.DayNight.DarkActionBar"
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".DonarRegisterActivity">
@@ -13,28 +15,29 @@
         <LinearLayout
             android:orientation="vertical"
             android:layout_margin="10dp"
-
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="sans-serif-black"
+            <ImageView
+                android:layout_gravity="center"
+                android:layout_width="150dp"
+                android:layout_marginBottom="60dp"
+                android:layout_height="150dp"
+                android:src="@drawable/adduser"
                 android:layout_marginTop="50dp"
-                android:gravity="center"
-                android:textSize="32sp"
-                android:padding="15dp"
-                android:text="Donar Sign UP" />
+
+                 />
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:id="@+id/dname"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                 android:focusable="true"
-                android:layout_marginTop="10dp"
+                app:hintTextColor="#d9d9d9"
                 android:focusableInTouchMode="true"
                 android:layout_height="wrap_content">
                 <com.google.android.material.textfield.TextInputEditText
                     android:hint="Name"
+                    app:hintTextColor="#d9d9d9"
                     android:ems="10"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
@@ -44,6 +47,8 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:focusable="true"
+                app:hintTextColor="#d9d9d9"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                 android:id="@+id/dprofession"
                 android:layout_marginTop="10dp"
                 android:focusableInTouchMode="true"
@@ -51,6 +56,7 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:hint="Profession"
                     android:ems="10"
+                    app:hintTextColor="#d9d9d9"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
                 </com.google.android.material.textfield.TextInputEditText>
@@ -60,12 +66,14 @@
                 android:layout_width="match_parent"
                 android:focusable="true"
                 android:id="@+id/dcontacts"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                 android:layout_marginTop="10dp"
                 android:focusableInTouchMode="true"
                 android:layout_height="wrap_content">
                 <com.google.android.material.textfield.TextInputEditText
                     android:hint="Mobile"
                     android:ems="10"
+                    app:hintTextColor="#d9d9d9"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
                 </com.google.android.material.textfield.TextInputEditText>
@@ -74,6 +82,7 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:focusable="true"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                 android:id="@+id/demail"
                 android:layout_marginTop="10dp"
                 android:focusableInTouchMode="true"
@@ -90,6 +99,7 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:focusable="true"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                 android:id="@+id/dpresntaddres"
                 android:layout_marginTop="10dp"
                 android:focusableInTouchMode="true"
@@ -107,11 +117,13 @@
                 android:layout_width="match_parent"
                 android:focusable="true"
                 android:id="@+id/dthana"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                 android:layout_marginTop="10dp"
                 android:focusableInTouchMode="true"
                 android:layout_height="wrap_content">
                 <com.google.android.material.textfield.TextInputEditText
                     android:hint="Thana (Permanant Address)"
+
                     android:ems="10"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
@@ -122,6 +134,7 @@
                 android:layout_width="match_parent"
                 android:focusable="true"
                 android:id="@+id/dzilla"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                 android:layout_marginTop="10dp"
                 android:focusableInTouchMode="true"
                 android:layout_height="wrap_content">
@@ -136,6 +149,7 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:focusable="true"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                 android:layout_marginTop="10dp"
                 android:id="@+id/damount"
                 android:focusableInTouchMode="true"
@@ -152,6 +166,7 @@
                 android:layout_width="match_parent"
                 android:focusable="true"
                 android:id="@+id/duname"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                 android:layout_marginTop="10dp"
                 android:focusableInTouchMode="true"
                 android:layout_height="wrap_content">
@@ -166,8 +181,12 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:focusable="true"
-                android:id="@+id/dpass"
 
+                android:id="@+id/dpass"
+                app:endIconMode="password_toggle"
+                app:endIconTint="@color/colorOrange"
+
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                 android:layout_marginTop="10dp"
                 android:focusableInTouchMode="true"
                 android:layout_height="wrap_content">

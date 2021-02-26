@@ -5,7 +5,6 @@ import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
@@ -24,6 +23,7 @@ import com.example.help2helpless.model.Donar;
 import com.example.help2helpless.model.DonarResponse;
 import com.example.help2helpless.network.ApiClient;
 import com.example.help2helpless.network.ApiInterface;
+import com.google.android.material.textfield.TextInputLayout;
 
 import java.util.ArrayList;
 
@@ -36,7 +36,7 @@ public class DealerLoginActivity extends AppCompatActivity {
     SharedPreferences.Editor dealer_editor;
     ArrayList<Dealer> dealers;
     Button dealer_login;
-    EditText dealeruname,dealerpass;
+    TextInputLayout dealeruname,dealerpass;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -71,8 +71,8 @@ public class DealerLoginActivity extends AppCompatActivity {
 
     private void login() {
         ApiInterface apiInterface= ApiClient.getApiClient(DealerLoginActivity.this).create(ApiInterface.class);
-        Call<DealerResponse> dealerResponseCall=apiInterface.getDealerResponse(dealeruname.getText().toString(),dealerpass.getText().toString());
-    dealerResponseCall.enqueue(new Callback<DealerResponse>() {
+        Call<DealerResponse> dealerResponseCall=apiInterface.getDealerResponse(dealeruname.getEditText().getText().toString(),dealerpass.getEditText().getText().toString());
+        dealerResponseCall.enqueue(new Callback<DealerResponse>() {
         @Override
         public void onResponse(Call<DealerResponse> call, Response<DealerResponse> response) {
             dealers=response.body().getDealers();

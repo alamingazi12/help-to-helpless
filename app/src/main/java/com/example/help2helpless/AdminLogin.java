@@ -20,6 +20,7 @@ import com.example.help2helpless.model.Admin;
 import com.example.help2helpless.model.AdminResponse;
 import com.example.help2helpless.network.ApiClient;
 import com.example.help2helpless.network.ApiInterface;
+import com.google.android.material.textfield.TextInputLayout;
 
 import java.util.ArrayList;
 
@@ -29,7 +30,7 @@ import retrofit2.Response;
 
 public class AdminLogin extends AppCompatActivity {
     Button admin_login;
-    EditText adusernme,adpasswrd;
+    TextInputLayout adusernme,adpasswrd;
     ArrayList<Admin> admins;
 
 
@@ -67,7 +68,7 @@ public class AdminLogin extends AppCompatActivity {
 
     private void login() {
         ApiInterface apiInterface= ApiClient.getApiClient(AdminLogin.this).create(ApiInterface.class);
-        Call<AdminResponse> adminResponseCall=apiInterface.getAdminResponse(adusernme.getText().toString(),adpasswrd.getText().toString());
+        Call<AdminResponse> adminResponseCall=apiInterface.getAdminResponse(adusernme.getEditText().getText().toString(),adpasswrd.getEditText().getText().toString());
         adminResponseCall.enqueue(new Callback<AdminResponse>() {
             @Override
             public void onResponse(Call<AdminResponse> call, Response<AdminResponse> response) {

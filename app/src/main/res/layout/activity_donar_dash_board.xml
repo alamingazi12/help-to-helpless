@@ -22,4 +22,72 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.134" />
+
+    <TextView
+        android:id="@+id/dnr_balance"
+        android:layout_width="0dp"
+        android:layout_height="26dp"
+        android:layout_marginTop="72dp"
+        android:text="Balance"
+        app:layout_constraintEnd_toEndOf="@+id/show_dealers"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/textView2"
+        app:layout_constraintTop_toBottomOf="@+id/show_dealers" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="170dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="72dp"
+        android:text="Balance"
+        app:layout_constraintBottom_toBottomOf="@+id/dnr_balance"
+        app:layout_constraintStart_toStartOf="@+id/show_dealers"
+        app:layout_constraintTop_toBottomOf="@+id/show_dealers" />
+
+    <TextView
+        android:id="@+id/dnr_donation"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:text="Donation"
+        app:layout_constraintEnd_toEndOf="@+id/dnr_balance"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/dnr_balance"
+        app:layout_constraintTop_toBottomOf="@+id/dnr_balance" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Avg Donation"
+        app:layout_constraintBottom_toBottomOf="@+id/dnr_donation"
+        app:layout_constraintEnd_toStartOf="@+id/dnr_donation"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/textView2"
+        app:layout_constraintTop_toBottomOf="@+id/textView2"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/t_doantion"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="288dp"
+        android:text="Donation"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/dnr_donation"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/textView6"
+        app:layout_constraintTop_toBottomOf="@+id/dnr_donation" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Donation"
+        app:layout_constraintBottom_toBottomOf="@+id/t_doantion"
+        app:layout_constraintEnd_toStartOf="@+id/dnr_donation"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/textView4"
+        app:layout_constraintTop_toBottomOf="@+id/textView4"
+        app:layout_constraintVertical_bias="1.0" />
 </androidx.constraintlayout.widget.ConstraintLayout>

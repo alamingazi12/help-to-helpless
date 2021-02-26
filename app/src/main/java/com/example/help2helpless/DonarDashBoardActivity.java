@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 import com.example.help2helpless.model.Donar;
 import com.example.help2helpless.model.DonarAllDonation;
@@ -20,12 +21,16 @@ import retrofit2.Response;
 
 public class DonarDashBoardActivity extends AppCompatActivity {
     Button show_dealers;
+    String donar_contact;
     Donar donar;
     SharedPreferences donarinfo;
+    TextView donar_balnce,avg_donations,t_donation;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_donar_dash_board);
+
+
         final Bundle bundle= getIntent().getExtras();
         donar=bundle.getParcelable("obj");
         initAll();
@@ -47,13 +52,14 @@ public class DonarDashBoardActivity extends AppCompatActivity {
 
     private void getTotalDonation() {
         ApiInterface apiInterface= ApiClient.getApiClient(DonarDashBoardActivity.this).create(ApiInterface.class);
-        Call<DonarAllDonation> donarAllDonationCall = apiInterface.getDonarsAllDonations("01711506657");
+        Call<DonarAllDonation> donarAllDonationCall = apiInterface.getDonarsAllDonations(donar_contact);
         donarAllDonationCall.enqueue(new Callback<DonarAllDonation>() {
             @Override
             public void onResponse(Call<DonarAllDonation> call, Response<DonarAllDonation> response) {
              String total_donation=response.body().getTotal_donation();
-                Toast.makeText(DonarDashBoardActivity.this,""+total_donation,Toast.LENGTH_LONG).show();
-                Log.d("total_donation:",total_donation);
+                //Toast.makeText(DonarDashBoardActivity.this,""+total_donation,Toast.LENGTH_LONG).show();
+                //Log.d("total_donation:",total_donation);
+                t_donation.setText(total_donation);
             }
 
             @Override
@@ -65,13 +71,14 @@ public class DonarDashBoardActivity extends AppCompatActivity {
 
     private void getAvgDonation() {
         ApiInterface apiInterface= ApiClient.getApiClient(DonarDashBoardActivity.this).create(ApiInterface.class);
-      Call<DonarsAvgDonation> donarsAvgDonationCall =  apiInterface.getDonaravgDonations("01711506657");
+       Call<DonarsAvgDonation> donarsAvgDonationCall =  apiInterface.getDonaravgDonations(donar_contact);
        donarsAvgDonationCall.enqueue(new Callback<DonarsAvgDonation>() {
            @Override
            public void onResponse(Call<DonarsAvgDonation> call, Response<DonarsAvgDonation> response) {
                String avg_donation=    response.body().getAvg_donation();
-               Toast.makeText(DonarDashBoardActivity.this,""+avg_donation,Toast.LENGTH_LONG).show();
-               Log.d("avg:",avg_donation);
+               avg_donations.setText(avg_donation);
+              // Toast.makeText(DonarDashBoardActivity.this,""+avg_donation,Toast.LENGTH_LONG).show();
+              // Log.d("avg:",avg_donation);
            }
 
            @Override
@@ -82,14 +89,14 @@ public class DonarDashBoardActivity extends AppCompatActivity {
     }
 
     private void getDonarBalance() {
-
         ApiInterface apiInterface= ApiClient.getApiClient(DonarDashBoardActivity.this).create(ApiInterface.class);
-        Call<DonarBalance> donarBalanceCall= apiInterface.getDonarBalance("01711506657");
+        Call<DonarBalance> donarBalanceCall= apiInterface.getDonarBalance(donar_contact);
         donarBalanceCall.enqueue(new Callback<DonarBalance>() {
            @Override
            public void onResponse(Call<DonarBalance> call, Response<DonarBalance> response) {
                String balance=response.body().getDonar_balance();
                Toast.makeText(DonarDashBoardActivity.this,""+balance,Toast.LENGTH_LONG).show();
+               donar_balnce.setText(balance);
                Log.d("balance:",balance);
            }
 
@@ -103,8 +110,11 @@ public class DonarDashBoardActivity extends AppCompatActivity {
 
     private void initAll() {
         show_dealers=findViewById(R.id.show_dealers);
+        donar_balnce=findViewById(R.id.dnr_balance);
+        avg_donations=findViewById(R.id.dnr_donation);
+        t_donation=findViewById(R.id.t_doantion);
         donarinfo=this.getSharedPreferences("donarinfo",0);
-        String username=donarinfo.getString("uname",null);
+        donar_contact=donarinfo.getString("contact",null);
 
     }
 }
