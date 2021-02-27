@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
         tv.setTextSize(24);
         tv.setGravity(Gravity.CENTER);
         tv.setTextColor(Color.parseColor("#ffffff"));
-        Typeface tf = Typeface.createFromAsset(getAssets(), "fonts/Titillium-Regular.otf");
+        Typeface tf = Typeface.createFromAsset(getAssets(), "fonts/regular.otf");
         tv.setTypeface(tf);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);

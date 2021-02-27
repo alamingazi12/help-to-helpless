@@ -7,7 +7,6 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
@@ -54,7 +53,7 @@ public class DonarRegisterActivity extends AppCompatActivity {
         tv.setTextSize(24);
         tv.setGravity(Gravity.CENTER);
         tv.setTextColor(Color.parseColor("#ffffff"));
-        Typeface tf = Typeface.createFromAsset(getAssets(), "fonts/Titillium-Regular.otf");
+        Typeface tf = Typeface.createFromAsset(getAssets(), "fonts/regular.otf");
         tv.setTypeface(tf);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
@@ -95,7 +94,7 @@ public class DonarRegisterActivity extends AppCompatActivity {
                     }
                     else{
 
-                        Toast.makeText(DonarRegisterActivity.this,"Error Occured"+result,Toast.LENGTH_LONG).show();
+                        Toast.makeText(DonarRegisterActivity.this," "+result,Toast.LENGTH_LONG).show();
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();

@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -57,7 +56,7 @@ public class AdminLogin extends AppCompatActivity {
         tv.setTextSize(24);
         tv.setGravity(Gravity.CENTER);
         tv.setTextColor(Color.parseColor("#ffffff"));
-        Typeface tf = Typeface.createFromAsset(getAssets(), "fonts/Titillium-Regular.otf");
+        Typeface tf = Typeface.createFromAsset(getAssets(), "fonts/regular.otf");
         tv.setTypeface(tf);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);

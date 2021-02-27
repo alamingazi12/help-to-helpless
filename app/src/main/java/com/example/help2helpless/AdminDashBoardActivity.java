@@ -45,7 +45,7 @@ public class AdminDashBoardActivity extends AppCompatActivity {
     AlertDialog dialog;
     View DialogueView;
     Button show_request,add_amount_donar;
-  EditText amount,donar_contact;
+    EditText amount,donar_contact;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -128,10 +128,9 @@ public class AdminDashBoardActivity extends AppCompatActivity {
                     if(result.equals("success")){
                         Toast.makeText(AdminDashBoardActivity.this,"Amount added Successfully",Toast.LENGTH_LONG).show();
                         dialog.dismiss();
-                    }
-                    else{
-                        Log.d("result","No Donar with this Contact");
-                        Toast.makeText(AdminDashBoardActivity.this,"No Donar with this Contact",Toast.LENGTH_SHORT).show();
+                    }else{
+                        //Log.d("result","No Donar with this Contact");
+                        Toast.makeText(AdminDashBoardActivity.this," "+result,Toast.LENGTH_SHORT).show();
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -187,7 +186,7 @@ public class AdminDashBoardActivity extends AppCompatActivity {
         tv.setTextSize(24);
         tv.setGravity(Gravity.CENTER);
         tv.setTextColor(Color.parseColor("#ffffff"));
-        Typeface tf = Typeface.createFromAsset(getAssets(), "fonts/Titillium-Regular.otf");
+        Typeface tf = Typeface.createFromAsset(getAssets(), "fonts/regular.otf");
         tv.setTypeface(tf);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);

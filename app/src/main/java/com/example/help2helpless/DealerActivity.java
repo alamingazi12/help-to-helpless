@@ -24,7 +24,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class DealerActivity extends AppCompatActivity {
-   Button client_sign;
+    Button client_sign;
     SharedPreferences dealerlogininfo;
     String dealer_contact;
     TextView dealer_balances,avg_dlr_discount,total_discount_paid;
@@ -61,14 +61,14 @@ public class DealerActivity extends AppCompatActivity {
           @Override
           public void onResponse(Call<DealerBalance> call, Response<DealerBalance> response) {
             String dealer_balance=  response.body().getDealer_balance();
-              Log.d("avg",dealer_balance);
+              //Log.d("avg",dealer_balance);
               dealer_balances.setText("Dealer Balance:"+dealer_balance);
-              Toast.makeText(DealerActivity.this,"avg:"+dealer_balance,Toast.LENGTH_LONG).show();
+             // Toast.makeText(DealerActivity.this,"avg:"+dealer_balance,Toast.LENGTH_LONG).show();
           }
 
           @Override
           public void onFailure(Call<DealerBalance> call, Throwable t) {
-              Toast.makeText(DealerActivity.this,"Error",Toast.LENGTH_LONG).show();
+              Toast.makeText(DealerActivity.this,"Network Error",Toast.LENGTH_LONG).show();
           }
       });
     }
@@ -79,14 +79,14 @@ public class DealerActivity extends AppCompatActivity {
            @Override
            public void onResponse(Call<DealerAvgPaid> call, Response<DealerAvgPaid> response) {
              String avgdealerpaid=  response.body().getAvg_dealer_paid();
-               Log.d("avg",avgdealerpaid);
+              // Log.d("avg",avgdealerpaid);
                avg_dlr_discount.setText("Avg Discount:"+avgdealerpaid);
-               Toast.makeText(DealerActivity.this,"avg:"+avgdealerpaid,Toast.LENGTH_LONG).show();
+              // Toast.makeText(DealerActivity.this,"avg:"+avgdealerpaid,Toast.LENGTH_LONG).show();
            }
 
            @Override
            public void onFailure(Call<DealerAvgPaid> call, Throwable t) {
-               Toast.makeText(DealerActivity.this,"Error",Toast.LENGTH_LONG).show();
+               Toast.makeText(DealerActivity.this,"Network Error",Toast.LENGTH_LONG).show();
            }
        });
 
@@ -98,9 +98,9 @@ public class DealerActivity extends AppCompatActivity {
            @Override
            public void onResponse(Call<DealerTDonation> call, Response<DealerTDonation> response) {
              String total_donation=  response.body().getTotal_donation();
-               Log.d("avg",total_donation);
+               //Log.d("avg",total_donation);
                total_discount_paid.setText("Total Discount:"+total_donation);
-               Toast.makeText(DealerActivity.this,"avg:"+total_donation,Toast.LENGTH_LONG).show();
+               //Toast.makeText(DealerActivity.this,"avg:"+total_donation,Toast.LENGTH_LONG).show();
            }
 
            @Override

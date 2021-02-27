@@ -8,7 +8,6 @@ import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -17,8 +16,6 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.help2helpless.model.Admin;
-import com.example.help2helpless.model.AdminResponse;
 import com.example.help2helpless.model.Donar;
 import com.example.help2helpless.model.DonarResponse;
 import com.example.help2helpless.network.ApiClient;
@@ -60,7 +57,7 @@ public class DonarLogin extends AppCompatActivity {
         tv.setTextSize(24);
         tv.setGravity(Gravity.CENTER);
         tv.setTextColor(Color.parseColor("#ffffff"));
-        Typeface tf = Typeface.createFromAsset(getAssets(), "fonts/Titillium-Regular.otf");
+        Typeface tf = Typeface.createFromAsset(getAssets(), "fonts/regular.otf");
         tv.setTypeface(tf);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);

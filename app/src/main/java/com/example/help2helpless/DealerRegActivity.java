@@ -12,7 +12,6 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Base64;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
@@ -77,7 +76,7 @@ public class DealerRegActivity extends AppCompatActivity {
         tv.setTextSize(24);
         tv.setGravity(Gravity.CENTER);
         tv.setTextColor(Color.parseColor("#ffffff"));
-        Typeface tf = Typeface.createFromAsset(getAssets(), "fonts/Titillium-Regular.otf");
+        Typeface tf = Typeface.createFromAsset(getAssets(), "fonts/regular.otf");
         tv.setTypeface(tf);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
@@ -101,7 +100,7 @@ public class DealerRegActivity extends AppCompatActivity {
         nid=findViewById(R.id.nidnum);
         uname=findViewById(R.id.dluname);
         password=findViewById(R.id.dlpass);
-       // imageview init
+       // imageview_style.xml init
         reg_pic=findViewById(R.id.shpimage);
         nid_pic=findViewById(R.id.idimage);
       // BUtton init
@@ -127,11 +126,11 @@ public class DealerRegActivity extends AppCompatActivity {
                     String result=jsonObject.getString("response");
                     if(result.equals("success")){
 
-                        Toast.makeText(DealerRegActivity.this,"You registered"+result,Toast.LENGTH_LONG).show();
+                        Toast.makeText(DealerRegActivity.this,"You registered Successfully",Toast.LENGTH_LONG).show();
                     }
                     else{
 
-                        Toast.makeText(DealerRegActivity.this,"Error Occured"+result,Toast.LENGTH_LONG).show();
+                        Toast.makeText(DealerRegActivity.this," "+result,Toast.LENGTH_LONG).show();
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();

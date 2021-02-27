@@ -3,7 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:orientation="vertical"
-    android:layout_margin="7dp"
+    android:background="#feeafa"
+    android:theme="@style/Theme.MaterialComponents.DayNight.DarkActionBar"
     android:layout_height="match_parent"
     tools:context=".ClientActivity">
 
@@ -15,22 +16,20 @@
                 android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
-                <TextView
+                <ImageView
                     android:layout_marginTop="50dp"
-                    android:padding="10dp"
-                    android:fontFamily="sans-serif-condensed-light"
-                    android:focusable="true"
-                    android:textColor="@color/colorOrange"
-                    android:textSize="30dp"
-                    android:gravity="center"
-                    android:text="Client SignUp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
+                    android:src="@drawable/signup"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="20dp"
+                    android:layout_width="130dp"
+                    android:layout_height="140dp"/>
                  <com.google.android.material.textfield.TextInputLayout
                      android:layout_width="match_parent"
                      android:focusable="true"
+                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                      android:id="@+id/cname"
-                     android:layout_marginTop="10dp"
+
+                     android:layout_margin="12dp"
                      android:focusableInTouchMode="true"
                      android:layout_height="wrap_content">
                        <com.google.android.material.textfield.TextInputEditText
@@ -43,7 +42,8 @@
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:focusable="true"
-                    android:layout_marginTop="10dp"
+                    android:layout_margin="12dp"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                     android:id="@+id/fname"
                     android:focusableInTouchMode="true"
                     android:layout_height="wrap_content">
@@ -57,6 +57,8 @@
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:focusable="true"
+                    android:layout_margin="12dp"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                     android:id="@+id/cprofesion"
                     android:layout_marginTop="10dp"
                     android:focusableInTouchMode="true"
@@ -71,6 +73,8 @@
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:focusable="true"
+                    android:layout_margin="12dp"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                     android:id="@+id/cage"
                     android:layout_marginTop="10dp"
                     android:focusableInTouchMode="true"
@@ -85,6 +89,8 @@
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:focusable="true"
+                    android:layout_margin="12dp"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                     android:id="@+id/mincome"
                     android:layout_marginTop="10dp"
                     android:focusableInTouchMode="true"
@@ -99,6 +105,8 @@
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:focusable="true"
+                    android:layout_margin="12dp"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                     android:id="@+id/incomesrc"
                     android:layout_marginTop="10dp"
                     android:focusableInTouchMode="true"
@@ -113,6 +121,8 @@
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:focusable="true"
+                    android:layout_margin="12dp"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                     android:id="@+id/nsons"
                     android:layout_marginTop="10dp"
                     android:focusableInTouchMode="true"
@@ -127,6 +137,8 @@
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:focusable="true"
+                    android:layout_margin="12dp"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                     android:id="@+id/ndaughter"
                     android:layout_marginTop="10dp"
                     android:focusableInTouchMode="true"
@@ -141,6 +153,8 @@
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:focusable="true"
+                    android:layout_margin="12dp"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                     android:id="@+id/gurdian"
                     android:layout_marginTop="10dp"
                     android:focusableInTouchMode="true"
@@ -155,6 +169,8 @@
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:focusable="true"
+                    android:layout_margin="12dp"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                     android:id="@+id/gurdian_num"
                     android:layout_marginTop="10dp"
                     android:focusableInTouchMode="true"
@@ -169,6 +185,8 @@
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:focusable="true"
+                    android:layout_margin="12dp"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                     android:id="@+id/cbk_num"
                     android:layout_marginTop="10dp"
                     android:focusableInTouchMode="true"
@@ -183,6 +201,8 @@
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:focusable="true"
+                    android:layout_margin="12dp"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                     android:id="@+id/deasese"
                     android:layout_marginTop="10dp"
                     android:focusableInTouchMode="true"
@@ -197,6 +217,8 @@
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:focusable="true"
+                    android:layout_margin="12dp"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                     android:id="@+id/mcost"
                     android:layout_marginTop="10dp"
                     android:focusableInTouchMode="true"
@@ -211,6 +233,8 @@
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:focusable="true"
+                    android:layout_margin="12dp"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                     android:id="@+id/caddress"
                     android:layout_marginTop="10dp"
                     android:focusableInTouchMode="true"
@@ -228,8 +252,10 @@
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:focusable="true"
+                    android:layout_margin="12dp"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                     android:id="@+id/ccontact"
-                    android:layout_marginTop="10dp"
+
                     android:focusableInTouchMode="true"
                     android:layout_height="wrap_content">
                     <com.google.android.material.textfield.TextInputEditText
@@ -244,6 +270,8 @@
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:focusable="true"
+                    android:layout_margin="12dp"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                     android:id="@+id/dcontact"
                     android:layout_marginTop="10dp"
                     android:focusableInTouchMode="true"
@@ -258,12 +286,14 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <LinearLayout
+                    android:layout_marginTop="30dp"
                     android:orientation="horizontal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 <TextView
     android:layout_width="0dp"
     android:padding="10dp"
+    android:textColor="#3d405b"
     android:textSize="18sp"
     android:text="Client Photo"
     android:layout_gravity="center"
@@ -275,33 +305,41 @@
 
                         android:layout_height="wrap_content">
                         <ImageView
+
+                            android:background="@drawable/imageview_style"
                             android:layout_centerHorizontal="true"
                             android:id="@+id/cimage"
+                            android:layout_marginBottom="20dp"
                             android:layout_width="120dp"
                             android:layout_height="120dp"/>
                         <Button
-
+                             android:layout_marginBottom="20dp"
                             android:layout_below="@id/cimage"
                             android:id="@+id/pic_image"
                             android:text="Browse"
+                            android:background="@drawable/button_style"
+                            android:textColor="#ffffff"
+                            android:paddingRight="10dp"
+                            android:paddingLeft="10dp"
+                            android:textAllCaps="false"
                             android:layout_centerHorizontal="true"
                             android:layout_marginTop="5dp"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"/>
+                            android:layout_height="40dp"/>
                     </RelativeLayout>
 
                 </LinearLayout>
 
                 <Button
                     android:id="@+id/client_signup"
-                    android:padding="15dp"
-                    android:layout_marginTop="50dp"
-                    android:layout_marginBottom="70dp"
-                    android:textColor="#fff"
+                    android:padding="10dp"
+                    android:layout_marginTop="40dp"
+                    android:layout_marginBottom="30dp"
+                    android:textColor="#ffffff"
                     android:text="Sign Up"
                     android:fontFamily="sans-serif-condensed"
                     android:background="@drawable/button_style"
-                    android:textSize="25sp"
+                    android:textSize="18sp"
                     android:layout_marginLeft="30dp"
                     android:layout_marginRight="30dp"
                     android:gravity="center"

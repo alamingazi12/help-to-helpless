@@ -63,7 +63,6 @@ public class ClientActivity extends AppCompatActivity {
         fname=findViewById(R.id.fname);
         cprofession=findViewById(R.id.cprofesion);
         cage=findViewById(R.id.cage);
-
         cincome=findViewById(R.id.mincome);
         incomesrc=findViewById(R.id.incomesrc);
         nsons=findViewById(R.id.nsons);
@@ -93,11 +92,11 @@ public class ClientActivity extends AppCompatActivity {
                     String result=jsonObject.getString("response");
                     if(result.equals("success")){
 
-                        Toast.makeText(ClientActivity.this,"You registered"+result,Toast.LENGTH_LONG).show();
+                        Toast.makeText(ClientActivity.this,"You registered Successfully",Toast.LENGTH_LONG).show();
                     }
                     else{
 
-                        Toast.makeText(ClientActivity.this,"Error Occured"+result,Toast.LENGTH_LONG).show();
+                        Toast.makeText(ClientActivity.this," "+result,Toast.LENGTH_LONG).show();
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
