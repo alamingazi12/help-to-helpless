@@ -90,11 +90,8 @@ public class DonarLogin extends AppCompatActivity {
                   editor.putBoolean("login",true);
                   editor.apply();
                  // Toast.makeText(AdminLogin.this,"Loged in Successfully",Toast.LENGTH_LONG).show();
-                 Intent intent=new Intent(DonarLogin.this,DonarDashBoardActivity.class);
-                 Bundle bundle=new Bundle();
-                 bundle.putParcelable("obj",donar);
-                 intent.putExtras(bundle);
-                 startActivity(intent);
+                  Intent intent=new Intent(DonarLogin.this,DonarDashBoardActivity.class);
+                  startActivity(intent);
              }else{
                  Toast.makeText(DonarLogin.this,"Wrong Username and Password",Toast.LENGTH_LONG).show();
 

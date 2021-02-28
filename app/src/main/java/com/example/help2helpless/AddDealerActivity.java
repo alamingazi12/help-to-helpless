@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
@@ -33,8 +34,6 @@ public class AddDealerActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_dealer);
         setFontToActionBar();
-        Bundle bundle=getIntent().getExtras();
-        donar=bundle.getParcelable("dobj");
         initRecycler();
         fetchAllDealer();
     }
@@ -63,15 +62,15 @@ public class AddDealerActivity extends AppCompatActivity {
 
     }
     private void fetchAllDealer() {
-
+      final SharedPreferences  donarsharedpreference=  this.getSharedPreferences("donarinfo",0);
         ApiInterface apiInterface= ApiClient.getApiClient(AddDealerActivity.this).create(ApiInterface.class);
-        Call<DealerResponse> dealerResponseCall=apiInterface.fetchAllDealers(donar.getZilla());
+        Call<DealerResponse> dealerResponseCall=apiInterface.fetchAllDealers(donarsharedpreference.getString("zilla",null));
          dealerResponseCall.enqueue(new Callback<DealerResponse>() {
              @Override
              public void onResponse(Call<DealerResponse> call, Response<DealerResponse> response) {
                 dealerslist= response.body().getDealers();
                 if(dealerslist.size()>0){
-                    DealerAdapter dealerAdapter=new DealerAdapter(dealerslist,AddDealerActivity.this,donar.getDcontact());
+                    DealerAdapter dealerAdapter=new DealerAdapter(dealerslist,AddDealerActivity.this,donarsharedpreference.getString("contact",null));
                     dealer_add_container.setAdapter(dealerAdapter);
                 }else{
 

@@ -123,7 +123,7 @@ public class DealerAdapter extends RecyclerView.Adapter<DealerAdapter.DealerView
                         }
                         else{
 
-                            Toast.makeText(context,"Error Occured"+result,Toast.LENGTH_LONG).show();
+                            Toast.makeText(context,""+result,Toast.LENGTH_LONG).show();
                         }
                     } catch (JSONException e) {
                         e.printStackTrace();

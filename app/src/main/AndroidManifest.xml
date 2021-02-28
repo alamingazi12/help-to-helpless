@@ -17,7 +17,8 @@
         <activity android:name=".DealerActivity"></activity>
         <activity android:name=".DiscountActivity"></activity>
         <activity android:name=".AddDealerActivity" android:parentActivityName=".DonarDashBoardActivity"/>
-        <activity android:name=".DonarDashBoardActivity" />
+        <activity android:name=".DonarDashBoardActivity"
+            android:autoRemoveFromRecents="true"/>
         <activity android:name=".DealerRegActivity" android:parentActivityName=".MainActivity"/>
         <activity android:name=".ApprovedActivity" />
         <activity android:name=".DealerRequestActivity" />

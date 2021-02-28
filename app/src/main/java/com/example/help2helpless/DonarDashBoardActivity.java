@@ -29,18 +29,14 @@ public class DonarDashBoardActivity extends AppCompatActivity {
         setContentView(R.layout.activity_donar_dash_board);
 
 
-        final Bundle bundle= getIntent().getExtras();
-        donar=bundle.getParcelable("obj");
+       // final Bundle bundle= getIntent().getExtras();
+        //donar=bundle.getParcelable("obj");
         initAll();
         show_dealers.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent=new Intent(DonarDashBoardActivity.this,AddDealerActivity.class);
-                Bundle bundle1=new Bundle();
-                bundle1.putParcelable("dobj",donar);
-                intent.putExtras(bundle1);
                 startActivity(intent);
-
             }
         });
      getDonarBalance();
