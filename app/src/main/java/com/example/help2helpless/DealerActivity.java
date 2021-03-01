@@ -62,8 +62,14 @@ public class DealerActivity extends AppCompatActivity {
           public void onResponse(Call<DealerBalance> call, Response<DealerBalance> response) {
             String dealer_balance=  response.body().getDealer_balance();
               //Log.d("avg",dealer_balance);
-              dealer_balances.setText("Dealer Balance:"+dealer_balance);
-             // Toast.makeText(DealerActivity.this,"avg:"+dealer_balance,Toast.LENGTH_LONG).show();
+
+              if(dealer_balance==null){
+                  dealer_balance="0";
+                  dealer_balances.setText("Dealer Balance:"+dealer_balance);
+              }else {
+                  dealer_balances.setText("Dealer Balance:" + dealer_balance);
+                  //} Toast.makeText(DealerActivity.this,"avg:"+dealer_balance,Toast.LENGTH_LONG).show();
+              }
           }
 
           @Override
@@ -74,13 +80,19 @@ public class DealerActivity extends AppCompatActivity {
     }
     private void getDealerAvgPaid() {
         ApiInterface apiInterface= ApiClient.getApiClient(DealerActivity.this).create(ApiInterface.class);
-       Call <DealerAvgPaid> dealerAvgPaidCall=apiInterface.getDealerAvgDonation(dealer_contact);
+       final Call <DealerAvgPaid> dealerAvgPaidCall=apiInterface.getDealerAvgDonation(dealer_contact);
        dealerAvgPaidCall.enqueue(new Callback<DealerAvgPaid>() {
            @Override
            public void onResponse(Call<DealerAvgPaid> call, Response<DealerAvgPaid> response) {
              String avgdealerpaid=  response.body().getAvg_dealer_paid();
-              // Log.d("avg",avgdealerpaid);
-               avg_dlr_discount.setText("Avg Discount:"+avgdealerpaid);
+               if(avgdealerpaid==null){
+                   avgdealerpaid="0";
+                   avg_dlr_discount.setText("Average Discount Paid:"+avgdealerpaid);
+               }else
+                   {
+                       avg_dlr_discount.setText("Average Discount Paid:" + avgdealerpaid);
+               }
+
               // Toast.makeText(DealerActivity.this,"avg:"+avgdealerpaid,Toast.LENGTH_LONG).show();
            }
 
@@ -99,7 +111,16 @@ public class DealerActivity extends AppCompatActivity {
            public void onResponse(Call<DealerTDonation> call, Response<DealerTDonation> response) {
              String total_donation=  response.body().getTotal_donation();
                //Log.d("avg",total_donation);
-               total_discount_paid.setText("Total Discount:"+total_donation);
+               if(total_donation==null){
+                   total_donation="0";
+                   total_discount_paid.setText("Total Discount:"+total_donation);
+               }else
+               {
+                   total_discount_paid.setText("Total Discount:" + total_donation);
+                   //} Toast.makeText(DealerActivity.this,"avg:"+dealer_balance,Toast.LENGTH_LONG).show();
+               }
+
+
                //Toast.makeText(DealerActivity.this,"avg:"+total_donation,Toast.LENGTH_LONG).show();
            }
 
@@ -110,6 +131,14 @@ public class DealerActivity extends AppCompatActivity {
        });
 
 
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        getDealerBalance();
+        getDealerAvgPaid();
+        getDealerTotalPaid();
     }
 
     private void initAll() {

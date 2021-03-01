@@ -39,9 +39,15 @@ public class DonarDashBoardActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-     getDonarBalance();
-     getAvgDonation();
-     getTotalDonation();
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        getDonarBalance();
+        getAvgDonation();
+        getTotalDonation();
     }
 
     private void getTotalDonation() {
@@ -53,7 +59,14 @@ public class DonarDashBoardActivity extends AppCompatActivity {
              String total_donation=response.body().getTotal_donation();
                 //Toast.makeText(DonarDashBoardActivity.this,""+total_donation,Toast.LENGTH_LONG).show();
                 //Log.d("total_donation:",total_donation);
-                t_donation.setText(total_donation);
+                if(total_donation==null){
+                   total_donation="0";
+                    t_donation.setText(total_donation);
+                }else{
+
+                    t_donation.setText(total_donation);
+                }
+
             }
 
             @Override
@@ -71,6 +84,14 @@ public class DonarDashBoardActivity extends AppCompatActivity {
            public void onResponse(Call<DonarsAvgDonation> call, Response<DonarsAvgDonation> response) {
                String avg_donation=    response.body().getAvg_donation();
                avg_donations.setText(avg_donation);
+               if(avg_donation==null){
+
+                   avg_donation="0";
+                   avg_donations.setText(avg_donation);
+
+               }else {
+                   avg_donations.setText(avg_donation);
+               }
               // Toast.makeText(DonarDashBoardActivity.this,""+avg_donation,Toast.LENGTH_LONG).show();
               // Log.d("avg:",avg_donation);
            }
@@ -91,6 +112,12 @@ public class DonarDashBoardActivity extends AppCompatActivity {
                String balance=response.body().getDonar_balance();
               // Toast.makeText(DonarDashBoardActivity.this,""+balance,Toast.LENGTH_LONG).show();
                donar_balnce.setText(balance);
+               if(balance==null){
+                   balance="0";
+                   donar_balnce.setText(balance);
+               }else{
+                   donar_balnce.setText(balance);
+               }
 //               Log.d("balance:",balance);
            }
 
