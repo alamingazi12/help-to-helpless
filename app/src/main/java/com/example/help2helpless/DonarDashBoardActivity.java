@@ -20,7 +20,6 @@ import retrofit2.Response;
 public class DonarDashBoardActivity extends AppCompatActivity {
     Button show_dealers;
     String donar_contact;
-    Donar donar;
     SharedPreferences donarinfo;
     TextView donar_balnce,avg_donations,t_donation;
     @Override
@@ -118,7 +117,7 @@ public class DonarDashBoardActivity extends AppCompatActivity {
                }else{
                    donar_balnce.setText(balance);
                }
-//               Log.d("balance:",balance);
+//
            }
 
            @Override

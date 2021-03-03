@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -20,10 +21,9 @@ import com.android.volley.RequestQueue;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.example.help2helpless.ApprovedActivity;
-import com.example.help2helpless.DonarRegisterActivity;
 import com.example.help2helpless.R;
 import com.example.help2helpless.model.Dealer;
+import com.squareup.picasso.Picasso;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -35,6 +35,7 @@ import java.util.Date;
 public class DealerAdapter extends RecyclerView.Adapter<DealerAdapter.DealerViewHolder> {
     ArrayList<Dealer> dealers;
     String donar_contact;
+    String imageUrl="https://apps.help2helpless.com/uploads/";
     String url="https://apps.help2helpless.com/add_dealer.php";
     Context context;
     AlertDialog dialog;
@@ -63,6 +64,16 @@ public class DealerAdapter extends RecyclerView.Adapter<DealerAdapter.DealerView
         holder.name.setText(dealer.getName());
         holder.shpname.setText(dealer.getShopnme());
         holder.address.setText(dealer.getShpnmthana());
+        holder.dlr_phone.setText(dealer.getPhone());
+
+        String url=imageUrl+dealer.getShoppic();
+        //Picasso.get().load(imageUrl).into(shpimage);
+        Picasso.get()
+                .load(url)
+                .resize(128, 128)
+                .centerCrop()
+                .into(holder.imageView_dealer);
+
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -77,6 +88,14 @@ public class DealerAdapter extends RecyclerView.Adapter<DealerAdapter.DealerView
                 context.startActivity(intent);
 
                  */
+                createDialoge(dealer);
+            }
+        });
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Dealer dealer2=dealers.get(position);
+                dealer_phone=dealer2.getPhone();
                 createDialoge(dealer);
             }
         });
@@ -231,12 +250,18 @@ public class DealerAdapter extends RecyclerView.Adapter<DealerAdapter.DealerView
     }
 
     public class DealerViewHolder extends RecyclerView.ViewHolder {
-        TextView name,shpname,address;
+        TextView name,shpname,address,dlr_phone;
+        Button add_dealer;
+        ImageView imageView_dealer;
         public DealerViewHolder(@NonNull View itemView) {
             super(itemView);
             name= itemView.findViewById(R.id.dlrname);
             shpname= itemView.findViewById(R.id.dlrshpname);
-            address= itemView.findViewById(R.id.dlrshopaddress);
+            address= itemView.findViewById(R.id.dlrshpaddress);
+            dlr_phone=itemView.findViewById(R.id.dlr_phone);
+            add_dealer=itemView.findViewById(R.id.btn_add_dealers);
+            imageView_dealer=itemView.findViewById(R.id.dlr_image);
+
         }
     }
 }
