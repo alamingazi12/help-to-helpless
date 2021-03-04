@@ -100,7 +100,7 @@ public class DealerLoginActivity extends AppCompatActivity {
     private void initAll() {
         dealerlogininfo=getSharedPreferences("dealerinfo",0);
         dealer_editor=dealerlogininfo.edit();
-        dealeruname=findViewById(R.id.dlrname);
+        dealeruname=findViewById(R.id.rdname);
         dealerpass=findViewById(R.id.dlrpass);
         dealer_login=findViewById(R.id.dlr_login);
     }

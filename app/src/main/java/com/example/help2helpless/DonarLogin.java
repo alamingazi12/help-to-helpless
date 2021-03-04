@@ -1,11 +1,14 @@
 package com.example.help2helpless;
 
+import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RelativeLayout;
@@ -16,6 +19,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.help2helpless.model.Dealer;
 import com.example.help2helpless.model.Donar;
 import com.example.help2helpless.model.DonarResponse;
 import com.example.help2helpless.network.ApiClient;
@@ -32,6 +36,8 @@ public class DonarLogin extends AppCompatActivity {
     ArrayList<Donar> donars;
     Button donar_login;
     TextInputLayout dusernme,dpasswrd;
+    View DialogueView;
+    AlertDialog dialog;
 
     SharedPreferences donarsharedpreference;
     SharedPreferences.Editor editor;
@@ -45,9 +51,22 @@ public class DonarLogin extends AppCompatActivity {
         donar_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                createDialoge();
                 login();
             }
         });
+    }
+
+    public void   createDialoge(){
+        AlertDialog.Builder builder=new AlertDialog.Builder(DonarLogin.this);
+        DialogueView= LayoutInflater.from(DonarLogin.this).inflate(R.layout.custom_progress,null);
+
+        builder.setView(DialogueView);
+        dialog= builder.create();
+        dialog.setCanceledOnTouchOutside(false);
+        dialog.show();
+
+
     }
     private void setFontToActionBar() {
         TextView tv = new TextView(DonarLogin.this);
@@ -89,10 +108,12 @@ public class DonarLogin extends AppCompatActivity {
                   editor.putString("zilla",donar.getZilla());
                   editor.putBoolean("login",true);
                   editor.apply();
+                  dialog.dismiss();
                  // Toast.makeText(AdminLogin.this,"Loged in Successfully",Toast.LENGTH_LONG).show();
                   Intent intent=new Intent(DonarLogin.this,DonarDashBoardActivity.class);
                   startActivity(intent);
              }else{
+                 dialog.dismiss();
                  Toast.makeText(DonarLogin.this,"Wrong Username and Password",Toast.LENGTH_LONG).show();
 
 
@@ -101,7 +122,7 @@ public class DonarLogin extends AppCompatActivity {
 
           @Override
           public void onFailure(Call<DonarResponse> call, Throwable t) {
-
+              dialog.dismiss();
           }
       });
 

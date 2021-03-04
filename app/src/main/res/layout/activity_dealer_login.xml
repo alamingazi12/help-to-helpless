@@ -17,7 +17,7 @@
         app:srcCompat="@drawable/login" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/dlrname"
+        android:id="@+id/rdname"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="55dp"
@@ -55,7 +55,7 @@
         android:id="@+id/dlrpass"
 
 
-        android:layout_below="@+id/dlrname"
+        android:layout_below="@+id/rdname"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="55dp"

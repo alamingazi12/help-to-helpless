@@ -147,7 +147,7 @@ public class ApprovedActivity extends AppCompatActivity {
 
 
     private void initAll() {
-        dlrname=findViewById(R.id.dlrname);
+        dlrname=findViewById(R.id.rdname);
         zilla=findViewById(R.id.dlrzilla);
         thana=findViewById(R.id.dlrthana);
         shopname=findViewById(R.id.shopname);

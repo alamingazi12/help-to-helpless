@@ -16,7 +16,7 @@
 
 
        <ImageView
-           android:id="@+id/dlr_image"
+           android:id="@+id/dlr_shop_image"
            android:layout_width="128dp"
            android:layout_height="128dp"
 
@@ -28,7 +28,7 @@
            app:layout_constraintVertical_bias="0.488" />
 
        <TextView
-           android:id="@+id/dlrname"
+           android:id="@+id/rdname"
            android:layout_width="wrap_content"
            android:layout_height="wrap_content"
            android:layout_marginTop="32dp"
@@ -38,58 +38,58 @@
            android:textFontWeight="400"
            android:textSize="19sp"
            app:layout_constraintEnd_toEndOf="parent"
-           app:layout_constraintHorizontal_bias="0.541"
+           app:layout_constraintHorizontal_bias="0.543"
            app:layout_constraintStart_toStartOf="parent"
            app:layout_constraintTop_toTopOf="parent" />
 
        <TextView
-           android:id="@+id/dlrshpname"
+           android:id="@+id/rdshpname"
            android:textFontWeight="400"
            android:layout_width="wrap_content"
            android:layout_height="wrap_content"
-           android:layout_marginTop="8dp"
+           android:layout_marginTop="7dp"
            android:fontFamily="sans-serif-light"
            android:text="Shaeen Store"
            android:textColor="#000000"
            android:textSize="15sp"
-           app:layout_constraintStart_toStartOf="@+id/dlrname"
-           app:layout_constraintTop_toBottomOf="@+id/dlrname" />
+           app:layout_constraintStart_toStartOf="@+id/rdname"
+           app:layout_constraintTop_toBottomOf="@+id/rdname" />
 
        <TextView
            android:fontFamily="sans-serif-thin"
-           android:id="@+id/dlrshpaddress"
+           android:id="@+id/shopaddress"
            android:textFontWeight="400"
            android:layout_width="wrap_content"
            android:layout_height="wrap_content"
-           android:layout_marginTop="10dp"
+           android:layout_marginTop="7dp"
            android:text="Fultala High school Khulna"
            android:textColor="#000000"
-           app:layout_constraintStart_toStartOf="@+id/dlrshpname"
-           app:layout_constraintTop_toBottomOf="@+id/dlrshpname" />
+           app:layout_constraintStart_toStartOf="@+id/rdshpname"
+           app:layout_constraintTop_toBottomOf="@+id/rdshpname" />
 
        <TextView
-           android:fontFamily="@font/electrolize"
-           android:id="@+id/dlr_phone"
+           android:fontFamily="sans-serif-light"
+           android:id="@+id/dlr_contact"
            android:layout_width="wrap_content"
            android:layout_height="wrap_content"
-           android:layout_marginTop="10dp"
+           android:layout_marginTop="7dp"
            android:text="01988983612"
            android:textSize="15dp"
            android:textColor="#000000"
-           app:layout_constraintStart_toStartOf="@+id/dlrshpaddress"
-           app:layout_constraintTop_toBottomOf="@+id/dlrshpaddress" />
+           app:layout_constraintStart_toStartOf="@+id/shopaddress"
+           app:layout_constraintTop_toBottomOf="@+id/shopaddress" />
 
        <Button
-           android:id="@+id/btn_add_dealers"
+           android:id="@+id/confirm_dlr"
            android:layout_width="67dp"
            android:layout_height="27dp"
-           android:layout_marginEnd="7dp"
+           android:layout_marginEnd="12dp"
            android:background="@drawable/item_button"
            android:fontFamily="sans-serif-condensed-light"
            android:text="Add"
            android:textAllCaps="false"
            android:textColor="#ffffff"
-           android:textFontWeight="400"
+           android:textFontWeight="500"
            android:textSize="16dp"
            app:layout_constraintBottom_toBottomOf="parent"
            app:layout_constraintEnd_toEndOf="parent"

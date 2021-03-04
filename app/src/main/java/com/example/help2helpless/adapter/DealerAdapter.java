@@ -91,7 +91,7 @@ public class DealerAdapter extends RecyclerView.Adapter<DealerAdapter.DealerView
                 createDialoge(dealer);
             }
         });
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
+        holder.add_dealer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Dealer dealer2=dealers.get(position);
@@ -255,12 +255,12 @@ public class DealerAdapter extends RecyclerView.Adapter<DealerAdapter.DealerView
         ImageView imageView_dealer;
         public DealerViewHolder(@NonNull View itemView) {
             super(itemView);
-            name= itemView.findViewById(R.id.dlrname);
-            shpname= itemView.findViewById(R.id.dlrshpname);
-            address= itemView.findViewById(R.id.dlrshpaddress);
-            dlr_phone=itemView.findViewById(R.id.dlr_phone);
-            add_dealer=itemView.findViewById(R.id.btn_add_dealers);
-            imageView_dealer=itemView.findViewById(R.id.dlr_image);
+            name= itemView.findViewById(R.id.rdname);
+            shpname= itemView.findViewById(R.id.rdshpname);
+            address= itemView.findViewById(R.id.shopaddress);
+            dlr_phone=itemView.findViewById(R.id.dlr_contact);
+            add_dealer=itemView.findViewById(R.id.confirm_dlr);
+            imageView_dealer=itemView.findViewById(R.id.dlr_shop_image);
 
         }
     }

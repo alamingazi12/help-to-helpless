@@ -48,7 +48,7 @@
             android:textSize="18sp" />
 
         <TextView
-            android:id="@+id/dlrname"
+            android:id="@+id/rdname"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1.7"
