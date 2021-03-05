@@ -14,35 +14,33 @@
         android:layout_height="match_parent">
 
         <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/profile_image"
+            android:id="@+id/cl_image"
             android:layout_width="96dp"
             android:layout_height="96dp"
-            android:layout_marginStart="15dp"
-            android:src="@drawable/persons"
+            android:layout_marginStart="16dp"
+            android:layout_marginBottom="36dp"
 
+            android:src="@drawable/persons"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/button"
-            app:layout_constraintHorizontal_bias="0.005"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.259"
             tools:ignore="MissingConstraints" />
 
         <TextView
-            android:id="@+id/textView3"
+            android:id="@+id/cl_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
             android:fontFamily="sans-serif-light"
             android:text="Alamin Gazi"
             android:textColor="#000000"
             android:textFontWeight="400"
             android:textSize="19sp"
-            app:layout_constraintTop_toTopOf="@+id/profile_image"
-            tools:ignore="MissingConstraints"
-            tools:layout_editor_absoluteX="132dp" />
+            app:layout_constraintStart_toEndOf="@+id/cl_image"
+            app:layout_constraintTop_toTopOf="@+id/cl_image"
+            tools:ignore="MissingConstraints" />
 
         <TextView
-            android:id="@+id/textView5"
+            android:id="@+id/cl_address"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Fultala Khulna"
@@ -50,14 +48,14 @@
 
             android:textSize="17dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/textView3"
+            app:layout_constraintEnd_toEndOf="@+id/cl_name"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/textView3"
-            app:layout_constraintTop_toBottomOf="@+id/textView3"
+            app:layout_constraintStart_toStartOf="@+id/cl_name"
+            app:layout_constraintTop_toBottomOf="@+id/cl_name"
             app:layout_constraintVertical_bias="0.08" />
 
         <TextView
-            android:id="@+id/textView7"
+            android:id="@+id/cl_phone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="40dp"
@@ -66,14 +64,14 @@
             android:textColor="#000000"
             android:textFontWeight="700"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/textView5"
+            app:layout_constraintEnd_toEndOf="@+id/cl_address"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/textView5"
-            app:layout_constraintTop_toBottomOf="@+id/textView5"
+            app:layout_constraintStart_toStartOf="@+id/cl_address"
+            app:layout_constraintTop_toBottomOf="@+id/cl_address"
             app:layout_constraintVertical_bias="0.272" />
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/cl_discount"
             android:layout_width="97dp"
             android:layout_height="26dp"
             android:layout_marginEnd="16dp"
@@ -85,17 +83,14 @@
             android:textFontWeight="400"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toEndOf="@+id/textView5"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.858" />
 
         <Button
-            android:id="@+id/button2"
+            android:id="@+id/moreinfo"
             style="@style/Widget.AppCompat.Button.Small"
             android:layout_width="68dp"
             android:layout_height="21dp"
-            android:layout_marginStart="4dp"
             android:layout_marginTop="16dp"
             android:background="@drawable/more_button_style"
             android:fontFamily="sans-serif-thin"
@@ -104,10 +99,11 @@
             android:textColor="#ffffff"
             android:textFontWeight="300"
             android:textSize="14dp"
-            app:layout_constraintEnd_toStartOf="@+id/button"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/textView7"
-            app:layout_constraintTop_toBottomOf="@+id/textView7" />
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/cl_phone"
+            app:layout_constraintStart_toStartOf="@+id/cl_phone"
+            app:layout_constraintTop_toBottomOf="@+id/cl_phone"
+            app:layout_constraintVertical_bias="0.0" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

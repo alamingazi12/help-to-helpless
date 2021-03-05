@@ -1,7 +1,42 @@
 package com.example.help2helpless.model;
 
-public class Client {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class Client implements Parcelable {
     String cName;
+
+    protected Client(Parcel in) {
+        cName = in.readString();
+        fhName = in.readString();
+        profesion = in.readString();
+        cage = in.readString();
+        mincome = in.readString();
+        src_income = in.readString();
+        nson = in.readString();
+        ndaughter = in.readString();
+        cguardian = in.readString();
+        cgardianno = in.readString();
+        client_bkno = in.readString();
+        cdisase = in.readString();
+        cmedicost = in.readString();
+        caddres = in.readString();
+        cphoto = in.readString();
+        cnumber = in.readString();
+        dcontact = in.readString();
+    }
+
+    public static final Creator<Client> CREATOR = new Creator<Client>() {
+        @Override
+        public Client createFromParcel(Parcel in) {
+            return new Client(in);
+        }
+
+        @Override
+        public Client[] newArray(int size) {
+            return new Client[size];
+        }
+    };
 
     public String getcName() {
         return cName;
@@ -156,4 +191,29 @@ public class Client {
     String cnumber;
     String dcontact;
 
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeString(cName);
+        parcel.writeString(fhName);
+        parcel.writeString(profesion);
+        parcel.writeString(cage);
+        parcel.writeString(mincome);
+        parcel.writeString(src_income);
+        parcel.writeString(nson);
+        parcel.writeString(ndaughter);
+        parcel.writeString(cguardian);
+        parcel.writeString(cgardianno);
+        parcel.writeString(client_bkno);
+        parcel.writeString(cdisase);
+        parcel.writeString(cmedicost);
+        parcel.writeString(caddres);
+        parcel.writeString(cphoto);
+        parcel.writeString(cnumber);
+        parcel.writeString(dcontact);
+    }
 }

@@ -77,10 +77,7 @@ public class AdminLogin extends AppCompatActivity {
 
                   // Toast.makeText(AdminLogin.this,"Loged in Successfully",Toast.LENGTH_LONG).show();
                    Intent intent=new Intent(AdminLogin.this,AdminDashBoardActivity.class);
-                 Bundle bundle=new Bundle();
-                   bundle.putParcelable("obj",admin);
-                  intent.putExtras(bundle);
-                  startActivity(intent);
+                   startActivity(intent);
                }else{
                    Toast.makeText(AdminLogin.this,"Wrong Username and Password",Toast.LENGTH_LONG).show();
                 }

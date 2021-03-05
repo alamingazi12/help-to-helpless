@@ -14,24 +14,39 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".DealerActivity"></activity>
-        <activity android:name=".DiscountActivity"></activity>
-        <activity android:name=".AddDealerActivity" android:parentActivityName=".DonarDashBoardActivity"/>
-        <activity android:name=".DonarDashBoardActivity"
-            android:autoRemoveFromRecents="true"/>
-        <activity android:name=".DealerRegActivity" android:parentActivityName=".MainActivity"/>
-        <activity android:name=".ApprovedActivity" />
-        <activity android:name=".DealerRequestActivity" />
-        <activity android:name=".DonarRegisterActivity"
-            android:parentActivityName=".MainActivity"/>
-        <activity android:name=".DealerLoginActivity" android:parentActivityName=".MainActivity" />
-        <activity android:name=".DonarLogin" android:parentActivityName=".MainActivity"></activity>
-        <activity android:name=".AdminDashBoardActivity" android:parentActivityName=".AdminLogin" />
-        <activity android:name=".AdminLogin" android:parentActivityName=".MainActivity"/>
-        <activity android:name=".ClientActivity" />
+        <activity android:name=".ClientProfileActivity" android:parentActivityName=".DiscountActivity"></activity>
+        <activity android:name=".DealerActivity" android:autoRemoveFromRecents="true" android:parentActivityName=".DealerLoginActivity" />
+        <activity android:name=".DiscountActivity" android:parentActivityName=".DealerActivity"/>
         <activity
-            android:autoRemoveFromRecents="true"
+            android:name=".AddDealerActivity"
+            android:parentActivityName=".DonarDashBoardActivity" />
+        <activity
+            android:name=".DonarDashBoardActivity"
+            android:autoRemoveFromRecents="true" />
+        <activity
+            android:name=".DealerRegActivity"
+            android:parentActivityName=".MainActivity" />
+        <activity android:name=".ApprovedActivity" />
+        <activity android:name=".DealerRequestActivity" android:parentActivityName=".AdminDashBoardActivity"/>
+        <activity
+            android:name=".DonarRegisterActivity"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".DealerLoginActivity"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".DonarLogin"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".AdminDashBoardActivity"
+            android:parentActivityName=".AdminLogin" />
+        <activity
+            android:name=".AdminLogin"
+            android:parentActivityName=".MainActivity" />
+        <activity android:name=".ClientActivity" android:parentActivityName=".DealerActivity" />
+        <activity
             android:name=".MainActivity"
+            android:autoRemoveFromRecents="true"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

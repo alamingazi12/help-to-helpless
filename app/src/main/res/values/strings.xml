@@ -3,4 +3,14 @@
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="back_to_home">Back to\nHome</string>
+    <string name="username_title">Disease Name</string>
+    <string name="username">Influenza</string>
+    <string name="phone_title">Phone</string>
+    <string name="phone">+000 00 000 000</string>
+    <string name="address_title">Address</string>
+    <string name="address">City, Street</string>
+    <string name="email_title">Monthly Income</string>
+    <string name="email">10000</string>
 </resources>

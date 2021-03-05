@@ -2,7 +2,9 @@ package com.example.help2helpless.adapter;
 
 import android.app.AlertDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,6 +24,7 @@ import com.android.volley.RequestQueue;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.help2helpless.ClientProfileActivity;
 import com.example.help2helpless.R;
 import com.example.help2helpless.model.Client;
 import com.example.help2helpless.model.Dealer;
@@ -33,6 +36,8 @@ import org.json.JSONObject;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class ClientAdapter extends RecyclerView.Adapter<ClientAdapter.ClientViewHolder> {
     ArrayList<Client> clientList;
@@ -49,7 +54,7 @@ public class ClientAdapter extends RecyclerView.Adapter<ClientAdapter.ClientView
     @NonNull
     @Override
     public ClientAdapter.ClientViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.client_item,parent,false);
+        View view = LayoutInflater.from(context).inflate(R.layout.client_item_discount,parent,false);
         return new ClientViewHolder(view);
     }
 
@@ -58,6 +63,7 @@ public class ClientAdapter extends RecyclerView.Adapter<ClientAdapter.ClientView
             Client client=clientList.get(position);
             holder.cname.setText(client.getcName());
             holder.address.setText(client.getCaddres());
+            holder.cl_phone.setText(client.getCnumber());
         String imageUrl="https://apps.help2helpless.com/uploads/"+client.getCphoto();
         Picasso.get().load(imageUrl).resize(80,80).centerCrop().into(holder.client_image);
         holder.itemView.setOnClickListener(new View.OnClickListener() {
@@ -65,6 +71,24 @@ public class ClientAdapter extends RecyclerView.Adapter<ClientAdapter.ClientView
             public void onClick(View view) {
                 Client client1=clientList.get(position);
                 createDialoge(client1.getCnumber());
+            }
+        });
+        holder.discount.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Client client2=clientList.get(position);
+                createDialoge(client2.getCnumber());
+            }
+        });
+        holder.more_info.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Client client4=clientList.get(position);
+                Intent intent=new Intent(context, ClientProfileActivity.class);
+                Bundle bundle=new Bundle();
+                bundle.putParcelable("client",client4);
+                intent.putExtras(bundle);
+                context.startActivity(intent);
             }
         });
 
@@ -216,13 +240,20 @@ public class ClientAdapter extends RecyclerView.Adapter<ClientAdapter.ClientView
         return monthName;
     }
     public class ClientViewHolder extends RecyclerView.ViewHolder {
-        TextView cname,address;
-        ImageView client_image;
+        TextView cname,address,cl_phone;
+        CircleImageView client_image;
+
+        Button more_info,discount;
+
+
         public ClientViewHolder(@NonNull View itemView) {
             super(itemView);
             cname=itemView.findViewById(R.id.cl_name);
             address=itemView.findViewById(R.id.cl_address);
             client_image=itemView.findViewById(R.id.cl_image);
+            cl_phone=itemView.findViewById(R.id.cl_phone);
+            more_info=itemView.findViewById(R.id.moreinfo);
+            discount=itemView.findViewById(R.id.cl_discount);
         }
     }
 }

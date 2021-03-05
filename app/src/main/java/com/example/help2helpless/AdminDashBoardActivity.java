@@ -51,8 +51,8 @@ public class AdminDashBoardActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_dashboard);
         setFontToActionBar();
-      Bundle bundle= getIntent().getExtras();
-      Admin admin=bundle.getParcelable("obj");
+       //Bundle bundle= getIntent().getExtras();
+//       Admin admin=bundle.getParcelable("obj");
        initAll();
        getAmount();
       add_amount_donar.setOnClickListener(new View.OnClickListener() {
