@@ -46,7 +46,7 @@ public class DonarDashBoardActivity extends AppCompatActivity {
         super.onResume();
         getDonarBalance();
         getAvgDonation();
-        getTotalDonation();
+        //getTotalDonation();
     }
 
     private void getTotalDonation() {
@@ -60,10 +60,10 @@ public class DonarDashBoardActivity extends AppCompatActivity {
                 //Log.d("total_donation:",total_donation);
                 if(total_donation==null){
                    total_donation="0";
-                    t_donation.setText(total_donation);
+                    //t_donation.setText(total_donation);
                 }else{
 
-                    t_donation.setText(total_donation);
+                   // t_donation.setText(total_donation);
                 }
 
             }
@@ -129,10 +129,10 @@ public class DonarDashBoardActivity extends AppCompatActivity {
     }
 
     private void initAll() {
-        show_dealers=findViewById(R.id.show_dealers);
+        show_dealers=findViewById(R.id.add_dealer);
         donar_balnce=findViewById(R.id.dnr_balance);
-        avg_donations=findViewById(R.id.dnr_donation);
-        t_donation=findViewById(R.id.t_doantion);
+        avg_donations=findViewById(R.id.dnr_avg_donation);
+        //t_donation=findViewById(R.id.t_doantion);
         donarinfo=this.getSharedPreferences("donarinfo",0);
         donar_contact=donarinfo.getString("contact",null);
 

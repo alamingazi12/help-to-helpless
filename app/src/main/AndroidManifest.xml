@@ -15,11 +15,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".ClientProfileActivity" android:parentActivityName=".DiscountActivity"></activity>
-        <activity android:name=".DealerActivity" android:autoRemoveFromRecents="true" android:parentActivityName=".DealerLoginActivity" />
+        <activity android:name=".DealerActivity" android:theme="@style/AppTheme.NoActionBar" android:autoRemoveFromRecents="true" android:parentActivityName=".DealerLoginActivity" />
         <activity android:name=".DiscountActivity" android:parentActivityName=".DealerActivity"/>
         <activity
             android:name=".AddDealerActivity"
-            android:parentActivityName=".DonarDashBoardActivity" />
+            android:parentActivityName=".DonarDashBoardActivity" android:theme="@style/AppTheme.NoActionBar"/>
         <activity
             android:name=".DonarDashBoardActivity"
             android:autoRemoveFromRecents="true" />

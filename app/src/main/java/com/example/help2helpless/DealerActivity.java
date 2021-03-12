@@ -38,7 +38,7 @@ public class DealerActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dealer);
-        setFontToActionBar();
+        //setFontToActionBar();
 
         initAll();
         client_sign.setOnClickListener(new View.OnClickListener() {
@@ -48,14 +48,8 @@ public class DealerActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-       Button discount_btn=findViewById(R.id.button_discount);
-        discount_btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent=new Intent(DealerActivity.this,DiscountActivity.class);
-                startActivity(intent);
-            }
-        });
+      // Button discount_btn=findViewById(R.id.button_discount);
+
         getDealerBalance();
         getDealerAvgPaid();
         getDealerTotalPaid();
@@ -91,9 +85,9 @@ public class DealerActivity extends AppCompatActivity {
 
               if(dealer_balance==null){
                   dealer_balance="0";
-                  dealer_balances.setText("Dealer Balance:"+dealer_balance);
+                  dealer_balances.setText(""+dealer_balance);
               }else {
-                  dealer_balances.setText("Dealer Balance:" + dealer_balance);
+                  dealer_balances.setText(""+dealer_balance);
                   //} Toast.makeText(DealerActivity.this,"avg:"+dealer_balance,Toast.LENGTH_LONG).show();
               }
           }
@@ -171,7 +165,7 @@ public class DealerActivity extends AppCompatActivity {
         dealer_balances=findViewById(R.id.dlr_balance);
         avg_dlr_discount=findViewById(R.id.avg_dlr_donation);
 
-        total_discount_paid=findViewById(R.id.total_discount);
+       // total_discount_paid=findViewById(R.id.total_discount);
 
         client_sign=findViewById(R.id.btn_csign);
         dealerlogininfo=getSharedPreferences("dealerinfo",0);
