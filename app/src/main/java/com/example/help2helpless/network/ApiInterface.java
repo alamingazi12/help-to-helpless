@@ -60,4 +60,8 @@ public  interface ApiInterface {
 
     @GET("total_dealer_donation.php")
     Call<DealerTDonation> getTotalDealerDonation(@Query("dlr_contact") String dlr_contact);
+    ///avg_dealer_received.php
+
+    @GET("total_dealer_donation.php")
+    Call<DealerTDonation> avgDealerReceived(@Query("dlr_contact") String dlr_contact);
 }
