@@ -17,11 +17,14 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.help2helpless.model.AvgDealerReceived;
 import com.example.help2helpless.model.Client;
 import com.example.help2helpless.model.Dealer;
 import com.example.help2helpless.model.DealerAvgPaid;
 import com.example.help2helpless.model.DealerBalance;
 import com.example.help2helpless.model.DealerTDonation;
+import com.example.help2helpless.model.TotalClients;
+import com.example.help2helpless.model.TotalDonars;
 import com.example.help2helpless.network.ApiClient;
 import com.example.help2helpless.network.ApiInterface;
 
@@ -33,7 +36,7 @@ public class DealerActivity extends AppCompatActivity {
     Button client_sign;
     SharedPreferences dealerlogininfo;
     String dealer_contact;
-    TextView dealer_balances,avg_dlr_discount,total_discount_paid;
+    TextView dealer_balances,avg_dlr_discount,total_discount_paid,avg_dealer_received;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,10 +53,69 @@ public class DealerActivity extends AppCompatActivity {
         });
       // Button discount_btn=findViewById(R.id.button_discount);
 
-        getDealerBalance();
-        getDealerAvgPaid();
-        getDealerTotalPaid();
+      //  getDealerBalance();
+      //  getDealerAvgPaid();
+      //  getDealerTotalPaid();
+        //getAvgDealerReceived();
+        //getTotalDonar();
+        //getTotalClients();
+    }
 
+    private void getTotalClients() {
+        ApiInterface apiInterface= ApiClient.getApiClient(DealerActivity.this).create(ApiInterface.class);
+        Call<TotalClients> totalClientsCall= apiInterface.getTotalClients(dealer_contact);
+        totalClientsCall.enqueue(new Callback<TotalClients>() {
+           @Override
+           public void onResponse(Call<TotalClients> call, Response<TotalClients> response) {
+
+           }
+
+           @Override
+           public void onFailure(Call<TotalClients> call, Throwable t) {
+
+           }
+       });
+    }
+
+    private void getTotalDonar() {
+        ApiInterface apiInterface= ApiClient.getApiClient(DealerActivity.this).create(ApiInterface.class);
+        Call<TotalDonars> totalDonarsCall=  apiInterface.getTotalDonars(dealer_contact);
+        totalDonarsCall.enqueue(new Callback<TotalDonars>() {
+          @Override
+          public void onResponse(Call<TotalDonars> call, Response<TotalDonars> response) {
+
+          }
+
+          @Override
+          public void onFailure(Call<TotalDonars> call, Throwable t) {
+
+          }
+      });
+
+    }
+
+
+    private void getAvgDealerReceived() {
+        ApiInterface apiInterface= ApiClient.getApiClient(DealerActivity.this).create(ApiInterface.class);
+      Call<AvgDealerReceived> avgDealerReceivedCall=  apiInterface.avgDealerReceived(dealer_contact);
+      avgDealerReceivedCall.enqueue(new Callback<AvgDealerReceived>() {
+          @Override
+          public void onResponse(Call<AvgDealerReceived> call, Response<AvgDealerReceived> response) {
+             String donaravgRecived= response.body().getAvg_donation();
+              if(donaravgRecived==null){
+                  donaravgRecived="0";
+                  avg_dealer_received.setText(""+donaravgRecived);
+              }else {
+                  avg_dealer_received.setText(""+donaravgRecived);
+                  //} Toast.makeText(DealerActivity.this,"avg:"+dealer_balance,Toast.LENGTH_LONG).show();
+              }
+          }
+
+          @Override
+          public void onFailure(Call<AvgDealerReceived> call, Throwable t) {
+
+          }
+      });
     }
 
     private void setFontToActionBar() {
@@ -158,12 +220,16 @@ public class DealerActivity extends AppCompatActivity {
         super.onResume();
         getDealerBalance();
         getDealerAvgPaid();
-        getDealerTotalPaid();
+        //getDealerTotalPaid();
+        getAvgDealerReceived();
+        getTotalDonar();
+        getTotalClients();
     }
 
     private void initAll() {
         dealer_balances=findViewById(R.id.dlr_balance);
         avg_dlr_discount=findViewById(R.id.avg_dlr_donation);
+        avg_dealer_received=findViewById(R.id.dealer_recived_avg);
 
        // total_discount_paid=findViewById(R.id.total_discount);
 

@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -11,6 +12,8 @@ import com.example.help2helpless.model.Donar;
 import com.example.help2helpless.model.DonarAllDonation;
 import com.example.help2helpless.model.DonarBalance;
 import com.example.help2helpless.model.DonarsAvgDonation;
+import com.example.help2helpless.model.TotalDealer;
+import com.example.help2helpless.model.TotalDonars;
 import com.example.help2helpless.network.ApiClient;
 import com.example.help2helpless.network.ApiInterface;
 import retrofit2.Call;
@@ -21,7 +24,7 @@ public class DonarDashBoardActivity extends AppCompatActivity {
     Button show_dealers;
     String donar_contact;
     SharedPreferences donarinfo;
-    TextView donar_balnce,avg_donations,t_donation;
+    TextView donar_balnce,avg_donations,t_donation,ndealer;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,7 +49,33 @@ public class DonarDashBoardActivity extends AppCompatActivity {
         super.onResume();
         getDonarBalance();
         getAvgDonation();
+        getTotalDealers();
+
         //getTotalDonation();
+    }
+
+    private void getTotalDealers() {
+        ApiInterface apiInterface= ApiClient.getApiClient(DonarDashBoardActivity.this).create(ApiInterface.class);
+       Call<TotalDealer> totalDealerCall=  apiInterface.getTotalDealer(donar_contact);
+       totalDealerCall.enqueue(new Callback<TotalDealer>() {
+          @Override
+          public void onResponse(Call<TotalDealer> call, Response<TotalDealer> response) {
+            String ndealers= response.body().getTotal_dealer();
+              if(ndealers==null){
+                  ndealers="0";
+                  ndealer.setText(ndealers);
+              }else{
+
+                  ndealer.setText(ndealers);
+              }
+
+          }
+
+          @Override
+          public void onFailure(Call<TotalDealer> call, Throwable t) {
+
+          }
+      });
     }
 
     private void getTotalDonation() {
@@ -132,6 +161,7 @@ public class DonarDashBoardActivity extends AppCompatActivity {
         show_dealers=findViewById(R.id.add_dealer);
         donar_balnce=findViewById(R.id.dnr_balance);
         avg_donations=findViewById(R.id.dnr_avg_donation);
+        ndealer=findViewById(R.id.num_of_dealers);
         //t_donation=findViewById(R.id.t_doantion);
         donarinfo=this.getSharedPreferences("donarinfo",0);
         donar_contact=donarinfo.getString("contact",null);

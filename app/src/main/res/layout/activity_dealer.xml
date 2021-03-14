@@ -116,7 +116,7 @@
                         android:textSize="30dp"
                         android:textColor="#000000"
                         android:fontFamily="sans-serif-condensed"
-                        android:id="@+id/textView5"
+                        android:id="@+id/num_of_dealers"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="30"
@@ -138,7 +138,7 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.496"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/textView5"
+                        app:layout_constraintTop_toBottomOf="@+id/num_of_dealers"
                         app:layout_constraintVertical_bias="0.583" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -212,7 +212,7 @@
                     android:layout_height="match_parent">
 
                     <TextView
-                        android:id="@+id/textView9"
+                        android:id="@+id/dealer_recived_avg"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="3dp"
@@ -238,7 +238,7 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.503"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/textView9"
+                        app:layout_constraintTop_toBottomOf="@+id/dealer_recived_avg"
                         app:layout_constraintVertical_bias="1.0" />
 
                     <TextView
