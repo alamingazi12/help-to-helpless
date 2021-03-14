@@ -36,7 +36,7 @@ public class DealerActivity extends AppCompatActivity {
     Button client_sign;
     SharedPreferences dealerlogininfo;
     String dealer_contact;
-    TextView dealer_balances,avg_dlr_discount,total_discount_paid,avg_dealer_received;
+    TextView dealer_balances,avg_dlr_discount,total_discount_paid,avg_dealer_received,ndonar,nclients;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,7 +67,14 @@ public class DealerActivity extends AppCompatActivity {
         totalClientsCall.enqueue(new Callback<TotalClients>() {
            @Override
            public void onResponse(Call<TotalClients> call, Response<TotalClients> response) {
-
+                String total_clients=     response.body().getTotal_client();
+               if(total_clients==null){
+                   total_clients="0";
+                   nclients.setText(""+total_clients);
+               }else {
+                   nclients.setText(""+total_clients);
+                   //} Toast.makeText(DealerActivity.this,"avg:"+dealer_balance,Toast.LENGTH_LONG).show();
+               }
            }
 
            @Override
@@ -83,7 +90,14 @@ public class DealerActivity extends AppCompatActivity {
         totalDonarsCall.enqueue(new Callback<TotalDonars>() {
           @Override
           public void onResponse(Call<TotalDonars> call, Response<TotalDonars> response) {
-
+              String total_donars=response.body().getTotal_donar();
+              if(total_donars==null){
+                  total_donars="0";
+                  ndonar.setText(""+total_donars);
+              }else {
+                  ndonar.setText(""+total_donars);
+                  //} Toast.makeText(DealerActivity.this,"avg:"+dealer_balance,Toast.LENGTH_LONG).show();
+              }
           }
 
           @Override
@@ -230,7 +244,8 @@ public class DealerActivity extends AppCompatActivity {
         dealer_balances=findViewById(R.id.dlr_balance);
         avg_dlr_discount=findViewById(R.id.avg_dlr_donation);
         avg_dealer_received=findViewById(R.id.dealer_recived_avg);
-
+        ndonar=findViewById(R.id.num_of_donars);
+        nclients=findViewById(R.id.num_of_clients);
        // total_discount_paid=findViewById(R.id.total_discount);
 
         client_sign=findViewById(R.id.btn_csign);

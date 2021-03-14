@@ -4,16 +4,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import com.example.help2helpless.model.Donar;
+
 import com.example.help2helpless.model.DonarAllDonation;
 import com.example.help2helpless.model.DonarBalance;
 import com.example.help2helpless.model.DonarsAvgDonation;
 import com.example.help2helpless.model.TotalDealer;
-import com.example.help2helpless.model.TotalDonars;
 import com.example.help2helpless.network.ApiClient;
 import com.example.help2helpless.network.ApiInterface;
 import retrofit2.Call;
@@ -161,7 +159,7 @@ public class DonarDashBoardActivity extends AppCompatActivity {
         show_dealers=findViewById(R.id.add_dealer);
         donar_balnce=findViewById(R.id.dnr_balance);
         avg_donations=findViewById(R.id.dnr_avg_donation);
-        ndealer=findViewById(R.id.num_of_dealers);
+        ndealer=findViewById(R.id.num_of_donars);
         //t_donation=findViewById(R.id.t_doantion);
         donarinfo=this.getSharedPreferences("donarinfo",0);
         donar_contact=donarinfo.getString("contact",null);
