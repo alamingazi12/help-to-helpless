@@ -19,10 +19,10 @@
         <activity android:name=".DiscountActivity" android:parentActivityName=".DealerActivity"/>
         <activity
             android:name=".AddDealerActivity"
-            android:parentActivityName=".DonarDashBoardActivity" android:theme="@style/AppTheme.NoActionBar"/>
+            android:parentActivityName=".DonarDashBoardActivity"/>
         <activity
             android:name=".DonarDashBoardActivity"
-            android:autoRemoveFromRecents="true" />
+            android:autoRemoveFromRecents="true" android:theme="@style/AppTheme.NoActionBar"/>
         <activity
             android:name=".DealerRegActivity"
             android:parentActivityName=".MainActivity" />

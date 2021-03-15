@@ -22,7 +22,7 @@ public class DonarDashBoardActivity extends AppCompatActivity {
     Button show_dealers;
     String donar_contact;
     SharedPreferences donarinfo;
-    TextView donar_balnce,avg_donations,t_donation,ndealer;
+    TextView donar_balnce,avg_donations,t_donation,ndealer,dname;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -108,7 +108,7 @@ public class DonarDashBoardActivity extends AppCompatActivity {
        donarsAvgDonationCall.enqueue(new Callback<DonarsAvgDonation>() {
            @Override
            public void onResponse(Call<DonarsAvgDonation> call, Response<DonarsAvgDonation> response) {
-               String avg_donation=    response.body().getAvg_donation();
+               String avg_donation= response.body().getAvg_donation();
                avg_donations.setText(avg_donation);
                if(avg_donation==null){
 
@@ -156,13 +156,16 @@ public class DonarDashBoardActivity extends AppCompatActivity {
     }
 
     private void initAll() {
-        show_dealers=findViewById(R.id.add_dealer);
+        dname=findViewById(R.id.dlr_name);
+        show_dealers=findViewById(R.id.add_dealers);
         donar_balnce=findViewById(R.id.dnr_balance);
         avg_donations=findViewById(R.id.dnr_avg_donation);
         ndealer=findViewById(R.id.num_of_donars);
         //t_donation=findViewById(R.id.t_doantion);
         donarinfo=this.getSharedPreferences("donarinfo",0);
         donar_contact=donarinfo.getString("contact",null);
+
+        dname.setText(donarinfo.getString("name",null));
 
     }
 }

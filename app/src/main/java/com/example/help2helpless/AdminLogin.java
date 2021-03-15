@@ -67,14 +67,15 @@ public class AdminLogin extends AppCompatActivity {
 
     private void login() {
         ApiInterface apiInterface= ApiClient.getApiClient(AdminLogin.this).create(ApiInterface.class);
-        Call<AdminResponse> adminResponseCall=apiInterface.getAdminResponse(adusernme.getEditText().getText().toString(),adpasswrd.getEditText().getText().toString());
+        Call<AdminResponse> adminResponseCall=apiInterface.getAdminResponse(adusernme.getEditText().getText().toString().trim(),adpasswrd.getEditText().getText().toString().trim());
         adminResponseCall.enqueue(new Callback<AdminResponse>() {
             @Override
             public void onResponse(Call<AdminResponse> call, Response<AdminResponse> response) {
                admins=response.body().getResult();
                if(admins.size()>0){
                    Admin admin=admins.get(0);
-
+                   adusernme.getEditText().setText("");
+                   adpasswrd.getEditText().setText("");
                   // Toast.makeText(AdminLogin.this,"Loged in Successfully",Toast.LENGTH_LONG).show();
                    Intent intent=new Intent(AdminLogin.this,AdminDashBoardActivity.class);
                    startActivity(intent);

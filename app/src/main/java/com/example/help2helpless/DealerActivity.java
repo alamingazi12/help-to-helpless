@@ -33,10 +33,10 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class DealerActivity extends AppCompatActivity {
-    Button client_sign;
+    Button client_sign,btn_add_dealer;
     SharedPreferences dealerlogininfo;
     String dealer_contact;
-    TextView dealer_balances,avg_dlr_discount,total_discount_paid,avg_dealer_received,ndonar,nclients;
+    TextView dealer_balances,avg_dlr_discount,total_discount_paid,avg_dealer_received,ndonar,nclients,dlr_name;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,6 +51,13 @@ public class DealerActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        btn_add_dealer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(DealerActivity.this,AddDealerActivity.class);
+                startActivity(intent);
+            }
+        });
       // Button discount_btn=findViewById(R.id.button_discount);
 
       //  getDealerBalance();
@@ -59,6 +66,12 @@ public class DealerActivity extends AppCompatActivity {
         //getAvgDealerReceived();
         //getTotalDonar();
         //getTotalClients();
+        getDealerBalance();
+        getDealerAvgPaid();
+        //getDealerTotalPaid();
+        getAvgDealerReceived();
+        getTotalDonar();
+        getTotalClients();
     }
 
     private void getTotalClients() {
@@ -111,8 +124,8 @@ public class DealerActivity extends AppCompatActivity {
 
     private void getAvgDealerReceived() {
         ApiInterface apiInterface= ApiClient.getApiClient(DealerActivity.this).create(ApiInterface.class);
-      Call<AvgDealerReceived> avgDealerReceivedCall=  apiInterface.avgDealerReceived(dealer_contact);
-      avgDealerReceivedCall.enqueue(new Callback<AvgDealerReceived>() {
+        Call<AvgDealerReceived> avgDealerReceivedCall=  apiInterface.avgDealerReceived(dealer_contact);
+        avgDealerReceivedCall.enqueue(new Callback<AvgDealerReceived>() {
           @Override
           public void onResponse(Call<AvgDealerReceived> call, Response<AvgDealerReceived> response) {
              String donaravgRecived= response.body().getAvg_donation();
@@ -157,7 +170,7 @@ public class DealerActivity extends AppCompatActivity {
           @Override
           public void onResponse(Call<DealerBalance> call, Response<DealerBalance> response) {
             String dealer_balance=  response.body().getDealer_balance();
-              //Log.d("avg",dealer_balance);
+              //Log.d("balance",dealer_balance);
 
               if(dealer_balance==null){
                   dealer_balance="0";
@@ -183,10 +196,10 @@ public class DealerActivity extends AppCompatActivity {
              String avgdealerpaid=  response.body().getAvg_dealer_paid();
                if(avgdealerpaid==null){
                    avgdealerpaid="0";
-                   avg_dlr_discount.setText("Average Discount Paid:"+avgdealerpaid);
+                   avg_dlr_discount.setText(""+avgdealerpaid);
                }else
                    {
-                       avg_dlr_discount.setText("Average Discount Paid:" + avgdealerpaid);
+                       avg_dlr_discount.setText("" + avgdealerpaid);
                }
 
               // Toast.makeText(DealerActivity.this,"avg:"+avgdealerpaid,Toast.LENGTH_LONG).show();
@@ -232,12 +245,7 @@ public class DealerActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        getDealerBalance();
-        getDealerAvgPaid();
-        //getDealerTotalPaid();
-        getAvgDealerReceived();
-        getTotalDonar();
-        getTotalClients();
+
     }
 
     private void initAll() {
@@ -246,10 +254,12 @@ public class DealerActivity extends AppCompatActivity {
         avg_dealer_received=findViewById(R.id.dealer_recived_avg);
         ndonar=findViewById(R.id.num_of_donars);
         nclients=findViewById(R.id.num_of_clients);
+        dlr_name=findViewById(R.id.dlr_name);
        // total_discount_paid=findViewById(R.id.total_discount);
-
+        btn_add_dealer=findViewById(R.id.dealer_add);
         client_sign=findViewById(R.id.btn_csign);
         dealerlogininfo=getSharedPreferences("dealerinfo",0);
         dealer_contact=dealerlogininfo.getString("contact","");
+        dlr_name.setText(dealerlogininfo.getString("dname",""));
     }
 }

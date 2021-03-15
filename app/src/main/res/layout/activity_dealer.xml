@@ -16,7 +16,7 @@
 
         <TextView
             android:textColor="#000000"
-            android:id="@+id/textView"
+            android:id="@+id/dlr_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20sp"
@@ -39,8 +39,8 @@
             android:text="Your Balance"
             android:textColor="#b7b7a4"
             android:textSize="15sp"
-            app:layout_constraintStart_toStartOf="@+id/textView"
-            app:layout_constraintTop_toBottomOf="@+id/textView" />
+            app:layout_constraintStart_toStartOf="@+id/dlr_name"
+            app:layout_constraintTop_toBottomOf="@+id/dlr_name" />
 
 
         <TextView
@@ -84,7 +84,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.962"
-            app:layout_constraintStart_toEndOf="@+id/textView"
+            app:layout_constraintStart_toEndOf="@+id/dlr_name"
             app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
     <LinearLayout
@@ -245,7 +245,7 @@
                         android:id="@+id/textView12"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="45dp"
+                        android:layout_marginStart="25dp"
                         android:text="TK"
                         android:textColor="#000000"
                         android:textSize="16sp"
@@ -291,7 +291,7 @@
                         android:id="@+id/textView13"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="45dp"
+                        android:layout_marginStart="25dp"
                         android:text="TK"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -325,6 +325,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <Button
+            android:id="@+id/dealer_add"
             android:fontFamily="sans-serif-light"
             android:background="@drawable/donate_btn_style"
             android:textAllCaps="false"

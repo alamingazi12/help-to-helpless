@@ -96,26 +96,28 @@ public class DonarLogin extends AppCompatActivity {
 
     private void login() {
         ApiInterface apiInterface= ApiClient.getApiClient(DonarLogin.this).create(ApiInterface.class);
-        Call<DonarResponse> donarResponseCall=apiInterface.getDonarResponse(dusernme.getEditText().getText().toString(),dpasswrd.getEditText().getText().toString());
+        Call<DonarResponse> donarResponseCall=apiInterface.getDonarResponse(dusernme.getEditText().getText().toString().trim(),dpasswrd.getEditText().getText().toString().trim());
         donarResponseCall.enqueue(new Callback<DonarResponse>() {
           @Override
           public void onResponse(Call<DonarResponse> call, Response<DonarResponse> response) {
               donars=response.body().getUsers();
              if(donars.size()>0){
                  Donar donar=donars.get(0);
+                 editor.putString("name",donar.getDname());
                   editor.putString("uname",donar.getUsernm());
                   editor.putString("contact",donar.getDcontact());
                   editor.putString("zilla",donar.getZilla());
                   editor.putBoolean("login",true);
                   editor.apply();
                   dialog.dismiss();
+                  dusernme.getEditText().setText("");
+                  dpasswrd.getEditText().setText("");
                  // Toast.makeText(AdminLogin.this,"Loged in Successfully",Toast.LENGTH_LONG).show();
                   Intent intent=new Intent(DonarLogin.this,DonarDashBoardActivity.class);
                   startActivity(intent);
              }else{
                  dialog.dismiss();
                  Toast.makeText(DonarLogin.this,"Wrong Username and Password",Toast.LENGTH_LONG).show();
-
 
              }
           }

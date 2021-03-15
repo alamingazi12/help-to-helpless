@@ -68,7 +68,7 @@ public class DealerLoginActivity extends AppCompatActivity {
 
     private void login() {
         ApiInterface apiInterface= ApiClient.getApiClient(DealerLoginActivity.this).create(ApiInterface.class);
-        Call<DealerResponse> dealerResponseCall=apiInterface.getDealerResponse(dealeruname.getEditText().getText().toString(),dealerpass.getEditText().getText().toString());
+        Call<DealerResponse> dealerResponseCall=apiInterface.getDealerResponse(dealeruname.getEditText().getText().toString().trim(),dealerpass.getEditText().getText().toString().trim());
         dealerResponseCall.enqueue(new Callback<DealerResponse>() {
         @Override
         public void onResponse(Call<DealerResponse> call, Response<DealerResponse> response) {
@@ -76,10 +76,13 @@ public class DealerLoginActivity extends AppCompatActivity {
 
             if(dealers.size()>0){
                 Dealer dealer=  dealers.get(0);
+                dealer_editor.putString("dname", dealer.getName());
                 dealer_editor.putString("contact", dealer.getPhone());
                 dealer_editor.putString("uname", dealer.getUsernm());
                 dealer_editor.putString("Zilla", dealer.getShpnmzilla());
                 dealer_editor.apply();
+                dealeruname.getEditText().setText("");
+                dealerpass.getEditText().setText("");
                // Toast.makeText(DealerLoginActivity.this," You Loged in Successfully",Toast.LENGTH_LONG).show();
                 Intent intent=new Intent(DealerLoginActivity.this,DealerActivity.class);
                 startActivity(intent);
