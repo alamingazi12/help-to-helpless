@@ -21,8 +21,10 @@ import com.android.volley.RequestQueue;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.help2helpless.AddDealerActivity;
 import com.example.help2helpless.R;
 import com.example.help2helpless.model.Dealer;
+import com.muddzdev.styleabletoast.StyleableToast;
 import com.squareup.picasso.Picasso;
 
 import org.json.JSONException;
@@ -74,29 +76,12 @@ public class DealerAdapter extends RecyclerView.Adapter<DealerAdapter.DealerView
                 .centerCrop()
                 .into(holder.imageView_dealer);
 
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Dealer dealer1=dealers.get(position);
-                dealer_phone=dealer1.getPhone();
-                //Log.d("phone",dealer_phone);
-                /*
-                Intent intent=new Intent(context, ApprovedActivity.class);
-                Bundle bundle=new Bundle();
-                bundle.putParcelable("deler",dealer);
-                intent.putExtras(bundle);
-                context.startActivity(intent);
-
-                 */
-                createDialoge(dealer);
-            }
-        });
         holder.add_dealer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Dealer dealer2=dealers.get(position);
                 dealer_phone=dealer2.getPhone();
-                createDialoge(dealer);
+                createDialoge(dealer2);
             }
         });
     }
@@ -109,7 +94,7 @@ public class DealerAdapter extends RecyclerView.Adapter<DealerAdapter.DealerView
         button_ok.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               saveAmount(dealer) ;
+               saveAmount(dealer);
                dialog.dismiss();
             }
         });
@@ -137,8 +122,16 @@ public class DealerAdapter extends RecyclerView.Adapter<DealerAdapter.DealerView
                         String result=jsonObject.getString("response");
                         if(result.equals("success")){
 
-                            Toast.makeText(context,"Dealer Added Successfully",Toast.LENGTH_LONG).show();
+                           // Toast.makeText(context,"Dealer Added Successfully",Toast.LENGTH_LONG).show();
+                            StyleableToast.makeText(context, "Dealer Added Successfully", Toast.LENGTH_LONG, R.style.mytoast).show();
+                            AddDealerActivity addDealerActivity=new AddDealerActivity();
+                            //addDealerActivity.initRecycler();
+                            //addDealerActivity.Back();
+                            dealers.remove(dealer);
+                            notifyDataSetChanged();
                             dialog.dismiss();
+
+
                         }
                         else{
 

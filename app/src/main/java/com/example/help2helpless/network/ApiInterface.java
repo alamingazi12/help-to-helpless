@@ -34,7 +34,7 @@ public  interface ApiInterface {
     Call<DealerResponse> getAlldealers();
 
     @GET("fetchdealer.php")
-    Call<DealerResponse> fetchAllDealers(@Query("zilla") String zilla);
+    Call<DealerResponse> fetchAllDealers(@Query("donar_contact") String donar_contact);
     //search_client.php
 
     @GET("search_client.php")

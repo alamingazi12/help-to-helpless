@@ -51,7 +51,7 @@ public class DonarLogin extends AppCompatActivity {
         donar_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                createDialoge();
+              // createDialoge();
                 login();
             }
         });
@@ -109,7 +109,7 @@ public class DonarLogin extends AppCompatActivity {
                   editor.putString("zilla",donar.getZilla());
                   editor.putBoolean("login",true);
                   editor.apply();
-                  dialog.dismiss();
+                 // dialog.dismiss();
                   dusernme.getEditText().setText("");
                   dpasswrd.getEditText().setText("");
                  // Toast.makeText(AdminLogin.this,"Loged in Successfully",Toast.LENGTH_LONG).show();
