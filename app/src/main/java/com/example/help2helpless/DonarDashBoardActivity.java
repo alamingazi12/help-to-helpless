@@ -14,6 +14,9 @@ import com.example.help2helpless.model.DonarsAvgDonation;
 import com.example.help2helpless.model.TotalDealer;
 import com.example.help2helpless.network.ApiClient;
 import com.example.help2helpless.network.ApiInterface;
+import com.squareup.picasso.Picasso;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -23,6 +26,8 @@ public class DonarDashBoardActivity extends AppCompatActivity {
     String donar_contact;
     SharedPreferences donarinfo;
     TextView donar_balnce,avg_donations,t_donation,ndealer,dname;
+    CircleImageView donar_profile_image;
+    String imageUrl="https://apps.help2helpless.com/donar_profile/";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -156,16 +161,18 @@ public class DonarDashBoardActivity extends AppCompatActivity {
     }
 
     private void initAll() {
+
         dname=findViewById(R.id.dlr_name);
         show_dealers=findViewById(R.id.add_dealers);
         donar_balnce=findViewById(R.id.dnr_balance);
         avg_donations=findViewById(R.id.dnr_avg_donation);
         ndealer=findViewById(R.id.num_of_donars);
+        donar_profile_image=findViewById(R.id.profile_image_donar);
         //t_donation=findViewById(R.id.t_doantion);
         donarinfo=this.getSharedPreferences("donarinfo",0);
         donar_contact=donarinfo.getString("contact",null);
 
         dname.setText(donarinfo.getString("name",null));
-
+        Picasso.get().load(imageUrl+donarinfo.getString("donar_pic",null)).resize(60,60).centerCrop().into(donar_profile_image);
     }
 }

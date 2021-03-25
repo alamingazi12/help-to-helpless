@@ -107,6 +107,7 @@ public class DonarLogin extends AppCompatActivity {
                   editor.putString("uname",donar.getUsernm());
                   editor.putString("contact",donar.getDcontact());
                   editor.putString("zilla",donar.getZilla());
+                 editor.putString("donar_pic",donar.getDonar_photo());
                   editor.putBoolean("login",true);
                   editor.apply();
                  // dialog.dismiss();

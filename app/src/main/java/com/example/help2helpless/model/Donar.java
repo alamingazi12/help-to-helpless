@@ -15,6 +15,7 @@ public class Donar implements Parcelable {
         mdonation_aamount = in.readString();
         usernm = in.readString();
         passwrd = in.readString();
+        donar_photo=in.readString();
     }
 
     public static final Creator<Donar> CREATOR = new Creator<Donar>() {
@@ -120,7 +121,17 @@ public class Donar implements Parcelable {
     String usernm;
     String passwrd;
 
-    public Donar(String dname, String professions, String dcontact, String demail, String presentaddr, String zilla, String thana, String mdonation_aamount, String usernm, String passwrd) {
+    public String getDonar_photo() {
+        return donar_photo;
+    }
+
+    public void setDonar_photo(String donar_photo) {
+        this.donar_photo = donar_photo;
+    }
+
+    String donar_photo;
+
+    public Donar(String dname, String professions, String dcontact, String demail, String presentaddr, String zilla, String thana, String mdonation_aamount, String usernm, String passwrd,String donar_photo) {
         this.dname = dname;
         this.professions = professions;
         this.dcontact = dcontact;
@@ -131,6 +142,7 @@ public class Donar implements Parcelable {
         this.mdonation_aamount = mdonation_aamount;
         this.usernm = usernm;
         this.passwrd = passwrd;
+        this.donar_photo=donar_photo;
     }
 
     @Override
@@ -150,5 +162,6 @@ public class Donar implements Parcelable {
         parcel.writeString(mdonation_aamount);
         parcel.writeString(usernm);
         parcel.writeString(passwrd);
+        parcel.writeString(donar_photo);
     }
 }

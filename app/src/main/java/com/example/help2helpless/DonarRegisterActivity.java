@@ -1,19 +1,23 @@
 package com.example.help2helpless;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.Typeface;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
+import android.util.Base64;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -21,15 +25,19 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.android.material.textfield.TextInputLayout;
-
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class DonarRegisterActivity extends AppCompatActivity {
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 
+public class DonarRegisterActivity extends AppCompatActivity {
+    public static int image_request=2;
+    Bitmap bitmap;
     String url="https://apps.help2helpless.com/donarinsert.php";
     TextInputLayout dname,profession,dcontacts,mail,presentaddres,thana,dZilla,amounts,uname,pass;
-    Button donar_sign;
+    Button donar_sign,browse_image;
+    ImageView d_image;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,6 +49,12 @@ public class DonarRegisterActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 registerProcess();
+            }
+        });
+        browse_image.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                browseImage();
             }
         });
     }
@@ -74,10 +88,36 @@ public class DonarRegisterActivity extends AppCompatActivity {
         amounts=findViewById(R.id.damount);
         uname=findViewById(R.id.duname);
         pass=findViewById(R.id.dpass);
+        d_image=findViewById(R.id.dimage);
+        browse_image=findViewById(R.id.dpic_image);
         donar_sign=findViewById(R.id.dsignbtn);
 
 
 
+
+    }
+    private void browseImage(){
+        Intent intent=new Intent();
+        intent.setType("image/*");
+        intent.setAction(Intent.ACTION_GET_CONTENT);
+        startActivityForResult(intent,image_request);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if(requestCode==image_request &&resultCode==RESULT_OK && data!=null){
+            Uri uri=data.getData();
+
+            try {
+                bitmap= MediaStore.Images.Media.getBitmap(getContentResolver(),uri);
+                d_image.setImageBitmap(bitmap);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+        }
     }
 
     private void registerProcess() {
@@ -138,6 +178,7 @@ public class DonarRegisterActivity extends AppCompatActivity {
                     params.put("donation",amount);
                     params.put("uname",username);
                     params.put("passwrd",password);
+                    params.put("donar_pic",imageToString(bitmap));
 
 
                 } catch (JSONException e) {
@@ -156,6 +197,16 @@ public class DonarRegisterActivity extends AppCompatActivity {
 
         RequestQueue requestQueue= Volley.newRequestQueue(DonarRegisterActivity.this);
         requestQueue.add(stringRequest);
+
+    }
+
+    public String imageToString(Bitmap bitmap){
+        ByteArrayOutputStream byteArrayOutputStream=new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.JPEG,100,byteArrayOutputStream);
+        byte [] imageByte=byteArrayOutputStream.toByteArray();
+        String imageImage= Base64.encodeToString(imageByte,Base64.DEFAULT);
+
+        return imageImage;
 
     }
 }

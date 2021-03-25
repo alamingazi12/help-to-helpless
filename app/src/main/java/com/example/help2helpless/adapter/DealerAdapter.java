@@ -62,7 +62,7 @@ public class DealerAdapter extends RecyclerView.Adapter<DealerAdapter.DealerView
     @Override
     public void onBindViewHolder(@NonNull DealerViewHolder holder, final int position) {
         dealer=dealers.get(position);
-
+      
         holder.name.setText(dealer.getName());
         holder.shpname.setText(dealer.getShopnme());
         holder.address.setText(dealer.getShpnmthana());
