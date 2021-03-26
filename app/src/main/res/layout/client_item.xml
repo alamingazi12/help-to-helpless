@@ -10,7 +10,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <ImageView
-                android:id="@+id/cl_image"
+                android:id="@+id/dnr_image"
                 android:layout_margin="10dp"
                 android:layout_width="80dp"
                 android:src="@drawable/abc_vector_test"
@@ -21,8 +21,8 @@
                    android:text="alamin Gazi"
                    android:layout_marginLeft="10dp"
                    android:layout_marginTop="16dp"
-                   android:layout_toEndOf="@+id/cl_image"
-                   android:id="@+id/cl_name"
+                   android:layout_toEndOf="@+id/dnr_image"
+                   android:id="@+id/donar_name"
 
                    android:layout_width="wrap_content"
                    android:layout_height="wrap_content"/>
@@ -31,9 +31,9 @@
                 android:text="Khulna ,Fultala"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="10dp"
-                android:layout_toEndOf="@+id/cl_image"
-                android:id="@+id/cl_address"
-                android:layout_below="@+id/cl_name"
+                android:layout_toEndOf="@+id/dnr_image"
+                android:id="@+id/dnr_address"
+                android:layout_below="@+id/donar_name"
 
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>

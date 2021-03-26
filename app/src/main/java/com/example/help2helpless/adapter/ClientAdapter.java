@@ -5,13 +5,11 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -27,7 +25,6 @@ import com.android.volley.toolbox.Volley;
 import com.example.help2helpless.ClientProfileActivity;
 import com.example.help2helpless.R;
 import com.example.help2helpless.model.Client;
-import com.example.help2helpless.model.Dealer;
 import com.squareup.picasso.Picasso;
 
 import org.json.JSONException;
@@ -248,9 +245,9 @@ public class ClientAdapter extends RecyclerView.Adapter<ClientAdapter.ClientView
 
         public ClientViewHolder(@NonNull View itemView) {
             super(itemView);
-            cname=itemView.findViewById(R.id.cl_name);
-            address=itemView.findViewById(R.id.cl_address);
-            client_image=itemView.findViewById(R.id.cl_image);
+            cname=itemView.findViewById(R.id.donar_name);
+            address=itemView.findViewById(R.id.dnr_address);
+            client_image=itemView.findViewById(R.id.dnr_image);
             cl_phone=itemView.findViewById(R.id.cl_phone);
             more_info=itemView.findViewById(R.id.moreinfo);
             discount=itemView.findViewById(R.id.cl_discount);

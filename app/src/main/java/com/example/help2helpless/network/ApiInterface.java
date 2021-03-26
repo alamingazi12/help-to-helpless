@@ -1,6 +1,7 @@
 package com.example.help2helpless.network;
 
 import com.example.help2helpless.model.AdminResponse;
+import com.example.help2helpless.model.AllDonar;
 import com.example.help2helpless.model.Amount;
 import com.example.help2helpless.model.AvgDealerReceived;
 import com.example.help2helpless.model.ClientResponse;
@@ -78,5 +79,8 @@ public  interface ApiInterface {
 
     @GET("total_dealers.php")
     Call<TotalDealer> getTotalDealer(@Query("dnr_contact") String dnr_contact);
+
+    @GET("fetchdonar_item.php")
+    Call<AllDonar> getTotalDonar(@Query("dlr_contact") String dlr_contact);
 
 }

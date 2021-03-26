@@ -14,10 +14,11 @@
        android:layout_height="match_parent">
        <androidx.appcompat.widget.Toolbar
            android:id="@+id/toolbar"
+           android:focusable="true"
 
-           app:title="Help to Helpless"
+           app:title="Help To Helpless"
            app:titleTextColor="#ffffff"
-           android:background="#8ecae6"
+           android:background="#00b4d8"
            android:layout_width="match_parent"
            android:layout_height="wrap_content"/>
 
