@@ -3,19 +3,15 @@ package com.example.help2helpless;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import android.os.Bundle;
 import android.widget.Toast;
-
 import com.example.help2helpless.adapter.DonarAdapter;
 import com.example.help2helpless.model.AllDonar;
 import com.example.help2helpless.model.Donar;
 import com.example.help2helpless.model.TotalDonars;
 import com.example.help2helpless.network.ApiClient;
 import com.example.help2helpless.network.ApiInterface;
-
 import java.util.ArrayList;
-
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -38,7 +34,6 @@ public class AddDonarActivity extends AppCompatActivity {
     }
 
     private void getAllDonar() {
-
         ApiInterface apiInterface= ApiClient.getApiClient(AddDonarActivity.this).create(ApiInterface.class);
         Call<AllDonar> allDonarCall= apiInterface.getTotalDonar("12335667");
         allDonarCall.enqueue(new Callback<AllDonar>() {
@@ -48,7 +43,10 @@ public class AddDonarActivity extends AppCompatActivity {
              if(donarList.size()>0){
                  DonarAdapter donarAdapter=new DonarAdapter(donarList,AddDonarActivity.this);
                  donar_item_container.setAdapter(donarAdapter);
-                 Toast.makeText(AddDonarActivity.this,"gets data",Toast.LENGTH_LONG).show();
+                // Toast.makeText(AddDonarActivity.this,"gets data",Toast.LENGTH_LONG).show();
+             }
+             else{
+                 Toast.makeText(AddDonarActivity.this,"NO Donars To Add",Toast.LENGTH_LONG).show();
              }
             }
 
