@@ -356,6 +356,8 @@
         android:layout_height="wrap_content">
 
         <Button
+
+              android:id="@+id/give_discount"
             android:textSize="17sp"
             android:fontFamily="sans-serif-light"
             android:textColor="#ffffff"

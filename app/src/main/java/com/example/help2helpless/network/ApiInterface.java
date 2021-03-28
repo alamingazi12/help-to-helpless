@@ -9,6 +9,7 @@ import com.example.help2helpless.model.DealerAvgPaid;
 import com.example.help2helpless.model.DealerBalance;
 import com.example.help2helpless.model.DealerResponse;
 import com.example.help2helpless.model.DealerTDonation;
+import com.example.help2helpless.model.DealersRequest;
 import com.example.help2helpless.model.DonarAllDonation;
 import com.example.help2helpless.model.DonarBalance;
 import com.example.help2helpless.model.DonarResponse;
@@ -82,5 +83,8 @@ public  interface ApiInterface {
 
     @GET("fetchdonar_item.php")
     Call<AllDonar> getTotalDonar(@Query("dlr_contact") String dlr_contact);
+
+    @GET("fetch_request.php")
+    Call<DealersRequest> getAllDealerRequest(@Query("dnr_contact") String dnr_contact);
 
 }

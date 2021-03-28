@@ -14,13 +14,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".RequestActivity"></activity>
-        <activity android:name=".AddDonarActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+        <activity android:name=".RequestActivity">
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+
+        </activity>
+        <activity android:name=".AddDonarActivity">
+
         </activity>
         <activity
             android:name=".ClientProfileActivity"
@@ -68,7 +67,14 @@
         <activity
             android:name=".MainActivity"
             android:autoRemoveFromRecents="true"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar">
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
 
         <meta-data
             android:name="preloaded_fonts"

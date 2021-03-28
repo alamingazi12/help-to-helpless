@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-
 import com.example.help2helpless.model.DonarAllDonation;
 import com.example.help2helpless.model.DonarBalance;
 import com.example.help2helpless.model.DonarsAvgDonation;
@@ -15,14 +14,13 @@ import com.example.help2helpless.model.TotalDealer;
 import com.example.help2helpless.network.ApiClient;
 import com.example.help2helpless.network.ApiInterface;
 import com.squareup.picasso.Picasso;
-
 import de.hdodenhof.circleimageview.CircleImageView;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
 public class DonarDashBoardActivity extends AppCompatActivity {
-    Button show_dealers;
+    Button show_dealers,show_dealer_req;
     String donar_contact;
     SharedPreferences donarinfo;
     TextView donar_balnce,avg_donations,t_donation,ndealer,dname;
@@ -41,6 +39,13 @@ public class DonarDashBoardActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent=new Intent(DonarDashBoardActivity.this,AddDealerActivity.class);
+                startActivity(intent);
+            }
+        });
+        show_dealer_req.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(DonarDashBoardActivity.this,RequestActivity.class);
                 startActivity(intent);
             }
         });
@@ -171,7 +176,7 @@ public class DonarDashBoardActivity extends AppCompatActivity {
         //t_donation=findViewById(R.id.t_doantion);
         donarinfo=this.getSharedPreferences("donarinfo",0);
         donar_contact=donarinfo.getString("contact",null);
-
+        show_dealer_req=findViewById(R.id.show_request);
         dname.setText(donarinfo.getString("name",null));
         Picasso.get().load(imageUrl+donarinfo.getString("donar_pic",null)).resize(60,60).centerCrop().into(donar_profile_image);
     }

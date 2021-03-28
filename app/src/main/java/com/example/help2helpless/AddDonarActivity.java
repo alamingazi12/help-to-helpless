@@ -3,6 +3,8 @@ package com.example.help2helpless;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.Toast;
 import com.example.help2helpless.adapter.DonarAdapter;
@@ -34,8 +36,9 @@ public class AddDonarActivity extends AppCompatActivity {
     }
 
     private void getAllDonar() {
+        SharedPreferences dealerharedpreference= getSharedPreferences("dealerinfo",0);
         ApiInterface apiInterface= ApiClient.getApiClient(AddDonarActivity.this).create(ApiInterface.class);
-        Call<AllDonar> allDonarCall= apiInterface.getTotalDonar("12335667");
+        Call<AllDonar> allDonarCall= apiInterface.getTotalDonar(dealerharedpreference.getString("contact",null));
         allDonarCall.enqueue(new Callback<AllDonar>() {
             @Override
             public void onResponse(Call<AllDonar> call, Response<AllDonar> response) {

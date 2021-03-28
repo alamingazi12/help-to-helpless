@@ -33,7 +33,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class DealerActivity extends AppCompatActivity {
-    Button client_sign,btn_add_dealer;
+    Button client_sign,btn_add_dealer,btn_discount;
     SharedPreferences dealerlogininfo;
     String dealer_contact;
     TextView dealer_balances,avg_dlr_discount,total_discount_paid,avg_dealer_received,ndonar,nclients,dlr_name;
@@ -54,7 +54,14 @@ public class DealerActivity extends AppCompatActivity {
         btn_add_dealer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(DealerActivity.this,AddDealerActivity.class);
+                Intent intent=new Intent(DealerActivity.this,AddDonarActivity.class);
+                startActivity(intent);
+            }
+        });
+        btn_discount.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(DealerActivity.this,DiscountActivity.class);
                 startActivity(intent);
             }
         });
@@ -255,6 +262,7 @@ public class DealerActivity extends AppCompatActivity {
         ndonar=findViewById(R.id.num_of_donars);
         nclients=findViewById(R.id.num_of_clients);
         dlr_name=findViewById(R.id.dlr_name);
+        btn_discount=findViewById(R.id.give_discount);
        // total_discount_paid=findViewById(R.id.total_discount);
         btn_add_dealer=findViewById(R.id.dealer_add);
         client_sign=findViewById(R.id.btn_csign);

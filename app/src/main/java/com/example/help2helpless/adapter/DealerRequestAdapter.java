@@ -2,14 +2,14 @@ package com.example.help2helpless.adapter;
 
 import android.app.AlertDialog;
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
-import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -22,9 +22,10 @@ import com.android.volley.RequestQueue;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.example.help2helpless.ClientProfileActivity;
+import com.example.help2helpless.AddDealerActivity;
 import com.example.help2helpless.R;
-import com.example.help2helpless.model.Client;
+import com.example.help2helpless.model.Dealer;
+import com.muddzdev.styleabletoast.StyleableToast;
 import com.squareup.picasso.Picasso;
 
 import org.json.JSONException;
@@ -34,73 +35,63 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
-import de.hdodenhof.circleimageview.CircleImageView;
-
-public class ClientAdapter extends RecyclerView.Adapter<ClientAdapter.ClientViewHolder> {
-    ArrayList<Client> clientList;
-    EditText amount;
-    View DialogueView;
+public class DealerRequestAdapter extends RecyclerView.Adapter<DealerRequestAdapter.DealerRequestViewHolder> {
     AlertDialog dialog;
-    String url="https://apps.help2helpless.com/add_discount.php";
-    public ClientAdapter(ArrayList<Client> clientList, Context context) {
-        this.clientList =clientList;
-        this.context =context;
+    View DialogueView;
+    EditText amount;
+    String imageUrl="https://apps.help2helpless.com/uploads/";
+    String url="https://apps.help2helpless.com/add_dealer.php";
+    public DealerRequestAdapter(Context context, ArrayList<Dealer> dealerlist) {
+        this.context = context;
+        this.dealerlist = dealerlist;
     }
+
 
     Context context;
+    ArrayList<Dealer> dealerlist;
     @NonNull
     @Override
-    public ClientAdapter.ClientViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.client_item_discount,parent,false);
-        return new ClientViewHolder(view);
+    public DealerRequestViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view= LayoutInflater.from(context).inflate(R.layout.dealer_req_items,parent,false);
+        return  new DealerRequestViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ClientAdapter.ClientViewHolder holder, final int position) {
-            Client client=clientList.get(position);
-            holder.cname.setText(client.getcName());
-            holder.address.setText(client.getCaddres());
-            holder.cl_phone.setText(client.getCnumber());
-        String imageUrl="https://apps.help2helpless.com/uploads/"+client.getCphoto();
-        Picasso.get().load(imageUrl).resize(80,80).centerCrop().into(holder.client_image);
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Client client1=clientList.get(position);
-                createDialoge(client1.getCnumber());
-            }
-        });
-        holder.discount.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Client client2=clientList.get(position);
-                createDialoge(client2.getCnumber());
-            }
-        });
-        holder.more_info.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Client client4=clientList.get(position);
-                Intent intent=new Intent(context, ClientProfileActivity.class);
-                Bundle bundle=new Bundle();
-                bundle.putParcelable("client",client4);
-                intent.putExtras(bundle);
-                context.startActivity(intent);
-            }
-        });
+    public void onBindViewHolder(@NonNull DealerRequestViewHolder holder, final int position) {
+        Dealer dealer=dealerlist.get(position);
+        holder.name.setText(dealer.getName());
+        holder.shpname.setText(dealer.getShopnme());
+        holder.address.setText(dealer.getShpnmthana());
+        holder.dlr_phone.setText(dealer.getPhone());
 
+        String url=imageUrl+dealer.getShoppic();
+        //Picasso.get().load(imageUrl).into(shpimage);
+        Picasso.get()
+                .load(url)
+                .resize(128, 128)
+                .centerCrop()
+                .into(holder.imageView_dealer);
+
+        holder.add_dealer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Dealer dealer2=dealerlist.get(position);
+               // dealer_phone=dealer2.getPhone();
+                createDialoge(dealer2);
+            }
+        });
     }
 
-    public void   createDialoge(final String cnumber){
+    public void   createDialoge(final Dealer dealer){
         AlertDialog.Builder builder=new AlertDialog.Builder(context);
-        DialogueView=LayoutInflater.from(context).inflate(R.layout.add_discount,null);
-        Button button_ok= DialogueView.findViewById(R.id.selectok);
+        DialogueView=LayoutInflater.from(context).inflate(R.layout.add_amount,null);
         amount=DialogueView.findViewById(R.id.addamount);
+        Button button_ok= DialogueView.findViewById(R.id.selectok);
         Button button_cancel=DialogueView.findViewById(R.id.selectcancel);
         button_ok.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                addDiscount(cnumber) ;
+                saveAmount(dealer);
                 dialog.dismiss();
             }
         });
@@ -118,11 +109,7 @@ public class ClientAdapter extends RecyclerView.Adapter<ClientAdapter.ClientView
 
     }
 
-    @Override
-    public int getItemCount() {
-        return clientList.size();
-    }
-    private void addDiscount(final String cnumber) {
+    private void saveAmount(final Dealer dealer) {
 
         StringRequest stringRequest=new StringRequest(Request.Method.POST, url, new com.android.volley.Response.Listener<String>() {
             @Override
@@ -132,11 +119,20 @@ public class ClientAdapter extends RecyclerView.Adapter<ClientAdapter.ClientView
                     String result=jsonObject.getString("response");
                     if(result.equals("success")){
 
-                        Toast.makeText(context,"Discount added Successfully",Toast.LENGTH_LONG).show();
-                        dialog.dismiss();
+                        // Toast.makeText(context,"Dealer Added Successfully",Toast.LENGTH_LONG).show();
+                        StyleableToast.makeText(context, "Dealer Added Successfully", Toast.LENGTH_LONG, R.style.mytoast).show();
+                        AddDealerActivity addDealerActivity=new AddDealerActivity();
+                        //addDealerActivity.initRecycler();
+                        //addDealerActivity.Back();
+                        dealerlist.remove(dealer);
+                        notifyDataSetChanged();
+
+
+
                     }
                     else{
-                        Toast.makeText(context," "+result,Toast.LENGTH_LONG).show();
+                        StyleableToast.makeText(context, ""+result, Toast.LENGTH_LONG, R.style.mytoast).show();
+                       // Toast.makeText(context,""+result,Toast.LENGTH_LONG).show();
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -157,17 +153,19 @@ public class ClientAdapter extends RecyclerView.Adapter<ClientAdapter.ClientView
             public byte[] getBody() throws AuthFailureError {
                 JSONObject params = new JSONObject();
                 try {
-                 SharedPreferences   dealerlogininfo=context.getSharedPreferences("dealerinfo",0);
+                    SharedPreferences donarinfo=context.getSharedPreferences("donarinfo",0);
+                    String dcontact=donarinfo.getString("contact",null);
                     Date date=new Date();
                     SimpleDateFormat sdf=new SimpleDateFormat("dd-MM-yyyy");
                     String today=sdf.format(date);
 
                     String pdatarr[]=today.split("-");
-                    params.put("cl_contact",cnumber);
-                    params.put("dlr_contact",dealerlogininfo.getString("contact",null));
-                    params.put("month",getMonthString(pdatarr[1]));
-                    params.put("year",pdatarr[2]);
-                    params.put("amount",amount.getText().toString());
+                    //Log.d("phone",dcontact);
+                     params.put("dnr_cont",dcontact);
+                     params.put("dealer_cont",dealer.getPhone());
+                     params.put("month",getMonthString(pdatarr[1]));
+                     params.put("year",pdatarr[2]);
+                     params.put("amount",amount.getText().toString());
 
 
                 } catch (JSONException e) {
@@ -176,6 +174,7 @@ public class ClientAdapter extends RecyclerView.Adapter<ClientAdapter.ClientView
 
                 return params.toString().getBytes();
             }
+
 
             @Override
             public String getBodyContentType() {
@@ -236,21 +235,24 @@ public class ClientAdapter extends RecyclerView.Adapter<ClientAdapter.ClientView
         }
         return monthName;
     }
-    public class ClientViewHolder extends RecyclerView.ViewHolder {
-        TextView cname,address,cl_phone;
-        CircleImageView client_image;
 
-        Button more_info,discount;
+    @Override
+    public int getItemCount() {
+        return dealerlist.size();
+    }
 
-
-        public ClientViewHolder(@NonNull View itemView) {
+    public class DealerRequestViewHolder extends RecyclerView.ViewHolder {
+        TextView name,shpname,address,dlr_phone;
+        Button add_dealer;
+        ImageView imageView_dealer;
+        public DealerRequestViewHolder(@NonNull View itemView) {
             super(itemView);
-            cname=itemView.findViewById(R.id.donar_name);
-            address=itemView.findViewById(R.id.dnr_address);
-            client_image=itemView.findViewById(R.id.dnr_image);
-            cl_phone=itemView.findViewById(R.id.cl_phone);
-            more_info=itemView.findViewById(R.id.moreinfo);
-            discount=itemView.findViewById(R.id.cl_discount);
+            name= itemView.findViewById(R.id.rdname);
+            shpname= itemView.findViewById(R.id.rdshpname);
+            address= itemView.findViewById(R.id.shopaddress);
+            dlr_phone=itemView.findViewById(R.id.dlr_contact);
+            add_dealer=itemView.findViewById(R.id.confirm_dlr);
+            imageView_dealer=itemView.findViewById(R.id.dlr_shop_image);
         }
     }
 }

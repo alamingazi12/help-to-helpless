@@ -28,6 +28,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.android.material.textfield.TextInputLayout;
+import com.muddzdev.styleabletoast.StyleableToast;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -116,12 +117,11 @@ public class ClientActivity extends AppCompatActivity {
                     JSONObject jsonObject=new JSONObject(response);
                     String result=jsonObject.getString("response");
                     if(result.equals("success")){
-
-                        Toast.makeText(ClientActivity.this,"You registered Successfully",Toast.LENGTH_LONG).show();
+                        StyleableToast.makeText(ClientActivity.this,"Registration Success",R.style.mytoast).show();
+                        //Toast.makeText(ClientActivity.this,"You registered Successfully",Toast.LENGTH_LONG).show();
                     }
                     else{
-
-                        Toast.makeText(ClientActivity.this," "+result,Toast.LENGTH_LONG).show();
+                        StyleableToast.makeText(ClientActivity.this,"Something Wrong",R.style.mytoast).show();
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -186,8 +186,8 @@ public class ClientActivity extends AppCompatActivity {
                       //  Log.d("tag",imageToString(bitmap));
                     }
                     else{
-                        Toast.makeText(ClientActivity.this,"null bitmap",Toast.LENGTH_LONG).show();
-                        Log.d("tag","bitmap  null");
+                        //StyleableToast.makeText(ClientActivity.this,"Bitmap Null",R.style.mytoast).show();
+                       // Log.d("tag","bitmap  null");
                     }
 
 
