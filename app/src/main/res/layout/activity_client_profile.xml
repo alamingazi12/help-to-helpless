@@ -1,11 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:fillViewport="true"
     android:orientation="vertical"
     android:layout_height="match_parent"
     tools:context=".ClientProfileActivity">
+    <LinearLayout
+
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+
 
     <LinearLayout
         android:background="#8ecae6"
@@ -16,12 +25,15 @@
         android:layout_height="0dp"
         android:layout_weight="4">
      <de.hdodenhof.circleimageview.CircleImageView
-         android:layout_width="100dp"
+         android:layout_width="90dp"
+         android:id="@+id/cprofile_image"
          android:src="@drawable/persons"
          android:layout_marginTop="50dp"
-         android:layout_height="100dp"/>
+         android:layout_height="90dp"/>
 
         <TextView
+            android:id="@+id/cname"
+
             android:textSize="25sp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -67,6 +79,7 @@
                     style="@style/TextBlackTitle"/>
 
                 <TextView
+                    android:id="@+id/nm_deasese"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/username"
@@ -101,10 +114,12 @@
                     style="@style/TextBlackTitle"/>
 
                 <TextView
+                    android:id="@+id/ccontact"
+                    style="@style/TextDescription"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/phone"
-                    style="@style/TextDescription"/>
+                    android:fontFamily="@font/artifika"
+                    android:text="@string/phone" />
 
             </LinearLayout>
 
@@ -135,6 +150,7 @@
                     style="@style/TextBlackTitle"/>
 
                 <TextView
+                    android:id="@+id/cincome"
                     style="@style/TextDescription"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -169,6 +185,7 @@
                     style="@style/TextBlackTitle"/>
 
                 <TextView
+                    android:id="@+id/mcost"
                     style="@style/TextDescription"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -203,6 +220,7 @@
                     style="@style/TextBlackTitle"/>
 
                 <TextView
+                    android:id="@+id/caddress"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/address"
@@ -213,5 +231,6 @@
         </LinearLayout>
 
     </LinearLayout>
+    </LinearLayout>
 
-</LinearLayout>
+</androidx.core.widget.NestedScrollView>
