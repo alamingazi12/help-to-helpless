@@ -1,9 +1,184 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:background="#f3f3f4"
+    android:theme="@style/Theme.MaterialComponents.DayNight.DarkActionBar"
     android:layout_height="match_parent"
     tools:context=".DonateDealerActivity">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="190dp">
+
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20sp"
+            android:layout_marginTop="50dp"
+            android:fontFamily="sans-serif-condensed"
+            android:text="Send Money"
+            android:textColor="#000000"
+            android:textFontWeight="600"
+            android:textSize="30sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.101"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/belgrano"
+            android:text="Your Balance"
+            android:textColor="#b7b7a4"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="@+id/textView"
+            app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:fontFamily="sans-serif-condensed"
+            android:text="TK"
+            android:textColor="#000000"
+            android:textFontWeight="700"
+            android:textSize="30sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/textView2"
+            app:layout_constraintTop_toBottomOf="@+id/textView2"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:fontFamily="sans-serif-condensed-medium"
+            android:text="928.00"
+            android:textColor="#000000"
+            android:textSize="30dp"
+            app:layout_constraintBottom_toBottomOf="@+id/textView3"
+            app:layout_constraintStart_toEndOf="@+id/textView3"
+            app:layout_constraintTop_toTopOf="@+id/textView3"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/profile_image"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+
+            android:layout_marginEnd="28dp"
+            android:src="@drawable/persons"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.8"
+            app:layout_constraintStart_toEndOf="@+id/textView"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.616" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <LinearLayout
+        android:layout_marginTop="170dp"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/pass"
+
+
+            android:layout_below="@+id/username"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="15dp"
+            android:layout_marginBottom="15dp"
+            android:hint="Amount"
+            app:hintTextColor="#3f37c9"
+
+            android:textColorHint="#979dac"
+
+            app:boxBackgroundMode="outline"
+            app:boxStrokeColor="#3f37c9"
+            app:boxStrokeWidth="1dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginStart="0dp"
+                android:layout_marginBottom="0dp"
+                android:fontFamily="@font/raleway_light"
+                android:inputType="textPassword"
+
+                android:textSize="16dp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+
+
+
+            android:layout_below="@+id/username"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="15dp"
+            android:layout_marginBottom="15dp"
+            app:hintTextColor="#3f37c9"
+
+            android:hint="Description (optional)"
+            android:textColorHint="#979dac"
+
+            app:boxBackgroundMode="outline"
+            app:boxStrokeColor="#3f37c9"
+            app:boxStrokeWidth="1dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+
+                android:layout_marginBottom="0dp"
+
+
+
+                android:fontFamily="@font/raleway_light"
+                android:inputType="textPassword"
+
+                android:textSize="16dp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="53dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+
+            android:background="@drawable/donate_btn_style"
+            android:fontFamily="sans-serif-light"
+            android:text="Confirm"
+            android:textAllCaps="false"
+            android:textColor="#ffffff"
+            android:textFontWeight="500"
+            android:textSize="18sp" />
+
+    </LinearLayout>
+
+
+</LinearLayout>
