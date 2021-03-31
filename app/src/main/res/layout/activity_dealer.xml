@@ -127,9 +127,11 @@
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
+                        android:textFontWeight="500"
                         android:textSize="17sp"
                         android:textColor="#000000"
                         android:id="@+id/textView6"
+
                         android:fontFamily="sans-serif-light"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -173,6 +175,7 @@
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
+                        android:textFontWeight="500"
                         android:id="@+id/textView8"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -218,37 +221,36 @@
                         android:layout_marginLeft="3dp"
                         android:text="2000"
                         android:textColor="#000000"
-                        android:textSize="16sp"
+                        android:textSize="28sp"
                         app:layout_constraintBottom_toBottomOf="@+id/textView12"
                         app:layout_constraintStart_toEndOf="@+id/textView12"
                         app:layout_constraintTop_toTopOf="@+id/textView12"
                         app:layout_constraintVertical_bias="0.0" />
 
                     <TextView
-                        android:textSize="14sp"
-                        android:textFontWeight="400"
-                        android:fontFamily="sans-serif-light"
-                        android:textColor="#000000"
                         android:id="@+id/textView10"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="16dp"
+                        android:fontFamily="sans-serif-light"
                         android:text="AVg Monthly Received"
+                        android:textColor="#000000"
+                        android:textFontWeight="500"
+                        android:textSize="14sp"
+
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.503"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/dealer_recived_avg"
-                        app:layout_constraintVertical_bias="1.0" />
+                        app:layout_constraintStart_toStartOf="parent" />
 
                     <TextView
                         android:id="@+id/textView12"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="25dp"
-                        android:text="TK"
+                        android:layout_marginStart="43dp"
+                        android:text="TK "
                         android:textColor="#000000"
-                        android:textSize="16sp"
+                        android:textSize="28sp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -273,33 +275,34 @@
                     android:layout_height="match_parent">
 
                     <TextView
-                        android:textColor="#000000"
-                        android:textSize="16sp"
                         android:id="@+id/avg_dlr_donation"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="3dp"
                         android:text="3000"
+                        android:textColor="#000000"
+                        android:textSize="28sp"
                         app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
                         app:layout_constraintStart_toEndOf="@+id/textView13"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintVertical_bias="0.503" />
+                        app:layout_constraintVertical_bias="0.507" />
 
                     <TextView
-                        android:textSize="16sp"
-                        android:textColor="#000000"
                         android:id="@+id/textView13"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="25dp"
-                        android:text="TK"
+                        android:layout_marginStart="43dp"
+                        android:text="TK "
+                        android:textColor="#000000"
+                        android:textSize="28sp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintVertical_bias="0.503" />
+                        app:layout_constraintVertical_bias="0.507" />
 
                     <TextView
-                        android:textFontWeight="400"
+                        android:textFontWeight="500"
                         android:textSize="14sp"
                         android:fontFamily="sans-serif-light"
                         android:textColor="#000000"

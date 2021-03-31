@@ -14,13 +14,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".RequestActivity">
-
-
-        </activity>
-        <activity android:name=".AddDonarActivity">
-
-        </activity>
+        <activity android:name=".DonateDealerActivity"></activity>
+        <activity android:name=".AddedDealerActivity" />
+        <activity android:name=".RequestActivity" />
+        <activity android:name=".AddDonarActivity" />
         <activity
             android:name=".ClientProfileActivity"
             android:parentActivityName=".DiscountActivity" />
@@ -68,7 +65,6 @@
             android:name=".MainActivity"
             android:autoRemoveFromRecents="true"
             android:theme="@style/AppTheme.NoActionBar">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

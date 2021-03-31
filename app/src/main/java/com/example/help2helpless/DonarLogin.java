@@ -107,7 +107,7 @@ public class DonarLogin extends AppCompatActivity {
                   editor.putString("uname",donar.getUsernm());
                   editor.putString("contact",donar.getDcontact());
                   editor.putString("zilla",donar.getZilla());
-                 editor.putString("donar_pic",donar.getDonar_photo());
+                  editor.putString("donar_pic",donar.getDonar_photo());
                   editor.putBoolean("login",true);
                   editor.apply();
                  // dialog.dismiss();
@@ -117,7 +117,7 @@ public class DonarLogin extends AppCompatActivity {
                   Intent intent=new Intent(DonarLogin.this,DonarDashBoardActivity.class);
                   startActivity(intent);
              }else{
-                 dialog.dismiss();
+                // dialog.dismiss();
                  Toast.makeText(DonarLogin.this,"Wrong Username and Password",Toast.LENGTH_LONG).show();
 
              }
@@ -125,7 +125,7 @@ public class DonarLogin extends AppCompatActivity {
 
           @Override
           public void onFailure(Call<DonarResponse> call, Throwable t) {
-              dialog.dismiss();
+//              dialog.dismiss();
           }
       });
 

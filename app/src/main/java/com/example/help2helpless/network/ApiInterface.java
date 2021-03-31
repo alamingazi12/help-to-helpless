@@ -1,5 +1,6 @@
 package com.example.help2helpless.network;
 
+import com.example.help2helpless.model.AddDealerList;
 import com.example.help2helpless.model.AdminResponse;
 import com.example.help2helpless.model.AllDonar;
 import com.example.help2helpless.model.Amount;
@@ -86,5 +87,8 @@ public  interface ApiInterface {
 
     @GET("fetch_request.php")
     Call<DealersRequest> getAllDealerRequest(@Query("dnr_contact") String dnr_contact);
+   ///AddDealerList
 
+    @GET("total_dealers_list.php")
+    Call<AddDealerList> getAllAddedDealers(@Query("dnr_contact") String dnr_contact);
 }

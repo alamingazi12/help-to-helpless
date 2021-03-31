@@ -22,6 +22,7 @@ import com.android.volley.toolbox.Volley;
 import com.example.help2helpless.ApprovedActivity;
 import com.example.help2helpless.R;
 import com.example.help2helpless.model.Dealer;
+import com.muddzdev.styleabletoast.StyleableToast;
 import com.squareup.picasso.Picasso;
 
 import org.json.JSONException;
@@ -54,8 +55,10 @@ public class RequestAdapter extends RecyclerView.Adapter<RequestAdapter.RequestV
                     JSONObject jsonObject=new JSONObject(response);
                     String result=jsonObject.getString("response");
                     if(result.equals("success")){
-
-                        Toast.makeText(context,"You registered"+result,Toast.LENGTH_LONG).show();
+                        StyleableToast.makeText(context," Request Approved",R.style.mytoast).show();
+                          dealersList.remove(dealer);
+                          notifyDataSetChanged();
+                       // Toast.makeText(context,"You registered"+result,Toast.LENGTH_LONG).show();
                     }
                     else{
 

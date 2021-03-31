@@ -121,7 +121,7 @@ public class DealerRequestAdapter extends RecyclerView.Adapter<DealerRequestAdap
 
                         // Toast.makeText(context,"Dealer Added Successfully",Toast.LENGTH_LONG).show();
                         StyleableToast.makeText(context, "Dealer Added Successfully", Toast.LENGTH_LONG, R.style.mytoast).show();
-                        AddDealerActivity addDealerActivity=new AddDealerActivity();
+                        //AddDealerActivity addDealerActivity=new AddDealerActivity();
                         //addDealerActivity.initRecycler();
                         //addDealerActivity.Back();
                         dealerlist.remove(dealer);

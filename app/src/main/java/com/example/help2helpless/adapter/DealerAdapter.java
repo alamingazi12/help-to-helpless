@@ -135,7 +135,7 @@ public class DealerAdapter extends RecyclerView.Adapter<DealerAdapter.DealerView
                         }
                         else{
 
-                            Toast.makeText(context,""+result,Toast.LENGTH_LONG).show();
+                            StyleableToast.makeText(context,""+result,R.style.mytoast).show();
                         }
                     } catch (JSONException e) {
                         e.printStackTrace();
@@ -148,7 +148,8 @@ public class DealerAdapter extends RecyclerView.Adapter<DealerAdapter.DealerView
                     ,new com.android.volley.Response.ErrorListener() {
                 @Override
                 public void onErrorResponse(VolleyError error) {
-                    Toast.makeText(context,"not Uploaded",Toast.LENGTH_LONG).show();
+                    StyleableToast.makeText(context,"Network Error",R.style.mytoast).show();
+                   // Toast.makeText(context,"not Uploaded",Toast.LENGTH_LONG).show();
                 }
             })
             {

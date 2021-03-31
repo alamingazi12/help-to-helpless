@@ -20,7 +20,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class DonarDashBoardActivity extends AppCompatActivity {
-    Button show_dealers,show_dealer_req;
+    Button show_dealers,show_dealer_req,donate_dealers;
     String donar_contact;
     SharedPreferences donarinfo;
     TextView donar_balnce,avg_donations,t_donation,ndealer,dname;
@@ -46,6 +46,13 @@ public class DonarDashBoardActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent=new Intent(DonarDashBoardActivity.this,RequestActivity.class);
+                startActivity(intent);
+            }
+        });
+        donate_dealers.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(DonarDashBoardActivity.this,AddedDealerActivity.class);
                 startActivity(intent);
             }
         });
@@ -126,7 +133,9 @@ public class DonarDashBoardActivity extends AppCompatActivity {
                    avg_donations.setText(avg_donation);
 
                }else {
-                   avg_donations.setText(avg_donation);
+                   double donation=Double.parseDouble(avg_donation);
+                   int IntValue = (int) Math.round(donation);
+                   avg_donations.setText(""+IntValue);
                }
               // Toast.makeText(DonarDashBoardActivity.this,""+avg_donation,Toast.LENGTH_LONG).show();
               // Log.d("avg:",avg_donation);
@@ -174,6 +183,7 @@ public class DonarDashBoardActivity extends AppCompatActivity {
         ndealer=findViewById(R.id.num_of_donars);
         donar_profile_image=findViewById(R.id.profile_image_donar);
         //t_donation=findViewById(R.id.t_doantion);
+        donate_dealers=findViewById(R.id.donate_to_dealer);
         donarinfo=this.getSharedPreferences("donarinfo",0);
         donar_contact=donarinfo.getString("contact",null);
         show_dealer_req=findViewById(R.id.show_request);
