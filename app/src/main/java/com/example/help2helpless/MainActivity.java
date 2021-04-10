@@ -33,10 +33,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+      //  setFontToActionBar();
         initAll();
         initDrawerListener();
-      //  setFontToActionBar();
+
     }
 
     private void setFontToActionBar() {
@@ -49,11 +49,10 @@ public class MainActivity extends AppCompatActivity {
         tv.setTextColor(Color.parseColor("#ffffff"));
         Typeface tf = Typeface.createFromAsset(getAssets(), "fonts/regular.otf");
         tv.setTypeface(tf);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+//        getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
         getSupportActionBar().setCustomView(tv);
         //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
     }
 
     private void initAll() {
@@ -76,14 +75,13 @@ public class MainActivity extends AppCompatActivity {
     private void showMenuData() {
 
         items=new ArrayList<>();
-
-        items.add(new MenuItem(R.drawable.person,"Home"));
-        items.add(new MenuItem(R.drawable.person,"Admin Panel"));
+        items.add(new MenuItem(R.drawable.ic_baseline_home_24,"Home"));
+        items.add(new MenuItem(R.drawable.profile,"Admin Panel"));
         items.add(new MenuItem(R.drawable.person,"Dealer"));
         items.add(new MenuItem(R.drawable.person,"Dealer Registration"));
         items.add(new MenuItem(R.drawable.person,"Donar"));
         items.add(new MenuItem(R.drawable.person,"Donar Registration"));
-        items.add(new MenuItem(R.drawable.person,"About Us"));
+        items.add(new MenuItem(R.drawable.info,"About Us"));
 
         MenuAdapter menuAdapter=new MenuAdapter(items,MainActivity.this);
         menucontentitems.setAdapter(menuAdapter);

@@ -32,11 +32,13 @@
                 android:id="@+id/dname"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                 android:focusable="true"
+
                 app:hintTextColor="#d9d9d9"
                 android:focusableInTouchMode="true"
                 android:layout_height="wrap_content">
                 <com.google.android.material.textfield.TextInputEditText
                     android:hint="Name"
+                    android:inputType="textCapWords"
                     app:hintTextColor="#d9d9d9"
                     android:ems="10"
                     android:layout_width="match_parent"
@@ -253,7 +255,7 @@
              android:layout_marginRight="15dp"
              android:fontFamily="sans-serif-condensed"
              android:layout_marginBottom="50dp"
-             android:background="@drawable/button_style"
+             android:background="@drawable/ripple_effect_raised"
              android:layout_width="match_parent"
              android:layout_height="wrap_content"/>
 

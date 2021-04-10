@@ -5,16 +5,18 @@
     android:background="#f8edeb"
     android:theme="@style/Theme.MaterialComponents.DayNight.DarkActionBar"
     xmlns:app="http://schemas.android.com/apk/res-auto">
+
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="150dp"
         android:layout_height="150dp"
-        android:layout_marginBottom="50dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="68dp"
         android:layout_marginEnd="245dp"
+        android:layout_marginBottom="50dp"
         app:srcCompat="@drawable/login" />
+
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/dsername"
@@ -92,19 +94,29 @@
         android:id="@+id/dbutton_login"
         android:layout_width="match_parent"
         android:layout_height="43dp"
-        android:layout_below="@+id/dpasswrd"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginStart="41dp"
-        android:layout_marginTop="82dp"
-        android:layout_marginEnd="39dp"
-        android:background="@drawable/button_style"
+        android:layout_marginStart="39dp"
+        android:layout_marginEnd="41dp"
+        android:layout_marginBottom="89dp"
+        android:background="@drawable/ripple_effect_raised"
         android:fontFamily="sans-serif-thin"
         android:text="Login"
         android:textAllCaps="false"
         android:textColor="#ffffff"
         android:textSize="17dp" />
+
+    <ProgressBar
+        android:id="@+id/progress"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="50dp"
+        android:visibility="invisible"
+        android:layout_height="50dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="230dp" />
 
 
 </RelativeLayout>

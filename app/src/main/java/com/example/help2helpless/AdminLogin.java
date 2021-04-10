@@ -1,12 +1,15 @@
 package com.example.help2helpless;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -20,6 +23,7 @@ import com.example.help2helpless.model.AdminResponse;
 import com.example.help2helpless.network.ApiClient;
 import com.example.help2helpless.network.ApiInterface;
 import com.google.android.material.textfield.TextInputLayout;
+import com.muddzdev.styleabletoast.StyleableToast;
 
 import java.util.ArrayList;
 
@@ -31,7 +35,8 @@ public class AdminLogin extends AppCompatActivity {
     Button admin_login;
     TextInputLayout adusernme,adpasswrd;
     ArrayList<Admin> admins;
-
+    ProgressBar progressBar;
+    ProgressDialog dialogue;
 
     @Override
 
@@ -43,9 +48,23 @@ public class AdminLogin extends AppCompatActivity {
         admin_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                login();
+                if(TextUtils.isEmpty(adusernme.getEditText().getText().toString().trim()) || TextUtils.isEmpty(adpasswrd.getEditText().getText().toString().trim())){
+                    StyleableToast.makeText(AdminLogin.this,"Fields Empty", R.style.mytoast).show();
+                }else{
+                    login();
+                }
             }
         });
+    }
+
+    public  void showProgress(){
+        dialogue=new ProgressDialog(this);
+        dialogue.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+        dialogue.setTitle("Processing");
+        dialogue.setMessage("Please Wait...");
+        dialogue.setCanceledOnTouchOutside(false);
+        dialogue.show();
+
     }
 
     private void setFontToActionBar() {
@@ -66,6 +85,7 @@ public class AdminLogin extends AppCompatActivity {
     }
 
     private void login() {
+        showProgress();
         ApiInterface apiInterface= ApiClient.getApiClient(AdminLogin.this).create(ApiInterface.class);
         Call<AdminResponse> adminResponseCall=apiInterface.getAdminResponse(adusernme.getEditText().getText().toString().trim(),adpasswrd.getEditText().getText().toString().trim());
         adminResponseCall.enqueue(new Callback<AdminResponse>() {
@@ -73,6 +93,7 @@ public class AdminLogin extends AppCompatActivity {
             public void onResponse(Call<AdminResponse> call, Response<AdminResponse> response) {
                admins=response.body().getResult();
                if(admins.size()>0){
+                   dialogue.cancel();
                    Admin admin=admins.get(0);
                    adusernme.getEditText().setText("");
                    adpasswrd.getEditText().setText("");
@@ -80,13 +101,16 @@ public class AdminLogin extends AppCompatActivity {
                    Intent intent=new Intent(AdminLogin.this,AdminDashBoardActivity.class);
                    startActivity(intent);
                }else{
-                   Toast.makeText(AdminLogin.this,"Wrong Username and Password",Toast.LENGTH_LONG).show();
+                   dialogue.cancel();
+
+                   StyleableToast.makeText(AdminLogin.this,"Wrong Username and Password",R.style.mytoast).show();
                 }
             }
 
             @Override
             public void onFailure(Call<AdminResponse> call, Throwable t) {
-
+                dialogue.cancel();
+                StyleableToast.makeText(AdminLogin.this,"Network Error",R.style.mytoast).show();
             }
         });
 
@@ -94,6 +118,7 @@ public class AdminLogin extends AppCompatActivity {
     }
 
     private void initAll() {
+
         adusernme=findViewById(R.id.adusername);
         adpasswrd=findViewById(R.id.adpasswrd);
         admin_login=findViewById(R.id.admbutton_login);

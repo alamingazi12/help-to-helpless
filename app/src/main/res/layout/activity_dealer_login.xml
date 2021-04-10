@@ -86,22 +86,22 @@
 
             android:textSize="16dp" />
 
+
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
         android:id="@+id/dlr_login"
         android:layout_width="match_parent"
         android:layout_height="43dp"
-        android:layout_below="@+id/dlrpass"
+        android:layout_marginRight="30dp"
+        android:layout_marginLeft="30dp"
         android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginStart="41dp"
-        android:layout_marginTop="82dp"
-        android:layout_marginEnd="39dp"
-        android:background="@drawable/button_style"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="84dp"
+        android:background="@drawable/ripple_effect_raised"
         android:fontFamily="sans-serif-thin"
         android:text="Login"
+
         android:textAllCaps="false"
         android:textColor="#ffffff"
         android:textSize="17dp" />

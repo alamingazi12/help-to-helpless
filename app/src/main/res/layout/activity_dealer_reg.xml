@@ -218,10 +218,10 @@
                         android:layout_width="120dp"
                         android:layout_height="120dp"/>
                     <Button
-
+                        android:layout_marginBottom="10dp"
                         android:layout_below="@id/shpimage"
                         android:id="@+id/pic_image1"
-                        android:text="Browse Image"
+                        android:text="Browse"
                         android:paddingLeft="14dp"
                         android:paddingRight="14dp"
                         android:textColor="#ffffff"
@@ -230,7 +230,7 @@
                         android:layout_centerHorizontal="true"
                         android:layout_marginTop="5dp"
                         android:layout_width="wrap_content"
-                        android:layout_height="40dp"/>
+                        android:layout_height="32dp"/>
                 </RelativeLayout>
 
             </LinearLayout>
@@ -263,7 +263,7 @@
                     android:textColor="#3d405b"
                     android:fontFamily="sans-serif-condensed"
                     android:textSize="18sp"
-                    android:text="NID Photo"
+                    android:text="Dealer Photo"
                     android:layout_gravity="center"
                     android:layout_weight="1"
                     android:layout_height="wrap_content"/>
@@ -288,11 +288,12 @@
                         android:paddingRight="14dp"
                         android:textAllCaps="false"
                         android:background="@drawable/button_style"
-                        android:text="Browse Image"
+                        android:text="Browse "
+                        android:layout_marginBottom="10dp"
                         android:layout_centerHorizontal="true"
                         android:layout_marginTop="5dp"
                         android:layout_width="wrap_content"
-                        android:layout_height="40dp"/>
+                        android:layout_height="32dp"/>
                 </RelativeLayout>
 
             </LinearLayout>
@@ -342,7 +343,7 @@
                 android:layout_marginRight="15dp"
                 android:fontFamily="sans-serif-condensed"
                 android:layout_marginBottom="50dp"
-                android:background="@drawable/button_style"
+                android:background="@drawable/ripple_effect_raised"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
 

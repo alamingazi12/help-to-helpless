@@ -1,9 +1,8 @@
 package com.example.help2helpless;
-
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
-
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Color;
@@ -11,6 +10,7 @@ import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.text.TextUtils;
 import android.util.Base64;
 import android.view.Gravity;
 import android.view.View;
@@ -18,8 +18,6 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
-
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -27,14 +25,13 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.android.material.textfield.TextInputLayout;
-
+import com.muddzdev.styleabletoast.StyleableToast;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 
-public class DealerRegActivity extends AppCompatActivity {
+public class DealerRegActivity extends AppCompatActivity { ProgressDialog dialogue;
   public static int image_request=1, image_request2=2;
   ImageView reg_pic,nid_pic;
   Button signup,reg_up,id_up;
@@ -51,7 +48,27 @@ public class DealerRegActivity extends AppCompatActivity {
         signup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                registerProcess();
+
+                String name=dname.getEditText().getText().toString();
+                String dfname=fname.getEditText().getText().toString();
+                String daddres=dladdress.getEditText().getText().toString();
+                String dlphone=phone.getEditText().getText().toString();
+                String dlbks=bks.getEditText().getText().toString();
+                String dlmail=mail.getEditText().getText().toString();
+                String dlshpname=shpname.getEditText().getText().toString();
+                String dlthana=thana.getEditText().getText().toString();
+                String dlZilla=Zilla.getEditText().getText().toString();
+                String dlregno=regno.getEditText().getText().toString();
+                String dlnid=nid.getEditText().getText().toString();
+                String dluname=uname.getEditText().getText().toString();
+                String dlpass=password.getEditText().getText().toString();
+
+                if(regno_bitmap==null || nid_bitmap==null || TextUtils.isEmpty(name) || TextUtils.isEmpty(dfname) || TextUtils.isEmpty(daddres) || TextUtils.isEmpty(dlphone) ||TextUtils.isEmpty(dlbks) || TextUtils.isEmpty(dlmail) || TextUtils.isEmpty(dlshpname) || TextUtils.isEmpty(dlthana) || TextUtils.isEmpty(dlZilla) || TextUtils.isEmpty(dlregno) || TextUtils.isEmpty(dlnid) || TextUtils.isEmpty(dluname) || TextUtils.isEmpty(dlpass)){
+                    StyleableToast.makeText(DealerRegActivity.this,"One or More Fields Empty", R.style.mytoast).show();
+                }else {
+                    registerProcess();
+                }
+
             }
         });
         reg_up.setOnClickListener(new View.OnClickListener() {
@@ -66,6 +83,16 @@ public class DealerRegActivity extends AppCompatActivity {
              browseImage2();
          }
      });
+    }
+
+    public  void showProgress(){
+        dialogue=new ProgressDialog(this);
+        dialogue.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+        dialogue.setTitle("Loading");
+        dialogue.setMessage("Please Wait...");
+        dialogue.setCanceledOnTouchOutside(false);
+        dialogue.show();
+
     }
 
     private void setFontToActionBar() {
@@ -118,6 +145,7 @@ public class DealerRegActivity extends AppCompatActivity {
 
 
     private void registerProcess() {
+        showProgress();
         StringRequest stringRequest=new StringRequest(Request.Method.POST, url, new com.android.volley.Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
@@ -125,12 +153,14 @@ public class DealerRegActivity extends AppCompatActivity {
                     JSONObject jsonObject=new JSONObject(response);
                     String result=jsonObject.getString("response");
                     if(result.equals("success")){
-
-                        Toast.makeText(DealerRegActivity.this,"You registered Successfully",Toast.LENGTH_LONG).show();
+                        dialogue.cancel();
+                        StyleableToast.makeText(DealerRegActivity.this,"Registration Success",R.style.mytoast).show();
+                        //Toast.makeText(DealerRegActivity.this,"You registered Successfully",Toast.LENGTH_LONG).show();
                     }
                     else{
-
-                        Toast.makeText(DealerRegActivity.this," "+result,Toast.LENGTH_LONG).show();
+                        dialogue.cancel();
+                        StyleableToast.makeText(DealerRegActivity.this,""+result,R.style.mytoast).show();
+                       // Toast.makeText(DealerRegActivity.this," "+result,Toast.LENGTH_LONG).show();
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -143,7 +173,9 @@ public class DealerRegActivity extends AppCompatActivity {
                 ,new com.android.volley.Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(DealerRegActivity.this,"not Uploaded",Toast.LENGTH_LONG).show();
+                dialogue.cancel();
+                StyleableToast.makeText(DealerRegActivity.this,"Network Errror",R.style.mytoast).show();
+                //Toast.makeText(DealerRegActivity.this,"not Uploaded",Toast.LENGTH_LONG).show();
             }
         })
         {
@@ -253,7 +285,6 @@ public class DealerRegActivity extends AppCompatActivity {
         bitmap.compress(Bitmap.CompressFormat.JPEG,100,byteArrayOutputStream);
         byte [] imageByte=byteArrayOutputStream.toByteArray();
         String imageImage= Base64.encodeToString(imageByte,Base64.DEFAULT);
-
         return imageImage;
 
     }

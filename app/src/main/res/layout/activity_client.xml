@@ -338,7 +338,7 @@
                     android:textColor="#ffffff"
                     android:text="Sign Up"
                     android:fontFamily="sans-serif-condensed"
-                    android:background="@drawable/button_style"
+                    android:background="@drawable/ripple_effect_raised"
                     android:textSize="18sp"
                     android:layout_marginLeft="30dp"
                     android:layout_marginRight="30dp"

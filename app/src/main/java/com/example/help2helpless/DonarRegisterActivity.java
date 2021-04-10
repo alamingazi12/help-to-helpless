@@ -1,8 +1,8 @@
 package com.example.help2helpless;
-
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Color;
@@ -10,6 +10,7 @@ import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.text.TextUtils;
 import android.util.Base64;
 import android.view.Gravity;
 import android.view.View;
@@ -18,6 +19,7 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -25,6 +27,8 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.android.material.textfield.TextInputLayout;
+import com.muddzdev.styleabletoast.StyleableToast;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -33,6 +37,7 @@ import java.io.IOException;
 
 public class DonarRegisterActivity extends AppCompatActivity {
     public static int image_request=2;
+    ProgressDialog dialogue;
     Bitmap bitmap;
     String url="https://apps.help2helpless.com/donarinsert.php";
     TextInputLayout dname,profession,dcontacts,mail,presentaddres,thana,dZilla,amounts,uname,pass;
@@ -48,7 +53,22 @@ public class DonarRegisterActivity extends AppCompatActivity {
         donar_sign.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                registerProcess();
+                String name=dname.getEditText().getText().toString();
+                String professions=profession.getEditText().getText().toString();
+                String contact=dcontacts.getEditText().getText().toString();
+                String email=mail.getEditText().getText().toString();
+                String addres=presentaddres.getEditText().getText().toString();
+                String dthana=thana.getEditText().getText().toString();
+                String dzilla=dZilla.getEditText().getText().toString();
+                String amount=amounts.getEditText().getText().toString();
+                String username=uname.getEditText().getText().toString().trim();
+                String password=pass.getEditText().getText().toString().trim();
+                if(TextUtils.isEmpty(name) || TextUtils.isEmpty(professions) || TextUtils.isEmpty(contact) || TextUtils.isEmpty(email) || TextUtils.isEmpty(addres) || TextUtils.isEmpty(dthana) || TextUtils.isEmpty(dzilla) || TextUtils.isEmpty(amount) || TextUtils.isEmpty(username) || TextUtils.isEmpty(password) || bitmap==null ){
+                    StyleableToast.makeText(DonarRegisterActivity.this,"One or More Fields Empty", R.style.mytoast).show();
+                }else {
+                    registerProcess();
+                }
+
             }
         });
         browse_image.setOnClickListener(new View.OnClickListener() {
@@ -92,8 +112,23 @@ public class DonarRegisterActivity extends AppCompatActivity {
         browse_image=findViewById(R.id.dpic_image);
         donar_sign=findViewById(R.id.dsignbtn);
 
+        dialogue=new ProgressDialog(this);
+        dialogue.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+        dialogue.setTitle("Loading");
+        dialogue.setMessage("Please Wait...");
+        dialogue.setCanceledOnTouchOutside(false);
 
 
+
+
+    }
+    public  void showProgress(){
+        dialogue=new ProgressDialog(this);
+        dialogue.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+        dialogue.setTitle("Loading");
+        dialogue.setMessage("Please Wait...");
+        dialogue.setCanceledOnTouchOutside(false);
+        dialogue.show();
 
     }
     private void browseImage(){
@@ -112,7 +147,7 @@ public class DonarRegisterActivity extends AppCompatActivity {
 
             try {
                 bitmap= MediaStore.Images.Media.getBitmap(getContentResolver(),uri);
-                d_image.setImageBitmap(bitmap);
+                d_image.setImageURI(uri);
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -121,6 +156,7 @@ public class DonarRegisterActivity extends AppCompatActivity {
     }
 
     private void registerProcess() {
+        showProgress();
         StringRequest stringRequest=new StringRequest(Request.Method.POST, url, new com.android.volley.Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
@@ -128,13 +164,15 @@ public class DonarRegisterActivity extends AppCompatActivity {
                     JSONObject jsonObject=new JSONObject(response);
                     String result=jsonObject.getString("response");
                     if(result.equals("success")){
-                        Toast.makeText(DonarRegisterActivity.this,"You registered Successfully",Toast.LENGTH_LONG).show();
+                        dialogue.cancel();
+                        StyleableToast.makeText(DonarRegisterActivity.this,"Registration Success",R.style.mytoast).show();
                         Intent intent=new Intent(DonarRegisterActivity.this,DonarLogin.class);
                         startActivity(intent);
                     }
                     else{
-
-                        Toast.makeText(DonarRegisterActivity.this," "+result,Toast.LENGTH_LONG).show();
+                        dialogue.cancel();
+                        StyleableToast.makeText(DonarRegisterActivity.this,""+result,R.style.mytoast).show();
+                        //Toast.makeText(DonarRegisterActivity.this," "+result,Toast.LENGTH_LONG).show();
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -147,7 +185,8 @@ public class DonarRegisterActivity extends AppCompatActivity {
                 ,new com.android.volley.Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(DonarRegisterActivity.this,"not Uploaded",Toast.LENGTH_LONG).show();
+                dialogue.cancel();
+                StyleableToast.makeText(DonarRegisterActivity.this,"Network Error",R.style.mytoast).show();
             }
         })
         {
@@ -166,19 +205,26 @@ public class DonarRegisterActivity extends AppCompatActivity {
                     String amount=amounts.getEditText().getText().toString();
                     String username=uname.getEditText().getText().toString().trim();
                     String password=pass.getEditText().getText().toString().trim();
+                   if(TextUtils.isEmpty(name) || TextUtils.isEmpty(professions) || TextUtils.isEmpty(contact) || TextUtils.isEmpty(email) || TextUtils.isEmpty(addres) || TextUtils.isEmpty(dthana) || TextUtils.isEmpty(amount) || TextUtils.isEmpty(name) || TextUtils.isEmpty(username) || TextUtils.isEmpty(password) || bitmap==null ){
+                       StyleableToast.makeText(DonarRegisterActivity.this,"One or More Fields Empty", R.style.mytoast).show();
+                   }else {
+
+                   }
+
+                       params.put("name",name);
+                       params.put("profession",professions);
+                       params.put("contact",contact);
+                       params.put("demail",email);
+                       params.put("presentaddr",addres);
+                       params.put("zilla",dzilla);
+                       params.put("thana",dthana);
+                       params.put("donation",amount);
+                       params.put("uname",username);
+                       params.put("passwrd",password);
+                       params.put("donar_pic",imageToString(bitmap));
 
 
-                    params.put("name",name);
-                    params.put("profession",professions);
-                    params.put("contact",contact);
-                    params.put("demail",email);
-                    params.put("presentaddr",addres);
-                    params.put("zilla",dzilla);
-                    params.put("thana",dthana);
-                    params.put("donation",amount);
-                    params.put("uname",username);
-                    params.put("passwrd",password);
-                    params.put("donar_pic",imageToString(bitmap));
+
 
 
                 } catch (JSONException e) {
@@ -205,7 +251,6 @@ public class DonarRegisterActivity extends AppCompatActivity {
         bitmap.compress(Bitmap.CompressFormat.JPEG,100,byteArrayOutputStream);
         byte [] imageByte=byteArrayOutputStream.toByteArray();
         String imageImage= Base64.encodeToString(imageByte,Base64.DEFAULT);
-
         return imageImage;
 
     }

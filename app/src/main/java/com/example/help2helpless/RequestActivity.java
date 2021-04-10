@@ -3,13 +3,11 @@ package com.example.help2helpless;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import com.example.help2helpless.adapter.DealerRequestAdapter;
 import com.example.help2helpless.model.Dealer;
-import com.example.help2helpless.model.DealerTDonation;
 import com.example.help2helpless.model.DealersRequest;
 import com.example.help2helpless.network.ApiClient;
 import com.example.help2helpless.network.ApiInterface;

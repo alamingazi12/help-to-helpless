@@ -13,6 +13,8 @@ import com.example.help2helpless.model.Donar;
 import com.example.help2helpless.model.TotalDonars;
 import com.example.help2helpless.network.ApiClient;
 import com.example.help2helpless.network.ApiInterface;
+import com.muddzdev.styleabletoast.StyleableToast;
+
 import java.util.ArrayList;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -49,7 +51,8 @@ public class AddDonarActivity extends AppCompatActivity {
                 // Toast.makeText(AddDonarActivity.this,"gets data",Toast.LENGTH_LONG).show();
              }
              else{
-                 Toast.makeText(AddDonarActivity.this,"NO Donars To Add",Toast.LENGTH_LONG).show();
+                 StyleableToast.makeText(AddDonarActivity.this,"NO Donars To Add",R.style.mytoast).show();
+                 //Toast.makeText(AddDonarActivity.this,"NO Donars To Add",Toast.LENGTH_LONG).show();
              }
             }
 

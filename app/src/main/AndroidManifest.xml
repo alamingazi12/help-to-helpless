@@ -14,8 +14,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".DonateDealerActivity"></activity>
-        <activity android:name=".AddedDealerActivity" />
+        <activity android:name=".DonationHistory" android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity android:name=".DonateDealerActivity" />
+        <activity
+            android:name=".AddedDealerActivity"
+            android:parentActivityName=".DonarDashBoardActivity" />
         <activity android:name=".RequestActivity" />
         <activity android:name=".AddDonarActivity" />
         <activity

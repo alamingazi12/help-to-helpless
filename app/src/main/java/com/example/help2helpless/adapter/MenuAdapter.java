@@ -3,7 +3,9 @@ package com.example.help2helpless.adapter;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.AssetManager;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -43,6 +45,7 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.MenuViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull MenuViewHolder holder, int position) {
+
          if(position==0){
              holder.itemlayout.setBackgroundColor(Color.parseColor("#84ffff"));
              holder.itemname.setTextColor(Color.parseColor("#004d40"));
@@ -52,6 +55,7 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.MenuViewHolder
         final MenuItem menuItem=items.get(position);
 
          holder.itemimage.setImageResource(menuItem.getImage());
+
          holder.itemname.setText(menuItem.getName());
          holder.itemView.setOnClickListener(new View.OnClickListener() {
              @Override

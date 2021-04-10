@@ -1,10 +1,12 @@
 package com.example.help2helpless;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
@@ -21,7 +23,7 @@ import com.example.help2helpless.model.DealerResponse;
 import com.example.help2helpless.network.ApiClient;
 import com.example.help2helpless.network.ApiInterface;
 import com.google.android.material.textfield.TextInputLayout;
-
+import com.muddzdev.styleabletoast.StyleableToast;
 import java.util.ArrayList;
 
 import retrofit2.Call;
@@ -29,6 +31,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class DealerLoginActivity extends AppCompatActivity {
+    ProgressDialog dialogue;
     SharedPreferences dealerlogininfo;
     SharedPreferences.Editor dealer_editor;
     ArrayList<Dealer> dealers;
@@ -43,7 +46,11 @@ public class DealerLoginActivity extends AppCompatActivity {
         dealer_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                login();
+                if(TextUtils.isEmpty(dealeruname.getEditText().getText().toString().trim()) || TextUtils.isEmpty(dealerpass.getEditText().getText().toString().trim())){
+                    StyleableToast.makeText(DealerLoginActivity.this,"One or More Fields Empty", R.style.mytoast).show();
+                }else{
+                    login();
+                }
             }
         });
         
@@ -67,6 +74,7 @@ public class DealerLoginActivity extends AppCompatActivity {
     }
 
     private void login() {
+        showProgress();
         ApiInterface apiInterface= ApiClient.getApiClient(DealerLoginActivity.this).create(ApiInterface.class);
         Call<DealerResponse> dealerResponseCall=apiInterface.getDealerResponse(dealeruname.getEditText().getText().toString().trim(),dealerpass.getEditText().getText().toString().trim());
         dealerResponseCall.enqueue(new Callback<DealerResponse>() {
@@ -75,6 +83,7 @@ public class DealerLoginActivity extends AppCompatActivity {
             dealers=response.body().getDealers();
 
             if(dealers.size()>0){
+              dialogue.cancel();
                 Dealer dealer=  dealers.get(0);
                 dealer_editor.putString("dname", dealer.getName());
                 dealer_editor.putString("contact", dealer.getPhone());
@@ -87,20 +96,31 @@ public class DealerLoginActivity extends AppCompatActivity {
                 Intent intent=new Intent(DealerLoginActivity.this,DealerActivity.class);
                 startActivity(intent);
             }else {
-                Toast.makeText(DealerLoginActivity.this,"Something wrong",Toast.LENGTH_LONG).show();
+                dialogue.cancel();
+                StyleableToast.makeText(DealerLoginActivity.this,"Wrong Username and Password",R.style.mytoast).show();
             }
         }
 
         @Override
         public void onFailure(Call<DealerResponse> call, Throwable t) {
-
+           dialogue.cancel();
+            StyleableToast.makeText(DealerLoginActivity.this,"Network Error",R.style.mytoast).show();
         }
     });
 
 
     }
+    public  void showProgress(){
+        dialogue=new ProgressDialog(this);
+        dialogue.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+        dialogue.setTitle("Processing");
+        dialogue.setMessage("Please Wait...");
+        dialogue.setCanceledOnTouchOutside(false);
+        dialogue.show();
 
+    }
     private void initAll() {
+
         dealerlogininfo=getSharedPreferences("dealerinfo",0);
         dealer_editor=dealerlogininfo.edit();
         dealeruname=findViewById(R.id.rdname);

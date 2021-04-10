@@ -33,11 +33,11 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="20dp"
-            android:fontFamily="sans-serif-condensed-light"
+            android:fontFamily="@font/relway_semibold"
             android:text="Alamin Gazi"
             android:textColor="#000000"
             android:textFontWeight="400"
-            android:textSize="19sp"
+            android:textSize="22dp"
             app:layout_constraintStart_toEndOf="@+id/dlr_shop_image"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -47,17 +47,18 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="2dp"
-            android:fontFamily="sans-serif-light"
+            android:fontFamily="@font/relway_regular"
             android:text="Shaeen Store"
             android:textColor="#000000"
-            android:textSize="15sp"
+            android:textSize="18sp"
             app:layout_constraintStart_toStartOf="@+id/rdname"
             app:layout_constraintTop_toBottomOf="@+id/rdname" />
 
         <TextView
-            android:fontFamily="sans-serif-thin"
+            android:fontFamily="@font/relway_regular"
             android:id="@+id/shopaddress"
             android:textFontWeight="400"
+            android:textSize="17sp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="2dp"
@@ -67,33 +68,35 @@
             app:layout_constraintTop_toBottomOf="@+id/rdshpname" />
 
         <TextView
-            android:fontFamily="sans-serif-light"
+            android:fontFamily="@font/number_font"
             android:id="@+id/dlr_contact"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="2dp"
-            android:text="01988983612"
-            android:textSize="15dp"
+            android:text="019889836"
+
+            android:textSize="17dp"
             android:textColor="#000000"
             app:layout_constraintStart_toStartOf="@+id/shopaddress"
             app:layout_constraintTop_toBottomOf="@+id/shopaddress" />
 
         <Button
             android:id="@+id/confirm_dlr"
-            android:layout_width="67dp"
+            android:layout_width="wrap_content"
             android:layout_height="27dp"
-            android:layout_marginEnd="32dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="16dp"
             android:background="@drawable/item_button"
-            android:fontFamily="sans-serif-condensed-light"
+            android:fontFamily="@font/alexbold"
             android:text="Confirm"
             android:textAllCaps="false"
             android:textColor="#ffffff"
             android:textFontWeight="500"
             android:textSize="16dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.888" />
+            app:layout_constraintEnd_toEndOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

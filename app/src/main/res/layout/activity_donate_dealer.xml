@@ -59,7 +59,7 @@
             app:layout_constraintVertical_bias="0.0" />
 
         <TextView
-            android:id="@+id/textView4"
+            android:id="@+id/d_balance"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
@@ -73,7 +73,7 @@
             app:layout_constraintVertical_bias="0.0" />
 
         <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/profile_image"
+            android:id="@+id/donar_profile_pic"
             android:layout_width="60dp"
             android:layout_height="60dp"
 
@@ -93,7 +93,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/pass"
+            android:id="@+id/donate_amount"
 
 
             android:layout_below="@+id/username"
@@ -121,7 +121,7 @@
                 android:layout_marginStart="0dp"
                 android:layout_marginBottom="0dp"
                 android:fontFamily="@font/raleway_light"
-                android:inputType="textPassword"
+                android:inputType="text"
 
                 android:textSize="16dp" />
 
@@ -130,7 +130,7 @@
         <com.google.android.material.textfield.TextInputLayout
 
 
-
+            android:id="@+id/amount_description"
             android:layout_below="@+id/username"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
@@ -158,13 +158,14 @@
 
 
                 android:fontFamily="@font/raleway_light"
-                android:inputType="textPassword"
+                android:inputType="text"
 
                 android:textSize="16dp" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
         <Button
+            android:id="@+id/btn_donate"
             android:layout_width="match_parent"
             android:layout_height="53dp"
             android:layout_marginLeft="15dp"

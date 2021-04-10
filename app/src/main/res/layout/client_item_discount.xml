@@ -15,8 +15,8 @@
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/dnr_image"
-            android:layout_width="96dp"
-            android:layout_height="96dp"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
             android:layout_marginStart="16dp"
             android:layout_marginBottom="36dp"
 
@@ -27,52 +27,50 @@
 
         <TextView
             android:id="@+id/donar_name"
+            style="@style/TextBlackTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:fontFamily="sans-serif-light"
+
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="24dp"
             android:text="Alamin Gazi"
             android:textColor="#000000"
             android:textFontWeight="400"
             android:textSize="19sp"
             app:layout_constraintStart_toEndOf="@+id/dnr_image"
-            app:layout_constraintTop_toTopOf="@+id/dnr_image"
+            app:layout_constraintTop_toTopOf="parent"
             tools:ignore="MissingConstraints" />
 
         <TextView
             android:id="@+id/dnr_address"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/colabeerry"
             android:text="Fultala Khulna"
             android:textColor="#000000"
 
             android:textSize="17dp"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="@+id/donar_name"
-            app:layout_constraintTop_toBottomOf="@+id/donar_name"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintTop_toBottomOf="@+id/donar_name" />
 
         <TextView
             android:id="@+id/cl_phone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="40dp"
-            android:fontFamily="sans-serif-light"
+            android:layout_marginTop="4dp"
+            android:fontFamily="@font/number_font"
             android:text="01629630487"
             android:textColor="#000000"
             android:textFontWeight="700"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/dnr_address"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/dnr_address"
-            app:layout_constraintTop_toBottomOf="@+id/dnr_address"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintTop_toBottomOf="@+id/dnr_address" />
 
         <Button
             android:id="@+id/cl_discount"
             android:layout_width="97dp"
             android:layout_height="26dp"
             android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
             android:background="@drawable/button_style"
             android:fontFamily="sans-serif-light"
             android:text="Discount"
@@ -80,9 +78,7 @@
             android:textColor="#ffffff"
             android:textFontWeight="400"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.858" />
+            app:layout_constraintEnd_toEndOf="parent" />
 
         <Button
             android:id="@+id/moreinfo"

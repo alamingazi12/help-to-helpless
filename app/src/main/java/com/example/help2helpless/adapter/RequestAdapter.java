@@ -62,7 +62,7 @@ public class RequestAdapter extends RecyclerView.Adapter<RequestAdapter.RequestV
                     }
                     else{
 
-                        Toast.makeText(context,"Error Occured"+result,Toast.LENGTH_LONG).show();
+                        StyleableToast.makeText(context,"Something Wrong",R.style.mytoast).show();
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -128,6 +128,7 @@ public class RequestAdapter extends RecyclerView.Adapter<RequestAdapter.RequestV
         holder.name.setText(dealer.getName());
         holder.shpname.setText(dealer.getShopnme());
         holder.address.setText(dealer.getShpnmthana());
+        holder.dlr_contact.setText(dealer.getPhone());
         String url=imageUrl+dealer.getShoppic();
         //Picasso.get().load(imageUrl).into(shpimage);
         Picasso.get()

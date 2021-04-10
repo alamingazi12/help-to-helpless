@@ -14,13 +14,17 @@
        android:layout_height="match_parent">
        <androidx.appcompat.widget.Toolbar
            android:id="@+id/toolbar"
-           android:focusable="true"
-
+           app:titleTextAppearance="@style/Custom_ActionBar_Style"
            app:title="Help To Helpless"
+           android:focusable="true"
            app:titleTextColor="#ffffff"
            android:background="#00b4d8"
+
            android:layout_width="match_parent"
-           android:layout_height="wrap_content"/>
+           android:layout_height="wrap_content">
+
+
+       </androidx.appcompat.widget.Toolbar>
 
 
    </LinearLayout>
