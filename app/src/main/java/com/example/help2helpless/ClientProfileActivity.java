@@ -2,7 +2,6 @@ package com.example.help2helpless;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.graphics.drawable.ColorDrawable;
@@ -10,14 +9,11 @@ import android.os.Bundle;
 import android.view.Gravity;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-
 import com.example.help2helpless.model.Client;
 import com.squareup.picasso.Picasso;
-
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class ClientProfileActivity extends AppCompatActivity {
-
        CircleImageView image_profile;
        TextView cname,cdeases,phone,month_income,month_cost,caddres;
     @Override

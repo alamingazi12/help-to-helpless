@@ -14,15 +14,12 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.text.TextUtils;
 import android.util.Base64;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -87,13 +84,21 @@ public class ClientActivity extends AppCompatActivity {
                     StyleableToast.makeText(ClientActivity.this,"One or More Fields Empty", R.style.mytoast).show();
                 }else{
                     registerProcess();
+
                 }
 
             }
+
+
         });
     }
 
-   public void showProgress(){
+
+
+
+
+
+    public void showProgress(){
        progressDialog=new ProgressDialog(this);
        progressDialog.setTitle("Processing");
        progressDialog.setMessage("Please Wait...");

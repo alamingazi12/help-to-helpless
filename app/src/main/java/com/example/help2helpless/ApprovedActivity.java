@@ -154,7 +154,7 @@ public class ApprovedActivity extends AppCompatActivity {
         drugregno=findViewById(R.id.regno);
         shpimage=findViewById(R.id.shop_image);
         phone=findViewById(R.id.dlrphone);
-        confirm=findViewById(R.id.confirm_btn);
+        
 
         dlrname.setText(dealer.getName());
         zilla.setText(dealer.getShpnmzilla());
@@ -166,7 +166,7 @@ public class ApprovedActivity extends AppCompatActivity {
         //Picasso.get().load(imageUrl).into(shpimage);
         Picasso.get()
                 .load(url)
-                .resize(200, 200)
+                .resize(80, 80)
                 .centerCrop()
                 .into(shpimage);
 

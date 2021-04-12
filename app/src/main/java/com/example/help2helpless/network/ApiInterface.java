@@ -15,12 +15,18 @@ import com.example.help2helpless.model.DonarAllDonation;
 import com.example.help2helpless.model.DonarBalance;
 import com.example.help2helpless.model.DonarResponse;
 import com.example.help2helpless.model.DonarsAvgDonation;
+import com.example.help2helpless.model.Responses;
 import com.example.help2helpless.model.TotalClients;
 import com.example.help2helpless.model.TotalDealer;
 import com.example.help2helpless.model.TotalDonars;
 
 import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.http.Field;
+import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
+import retrofit2.http.POST;
 import retrofit2.http.Query;
 
 public  interface ApiInterface {
@@ -91,4 +97,19 @@ public  interface ApiInterface {
 
     @GET("total_dealers_list.php")
     Call<AddDealerList> getAllAddedDealers(@Query("dnr_contact") String dnr_contact);
+
+    @FormUrlEncoded
+    @POST("donarinsert.php")
+     Call<Responses> clientSignResponses(
+            @Field("name") String name,
+            @Field("profession") String profession,
+            @Field("contact") String contact,
+            @Field("demail") String email,//presentaddr
+            @Field("presentaddr") String presentaddr,
+            @Field("zilla") String zilla,
+            @Field("thana") String thana,
+            @Field("donation") String donation,
+            @Field("uname") String username,
+            @Field("passwrd") String password,
+            @Field("donar_pic") String pic);
 }

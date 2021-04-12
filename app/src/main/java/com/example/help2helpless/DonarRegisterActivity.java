@@ -26,6 +26,9 @@ import com.android.volley.RequestQueue;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.help2helpless.model.Responses;
+import com.example.help2helpless.network.ApiClient;
+import com.example.help2helpless.network.ApiInterface;
 import com.google.android.material.textfield.TextInputLayout;
 import com.muddzdev.styleabletoast.StyleableToast;
 
@@ -34,6 +37,10 @@ import org.json.JSONObject;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class DonarRegisterActivity extends AppCompatActivity {
     public static int image_request=2;
@@ -66,7 +73,31 @@ public class DonarRegisterActivity extends AppCompatActivity {
                 if(TextUtils.isEmpty(name) || TextUtils.isEmpty(professions) || TextUtils.isEmpty(contact) || TextUtils.isEmpty(email) || TextUtils.isEmpty(addres) || TextUtils.isEmpty(dthana) || TextUtils.isEmpty(dzilla) || TextUtils.isEmpty(amount) || TextUtils.isEmpty(username) || TextUtils.isEmpty(password) || bitmap==null ){
                     StyleableToast.makeText(DonarRegisterActivity.this,"One or More Fields Empty", R.style.mytoast).show();
                 }else {
-                    registerProcess();
+                    showProgress();
+                    //registerProcess();
+                    ApiInterface apiInterface= ApiClient.getApiClient(DonarRegisterActivity.this).create(ApiInterface.class);
+                    Call<Responses> responseCall= apiInterface.clientSignResponses(name,professions,contact,email,addres,dthana,dzilla,amount,username,password,imageToString(bitmap));
+                    responseCall.enqueue(new Callback<Responses>() {
+                        @Override
+                        public void onResponse(Call<Responses> call, Response<Responses> response) {
+                            String result=response.body().getMessage();
+                            if(response.equals("success")){
+                                 dialogue.cancel();
+                                StyleableToast.makeText(DonarRegisterActivity.this,"Registration Success",R.style.mytoast).show();
+
+                            }else{
+                                dialogue.cancel();
+                                StyleableToast.makeText(DonarRegisterActivity.this,""+result,R.style.mytoast).show();
+                            }
+                        }
+
+                        @Override
+                        public void onFailure(Call<Responses> call, Throwable t) {
+                            dialogue.cancel();
+                            StyleableToast.makeText(DonarRegisterActivity.this,"Network Error",R.style.mytoast).show();
+                        }
+                    });
+
                 }
 
             }
