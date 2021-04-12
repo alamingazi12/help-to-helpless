@@ -18,8 +18,6 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
-
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -76,15 +74,16 @@ public class DonarRegisterActivity extends AppCompatActivity {
                     showProgress();
                     //registerProcess();
                     ApiInterface apiInterface= ApiClient.getApiClient(DonarRegisterActivity.this).create(ApiInterface.class);
-                    Call<Responses> responseCall= apiInterface.clientSignResponses(name,professions,contact,email,addres,dthana,dzilla,amount,username,password,imageToString(bitmap));
+                    Call<Responses> responseCall= apiInterface.donarSignResponses(name,professions,contact,email,addres,dthana,dzilla,amount,username,password,imageToString(bitmap));
                     responseCall.enqueue(new Callback<Responses>() {
                         @Override
                         public void onResponse(Call<Responses> call, Response<Responses> response) {
                             String result=response.body().getMessage();
-                            if(response.equals("success")){
+                            if(result.equals("success")){
                                  dialogue.cancel();
                                 StyleableToast.makeText(DonarRegisterActivity.this,"Registration Success",R.style.mytoast).show();
-
+                                Intent intent=new Intent(DonarRegisterActivity.this,DonarLogin.class);
+                                startActivity(intent);
                             }else{
                                 dialogue.cancel();
                                 StyleableToast.makeText(DonarRegisterActivity.this,""+result,R.style.mytoast).show();

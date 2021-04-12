@@ -100,7 +100,7 @@ public  interface ApiInterface {
 
     @FormUrlEncoded
     @POST("donarinsert.php")
-     Call<Responses> clientSignResponses(
+     Call<Responses> donarSignResponses(
             @Field("name") String name,
             @Field("profession") String profession,
             @Field("contact") String contact,
@@ -112,4 +112,48 @@ public  interface ApiInterface {
             @Field("uname") String username,
             @Field("passwrd") String password,
             @Field("donar_pic") String pic);
+
+    @FormUrlEncoded
+    @POST("temp_dealerinsert.php")
+    Call<Responses> dealerSignResponse(
+            @Field("name") String name,
+            @Field("fname") String fname,
+            @Field("homaddr") String contact,
+            @Field("phone") String phone,//presentaddr
+            @Field("bknumber") String presentaddr,
+            @Field("email") String email,
+            @Field("shopname") String shopname,
+            @Field("shopthana") String thana,
+            @Field("shopzilla") String zilla,
+            @Field("shoppic") String shop_pic,
+            @Field("regno") String reg_no,
+
+            @Field("nid") String nid,
+            @Field("nidpic") String nid_pic,
+            @Field("username") String username,
+            @Field("password") String password);
+
+
+    @FormUrlEncoded
+    @POST("insertclient.php")
+    Call<Responses> clientSignResponse(
+            @Field("name") String name,
+            @Field("fname") String fname,
+            @Field("profession") String profession,
+            @Field("age") String age,//presentaddr
+            @Field("mincome") String address,
+            @Field("incomesrc") String incomesrc,
+            @Field("nson") String nson,
+            @Field("ndaughter") String ndaughter,
+            @Field("guardian") String guardian,
+            @Field("guardianno") String guardian_no,
+            @Field("clientbksnum") String client_bkash,
+            @Field("cdisease") String diases,
+            @Field("cmedicost") String month_cost,
+            @Field("caddress") String caddress,
+            @Field("cphoto") String photo,
+
+           @Field("ccontact") String client_number,
+           @Field("dcontact") String donar_contact);
+
 }

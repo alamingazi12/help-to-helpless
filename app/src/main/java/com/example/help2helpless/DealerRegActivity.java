@@ -24,12 +24,19 @@ import com.android.volley.RequestQueue;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.help2helpless.model.Responses;
+import com.example.help2helpless.network.ApiClient;
+import com.example.help2helpless.network.ApiInterface;
 import com.google.android.material.textfield.TextInputLayout;
 import com.muddzdev.styleabletoast.StyleableToast;
 import org.json.JSONException;
 import org.json.JSONObject;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class DealerRegActivity extends AppCompatActivity { ProgressDialog dialogue;
   public static int image_request=1, image_request2=2;
@@ -48,7 +55,7 @@ public class DealerRegActivity extends AppCompatActivity { ProgressDialog dialog
         signup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+               // showProgress();
                 String name=dname.getEditText().getText().toString();
                 String dfname=fname.getEditText().getText().toString();
                 String daddres=dladdress.getEditText().getText().toString();
@@ -66,7 +73,28 @@ public class DealerRegActivity extends AppCompatActivity { ProgressDialog dialog
                 if(regno_bitmap==null || nid_bitmap==null || TextUtils.isEmpty(name) || TextUtils.isEmpty(dfname) || TextUtils.isEmpty(daddres) || TextUtils.isEmpty(dlphone) ||TextUtils.isEmpty(dlbks) || TextUtils.isEmpty(dlmail) || TextUtils.isEmpty(dlshpname) || TextUtils.isEmpty(dlthana) || TextUtils.isEmpty(dlZilla) || TextUtils.isEmpty(dlregno) || TextUtils.isEmpty(dlnid) || TextUtils.isEmpty(dluname) || TextUtils.isEmpty(dlpass)){
                     StyleableToast.makeText(DealerRegActivity.this,"One or More Fields Empty", R.style.mytoast).show();
                 }else {
-                    registerProcess();
+
+                    ApiInterface apiInterface=ApiClient.getApiClient(DealerRegActivity.this).create(ApiInterface.class);
+                    Call<Responses> responsesCall=apiInterface.dealerSignResponse(name,dfname,daddres,dlphone,dlbks,dlmail,dlshpname,dlthana,dlZilla,imageToString(regno_bitmap),dlregno,dlnid,imageToString(nid_bitmap),dluname,dlpass);
+                    responsesCall.enqueue(new Callback<Responses>() {
+                        @Override
+                        public void onResponse(Call<Responses> call, Response<Responses> response) {
+                            String result=response.body().getMessage();
+                            if(result.equals("success")){
+                              dialogue.cancel();
+                                StyleableToast.makeText(DealerRegActivity.this,"Registration Success",R.style.mytoast).show();
+                            }else {
+                                dialogue.cancel();
+                                StyleableToast.makeText(DealerRegActivity.this,""+result,R.style.mytoast).show();
+                            }
+                        }
+
+                        @Override
+                        public void onFailure(Call<Responses> call, Throwable t) {
+                            dialogue.cancel();
+                            StyleableToast.makeText(DealerRegActivity.this,"Network Error",R.style.mytoast).show();
+                        }
+                    });
                 }
 
             }
@@ -83,6 +111,10 @@ public class DealerRegActivity extends AppCompatActivity { ProgressDialog dialog
              browseImage2();
          }
      });
+    }
+
+    private void dealerSign() {
+
     }
 
     public  void showProgress(){

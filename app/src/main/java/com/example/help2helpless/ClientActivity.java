@@ -27,6 +27,9 @@ import com.android.volley.RequestQueue;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.help2helpless.model.Responses;
+import com.example.help2helpless.network.ApiClient;
+import com.example.help2helpless.network.ApiInterface;
 import com.google.android.material.textfield.TextInputLayout;
 import com.muddzdev.styleabletoast.StyleableToast;
 
@@ -35,6 +38,10 @@ import org.json.JSONObject;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class ClientActivity extends AppCompatActivity {
      String baseurl="https://apps.help2helpless.com/insertclient.php";
@@ -62,13 +69,12 @@ public class ClientActivity extends AppCompatActivity {
         client_signup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                showProgress();
                 String name= clname.getEditText().getText().toString();
                 String fathername= fname.getEditText().getText().toString();
                 String profession=  cprofession.getEditText().getText().toString();
                 String age= cage.getEditText().getText().toString();
                 String income= cincome.getEditText().getText().toString();
-
                 String  isrc= incomesrc.getEditText().getText().toString();
                 String nof_son=  nsons.getEditText().getText().toString();
                 String daughtr= ndaughter.getEditText().getText().toString();
@@ -83,8 +89,29 @@ public class ClientActivity extends AppCompatActivity {
                 if(TextUtils.isEmpty(name) || TextUtils.isEmpty(fathername) || TextUtils.isEmpty(profession) || TextUtils.isEmpty(age) || TextUtils.isEmpty(income) || TextUtils.isEmpty(isrc) || TextUtils.isEmpty(nof_son) || TextUtils.isEmpty(daughtr) || TextUtils.isEmpty(guardian) || TextUtils.isEmpty(gcontact) || TextUtils.isEmpty(clbknum) || TextUtils.isEmpty(deasis) || TextUtils.isEmpty(mcost) || TextUtils.isEmpty(addres) || TextUtils.isEmpty(ccon) || bitmap==null){
                     StyleableToast.makeText(ClientActivity.this,"One or More Fields Empty", R.style.mytoast).show();
                 }else{
-                    registerProcess();
+                    //registerProcess();
+                   ApiInterface apiInterface= ApiClient.getApiClient(ClientActivity.this).create(ApiInterface.class);
+                   Call<Responses> responsesCall =apiInterface.clientSignResponse(name,fathername,profession,age,income,isrc,nof_son,daughtr,guardian,gcontact,clbknum,deasis,mcost,addres,imageToString(bitmap),ccon,dcon);
+                   responsesCall.enqueue(new Callback<Responses>() {
+                       @Override
+                       public void onResponse(Call<Responses> call, Response<Responses> response) {
+                        String   result=response.body().getMessage();
+                        if(result.equals("success")){
+                            progressDialog.cancel();
+                            StyleableToast.makeText(ClientActivity.this,"Registration Success",R.style.mytoast).show();
+                        }
+                        else{
+                            progressDialog.cancel();
+                            StyleableToast.makeText(ClientActivity.this,""+result,R.style.mytoast).show();
+                        }
+                       }
 
+                       @Override
+                       public void onFailure(Call<Responses> call, Throwable t) {
+                           progressDialog.cancel();
+                           StyleableToast.makeText(ClientActivity.this,"Network Error",R.style.mytoast).show();
+                       }
+                   });
                 }
 
             }
