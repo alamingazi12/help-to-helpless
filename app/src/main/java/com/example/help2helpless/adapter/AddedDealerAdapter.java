@@ -78,7 +78,7 @@ public class AddedDealerAdapter extends RecyclerView.Adapter<AddedDealerAdapter.
         ImageView imageView_dealer;
         public AddedDealerViewHolder(@NonNull View itemView) {
             super(itemView);
-            name= itemView.findViewById(R.id.rdname);
+            name= itemView.findViewById(R.id.dsername);
             shpname= itemView.findViewById(R.id.rdshpname);
             address= itemView.findViewById(R.id.shopaddress);
             dlr_phone=itemView.findViewById(R.id.dlr_contact);

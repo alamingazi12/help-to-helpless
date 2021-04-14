@@ -86,7 +86,8 @@ public class ClientActivity extends AppCompatActivity {
                 String addres=  caddress.getEditText().getText().toString();
                 String ccon= ccontact.getEditText().getText().toString();
                 String dcon=  dcontact.getEditText().getText().toString();
-                if(TextUtils.isEmpty(name) || TextUtils.isEmpty(fathername) || TextUtils.isEmpty(profession) || TextUtils.isEmpty(age) || TextUtils.isEmpty(income) || TextUtils.isEmpty(isrc) || TextUtils.isEmpty(nof_son) || TextUtils.isEmpty(daughtr) || TextUtils.isEmpty(guardian) || TextUtils.isEmpty(gcontact) || TextUtils.isEmpty(clbknum) || TextUtils.isEmpty(deasis) || TextUtils.isEmpty(mcost) || TextUtils.isEmpty(addres) || TextUtils.isEmpty(ccon) || bitmap==null){
+                if(TextUtils.isEmpty(name) || TextUtils.isEmpty(fathername) || TextUtils.isEmpty(profession) || TextUtils.isEmpty(age) || TextUtils.isEmpty(income) || TextUtils.isEmpty(isrc) || TextUtils.isEmpty(nof_son) || TextUtils.isEmpty(daughtr) || TextUtils.isEmpty(guardian) || TextUtils.isEmpty(gcontact) || TextUtils.isEmpty(clbknum) || TextUtils.isEmpty(deasis) || TextUtils.isEmpty(mcost) || TextUtils.isEmpty(addres) || TextUtils.isEmpty(ccon) || TextUtils.isEmpty(dcon)|| bitmap==null){
+                    progressDialog.cancel();
                     StyleableToast.makeText(ClientActivity.this,"One or More Fields Empty", R.style.mytoast).show();
                 }else{
                     //registerProcess();

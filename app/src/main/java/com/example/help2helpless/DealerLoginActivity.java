@@ -10,9 +10,9 @@ import android.text.TextUtils;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
@@ -22,7 +22,6 @@ import com.example.help2helpless.model.Dealer;
 import com.example.help2helpless.model.DealerResponse;
 import com.example.help2helpless.network.ApiClient;
 import com.example.help2helpless.network.ApiInterface;
-import com.google.android.material.textfield.TextInputLayout;
 import com.muddzdev.styleabletoast.StyleableToast;
 import java.util.ArrayList;
 
@@ -36,7 +35,7 @@ public class DealerLoginActivity extends AppCompatActivity {
     SharedPreferences.Editor dealer_editor;
     ArrayList<Dealer> dealers;
     Button dealer_login;
-    TextInputLayout dealeruname,dealerpass;
+    EditText dealeruname,dealerpass;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,7 +45,7 @@ public class DealerLoginActivity extends AppCompatActivity {
         dealer_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(TextUtils.isEmpty(dealeruname.getEditText().getText().toString().trim()) || TextUtils.isEmpty(dealerpass.getEditText().getText().toString().trim())){
+                if(TextUtils.isEmpty(dealeruname.getText().toString().trim()) || TextUtils.isEmpty(dealerpass.getText().toString().trim())){
                     StyleableToast.makeText(DealerLoginActivity.this,"One or More Fields Empty", R.style.mytoast).show();
                 }else{
                     login();
@@ -76,7 +75,7 @@ public class DealerLoginActivity extends AppCompatActivity {
     private void login() {
         showProgress();
         ApiInterface apiInterface= ApiClient.getApiClient(DealerLoginActivity.this).create(ApiInterface.class);
-        Call<DealerResponse> dealerResponseCall=apiInterface.getDealerResponse(dealeruname.getEditText().getText().toString().trim(),dealerpass.getEditText().getText().toString().trim());
+        Call<DealerResponse> dealerResponseCall=apiInterface.getDealerResponse(dealeruname.getText().toString().trim(),dealerpass.getText().toString().trim());
         dealerResponseCall.enqueue(new Callback<DealerResponse>() {
         @Override
         public void onResponse(Call<DealerResponse> call, Response<DealerResponse> response) {
@@ -90,8 +89,8 @@ public class DealerLoginActivity extends AppCompatActivity {
                 dealer_editor.putString("uname", dealer.getUsernm());
                 dealer_editor.putString("Zilla", dealer.getShpnmzilla());
                 dealer_editor.apply();
-                dealeruname.getEditText().setText("");
-                dealerpass.getEditText().setText("");
+                dealeruname.setText("");
+                dealerpass.setText("");
                // Toast.makeText(DealerLoginActivity.this," You Loged in Successfully",Toast.LENGTH_LONG).show();
                 Intent intent=new Intent(DealerLoginActivity.this,DealerActivity.class);
                 startActivity(intent);
@@ -120,11 +119,13 @@ public class DealerLoginActivity extends AppCompatActivity {
 
     }
     private void initAll() {
+        if(dealerlogininfo==null){
+            dealerlogininfo=getSharedPreferences("dealerinfo",0);
+            dealer_editor=dealerlogininfo.edit();
+        }
 
-        dealerlogininfo=getSharedPreferences("dealerinfo",0);
-        dealer_editor=dealerlogininfo.edit();
-        dealeruname=findViewById(R.id.rdname);
-        dealerpass=findViewById(R.id.dlrpass);
-        dealer_login=findViewById(R.id.dlr_login);
+        dealeruname=findViewById(R.id.dsername);
+        dealerpass=findViewById(R.id.dpasswrd);
+        dealer_login=findViewById(R.id.dbutton_login);
     }
 }

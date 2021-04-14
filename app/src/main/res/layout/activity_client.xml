@@ -34,6 +34,7 @@
                      android:layout_height="wrap_content">
                        <com.google.android.material.textfield.TextInputEditText
                            android:hint="Name"
+                           android:inputType="textCapWords"
                            android:ems="10"
                            android:layout_width="match_parent"
                            android:layout_height="wrap_content">
@@ -49,6 +50,7 @@
                     android:layout_height="wrap_content">
                     <com.google.android.material.textfield.TextInputEditText
                         android:hint="Father/Husband"
+                        android:inputType="textCapWords"
                         android:ems="10"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
@@ -66,6 +68,7 @@
                     <com.google.android.material.textfield.TextInputEditText
                         android:hint="Profession"
                         android:ems="10"
+                        android:inputType="textCapWords"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
                     </com.google.android.material.textfield.TextInputEditText>
@@ -82,6 +85,7 @@
                     <com.google.android.material.textfield.TextInputEditText
                         android:hint="Client Age"
                         android:ems="10"
+                        android:inputType="number"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
                     </com.google.android.material.textfield.TextInputEditText>
@@ -98,6 +102,7 @@
                     <com.google.android.material.textfield.TextInputEditText
                         android:hint="Monthly Income"
                         android:ems="10"
+                        android:inputType="number"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
                     </com.google.android.material.textfield.TextInputEditText>
@@ -114,6 +119,7 @@
                     <com.google.android.material.textfield.TextInputEditText
                         android:hint="Income Source"
                         android:ems="10"
+                        android:inputType="textCapWords"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
                     </com.google.android.material.textfield.TextInputEditText>
@@ -130,6 +136,7 @@
                     <com.google.android.material.textfield.TextInputEditText
                         android:hint="Num of Son"
                         android:ems="10"
+                        android:inputType="number"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
                     </com.google.android.material.textfield.TextInputEditText>
@@ -146,6 +153,7 @@
                     <com.google.android.material.textfield.TextInputEditText
                         android:hint="Num of Daughter"
                         android:ems="10"
+                        android:inputType="number"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
                     </com.google.android.material.textfield.TextInputEditText>
@@ -162,6 +170,7 @@
                     <com.google.android.material.textfield.TextInputEditText
                         android:hint="Guardian"
                         android:ems="10"
+                        android:inputType="textCapWords"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
                     </com.google.android.material.textfield.TextInputEditText>
@@ -178,6 +187,7 @@
                     <com.google.android.material.textfield.TextInputEditText
                         android:hint="Guardian Mobile No"
                         android:ems="10"
+                        android:inputType="number"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
                     </com.google.android.material.textfield.TextInputEditText>
@@ -194,6 +204,7 @@
                     <com.google.android.material.textfield.TextInputEditText
                         android:hint="Client Mobile No (Bkash)"
                         android:ems="10"
+                        android:inputType="number"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
                     </com.google.android.material.textfield.TextInputEditText>
@@ -210,6 +221,7 @@
                     <com.google.android.material.textfield.TextInputEditText
                         android:hint="Disease Name"
                         android:ems="10"
+                        android:inputType="textCapWords"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
                     </com.google.android.material.textfield.TextInputEditText>
@@ -226,6 +238,7 @@
                     <com.google.android.material.textfield.TextInputEditText
                         android:hint="Monthly Medicine Cost"
                         android:ems="10"
+                        android:inputType="number"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
                     </com.google.android.material.textfield.TextInputEditText>
@@ -242,6 +255,7 @@
                     <com.google.android.material.textfield.TextInputEditText
                         android:hint="Address"
                         android:ems="10"
+                        android:inputType="textCapWords"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
 
@@ -260,6 +274,7 @@
                     android:layout_height="wrap_content">
                     <com.google.android.material.textfield.TextInputEditText
                         android:hint="Client Number"
+                        android:inputType="number"
                         android:ems="10"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
@@ -279,6 +294,7 @@
                     <com.google.android.material.textfield.TextInputEditText
                         android:hint="Dealer Mobile No"
                         android:ems="10"
+                        android:inputType="number"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
 

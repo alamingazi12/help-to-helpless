@@ -38,6 +38,7 @@
                 android:layout_height="wrap_content">
                 <com.google.android.material.textfield.TextInputEditText
                     android:hint="Name"
+
                     android:inputType="textCapWords"
                     app:hintTextColor="#d9d9d9"
                     android:ems="10"
@@ -58,6 +59,7 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:hint="Profession"
                     android:ems="10"
+                    android:inputType="textCapWords"
                     app:hintTextColor="#d9d9d9"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
@@ -74,6 +76,7 @@
                 android:layout_height="wrap_content">
                 <com.google.android.material.textfield.TextInputEditText
                     android:hint="Mobile"
+                    android:inputType="number"
                     android:ems="10"
                     app:hintTextColor="#d9d9d9"
                     android:layout_width="match_parent"
@@ -91,6 +94,7 @@
                 android:layout_height="wrap_content">
                 <com.google.android.material.textfield.TextInputEditText
                     android:hint="Email"
+                    android:inputType="textEmailAddress"
                     android:fontFamily="sans-serif-condensed"
                     android:ems="10"
                     android:layout_width="match_parent"
@@ -109,6 +113,7 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:hint="Present Address"
                     android:ems="10"
+                    android:inputType="textCapWords"
                     android:fontFamily="sans-serif-condensed"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
@@ -125,7 +130,7 @@
                 android:layout_height="wrap_content">
                 <com.google.android.material.textfield.TextInputEditText
                     android:hint="Thana (Permanant Address)"
-
+                    android:inputType="textCapWords"
                     android:ems="10"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
@@ -142,6 +147,7 @@
                 android:layout_height="wrap_content">
                 <com.google.android.material.textfield.TextInputEditText
                     android:ems="10"
+                    android:inputType="textCapWords"
                     android:hint="Zilla (Permanant Address)"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
@@ -159,6 +165,7 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:hint="Monthly Donation amount"
                     android:ems="10"
+                    android:inputType="number"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
                 </com.google.android.material.textfield.TextInputEditText>
@@ -218,6 +225,7 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:hint="Username"
                     android:ems="10"
+
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
                 </com.google.android.material.textfield.TextInputEditText>

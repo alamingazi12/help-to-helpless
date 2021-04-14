@@ -53,7 +53,7 @@
             android:name=".DealerLoginActivity"
             android:parentActivityName=".MainActivity" />
         <activity
-            android:name=".DonarLogin"
+            android:name=".DonarLogin" android:windowSoftInputMode="adjustResize"
             android:parentActivityName=".MainActivity" />
         <activity
             android:name=".AdminDashBoardActivity"

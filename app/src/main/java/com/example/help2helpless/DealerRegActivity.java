@@ -55,7 +55,7 @@ public class DealerRegActivity extends AppCompatActivity { ProgressDialog dialog
         signup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               // showProgress();
+                showProgress();
                 String name=dname.getEditText().getText().toString();
                 String dfname=fname.getEditText().getText().toString();
                 String daddres=dladdress.getEditText().getText().toString();
@@ -71,6 +71,7 @@ public class DealerRegActivity extends AppCompatActivity { ProgressDialog dialog
                 String dlpass=password.getEditText().getText().toString();
 
                 if(regno_bitmap==null || nid_bitmap==null || TextUtils.isEmpty(name) || TextUtils.isEmpty(dfname) || TextUtils.isEmpty(daddres) || TextUtils.isEmpty(dlphone) ||TextUtils.isEmpty(dlbks) || TextUtils.isEmpty(dlmail) || TextUtils.isEmpty(dlshpname) || TextUtils.isEmpty(dlthana) || TextUtils.isEmpty(dlZilla) || TextUtils.isEmpty(dlregno) || TextUtils.isEmpty(dlnid) || TextUtils.isEmpty(dluname) || TextUtils.isEmpty(dlpass)){
+                    dialogue.cancel();
                     StyleableToast.makeText(DealerRegActivity.this,"One or More Fields Empty", R.style.mytoast).show();
                 }else {
 

@@ -1,7 +1,5 @@
 package com.example.help2helpless;
 
-import android.app.AlertDialog;
-import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -10,19 +8,16 @@ import android.graphics.Typeface;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.Gravity;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ProgressBar;
+import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.help2helpless.model.Dealer;
 import com.example.help2helpless.model.Donar;
 import com.example.help2helpless.model.DonarResponse;
 import com.example.help2helpless.network.ApiClient;
@@ -40,7 +35,7 @@ public class DonarLogin extends AppCompatActivity {
     //ProgressBar progressBar;
     ArrayList<Donar> donars;
     Button donar_login;
-    TextInputLayout dusernme,dpasswrd;
+    EditText dusernme,dpasswrd;
     View DialogueView;
 
     ProgressDialog dialogue;
@@ -60,7 +55,7 @@ public class DonarLogin extends AppCompatActivity {
               // createDialoge();
 
 
-                if(TextUtils.isEmpty(dusernme.getEditText().getText().toString().trim()) || TextUtils.isEmpty(dpasswrd.getEditText().getText().toString().trim())){
+                if(TextUtils.isEmpty(dusernme.getText().toString().trim()) || TextUtils.isEmpty(dpasswrd.getText().toString().trim())){
                     StyleableToast.makeText(DonarLogin.this,"Fields Empty", R.style.mytoast).show();
                 }else{
                     login();
@@ -90,9 +85,9 @@ public class DonarLogin extends AppCompatActivity {
     private void initAll() {
 
         //progressBar=findViewById(R.id.progrss_login);
-        dusernme=findViewById(R.id.dsername);
-        dpasswrd=findViewById(R.id.dpasswrd);
-        donar_login=findViewById(R.id.dbutton_login);
+        dusernme=findViewById(R.id.dname);
+        dpasswrd=findViewById(R.id.dpass);
+        donar_login=findViewById(R.id.d_login);
 
         donarsharedpreference=  this.getSharedPreferences("donarinfo",0);
         editor=donarsharedpreference.edit();
@@ -110,7 +105,7 @@ public class DonarLogin extends AppCompatActivity {
     private void login() {
          showProgress();
         ApiInterface apiInterface= ApiClient.getApiClient(DonarLogin.this).create(ApiInterface.class);
-        Call<DonarResponse> donarResponseCall=apiInterface.getDonarResponse(dusernme.getEditText().getText().toString().trim(),dpasswrd.getEditText().getText().toString().trim());
+        Call<DonarResponse> donarResponseCall=apiInterface.getDonarResponse(dusernme.getText().toString().trim(),dpasswrd.getText().toString().trim());
         donarResponseCall.enqueue(new Callback<DonarResponse>() {
           @Override
           public void onResponse(Call<DonarResponse> call, Response<DonarResponse> response) {
@@ -126,8 +121,8 @@ public class DonarLogin extends AppCompatActivity {
                   editor.putBoolean("login",true);
                   editor.apply();
                  // dialog.dismiss();
-                  dusernme.getEditText().setText("");
-                  dpasswrd.getEditText().setText("");
+                  dusernme.setText("");
+                  dpasswrd.setText("");
                  // Toast.makeText(AdminLogin.this,"Loged in Successfully",Toast.LENGTH_LONG).show();
                   Intent intent=new Intent(DonarLogin.this,DonarDashBoardActivity.class);
                   startActivity(intent);

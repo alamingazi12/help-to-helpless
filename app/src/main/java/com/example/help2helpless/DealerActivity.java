@@ -1,8 +1,8 @@
 package com.example.help2helpless;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
@@ -11,6 +11,9 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RelativeLayout;
@@ -33,7 +36,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class DealerActivity extends AppCompatActivity {
-    Button client_sign,btn_add_dealer,btn_discount;
+    Button client_sign,btn_add_dealer,btn_discount,logout;
     SharedPreferences dealerlogininfo;
     String dealer_contact;
     TextView dealer_balances,avg_dlr_discount,total_discount_paid,avg_dealer_received,ndonar,nclients,dlr_name;
@@ -65,20 +68,48 @@ public class DealerActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-      // Button discount_btn=findViewById(R.id.button_discount);
+        logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                logout();
+            }
+        });
 
-      //  getDealerBalance();
-      //  getDealerAvgPaid();
-      //  getDealerTotalPaid();
-        //getAvgDealerReceived();
-        //getTotalDonar();
-        //getTotalClients();
+
+
         getDealerBalance();
         getDealerAvgPaid();
-        //getDealerTotalPaid();
         getAvgDealerReceived();
         getTotalDonar();
         getTotalClients();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_item,menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+       switch (item.getItemId()){
+
+          case  R.id.logout:
+              logout();
+              break;
+           default:
+               break;
+       }
+       return true;
+    }
+
+    private void logout() {
+        dealerlogininfo=getSharedPreferences("dealerinfo",0);
+        SharedPreferences.Editor   dealer_editor=dealerlogininfo.edit();
+        dealer_editor.remove("dname");
+        dealer_editor.commit();
+        Intent intent=new Intent(DealerActivity.this,MainActivity.class);
+        startActivity(intent);
     }
 
     private void getTotalClients() {
@@ -269,6 +300,7 @@ public class DealerActivity extends AppCompatActivity {
         nclients=findViewById(R.id.num_of_clients);
         dlr_name=findViewById(R.id.dlr_name);
         btn_discount=findViewById(R.id.give_discount);
+        logout=findViewById(R.id.btn_logout);
        // total_discount_paid=findViewById(R.id.total_discount);
         btn_add_dealer=findViewById(R.id.dealer_add);
         client_sign=findViewById(R.id.btn_csign);

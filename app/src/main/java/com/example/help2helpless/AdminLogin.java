@@ -9,10 +9,10 @@ import android.text.TextUtils;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
@@ -22,7 +22,6 @@ import com.example.help2helpless.model.Admin;
 import com.example.help2helpless.model.AdminResponse;
 import com.example.help2helpless.network.ApiClient;
 import com.example.help2helpless.network.ApiInterface;
-import com.google.android.material.textfield.TextInputLayout;
 import com.muddzdev.styleabletoast.StyleableToast;
 
 import java.util.ArrayList;
@@ -33,7 +32,7 @@ import retrofit2.Response;
 
 public class AdminLogin extends AppCompatActivity {
     Button admin_login;
-    TextInputLayout adusernme,adpasswrd;
+    EditText adusernme,adpasswrd;
     ArrayList<Admin> admins;
     ProgressBar progressBar;
     ProgressDialog dialogue;
@@ -48,7 +47,7 @@ public class AdminLogin extends AppCompatActivity {
         admin_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(TextUtils.isEmpty(adusernme.getEditText().getText().toString().trim()) || TextUtils.isEmpty(adpasswrd.getEditText().getText().toString().trim())){
+                if(TextUtils.isEmpty(adusernme.getText().toString().trim()) || TextUtils.isEmpty(adpasswrd.getText().toString().trim())){
                     StyleableToast.makeText(AdminLogin.this,"Fields Empty", R.style.mytoast).show();
                 }else{
                     login();
@@ -87,7 +86,7 @@ public class AdminLogin extends AppCompatActivity {
     private void login() {
         showProgress();
         ApiInterface apiInterface= ApiClient.getApiClient(AdminLogin.this).create(ApiInterface.class);
-        Call<AdminResponse> adminResponseCall=apiInterface.getAdminResponse(adusernme.getEditText().getText().toString().trim(),adpasswrd.getEditText().getText().toString().trim());
+        Call<AdminResponse> adminResponseCall=apiInterface.getAdminResponse(adusernme.getText().toString().trim(),adpasswrd.getText().toString().trim());
         adminResponseCall.enqueue(new Callback<AdminResponse>() {
             @Override
             public void onResponse(Call<AdminResponse> call, Response<AdminResponse> response) {
@@ -95,8 +94,8 @@ public class AdminLogin extends AppCompatActivity {
                if(admins.size()>0){
                    dialogue.cancel();
                    Admin admin=admins.get(0);
-                   adusernme.getEditText().setText("");
-                   adpasswrd.getEditText().setText("");
+                   adusernme.setText("");
+                   adpasswrd.setText("");
                   // Toast.makeText(AdminLogin.this,"Loged in Successfully",Toast.LENGTH_LONG).show();
                    Intent intent=new Intent(AdminLogin.this,AdminDashBoardActivity.class);
                    startActivity(intent);
@@ -119,8 +118,8 @@ public class AdminLogin extends AppCompatActivity {
 
     private void initAll() {
 
-        adusernme=findViewById(R.id.adusername);
-        adpasswrd=findViewById(R.id.adpasswrd);
-        admin_login=findViewById(R.id.admbutton_login);
+        adusernme=findViewById(R.id.dsername);
+        adpasswrd=findViewById(R.id.dpasswrd);
+        admin_login=findViewById(R.id.dbutton_login);
     }
 }

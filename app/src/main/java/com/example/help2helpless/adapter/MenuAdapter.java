@@ -18,6 +18,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 
 import com.example.help2helpless.AdminLogin;
+import com.example.help2helpless.DealerActivity;
 import com.example.help2helpless.DealerLoginActivity;
 import com.example.help2helpless.DealerRegActivity;
 import com.example.help2helpless.DonarLogin;
@@ -65,8 +66,18 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.MenuViewHolder
                     context.startActivity(intent);
                  }
                  if(menuItem.getName().equals("Dealer")){
-                     Intent intent=new Intent(context, DealerLoginActivity.class);
-                     context.startActivity(intent);
+                     SharedPreferences     dealerlogininfo=context.getSharedPreferences("dealerinfo",0);
+
+                     if(dealerlogininfo.getString("dname","").equals("")){
+
+                         Intent intent=new Intent(context, DealerLoginActivity.class);
+                         context.startActivity(intent);
+                     }else {
+                         Intent intent=new Intent(context, DealerActivity.class);
+                         context.startActivity(intent);
+                     }
+
+
 
                  }
                  if(menuItem.getName().equals("Donar")){

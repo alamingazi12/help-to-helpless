@@ -165,7 +165,7 @@ public class RequestAdapter extends RecyclerView.Adapter<RequestAdapter.RequestV
         ImageView dlr_shop_pic;
         public RequestViewHolder(@NonNull View itemView) {
             super(itemView);
-            name= itemView.findViewById(R.id.rdname);
+            name= itemView.findViewById(R.id.dsername);
             shpname= itemView.findViewById(R.id.rdshpname);
             address= itemView.findViewById(R.id.shopaddress);
             dlr_contact=itemView.findViewById(R.id.dlr_contact);
