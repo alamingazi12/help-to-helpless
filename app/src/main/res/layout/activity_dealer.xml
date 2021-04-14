@@ -15,7 +15,6 @@
 
 
         <TextView
-            android:textColor="#000000"
             android:id="@+id/dlr_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -23,6 +22,7 @@
             android:layout_marginTop="40dp"
             android:fontFamily="sans-serif-light"
             android:text="Md. Kamrul Islam"
+            android:textColor="#000000"
             android:textFontWeight="500"
             android:textSize="27sp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -63,9 +63,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
+            android:fontFamily="@font/number_font"
             android:text="0.0"
             android:textColor="#000000"
-            android:fontFamily="@font/number_font"
             android:textSize="28dp"
             app:layout_constraintBottom_toBottomOf="@+id/textView3"
             app:layout_constraintStart_toEndOf="@+id/textView3"
@@ -86,18 +86,40 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <Button
-            android:background="#ffffff"
-            android:textAllCaps="false"
-            android:textColor="#000000"
-            android:fontFamily="@font/raleway_light"
             android:id="@+id/btn_logout"
             android:layout_width="86dp"
             android:layout_height="39dp"
             android:layout_marginTop="104dp"
             android:layout_marginEnd="132dp"
+            android:background="#ffffff"
+            android:fontFamily="@font/raleway_light"
             android:text="Log Out"
+            android:textAllCaps="false"
+            android:textColor="#000000"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageButton
+            android:id="@+id/back_pic_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/back_style_background"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_back" />
+
+        <ImageButton
+            android:id="@+id/menu_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="4dp"
+            android:background="#f8f9fa"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_more" />
     </androidx.constraintlayout.widget.ConstraintLayout>
     <LinearLayout
         android:background="#f8f9fa"
@@ -121,7 +143,9 @@
                 android:layout_height="150dp">
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent">
 
 
                     <TextView
@@ -140,12 +164,12 @@
                         app:layout_constraintVertical_bias="0.408" />
 
                     <TextView
-                        android:gravity="center"
                         android:id="@+id/textView6"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="16dp"
                         android:fontFamily="@font/artifika"
+                        android:gravity="center"
                         android:text="Donar \n Connection"
                         android:textColor="#000000"
                         android:textFontWeight="500"
@@ -401,5 +425,7 @@
             android:layout_height="wrap_content"/>
 
     </LinearLayout>
+
+
 
 </LinearLayout>

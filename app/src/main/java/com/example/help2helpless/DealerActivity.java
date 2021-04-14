@@ -1,5 +1,4 @@
 package com.example.help2helpless;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,6 +15,8 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.PopupMenu;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -37,6 +38,7 @@ import retrofit2.Response;
 
 public class DealerActivity extends AppCompatActivity {
     Button client_sign,btn_add_dealer,btn_discount,logout;
+    ImageButton back_btn,menu_icon;
     SharedPreferences dealerlogininfo;
     String dealer_contact;
     TextView dealer_balances,avg_dlr_discount,total_discount_paid,avg_dealer_received,ndonar,nclients,dlr_name;
@@ -74,7 +76,34 @@ public class DealerActivity extends AppCompatActivity {
                 logout();
             }
         });
-
+        back_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(DealerActivity.this,MainActivity.class) ;
+                startActivity(intent);
+            }
+        });
+        menu_icon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                PopupMenu popup = new PopupMenu(DealerActivity.this, menu_icon);
+                //inflating menu from xml resource
+                popup.inflate(R.menu.menu_item);
+                //adding click listener
+                popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                    @Override
+                    public boolean onMenuItemClick(MenuItem item) {
+                        switch (item.getItemId()) {
+                            case R.id.logout:
+                                logout();
+                                break;
+                        }
+                        return false;
+                    }
+                });
+                popup.show();
+            }
+        });
 
 
         getDealerBalance();
@@ -301,6 +330,8 @@ public class DealerActivity extends AppCompatActivity {
         dlr_name=findViewById(R.id.dlr_name);
         btn_discount=findViewById(R.id.give_discount);
         logout=findViewById(R.id.btn_logout);
+        back_btn=findViewById(R.id.back_pic_btn);
+        menu_icon=findViewById(R.id.menu_icon);
        // total_discount_paid=findViewById(R.id.total_discount);
         btn_add_dealer=findViewById(R.id.dealer_add);
         client_sign=findViewById(R.id.btn_csign);
