@@ -1,10 +1,16 @@
 package com.example.help2helpless;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.Bundle;
+import android.view.Gravity;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.example.help2helpless.adapter.DealerRequestAdapter;
 import com.example.help2helpless.model.Dealer;
@@ -26,8 +32,26 @@ public class RequestActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_request);
-        init();
+        setFontToActionBar();
+       init();
         getDealers();
+    }
+
+    private void setFontToActionBar() {
+        TextView tv = new TextView(RequestActivity.this);
+        RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams(ActionBar.LayoutParams.WRAP_CONTENT, ActionBar.LayoutParams.WRAP_CONTENT);
+        tv.setLayoutParams(lp);
+        tv.setText("Requests");
+        tv.setTextSize(22);
+        tv.setGravity(Gravity.CENTER);
+        tv.setTextColor(Color.parseColor("#ffffff"));
+        Typeface tf = Typeface.createFromAsset(getAssets(), "fonts/relway_regular.ttf");
+        tv.setTypeface(tf);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+        getSupportActionBar().setCustomView(tv);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
     }
 
     private void init() {

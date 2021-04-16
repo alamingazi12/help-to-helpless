@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.Typeface;
@@ -85,12 +86,14 @@ public class ClientActivity extends AppCompatActivity {
                 String mcost=  medicost.getEditText().getText().toString();
                 String addres=  caddress.getEditText().getText().toString();
                 String ccon= ccontact.getEditText().getText().toString();
-                String dcon=  dcontact.getEditText().getText().toString();
-                if(TextUtils.isEmpty(name) || TextUtils.isEmpty(fathername) || TextUtils.isEmpty(profession) || TextUtils.isEmpty(age) || TextUtils.isEmpty(income) || TextUtils.isEmpty(isrc) || TextUtils.isEmpty(nof_son) || TextUtils.isEmpty(daughtr) || TextUtils.isEmpty(guardian) || TextUtils.isEmpty(gcontact) || TextUtils.isEmpty(clbknum) || TextUtils.isEmpty(deasis) || TextUtils.isEmpty(mcost) || TextUtils.isEmpty(addres) || TextUtils.isEmpty(ccon) || TextUtils.isEmpty(dcon)|| bitmap==null){
+
+                if(TextUtils.isEmpty(name) || TextUtils.isEmpty(fathername) || TextUtils.isEmpty(profession) || TextUtils.isEmpty(age) || TextUtils.isEmpty(income) || TextUtils.isEmpty(isrc) || TextUtils.isEmpty(nof_son) || TextUtils.isEmpty(daughtr) || TextUtils.isEmpty(guardian) || TextUtils.isEmpty(gcontact) || TextUtils.isEmpty(clbknum) || TextUtils.isEmpty(deasis) || TextUtils.isEmpty(mcost) || TextUtils.isEmpty(addres) || TextUtils.isEmpty(ccon) || bitmap==null){
                     progressDialog.cancel();
                     StyleableToast.makeText(ClientActivity.this,"One or More Fields Empty", R.style.mytoast).show();
                 }else{
                     //registerProcess();
+                   SharedPreferences dealerlogininfo=getSharedPreferences("dealerinfo",0);
+                   String dcon=dealerlogininfo.getString("contact","");
                    ApiInterface apiInterface= ApiClient.getApiClient(ClientActivity.this).create(ApiInterface.class);
                    Call<Responses> responsesCall =apiInterface.clientSignResponse(name,fathername,profession,age,income,isrc,nof_son,daughtr,guardian,gcontact,clbknum,deasis,mcost,addres,imageToString(bitmap),ccon,dcon);
                    responsesCall.enqueue(new Callback<Responses>() {
@@ -167,7 +170,6 @@ public class ClientActivity extends AppCompatActivity {
         medicost=findViewById(R.id.mcost);
         caddress=findViewById(R.id.caddress);
         ccontact=findViewById(R.id.ccontact);
-        dcontact=findViewById(R.id.dcontact);
         clientimg=findViewById(R.id.cimage);
         client_signup=findViewById(R.id.client_signup);
         browse_image=findViewById(R.id.pic_image);

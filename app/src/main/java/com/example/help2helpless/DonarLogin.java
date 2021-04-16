@@ -88,9 +88,12 @@ public class DonarLogin extends AppCompatActivity {
         dusernme=findViewById(R.id.dname);
         dpasswrd=findViewById(R.id.dpass);
         donar_login=findViewById(R.id.d_login);
+        if(donarsharedpreference==null){
 
-        donarsharedpreference=  this.getSharedPreferences("donarinfo",0);
-        editor=donarsharedpreference.edit();
+            donarsharedpreference=  this.getSharedPreferences("donarinfo",0);
+            editor=donarsharedpreference.edit();
+        }
+
     }
     public  void showProgress(){
         dialogue=new ProgressDialog(this);

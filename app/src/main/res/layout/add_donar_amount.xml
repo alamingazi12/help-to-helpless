@@ -6,12 +6,12 @@
 
     <TextView
         android:id="@+id/text"
-        android:padding="10dp"
+        android:padding="15dp"
         android:text="Add Amount"
         android:gravity="center"
         android:textColor="#f4a261"
         android:layout_marginTop="10dp"
-        android:fontFamily="@font/electrolize"
+        android:fontFamily="@font/relway_semibold"
         android:textSize="22sp"
         android:paddingBottom="10dp"
         android:layout_width="match_parent"
@@ -20,9 +20,10 @@
     <EditText
         android:layout_below="@+id/text"
         android:id="@+id/dnr_conts"
-        android:layout_margin="10dp"
+        android:layout_margin="5dp"
+
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:layout_marginTop="10dp"
         android:layout_alignParentStart="true"
 
@@ -32,20 +33,20 @@
 
         android:paddingLeft="10dp"
         android:layout_marginRight="10dp"
-        android:fontFamily="sans-serif-condensed-medium"
+        android:fontFamily="@font/number_font"
 
         android:padding="5dp"
         android:hint="Donar Contact"
         android:textColor="#000"
-        android:textSize="24dp" />
+        android:textSize="18sp" />
 
     <EditText
         android:layout_below="@+id/dnr_conts"
         android:id="@+id/addamount"
 
-        android:layout_margin="10dp"
+        android:layout_margin="5dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:layout_marginTop="10dp"
         android:layout_alignParentStart="true"
 
@@ -55,12 +56,12 @@
 
         android:paddingLeft="10dp"
         android:layout_marginRight="10dp"
-        android:fontFamily="sans-serif-condensed-medium"
+        android:fontFamily="@font/number_font"
 
         android:padding="5dp"
         android:hint=" Amount"
         android:textColor="#000"
-        android:textSize="24dp" />
+        android:textSize="17dp" />
 
     <LinearLayout
         android:layout_marginTop="10dp"
@@ -77,7 +78,7 @@
             android:layout_margin="5dp"
             android:layout_weight="1"
             android:background="@drawable/butttonstyle"
-            android:fontFamily="@font/electrolize"
+            android:fontFamily="@font/relway_semibold"
             android:text="Ok"
             android:textColor="#fff" />
         <Button
@@ -88,7 +89,7 @@
             android:id="@+id/selectcancel"
             android:layout_width="0dp"
             android:layout_height="35dp"
-            android:fontFamily="@font/electrolize"
+            android:fontFamily="@font/relway_semibold"
 
             android:background="@drawable/button_style_cancel"
             android:text="Cancel" />

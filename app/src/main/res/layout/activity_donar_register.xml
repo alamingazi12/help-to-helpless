@@ -20,9 +20,9 @@
 
             <ImageView
                 android:layout_gravity="center"
-                android:layout_width="150dp"
+                android:layout_width="100dp"
                 android:layout_marginBottom="60dp"
-                android:layout_height="150dp"
+                android:layout_height="100dp"
                 android:src="@drawable/adduser"
                 android:layout_marginTop="50dp"
 
@@ -32,7 +32,8 @@
                 android:id="@+id/dname"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                 android:focusable="true"
-
+                 android:layout_marginLeft="15sp"
+                android:layout_marginRight="15sp"
                 app:hintTextColor="#d9d9d9"
                 android:focusableInTouchMode="true"
                 android:layout_height="wrap_content">
@@ -51,6 +52,8 @@
                 android:layout_width="match_parent"
                 android:focusable="true"
                 app:hintTextColor="#d9d9d9"
+                android:layout_marginLeft="15sp"
+                android:layout_marginRight="15sp"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                 android:id="@+id/dprofession"
                 android:layout_marginTop="10dp"
@@ -72,6 +75,8 @@
                 android:id="@+id/dcontacts"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                 android:layout_marginTop="10dp"
+                android:layout_marginLeft="15sp"
+                android:layout_marginRight="15sp"
                 android:focusableInTouchMode="true"
                 android:layout_height="wrap_content">
                 <com.google.android.material.textfield.TextInputEditText
@@ -89,6 +94,8 @@
                 android:focusable="true"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                 android:id="@+id/demail"
+                android:layout_marginLeft="15sp"
+                android:layout_marginRight="15sp"
                 android:layout_marginTop="10dp"
                 android:focusableInTouchMode="true"
                 android:layout_height="wrap_content">
@@ -108,6 +115,8 @@
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                 android:id="@+id/dpresntaddres"
                 android:layout_marginTop="10dp"
+                android:layout_marginLeft="15sp"
+                android:layout_marginRight="15sp"
                 android:focusableInTouchMode="true"
                 android:layout_height="wrap_content">
                 <com.google.android.material.textfield.TextInputEditText
@@ -126,6 +135,8 @@
                 android:id="@+id/dthana"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                 android:layout_marginTop="10dp"
+                android:layout_marginLeft="15sp"
+                android:layout_marginRight="15sp"
                 android:focusableInTouchMode="true"
                 android:layout_height="wrap_content">
                 <com.google.android.material.textfield.TextInputEditText
@@ -140,6 +151,8 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:focusable="true"
+                android:layout_marginLeft="15sp"
+                android:layout_marginRight="15sp"
                 android:id="@+id/dzilla"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                 android:layout_marginTop="10dp"
@@ -160,6 +173,8 @@
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                 android:layout_marginTop="10dp"
                 android:id="@+id/damount"
+                android:layout_marginLeft="15sp"
+                android:layout_marginRight="15sp"
                 android:focusableInTouchMode="true"
                 android:layout_height="wrap_content">
                 <com.google.android.material.textfield.TextInputEditText
@@ -191,7 +206,7 @@
                     android:layout_height="wrap_content">
                     <ImageView
 
-                        android:background="@drawable/imageview_style"
+
                         android:layout_centerHorizontal="true"
                         android:id="@+id/dimage"
                         android:layout_marginBottom="20dp"
@@ -218,6 +233,8 @@
                 android:layout_width="match_parent"
                 android:focusable="true"
                 android:id="@+id/duname"
+                android:layout_marginLeft="15sp"
+                android:layout_marginRight="15sp"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                 android:layout_marginTop="10dp"
                 android:focusableInTouchMode="true"
@@ -238,7 +255,8 @@
                 android:id="@+id/dpass"
                 app:endIconMode="password_toggle"
                 app:endIconTint="@color/colorOrange"
-
+                android:layout_marginLeft="15sp"
+                android:layout_marginRight="15sp"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                 android:layout_marginTop="10dp"
                 android:focusableInTouchMode="true"

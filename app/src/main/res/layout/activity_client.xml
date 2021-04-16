@@ -3,7 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:orientation="vertical"
-    android:background="#feeafa"
+    android:layout_marginLeft="10dp"
+
+    android:layout_marginRight="10dp"
     android:theme="@style/Theme.MaterialComponents.DayNight.DarkActionBar"
     android:layout_height="match_parent"
     tools:context=".ClientActivity">
@@ -13,6 +15,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
             <LinearLayout
+                android:background="#ffffff"
                 android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
@@ -28,8 +31,9 @@
                      android:focusable="true"
                      style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                      android:id="@+id/cname"
+                     android:layout_marginRight="15dp"
+                     android:layout_marginLeft="15dp"
 
-                     android:layout_margin="12dp"
                      android:focusableInTouchMode="true"
                      android:layout_height="wrap_content">
                        <com.google.android.material.textfield.TextInputEditText
@@ -37,13 +41,15 @@
                            android:inputType="textCapWords"
                            android:ems="10"
                            android:layout_width="match_parent"
-                           android:layout_height="wrap_content">
+                           android:layout_height="match_parent">
                        </com.google.android.material.textfield.TextInputEditText>
                  </com.google.android.material.textfield.TextInputLayout>
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:focusable="true"
-                    android:layout_margin="12dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="13dp"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                     android:id="@+id/fname"
                     android:focusableInTouchMode="true"
@@ -53,16 +59,18 @@
                         android:inputType="textCapWords"
                         android:ems="10"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                        android:layout_height="match_parent">
                     </com.google.android.material.textfield.TextInputEditText>
                 </com.google.android.material.textfield.TextInputLayout>
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:focusable="true"
-                    android:layout_margin="12dp"
+
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                     android:id="@+id/cprofesion"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="13dp"
                     android:focusableInTouchMode="true"
                     android:layout_height="wrap_content">
                     <com.google.android.material.textfield.TextInputEditText
@@ -76,10 +84,13 @@
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:focusable="true"
-                    android:layout_margin="12dp"
+
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                     android:id="@+id/cage"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="13dp"
+
                     android:focusableInTouchMode="true"
                     android:layout_height="wrap_content">
                     <com.google.android.material.textfield.TextInputEditText
@@ -87,16 +98,18 @@
                         android:ems="10"
                         android:inputType="number"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                        android:layout_height="match_parent">
                     </com.google.android.material.textfield.TextInputEditText>
                 </com.google.android.material.textfield.TextInputLayout>
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:focusable="true"
-                    android:layout_margin="12dp"
+
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                     android:id="@+id/mincome"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="13dp"
                     android:focusableInTouchMode="true"
                     android:layout_height="wrap_content">
                     <com.google.android.material.textfield.TextInputEditText
@@ -104,16 +117,19 @@
                         android:ems="10"
                         android:inputType="number"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                        android:layout_height="match_parent">
                     </com.google.android.material.textfield.TextInputEditText>
                 </com.google.android.material.textfield.TextInputLayout>
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:focusable="true"
-                    android:layout_margin="12dp"
+
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                     android:id="@+id/incomesrc"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="13dp"
+
                     android:focusableInTouchMode="true"
                     android:layout_height="wrap_content">
                     <com.google.android.material.textfield.TextInputEditText
@@ -121,16 +137,19 @@
                         android:ems="10"
                         android:inputType="textCapWords"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                        android:layout_height="match_parent">
                     </com.google.android.material.textfield.TextInputEditText>
                 </com.google.android.material.textfield.TextInputLayout>
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:focusable="true"
-                    android:layout_margin="12dp"
+
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                     android:id="@+id/nsons"
-                    android:layout_marginTop="10dp"
+
+                    android:layout_marginRight="15dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="13dp"
                     android:focusableInTouchMode="true"
                     android:layout_height="wrap_content">
                     <com.google.android.material.textfield.TextInputEditText
@@ -138,16 +157,17 @@
                         android:ems="10"
                         android:inputType="number"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                        android:layout_height="match_parent">
                     </com.google.android.material.textfield.TextInputEditText>
                 </com.google.android.material.textfield.TextInputLayout>
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:focusable="true"
-                    android:layout_margin="12dp"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                     android:id="@+id/ndaughter"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="13dp"
                     android:focusableInTouchMode="true"
                     android:layout_height="wrap_content">
                     <com.google.android.material.textfield.TextInputEditText
@@ -155,16 +175,18 @@
                         android:ems="10"
                         android:inputType="number"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                        android:layout_height="match_parent">
                     </com.google.android.material.textfield.TextInputEditText>
                 </com.google.android.material.textfield.TextInputLayout>
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:focusable="true"
-                    android:layout_margin="12dp"
+
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                     android:id="@+id/gurdian"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="13dp"
                     android:focusableInTouchMode="true"
                     android:layout_height="wrap_content">
                     <com.google.android.material.textfield.TextInputEditText
@@ -172,16 +194,18 @@
                         android:ems="10"
                         android:inputType="textCapWords"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                        android:layout_height="match_parent">
                     </com.google.android.material.textfield.TextInputEditText>
                 </com.google.android.material.textfield.TextInputLayout>
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:focusable="true"
-                    android:layout_margin="12dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="13dp"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                     android:id="@+id/gurdian_num"
-                    android:layout_marginTop="10dp"
+
                     android:focusableInTouchMode="true"
                     android:layout_height="wrap_content">
                     <com.google.android.material.textfield.TextInputEditText
@@ -189,16 +213,17 @@
                         android:ems="10"
                         android:inputType="number"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                        android:layout_height="match_parent">
                     </com.google.android.material.textfield.TextInputEditText>
                 </com.google.android.material.textfield.TextInputLayout>
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:focusable="true"
-                    android:layout_margin="12dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="13dp"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                     android:id="@+id/cbk_num"
-                    android:layout_marginTop="10dp"
                     android:focusableInTouchMode="true"
                     android:layout_height="wrap_content">
                     <com.google.android.material.textfield.TextInputEditText
@@ -206,16 +231,18 @@
                         android:ems="10"
                         android:inputType="number"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                        android:layout_height="match_parent">
                     </com.google.android.material.textfield.TextInputEditText>
                 </com.google.android.material.textfield.TextInputLayout>
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:focusable="true"
-                    android:layout_margin="12dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="13dp"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                     android:id="@+id/deasese"
-                    android:layout_marginTop="10dp"
+
                     android:focusableInTouchMode="true"
                     android:layout_height="wrap_content">
                     <com.google.android.material.textfield.TextInputEditText
@@ -223,16 +250,18 @@
                         android:ems="10"
                         android:inputType="textCapWords"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                        android:layout_height="match_parent">
                     </com.google.android.material.textfield.TextInputEditText>
                 </com.google.android.material.textfield.TextInputLayout>
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:focusable="true"
-                    android:layout_margin="12dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="13dp"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                     android:id="@+id/mcost"
-                    android:layout_marginTop="10dp"
+
                     android:focusableInTouchMode="true"
                     android:layout_height="wrap_content">
                     <com.google.android.material.textfield.TextInputEditText
@@ -240,16 +269,19 @@
                         android:ems="10"
                         android:inputType="number"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                        android:layout_height="match_parent">
                     </com.google.android.material.textfield.TextInputEditText>
                 </com.google.android.material.textfield.TextInputLayout>
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:focusable="true"
-                    android:layout_margin="12dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="13dp"
+
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                     android:id="@+id/caddress"
-                    android:layout_marginTop="10dp"
+
                     android:focusableInTouchMode="true"
                     android:layout_height="wrap_content">
                     <com.google.android.material.textfield.TextInputEditText
@@ -257,7 +289,7 @@
                         android:ems="10"
                         android:inputType="textCapWords"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                        android:layout_height="match_parent">
 
                     </com.google.android.material.textfield.TextInputEditText>
                 </com.google.android.material.textfield.TextInputLayout>
@@ -266,7 +298,10 @@
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:focusable="true"
-                    android:layout_margin="12dp"
+
+                    android:layout_marginRight="15dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="13dp"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                     android:id="@+id/ccontact"
 
@@ -277,29 +312,13 @@
                         android:inputType="number"
                         android:ems="10"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                        android:layout_height="match_parent">
 
                     </com.google.android.material.textfield.TextInputEditText>
                 </com.google.android.material.textfield.TextInputLayout>
 
-                <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:focusable="true"
-                    android:layout_margin="12dp"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-                    android:id="@+id/dcontact"
-                    android:layout_marginTop="10dp"
-                    android:focusableInTouchMode="true"
-                    android:layout_height="wrap_content">
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:hint="Dealer Mobile No"
-                        android:ems="10"
-                        android:inputType="number"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
 
-                    </com.google.android.material.textfield.TextInputEditText>
-                </com.google.android.material.textfield.TextInputLayout>
+
 
                 <LinearLayout
                     android:layout_marginTop="30dp"
@@ -337,11 +356,12 @@
                             android:textColor="#ffffff"
                             android:paddingRight="10dp"
                             android:paddingLeft="10dp"
+                            android:fontFamily="@font/relway_medium"
                             android:textAllCaps="false"
                             android:layout_centerHorizontal="true"
                             android:layout_marginTop="5dp"
                             android:layout_width="wrap_content"
-                            android:layout_height="40dp"/>
+                            android:layout_height="33dp"/>
                     </RelativeLayout>
 
                 </LinearLayout>
@@ -360,7 +380,7 @@
                     android:layout_marginRight="30dp"
                     android:gravity="center"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="45dp"/>
 
             </LinearLayout>
 

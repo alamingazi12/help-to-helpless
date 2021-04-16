@@ -34,11 +34,11 @@
            android:layout_height="wrap_content"
            android:layout_marginStart="14dp"
            android:layout_marginTop="28dp"
-           android:fontFamily="@font/colabeerry"
+           android:fontFamily="@font/relway_semibold"
            android:text="Alamin Gazi"
            android:textColor="#000000"
            android:textFontWeight="400"
-           android:textSize="19sp"
+           android:textSize="22sp"
            app:layout_constraintStart_toEndOf="@+id/dlr_shop_image"
            app:layout_constraintTop_toTopOf="parent" />
 
@@ -48,17 +48,18 @@
            android:layout_width="wrap_content"
            android:layout_height="wrap_content"
            android:layout_marginTop="2dp"
-           android:fontFamily="sans-serif-light"
+           android:fontFamily="@font/relway_medium"
            android:text="Shaeen Store"
            android:textColor="#000000"
-           android:textSize="15sp"
+           android:textSize="17sp"
            app:layout_constraintStart_toStartOf="@+id/dsername"
            app:layout_constraintTop_toBottomOf="@+id/dsername" />
 
        <TextView
-           android:fontFamily="sans-serif-thin"
+           android:fontFamily="@font/relway_medium"
            android:id="@+id/shopaddress"
            android:textFontWeight="400"
+           android:textSize="16sp"
            android:layout_width="wrap_content"
            android:layout_height="wrap_content"
            android:layout_marginTop="2dp"
@@ -74,7 +75,7 @@
            android:layout_height="wrap_content"
            android:layout_marginTop="2dp"
            android:text="01988983612"
-           android:textSize="15dp"
+           android:textSize="16sp"
            android:textColor="#000000"
            app:layout_constraintStart_toStartOf="@+id/shopaddress"
            app:layout_constraintTop_toBottomOf="@+id/shopaddress" />

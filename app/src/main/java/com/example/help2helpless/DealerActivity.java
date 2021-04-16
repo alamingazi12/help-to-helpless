@@ -37,7 +37,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class DealerActivity extends AppCompatActivity {
-    Button client_sign,btn_add_dealer,btn_discount,logout;
+    Button client_sign,btn_add_dealer,btn_discount;
     ImageButton back_btn,menu_icon;
     SharedPreferences dealerlogininfo;
     String dealer_contact;
@@ -70,12 +70,7 @@ public class DealerActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        logout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                logout();
-            }
-        });
+
         back_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -329,7 +324,7 @@ public class DealerActivity extends AppCompatActivity {
         nclients=findViewById(R.id.num_of_clients);
         dlr_name=findViewById(R.id.dlr_name);
         btn_discount=findViewById(R.id.give_discount);
-        logout=findViewById(R.id.btn_logout);
+
         back_btn=findViewById(R.id.back_pic_btn);
         menu_icon=findViewById(R.id.menu_icon);
        // total_discount_paid=findViewById(R.id.total_discount);

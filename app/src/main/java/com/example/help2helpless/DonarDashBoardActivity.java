@@ -1,17 +1,17 @@
 package com.example.help2helpless;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.PopupMenu;
 import android.widget.TextView;
-import android.widget.Toast;
+
 
 import com.example.help2helpless.model.DonarAllDonation;
 import com.example.help2helpless.model.DonarBalance;
@@ -28,6 +28,7 @@ import retrofit2.Response;
 
 public class DonarDashBoardActivity extends AppCompatActivity {
     Button show_dealers,show_dealer_req,donate_dealers,btn_history;
+    ImageButton back_button;
     String donar_contact;
     SharedPreferences donarinfo;
     TextView donar_balnce,avg_donations,t_donation,ndealer,dname;
@@ -49,13 +50,7 @@ public class DonarDashBoardActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        show_dealer_req.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent=new Intent(DonarDashBoardActivity.this,RequestActivity.class);
-                startActivity(intent);
-            }
-        });
+
         donate_dealers.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -63,7 +58,49 @@ public class DonarDashBoardActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        back_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(DonarDashBoardActivity.this,MainActivity.class);
+                startActivity(intent);
+            }
+        });
+        findViewById(R.id.menu_icon_btn).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                PopupMenu popup = new PopupMenu(DonarDashBoardActivity.this, findViewById(R.id.menu_icon_btn));
+                //inflating menu from xml resource
+                popup.inflate(R.menu.menu_item_donar);
+                //adding click listener
+                popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                    @Override
+                    public boolean onMenuItemClick(MenuItem item) {
+                        switch (item.getItemId()) {
+                            case R.id.logout:
+                                logout();
+                                break;
+                            case R.id.requests:
+                                Intent intent=new Intent(DonarDashBoardActivity.this,RequestActivity.class);
+                                startActivity(intent);
+                                break;
+                            default:
+                                break;
+                        }
+                        return false;
+                    }
+                });
+                popup.show();
+            }
+        });
+    }
 
+    private void logout() {
+        SharedPreferences   dealerlogininfo=getSharedPreferences("donarinfo",0);
+        SharedPreferences.Editor   dealer_editor=dealerlogininfo.edit();
+        dealer_editor.remove("uname");
+        dealer_editor.commit();
+        Intent intent=new Intent(DonarDashBoardActivity.this,MainActivity.class);
+        startActivity(intent);
     }
 
     @Override
@@ -77,8 +114,9 @@ public class DonarDashBoardActivity extends AppCompatActivity {
        switch (item.getItemId()){
            case R.id.logout:
                logOut();
-               StyleableToast.makeText(DonarDashBoardActivity.this,"Loged Out",R.style.mytoast).show();
+               StyleableToast.makeText(DonarDashBoardActivity.this,"Logged Out",R.style.mytoast).show();
                break;
+
            default:
                break;
        }
@@ -212,6 +250,8 @@ public class DonarDashBoardActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        //button
+        back_button=findViewById(R.id.back_icon);
         dname=findViewById(R.id.dlr_name);
         show_dealers=findViewById(R.id.add_dealers);
         donar_balnce=findViewById(R.id.dnr_balance);
@@ -222,7 +262,7 @@ public class DonarDashBoardActivity extends AppCompatActivity {
         donate_dealers=findViewById(R.id.donate_to_dealer);
         donarinfo=this.getSharedPreferences("donarinfo",0);
         donar_contact=donarinfo.getString("contact",null);
-        show_dealer_req=findViewById(R.id.show_request);
+
         dname.setText(donarinfo.getString("name",null));
         Picasso.get().load(imageUrl+donarinfo.getString("donar_pic",null)).resize(60,60).centerCrop().into(donar_profile_image);
     }

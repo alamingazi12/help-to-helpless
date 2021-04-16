@@ -1,12 +1,15 @@
 package com.example.help2helpless;
 import android.app.AlertDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -14,6 +17,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
@@ -28,6 +32,7 @@ import com.example.help2helpless.model.Admin;
 import com.example.help2helpless.model.Amount;
 import com.example.help2helpless.network.ApiClient;
 import com.example.help2helpless.network.ApiInterface;
+import com.muddzdev.styleabletoast.StyleableToast;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -67,6 +72,33 @@ public class AdminDashBoardActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         getAmount();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_item,menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.logout:
+                logout();
+                break;
+
+        }
+        return true;
+    }
+
+    private void logout() {
+        SharedPreferences    adminSharedPreference=getSharedPreferences("admininfo",0);
+        SharedPreferences.Editor   editor=adminSharedPreference.edit();
+        editor.remove("adminuser");
+        editor.commit();
+        Intent intent=new Intent(AdminDashBoardActivity.this,MainActivity.class);
+        startActivity(intent);
+
     }
 
     private void getAmount() {

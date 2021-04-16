@@ -85,26 +85,13 @@
             app:layout_constraintStart_toEndOf="@+id/dlr_name"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <Button
-            android:id="@+id/btn_logout"
-            android:layout_width="86dp"
-            android:layout_height="39dp"
-            android:layout_marginTop="104dp"
-            android:layout_marginEnd="132dp"
-            android:background="#ffffff"
-            android:fontFamily="@font/raleway_light"
-            android:text="Log Out"
-            android:textAllCaps="false"
-            android:textColor="#000000"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
 
         <ImageButton
             android:id="@+id/back_pic_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
-            android:layout_marginTop="12dp"
+            android:layout_marginTop="10dp"
             android:background="@drawable/back_style_background"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -114,7 +101,7 @@
             android:id="@+id/menu_icon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
+            android:layout_marginTop="7dp"
             android:layout_marginEnd="4dp"
             android:background="#f8f9fa"
             app:layout_constraintEnd_toEndOf="parent"

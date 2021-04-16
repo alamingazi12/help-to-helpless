@@ -12,19 +12,25 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.core.view.GravityCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 
+import com.example.help2helpless.AdminDashBoardActivity;
 import com.example.help2helpless.AdminLogin;
 import com.example.help2helpless.DealerActivity;
 import com.example.help2helpless.DealerLoginActivity;
 import com.example.help2helpless.DealerRegActivity;
+import com.example.help2helpless.DonarDashBoardActivity;
 import com.example.help2helpless.DonarLogin;
 import com.example.help2helpless.DonarRegisterActivity;
 import com.example.help2helpless.R;
 import com.example.help2helpless.model.MenuItem;
+import com.muddzdev.styleabletoast.StyleableToast;
+
 import java.util.ArrayList;
 
 public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.MenuViewHolder> {
@@ -62,8 +68,17 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.MenuViewHolder
              @Override
              public void onClick(View v) {
                  if(menuItem.getName().equals("Admin Panel")){
-                    Intent intent=new Intent(context, AdminLogin.class);
-                    context.startActivity(intent);
+
+                     SharedPreferences    adminSharedPreference=context.getSharedPreferences("admininfo",0);
+
+                     if(adminSharedPreference.getString("adminuser","").equals("")){
+                         Intent intent=new Intent(context, AdminLogin.class);
+                         context.startActivity(intent);
+                     }else {
+                         Intent intent=new Intent(context, AdminDashBoardActivity.class);
+                         context.startActivity(intent);
+                     }
+
                  }
                  if(menuItem.getName().equals("Dealer")){
                      SharedPreferences     dealerlogininfo=context.getSharedPreferences("dealerinfo",0);
@@ -76,13 +91,19 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.MenuViewHolder
                          Intent intent=new Intent(context, DealerActivity.class);
                          context.startActivity(intent);
                      }
-
-
-
+                     
                  }
                  if(menuItem.getName().equals("Donar")){
-                     Intent intent=new Intent(context, DonarLogin.class);
-                     context.startActivity(intent);
+                     SharedPreferences   donarinfo=context.getSharedPreferences("donarinfo",0);
+
+                     if(donarinfo.getString("uname","").equals("")){
+                         Intent intent=new Intent(context, DonarLogin.class);
+                         context.startActivity(intent);
+                     }else{
+                         Intent intent=new Intent(context, DonarDashBoardActivity.class);
+                         context.startActivity(intent);
+                     }
+
                  }
                  if(menuItem.getName().equals("Dealer Registration")){
                      Intent intent=new Intent(context, DealerRegActivity.class);

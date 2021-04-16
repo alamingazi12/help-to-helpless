@@ -2,6 +2,7 @@ package com.example.help2helpless;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
@@ -36,7 +37,8 @@ public class AdminLogin extends AppCompatActivity {
     ArrayList<Admin> admins;
     ProgressBar progressBar;
     ProgressDialog dialogue;
-
+    SharedPreferences adminSharedPreference;
+    SharedPreferences.Editor editor;
     @Override
 
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -94,9 +96,14 @@ public class AdminLogin extends AppCompatActivity {
                if(admins.size()>0){
                    dialogue.cancel();
                    Admin admin=admins.get(0);
+
+                   editor.putString("adminuser",admin.getAname());
+                   //StyleableToast.makeText(AdminLogin.this,"Usernames"+adminSharedPreference.getString("adminuser",""),R.style.mytoast).show();
+                 //  StyleableToast.makeText(AdminLogin.this,"Usernames"+admin.getAname(),R.style.mytoast).show();
+                   editor.apply();
                    adusernme.setText("");
                    adpasswrd.setText("");
-                  // Toast.makeText(AdminLogin.this,"Loged in Successfully",Toast.LENGTH_LONG).show();
+
                    Intent intent=new Intent(AdminLogin.this,AdminDashBoardActivity.class);
                    startActivity(intent);
                }else{
@@ -117,7 +124,11 @@ public class AdminLogin extends AppCompatActivity {
     }
 
     private void initAll() {
+       if(adminSharedPreference==null){
+          adminSharedPreference=getSharedPreferences("admininfo",0);
+          editor=adminSharedPreference.edit();
 
+       }
         adusernme=findViewById(R.id.dsername);
         adpasswrd=findViewById(R.id.dpasswrd);
         admin_login=findViewById(R.id.dbutton_login);

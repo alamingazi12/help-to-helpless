@@ -6,13 +6,13 @@ import android.os.Parcelable;
 public class Admin implements Parcelable {
 
     String id;
-    String aname;
-    String apass;
+    String ausername;
+    String apassword;
 
     protected Admin(Parcel in) {
         id = in.readString();
-        aname = in.readString();
-        apass = in.readString();
+        ausername = in.readString();
+        apassword = in.readString();
     }
 
     public static final Creator<Admin> CREATOR = new Creator<Admin>() {
@@ -36,27 +36,27 @@ public class Admin implements Parcelable {
     }
 
     public String getAname() {
-        return aname;
+        return ausername;
     }
 
     public void setAname(String aname) {
-        this.aname = aname;
+        this.ausername = aname;
     }
 
     public String getApass() {
-        return apass;
+        return apassword;
     }
 
     public void setApass(String apass) {
-        this.apass = apass;
+        this.apassword = apass;
     }
 
 
 
     public Admin(String id, String aname, String apass) {
         this.id = id;
-        this.aname = aname;
-        this.apass = apass;
+        this.ausername = aname;
+        this.apassword = apass;
     }
 
     @Override
@@ -67,7 +67,7 @@ public class Admin implements Parcelable {
     @Override
     public void writeToParcel(Parcel parcel, int i) {
         parcel.writeString(id);
-        parcel.writeString(aname);
-        parcel.writeString(apass);
+        parcel.writeString(ausername);
+        parcel.writeString(apassword);
     }
 }
