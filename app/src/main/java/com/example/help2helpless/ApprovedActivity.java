@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.telephony.SmsManager;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -22,14 +23,16 @@ import com.squareup.picasso.Picasso;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 public class ApprovedActivity extends AppCompatActivity {
-     ImageView shpimage;
+     CircleImageView shpimage;
      String url="https://apps.help2helpless.com/dealerinsert.php";
      Dealer dealer;
      String imageUrl="https://apps.help2helpless.com/uploads/";
      TextView dlrname,zilla,thana,shopname,drugregno,phone;
 
-     Button confirm;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,34 +41,19 @@ public class ApprovedActivity extends AppCompatActivity {
          dealer= bundle.getParcelable("deler");
 
         initAll();
-        confirm.setOnClickListener(new View.OnClickListener() {
+        ImageButton back_image_btn=findViewById(R.id.btn_back);
+        back_image_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                try {
-                    registerProcess();
-                    Thread.sleep(200);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-               //sendSMS();
+                Intent intent=new Intent(ApprovedActivity.this,DealerRequestActivity.class);
+                startActivity(intent);
             }
         });
 
+
     }
 
-    private void sendSMS() {
 
-        Intent intent=new Intent(getApplicationContext(),MainActivity.class);
-        PendingIntent pi=PendingIntent.getActivity(getApplicationContext(), 0, intent,0);
-
-        //Get the SmsManager instance and call the sendTextMessage method to send message
-        SmsManager sms=SmsManager.getDefault();
-        sms.sendTextMessage(dealer.getPhone(), null, "Registration Approved", pi,null);
-
-        Toast.makeText(getApplicationContext(), "Message Sent successfully!",
-                Toast.LENGTH_LONG).show();
-    }
 
     private void registerProcess() {
         StringRequest stringRequest=new StringRequest(Request.Method.POST, url, new com.android.volley.Response.Listener<String>() {
@@ -154,7 +142,6 @@ public class ApprovedActivity extends AppCompatActivity {
         drugregno=findViewById(R.id.regno);
         shpimage=findViewById(R.id.shop_image);
         phone=findViewById(R.id.dlrphone);
-        
 
         dlrname.setText(dealer.getName());
         zilla.setText(dealer.getShpnmzilla());
@@ -162,11 +149,11 @@ public class ApprovedActivity extends AppCompatActivity {
         shopname.setText(dealer.getShopnme());
         drugregno.setText(dealer.getDrugsell_regnum());
         phone.setText(dealer.getPhone());
-         String url=imageUrl+dealer.getShoppic();
+         String url=imageUrl+dealer.getNid_pic();
         //Picasso.get().load(imageUrl).into(shpimage);
         Picasso.get()
                 .load(url)
-                .resize(80, 80)
+                .resize(90, 90)
                 .centerCrop()
                 .into(shpimage);
 

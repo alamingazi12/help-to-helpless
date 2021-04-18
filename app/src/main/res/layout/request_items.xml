@@ -2,6 +2,7 @@
 <androidx.cardview.widget.CardView
 
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="170dp"
     android:layout_margin="10dp"
@@ -82,21 +83,35 @@
 
         <Button
             android:id="@+id/confirm_dlr"
-            android:layout_width="wrap_content"
-            android:layout_height="27dp"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp"
+            android:layout_width="79dp"
+            android:layout_height="23dp"
             android:layout_marginEnd="20dp"
             android:layout_marginBottom="16dp"
             android:background="@drawable/item_button"
             android:fontFamily="@font/alexbold"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
             android:text="Confirm"
             android:textAllCaps="false"
             android:textColor="#ffffff"
             android:textFontWeight="500"
-            android:textSize="16dp"
+            android:textSize="15dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
+
+        <Button
+            android:id="@+id/btn_more"
+            android:layout_width="56dp"
+            android:layout_height="22dp"
+            android:background="@drawable/button_style"
+            android:fontFamily="@font/alexbold"
+            android:text="More"
+            android:textAllCaps="false"
+            android:textColor="#ffffff"
+            android:textSize="14dp"
+            app:layout_constraintBottom_toBottomOf="@+id/confirm_dlr"
+            app:layout_constraintStart_toStartOf="@+id/dlr_contact"
+            app:layout_constraintTop_toTopOf="@+id/confirm_dlr" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

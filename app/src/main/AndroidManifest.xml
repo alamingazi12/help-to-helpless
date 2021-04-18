@@ -44,7 +44,7 @@
             android:name=".DealerRegActivity"
             android:windowSoftInputMode="stateHidden|adjustResize"
             android:parentActivityName=".MainActivity" />
-        <activity android:name=".ApprovedActivity" />
+        <activity android:name=".ApprovedActivity"  android:screenOrientation="portrait" android:theme="@style/AppTheme.NoActionBar"/>
         <activity
             android:name=".DealerRequestActivity"
             android:parentActivityName=".AdminDashBoardActivity" />

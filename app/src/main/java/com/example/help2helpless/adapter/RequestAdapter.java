@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -75,7 +76,7 @@ public class RequestAdapter extends RecyclerView.Adapter<RequestAdapter.RequestV
                 ,new com.android.volley.Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(context,"not Uploaded",Toast.LENGTH_LONG).show();
+                Toast.makeText(context,"Network Error",Toast.LENGTH_LONG).show();
             }
         })
         {
@@ -153,6 +154,17 @@ public class RequestAdapter extends RecyclerView.Adapter<RequestAdapter.RequestV
                   registerProcess(dealer1);
             }
         });
+        holder.more_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Dealer dealer1=dealersList.get(position);
+                Intent intent=new Intent(context, ApprovedActivity.class);
+                Bundle bundle=new Bundle();
+                bundle.putParcelable("deler",dealer1);
+                intent.putExtras(bundle);
+                context.startActivity(intent);
+            }
+        });
     }
 
     @Override
@@ -161,7 +173,8 @@ public class RequestAdapter extends RecyclerView.Adapter<RequestAdapter.RequestV
     }
 
     public class RequestViewHolder extends RecyclerView.ViewHolder {
-        TextView name,shpname,address,dlr_contact,reg_confirm;
+        TextView name,shpname,address,dlr_contact;
+                Button reg_confirm,more_btn;
         ImageView dlr_shop_pic;
         public RequestViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -171,6 +184,8 @@ public class RequestAdapter extends RecyclerView.Adapter<RequestAdapter.RequestV
             dlr_contact=itemView.findViewById(R.id.dlr_contact);
             reg_confirm=itemView.findViewById(R.id.confirm_dlr);
             dlr_shop_pic=itemView.findViewById(R.id.dlr_shop_image);
+            more_btn=itemView.findViewById(R.id.btn_more);
+
         }
     }
 }
