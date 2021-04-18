@@ -8,6 +8,9 @@
         <item name="colorPrimary">#00b4d8</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
+    <style name="CustomAlertDialog" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="android:windowBackground">@drawable/popup_background</item>
+    </style>
 
     <style name="AppTheme.NoActionBar" >
         <!-- Customize your theme here. -->

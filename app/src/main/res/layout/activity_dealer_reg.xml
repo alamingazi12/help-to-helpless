@@ -31,6 +31,8 @@
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                 android:id="@+id/dlname"
                 android:focusable="true"
+
+                android:textColorHint="#adb5bd"
                 android:layout_marginRight="15dp"
                 android:layout_marginLeft="15dp"
                 android:layout_marginTop="10dp"
@@ -52,6 +54,7 @@
                 android:layout_marginLeft="15dp"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                 android:id="@+id/dlfname"
+                android:textColorHint="#adb5bd"
                 android:layout_marginTop="10dp"
                 android:focusableInTouchMode="true"
                 android:layout_height="wrap_content">
@@ -67,6 +70,7 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:focusable="true"
+                android:textColorHint="#adb5bd"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                 android:id="@+id/dladdres"
                 android:layout_marginRight="15dp"
@@ -87,6 +91,7 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:focusable="true"
+                android:textColorHint="#adb5bd"
                 android:layout_marginRight="15dp"
                 android:layout_marginLeft="15dp"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
@@ -108,27 +113,8 @@
                 android:layout_width="match_parent"
                 android:focusable="true"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-                android:layout_marginTop="10dp"
-                android:id="@+id/dlbknum"
-                android:layout_marginRight="15dp"
-                android:layout_marginLeft="15dp"
-                android:focusableInTouchMode="true"
-                android:layout_height="wrap_content">
-                <com.google.android.material.textfield.TextInputEditText
-                    android:hint="Bkash Number"
-                    android:ems="10"
-                    android:inputType="number"
-                    android:fontFamily="sans-serif-condensed"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-                </com.google.android.material.textfield.TextInputEditText>
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:focusable="true"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                 android:id="@+id/dlmail"
+                android:textColorHint="#adb5bd"
                 android:layout_marginRight="15dp"
                 android:layout_marginLeft="15dp"
                 android:layout_marginTop="10dp"
@@ -148,6 +134,7 @@
                 android:focusable="true"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                 android:id="@+id/shpname"
+                android:textColorHint="#adb5bd"
                 android:layout_marginRight="15dp"
                 android:layout_marginLeft="15dp"
                 android:layout_marginTop="10dp"
@@ -167,6 +154,7 @@
                 android:focusable="true"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                 android:id="@+id/shpthana"
+                android:textColorHint="#adb5bd"
                 android:layout_marginRight="15dp"
                 android:layout_marginLeft="15dp"
                 android:layout_marginTop="10dp"
@@ -181,24 +169,53 @@
                 </com.google.android.material.textfield.TextInputEditText>
             </com.google.android.material.textfield.TextInputLayout>
 
-            <com.google.android.material.textfield.TextInputLayout
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/dlbknum"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="15dp"
+                    android:focusable="true"
+                    android:textColorHint="#adb5bd"
+                    android:focusableInTouchMode="true">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:ems="10"
+
+                        android:textColorHint="#adb5bd"
+                        android:fontFamily="sans-serif-condensed"
+                        android:hint="Bkash Number"
+                        android:inputType="number">
+
+                    </com.google.android.material.textfield.TextInputEditText>
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+            <Button
+                android:textColor="#000000"
+               android:paddingRight="20dp"
+                android:drawableRight="@drawable/ic_down_select"
+                android:background="@drawable/edit_text_style"
                 android:layout_width="match_parent"
                 android:focusable="true"
+                android:textSize="19sp"
+                android:textAllCaps="false"
+                android:gravity="center"
+                android:fontFamily="@font/relway_regular"
+                android:text="Select Zilla"
                 android:layout_marginRight="15dp"
                 android:layout_marginLeft="15dp"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-                android:id="@+id/shpzila"
+                android:id="@+id/select_shpzila"
                 android:layout_marginTop="10dp"
                 android:focusableInTouchMode="true"
-                android:layout_height="wrap_content">
-                <com.google.android.material.textfield.TextInputEditText
-                    android:hint="Shop Address (Zilla)"
-                    android:ems="10"
-                    android:inputType="textCapWords"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-                </com.google.android.material.textfield.TextInputEditText>
-            </com.google.android.material.textfield.TextInputLayout>
+                android:layout_height="45dp"/>
+
+
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
@@ -208,6 +225,7 @@
                 android:layout_marginRight="15dp"
                 android:layout_marginLeft="15dp"
                 android:layout_marginTop="10dp"
+                android:textColorHint="#adb5bd"
                 android:focusableInTouchMode="true"
                 android:layout_height="wrap_content">
                 <com.google.android.material.textfield.TextInputEditText
@@ -221,7 +239,7 @@
 
             <LinearLayout
 
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="5dp"
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
@@ -241,12 +259,12 @@
 
                     android:layout_height="wrap_content">
                     <ImageView
-                        android:background="@drawable/imageview_style"
+                        android:layout_marginTop="2dp"
                         android:layout_centerHorizontal="true"
                         android:id="@+id/shpimage"
                         android:layout_marginBottom="20dp"
-                        android:layout_width="120dp"
-                        android:layout_height="120dp"/>
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"/>
                     <Button
                         android:layout_marginBottom="10dp"
                         android:layout_below="@id/shpimage"
@@ -258,7 +276,7 @@
                         android:textAllCaps="false"
                         android:background="@drawable/button_style"
                         android:layout_centerHorizontal="true"
-                        android:layout_marginTop="5dp"
+                        android:layout_marginTop="3dp"
                         android:layout_width="wrap_content"
                         android:layout_height="32dp"/>
                 </RelativeLayout>
@@ -270,9 +288,10 @@
                 android:focusable="true"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                 android:id="@+id/nidnum"
+                android:textColorHint="#adb5bd"
                 android:layout_marginRight="15dp"
                 android:layout_marginLeft="15dp"
-                android:layout_marginTop="10dp"
+
                 android:focusableInTouchMode="true"
                 android:layout_height="wrap_content">
                 <com.google.android.material.textfield.TextInputEditText
@@ -285,7 +304,7 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <LinearLayout
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="10dp"
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
@@ -302,15 +321,13 @@
                 <RelativeLayout
                     android:layout_width="0dp"
                     android:layout_weight="1"
-
                     android:layout_height="wrap_content">
                     <ImageView
                         android:layout_marginBottom="20dp"
-                        android:background="@drawable/imageview_style"
                         android:layout_centerHorizontal="true"
                         android:id="@+id/idimage"
-                        android:layout_width="120dp"
-                        android:layout_height="120dp"/>
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"/>
                     <Button
 
                         android:layout_below="@id/idimage"
@@ -333,6 +350,7 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:focusable="true"
+                android:textColorHint="#adb5bd"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                 android:id="@+id/dluname"
                 android:layout_marginRight="15dp"
@@ -351,6 +369,7 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:focusable="true"
+                android:textColorHint="#adb5bd"
                 android:layout_marginRight="15dp"
                 android:layout_marginLeft="15dp"
                 app:endIconMode="password_toggle"
@@ -378,7 +397,7 @@
                 android:layout_marginLeft="15dp"
                 android:layout_marginRight="15dp"
                 android:fontFamily="sans-serif-condensed"
-                android:layout_marginBottom="50dp"
+                android:layout_marginBottom="15dp"
                 android:background="@drawable/ripple_effect_raised"
                 android:layout_width="match_parent"
                 android:layout_height="45dp"/>

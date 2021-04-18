@@ -124,8 +124,8 @@ public class DealerLoginActivity extends AppCompatActivity {
             dealer_editor=dealerlogininfo.edit();
         }
 
-        dealeruname=findViewById(R.id.dsername);
-        dealerpass=findViewById(R.id.dpasswrd);
-        dealer_login=findViewById(R.id.dbutton_login);
+        dealeruname=findViewById(R.id.dname);
+        dealerpass=findViewById(R.id.dpass);
+        dealer_login=findViewById(R.id.d_login);
     }
 }

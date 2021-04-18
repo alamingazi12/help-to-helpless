@@ -42,6 +42,7 @@
             android:theme="@style/AppTheme.NoActionBar" android:screenOrientation="portrait" />
         <activity
             android:name=".DealerRegActivity"
+            android:windowSoftInputMode="stateHidden|adjustResize"
             android:parentActivityName=".MainActivity" />
         <activity android:name=".ApprovedActivity" />
         <activity
@@ -49,10 +50,17 @@
             android:parentActivityName=".AdminDashBoardActivity" />
         <activity
             android:name=".DonarRegisterActivity"
+            android:windowSoftInputMode="stateHidden|adjustResize"
             android:parentActivityName=".MainActivity" />
         <activity
             android:name=".DealerLoginActivity"
             android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".CurrencyActivity" android:theme="@style/AppTheme.NoActionBar">
+
+
+        </activity>
+
         <activity
             android:name=".DonarLogin"
             android:parentActivityName=".MainActivity" />
@@ -64,6 +72,7 @@
             android:parentActivityName=".MainActivity"/>
         <activity
             android:name=".ClientActivity"
+            android:windowSoftInputMode="stateHidden|adjustResize"
             android:parentActivityName=".DealerActivity" android:screenOrientation="portrait" />
         <activity
             android:name=".MainActivity"
@@ -75,6 +84,7 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
 
         <meta-data

@@ -28,7 +28,7 @@
             app:layout_constraintVertical_bias="0.488" />
 
         <TextView
-            android:id="@+id/dsername"
+            android:id="@+id/dname"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
@@ -51,8 +51,8 @@
             android:text="Shaeen Store"
             android:textColor="#000000"
             android:textSize="18sp"
-            app:layout_constraintStart_toStartOf="@+id/dsername"
-            app:layout_constraintTop_toBottomOf="@+id/dsername" />
+            app:layout_constraintStart_toStartOf="@+id/dname"
+            app:layout_constraintTop_toBottomOf="@+id/dname" />
 
         <TextView
             android:fontFamily="sans-serif-thin"

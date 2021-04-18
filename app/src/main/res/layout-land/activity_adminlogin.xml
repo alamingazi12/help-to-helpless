@@ -9,7 +9,7 @@
 
     <EditText
         android:drawableLeft="@drawable/ic_user"
-        android:id="@+id/dsername"
+        android:id="@+id/dname"
         android:layout_width="0dp"
         android:layout_height="47dp"
         android:layout_marginStart="100dp"
@@ -23,13 +23,13 @@
         android:drawablePadding="8dp"
 
         android:textColorHint="#adb5bd"
-        app:layout_constraintBottom_toTopOf="@+id/dpasswrd"
+        app:layout_constraintBottom_toTopOf="@+id/dpass"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
-        android:id="@+id/dpasswrd"
+        android:id="@+id/dpass"
         android:layout_width="0dp"
         android:drawableLeft="@drawable/ic_lock"
         android:layout_height="47dp"
@@ -49,7 +49,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/dbutton_login"
+        android:id="@+id/d_login"
         android:layout_width="260dp"
         android:layout_height="45dp"
         android:layout_marginBottom="36dp"

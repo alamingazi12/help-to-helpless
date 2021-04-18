@@ -39,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+
     private void setFontToActionBar() {
         TextView tv = new TextView(MainActivity.this);
         RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams(ActionBar.LayoutParams.WRAP_CONTENT, ActionBar.LayoutParams.WRAP_CONTENT);
@@ -97,6 +98,7 @@ public class MainActivity extends AppCompatActivity {
         else {
 
             super.onBackPressed();
+            finishAffinity();
         }
 
     }

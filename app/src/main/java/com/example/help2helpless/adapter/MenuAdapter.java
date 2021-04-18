@@ -106,12 +106,34 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.MenuViewHolder
 
                  }
                  if(menuItem.getName().equals("Dealer Registration")){
-                     Intent intent=new Intent(context, DealerRegActivity.class);
-                     context.startActivity(intent);
+
+                    SharedPreferences    sharedPreferences_zilla=context.getSharedPreferences("zilla_info",0);
+                    SharedPreferences.Editor editor= sharedPreferences_zilla.edit();
+                    if(sharedPreferences_zilla.getString("zilla","").equals("")){
+                        Intent intent=new Intent(context, DealerRegActivity.class);
+                        context.startActivity(intent);
+                    }else{
+                        editor.remove("zilla");
+                        editor.commit();
+                        Intent intent=new Intent(context, DealerRegActivity.class);
+                        context.startActivity(intent);
+                    }
+
                  }
                  if(menuItem.getName().equals("Donar Registration")){
-                     Intent intent=new Intent(context, DonarRegisterActivity.class);
-                     context.startActivity(intent);
+
+                     SharedPreferences    sharedPreferences_zilla=context.getSharedPreferences("zilla_info",0);
+                     SharedPreferences.Editor editor= sharedPreferences_zilla.edit();
+                     if(sharedPreferences_zilla.getString("zilla","").equals("")){
+                         Intent intent=new Intent(context, DonarRegisterActivity.class);
+                         context.startActivity(intent);
+                     }else{
+                         editor.remove("zilla");
+                         editor.commit();
+                         Intent intent=new Intent(context, DonarRegisterActivity.class);
+                         context.startActivity(intent);
+                     }
+
                  }
                  //Donar Registration
 

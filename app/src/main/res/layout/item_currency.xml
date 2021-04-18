@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="60dp">
+
+    <TextView
+        android:layout_marginStart="10dp"
+        android:id="@+id/_division"
+        android:text="Australia"
+        android:textColor="#000"
+
+        android:textSize="20dp"
+        android:fontFamily="@font/latom"
+        android:layout_marginTop="7dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:id="@+id/_zilla"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/_division"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="4dp"
+        android:textSize="15dp"
+        android:fontFamily="@font/sansregular"
+        android:text="Australia"
+        android:textColor="#000" />
+
+    <Button
+        android:textColor="#ffffff"
+
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="12dp"
+        android:textStyle="bold"
+        android:textSize="14sp"
+        android:fontFamily="@font/relway_regular"
+        android:id="@+id/_currency"
+        android:text="Select"
+
+        android:textAllCaps="false"
+        android:background="@drawable/selec_btn_style"
+        android:padding="5dp"
+
+
+        android:layout_centerVertical="true"
+        android:layout_width="wrap_content"
+        android:layout_height="30sp"/>
+    <View
+        android:background="#9e9e9e"
+        android:layout_width="match_parent"
+        android:layout_alignParentBottom="true"
+        android:layout_height="1dp"/>
+
+</RelativeLayout>

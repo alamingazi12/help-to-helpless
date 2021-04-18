@@ -129,8 +129,8 @@ public class AdminLogin extends AppCompatActivity {
           editor=adminSharedPreference.edit();
 
        }
-        adusernme=findViewById(R.id.dsername);
-        adpasswrd=findViewById(R.id.dpasswrd);
-        admin_login=findViewById(R.id.dbutton_login);
+        adusernme=findViewById(R.id.dname);
+        adpasswrd=findViewById(R.id.dpass);
+        admin_login=findViewById(R.id.d_login);
     }
 }
