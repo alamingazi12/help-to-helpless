@@ -4,36 +4,44 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#ffffff"
-    android:theme="@style/Theme.MaterialComponents.DayNight.DarkActionBar">
-
+    android:background="#F7F7F7">
 
     <ImageView
         android:id="@+id/imageView3"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:layout_marginTop="64dp"
+        android:layout_marginTop="63dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/login" />
+        app:srcCompat="@drawable/helplogo" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:fontFamily="sans-serif-medium"
+        android:text="Welcome To Help2Helpless"
+        android:textColor="#6200EE"
+        android:textSize="22dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView3" />
 
     <EditText
-        android:drawableLeft="@drawable/ic_user"
-        android:id="@+id/dname"
-        android:padding="8dp"
-        android:textSize="15sp"
-        android:drawablePadding="8dp"
+        android:id="@+id/dlphone"
         android:layout_width="0dp"
-        android:layout_height="43dp"
+        android:layout_height="50dp"
         android:layout_marginStart="32dp"
         android:layout_marginEnd="32dp"
-
         android:layout_marginBottom="36dp"
         android:background="@drawable/edit_text_style"
         android:ems="10"
-        android:hint="Username"
+        android:fontFamily="sans-serif-light"
+        android:hint="Mobile Number"
         android:inputType="textPersonName"
+        android:paddingLeft="15dp"
         app:layout_constraintBottom_toTopOf="@+id/dpass"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -42,18 +50,16 @@
     <EditText
         android:id="@+id/dpass"
         android:layout_width="0dp"
-        android:layout_height="43dp"
+        android:layout_height="50dp"
         android:layout_marginStart="32dp"
         android:layout_marginEnd="32dp"
-        android:layout_marginBottom="108dp"
+
+        android:layout_marginBottom="72dp"
         android:background="@drawable/edit_text_style"
-        android:drawableLeft="@drawable/ic_lock"
-        android:drawablePadding="8dp"
         android:ems="10"
         android:hint="Password"
-        android:inputType="textPersonName"
-        android:padding="8dp"
-        android:textSize="15sp"
+        android:inputType="textPassword"
+        android:paddingLeft="15dp"
 
         app:layout_constraintBottom_toTopOf="@+id/d_login"
         app:layout_constraintEnd_toEndOf="parent"
@@ -63,15 +69,14 @@
     <Button
         android:id="@+id/d_login"
         android:layout_width="0dp"
-        android:layout_height="43sp"
+        android:layout_height="50dp"
         android:layout_marginStart="32dp"
         android:layout_marginEnd="32dp"
-        android:layout_marginBottom="112dp"
-        android:background="@drawable/button_style"
-        android:fontFamily="@font/regular"
+        android:layout_marginBottom="108dp"
+        android:background="@drawable/butttonstyle"
+        android:fontFamily="sans-serif-medium"
         android:text="Login"
         android:textAllCaps="false"
-
         android:textColor="#ffffff"
         android:textSize="17sp"
         app:layout_constraintBottom_toBottomOf="parent"

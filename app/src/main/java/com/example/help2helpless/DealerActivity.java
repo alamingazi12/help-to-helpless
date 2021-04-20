@@ -120,6 +120,8 @@ public class DealerActivity extends AppCompatActivity {
 
           case  R.id.logout:
               logout();
+           case  R.id.update:
+               updateProfile();
               break;
            default:
                break;
@@ -127,10 +129,14 @@ public class DealerActivity extends AppCompatActivity {
        return true;
     }
 
+    private void updateProfile() {
+
+    }
+
     private void logout() {
         dealerlogininfo=getSharedPreferences("dealerinfo",0);
         SharedPreferences.Editor   dealer_editor=dealerlogininfo.edit();
-        dealer_editor.remove("dname");
+        dealer_editor.remove("contact");
         dealer_editor.commit();
         Intent intent=new Intent(DealerActivity.this,MainActivity.class);
         startActivity(intent);

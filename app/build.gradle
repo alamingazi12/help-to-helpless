@@ -43,6 +43,10 @@ dependencies {
     implementation files('libs/additionnal.jar')
     implementation files('libs/mail.jar')
 
+    implementation 'io.reactivex.rxjava2:rxjava:2.1.9'
+    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.3.0'
+    implementation 'io.reactivex.rxjava2:rxandroid:2.0.1'
+
     //spinkit
     implementation 'com.github.ybq:Android-SpinKit:1.4.0'
 

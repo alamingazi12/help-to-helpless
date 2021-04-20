@@ -245,7 +245,7 @@ public class ClientAdapter extends RecyclerView.Adapter<ClientAdapter.ClientView
 
         public ClientViewHolder(@NonNull View itemView) {
             super(itemView);
-            cname=itemView.findViewById(R.id.donar_name);
+            cname=itemView.findViewById(R.id.donar_phones);
             address=itemView.findViewById(R.id.dnr_address);
             client_image=itemView.findViewById(R.id.dnr_image);
             cl_phone=itemView.findViewById(R.id.cl_phone);

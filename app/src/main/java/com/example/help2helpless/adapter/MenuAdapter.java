@@ -84,7 +84,6 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.MenuViewHolder
                      SharedPreferences     dealerlogininfo=context.getSharedPreferences("dealerinfo",0);
 
                      if(dealerlogininfo.getString("dname","").equals("")){
-
                          Intent intent=new Intent(context, DealerLoginActivity.class);
                          context.startActivity(intent);
                      }else {

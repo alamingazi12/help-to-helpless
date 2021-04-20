@@ -22,7 +22,7 @@
                    android:layout_marginLeft="10dp"
                    android:layout_marginTop="16dp"
                    android:layout_toEndOf="@+id/dnr_image"
-                   android:id="@+id/donar_name"
+                   android:id="@+id/donar_phones"
 
                    android:layout_width="wrap_content"
                    android:layout_height="wrap_content"/>
@@ -33,7 +33,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_toEndOf="@+id/dnr_image"
                 android:id="@+id/dnr_address"
-                android:layout_below="@+id/donar_name"
+                android:layout_below="@+id/donar_phones"
 
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>

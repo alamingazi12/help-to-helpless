@@ -97,7 +97,7 @@ public class DonarDashBoardActivity extends AppCompatActivity {
     private void logout() {
         SharedPreferences   dealerlogininfo=getSharedPreferences("donarinfo",0);
         SharedPreferences.Editor   dealer_editor=dealerlogininfo.edit();
-        dealer_editor.remove("uname");
+        dealer_editor.remove("contact");
         dealer_editor.commit();
         Intent intent=new Intent(DonarDashBoardActivity.this,MainActivity.class);
         startActivity(intent);

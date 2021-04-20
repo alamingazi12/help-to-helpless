@@ -1,299 +1,132 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="#f8f9fa"
     android:theme="@style/Theme.MaterialComponents.DayNight.DarkActionBar"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".DonarRegisterActivity">
-    <androidx.core.widget.NestedScrollView
+    android:background="#F7F7F7">
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="63dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/helplogo" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:fontFamily="sans-serif-medium"
+        android:text="Welcome To Help2Helpless"
+        android:textColor="#6200EE"
+        android:textSize="22dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView3" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/donar_name"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
         android:layout_width="match_parent"
-        android:fillViewport="true"
-        android:layout_height="match_parent">
-        <LinearLayout
-            android:orientation="vertical"
-            android:layout_margin="10dp"
+        android:layout_height="50dp"
+
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+
+        android:layout_marginBottom="20dp"
+
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:textColorHint="#adb5bd"
+        app:layout_constraintBottom_toTopOf="@+id/donar_contacts"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent">
+        <com.google.android.material.textfield.TextInputEditText
+            android:hint=" Full Name"
+            android:inputType="textCapWords"
+            android:ems="10"
+
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content">
+        </com.google.android.material.textfield.TextInputEditText>
 
-            <ImageView
-                android:layout_gravity="center"
-                android:layout_width="100dp"
-                android:layout_marginBottom="60dp"
-                android:layout_height="100dp"
-                android:src="@drawable/adduser"
-                android:layout_marginTop="50dp"
+    </com.google.android.material.textfield.TextInputLayout>
 
-                 />
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:id="@+id/dname"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-                android:focusable="true"
-                 android:layout_marginLeft="15sp"
-                android:layout_marginRight="15sp"
-                android:textColorHint="#adb5bd"
-                android:focusableInTouchMode="true"
-                android:layout_height="wrap_content">
-                <com.google.android.material.textfield.TextInputEditText
-                    android:hint="Name"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/donar_contacts"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+   android:layout_marginBottom="20dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
 
-                    android:inputType="textCapWords"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:textColorHint="#adb5bd"
+        app:layout_constraintBottom_toTopOf="@+id/donar_pass"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent">
 
-                    android:ems="10"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-                </com.google.android.material.textfield.TextInputEditText>
-            </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Phone Number"
+            android:inputType="number"></com.google.android.material.textfield.TextInputEditText>
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:focusable="true"
-                app:hintTextColor="#d9d9d9"
-                android:textColorHint="#adb5bd"
-                android:layout_marginLeft="15sp"
-                android:layout_marginRight="15sp"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-                android:id="@+id/dprofession"
-                android:layout_marginTop="10dp"
-                android:focusableInTouchMode="true"
-                android:layout_height="wrap_content">
-                <com.google.android.material.textfield.TextInputEditText
-                    android:hint="Profession"
-                    android:ems="10"
-                    android:inputType="textCapWords"
-                    app:hintTextColor="#d9d9d9"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-                </com.google.android.material.textfield.TextInputEditText>
-            </com.google.android.material.textfield.TextInputLayout>
+    </com.google.android.material.textfield.TextInputLayout>
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:focusable="true"
-                android:id="@+id/dcontacts"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-                android:layout_marginTop="10dp"
-                android:textColorHint="#adb5bd"
-                android:layout_marginLeft="15sp"
-                android:layout_marginRight="15sp"
-                android:focusableInTouchMode="true"
-                android:layout_height="wrap_content">
-                <com.google.android.material.textfield.TextInputEditText
-                    android:hint="Mobile"
-                    android:inputType="number"
-                    android:ems="10"
-                    app:hintTextColor="#d9d9d9"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-                </com.google.android.material.textfield.TextInputEditText>
-            </com.google.android.material.textfield.TextInputLayout>
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/donar_pass"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:focusable="true"
-                android:textColorHint="#adb5bd"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-                android:id="@+id/demail"
-                android:layout_marginLeft="15sp"
-                android:layout_marginRight="15sp"
-                android:layout_marginTop="10dp"
-                android:focusableInTouchMode="true"
-                android:layout_height="wrap_content">
-                <com.google.android.material.textfield.TextInputEditText
-                    android:hint="Email"
-                    android:inputType="textEmailAddress"
-                    android:fontFamily="sans-serif-condensed"
-                    android:ems="10"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-                </com.google.android.material.textfield.TextInputEditText>
-            </com.google.android.material.textfield.TextInputLayout>
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="48dp"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:textColorHint="#adb5bd"
+        app:layout_constraintBottom_toTopOf="@+id/donar_sign_btn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+        <com.google.android.material.textfield.TextInputEditText
+            android:hint="Password"
+            android:inputType="textPassword"
+            android:ems="10"
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:focusable="true"
-                android:textColorHint="#adb5bd"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-                android:id="@+id/dpresntaddres"
-                android:layout_marginTop="10dp"
-                android:layout_marginLeft="15sp"
-                android:layout_marginRight="15sp"
-                android:focusableInTouchMode="true"
-                android:layout_height="wrap_content">
-                <com.google.android.material.textfield.TextInputEditText
-                    android:hint="Present Address"
-                    android:ems="10"
-                    android:inputType="textCapWords"
-                    android:fontFamily="sans-serif-condensed"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-                </com.google.android.material.textfield.TextInputEditText>
-            </com.google.android.material.textfield.TextInputLayout>
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        </com.google.android.material.textfield.TextInputEditText>
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:focusable="true"
-                android:id="@+id/dthana"
-                android:textColorHint="#adb5bd"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-                android:layout_marginTop="10dp"
-                android:layout_marginLeft="15sp"
-                android:layout_marginRight="15sp"
-                android:focusableInTouchMode="true"
-                android:layout_height="wrap_content">
-                <com.google.android.material.textfield.TextInputEditText
-                    android:hint="Thana (Permanant Address)"
-                    android:inputType="textCapWords"
-                    android:ems="10"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-                </com.google.android.material.textfield.TextInputEditText>
-            </com.google.android.material.textfield.TextInputLayout>
-            <Button
-                android:padding="10dp"
-                android:drawableRight="@drawable/ic_down_select"
-                android:background="@drawable/edit_text_style"
-                android:gravity="center"
+    </com.google.android.material.textfield.TextInputLayout>
 
-                android:textSize="18sp"
-                android:text="Select Zilla"
-                android:layout_width="match_parent"
-                android:focusable="true"
-                android:layout_marginLeft="15sp"
-                android:layout_marginRight="15sp"
-                android:id="@+id/dzilla"
-                android:fontFamily="@font/relway_medium"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-                android:layout_marginTop="10dp"
-                android:focusableInTouchMode="true"
-                android:layout_height="45dp"/>
+    <Button
+        android:id="@+id/donar_sign_btn"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="156dp"
+        android:background="@drawable/butttonstyle"
+        android:fontFamily="sans-serif-medium"
+        android:text="Sign Up"
+        android:textAllCaps="false"
+        android:textColor="#ffffff"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
 
 
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:focusable="true"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-                android:layout_marginTop="10dp"
-                android:id="@+id/damount"
-                android:layout_marginLeft="15sp"
-                android:layout_marginRight="15sp"
-                android:textColorHint="#adb5bd"
-                android:focusableInTouchMode="true"
-                android:layout_height="wrap_content">
-                <com.google.android.material.textfield.TextInputEditText
-                    android:hint="Monthly Donation amount"
-                    android:ems="10"
-                    android:inputType="number"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-                </com.google.android.material.textfield.TextInputEditText>
-            </com.google.android.material.textfield.TextInputLayout>
-            <LinearLayout
-                android:layout_marginTop="30dp"
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <TextView
-                    android:layout_width="0dp"
-                    android:padding="10dp"
-                    android:textColor="#3d405b"
-                    android:textSize="18sp"
-                    android:text="Donar Photo"
-                    android:layout_gravity="center"
-                    android:layout_weight="1"
-                    android:layout_height="wrap_content"/>
-                <RelativeLayout
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-
-                    android:layout_height="wrap_content">
-                    <ImageView
-
-
-                        android:layout_centerHorizontal="true"
-                        android:id="@+id/dimage"
-                        android:layout_marginBottom="20dp"
-                        android:layout_width="120dp"
-                        android:layout_height="120dp"/>
-                    <Button
-                        android:layout_marginBottom="20dp"
-                        android:layout_below="@id/dimage"
-                        android:id="@+id/dpic_image"
-                        android:text="Browse"
-                        android:background="@drawable/button_style"
-                        android:textColor="#ffffff"
-                        android:paddingRight="10dp"
-                        android:paddingLeft="10dp"
-                        android:textAllCaps="false"
-                        android:layout_centerHorizontal="true"
-                        android:layout_marginTop="5dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="40dp"/>
-                </RelativeLayout>
-
-            </LinearLayout>
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:focusable="true"
-                android:id="@+id/duname"
-                android:textColorHint="#adb5bd"
-                android:layout_marginLeft="15sp"
-                android:layout_marginRight="15sp"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-                android:layout_marginTop="10dp"
-                android:focusableInTouchMode="true"
-                android:layout_height="wrap_content">
-                <com.google.android.material.textfield.TextInputEditText
-                    android:hint="Username"
-                    android:ems="10"
-
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-                </com.google.android.material.textfield.TextInputEditText>
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:focusable="true"
-                android:id="@+id/dpass"
-                app:endIconMode="password_toggle"
-                app:endIconTint="@color/colorOrange"
-                android:layout_marginLeft="15sp"
-                android:textColorHint="#adb5bd"
-                android:layout_marginRight="15sp"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-                android:layout_marginTop="10dp"
-                android:focusableInTouchMode="true"
-                android:layout_height="wrap_content">
-                <com.google.android.material.textfield.TextInputEditText
-                    android:hint="Password"
-                    android:ems="10"
-                    android:inputType="textPassword"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-                </com.google.android.material.textfield.TextInputEditText>
-            </com.google.android.material.textfield.TextInputLayout>
-
-         <Button
-             android:id="@+id/dsignbtn"
-             android:text="Sign Up"
-             android:layout_marginTop="30dp"
-             android:textColor="#fff"
-             android:textSize="20sp"
-             android:textAllCaps="false"
-             android:layout_marginLeft="15dp"
-             android:layout_marginRight="15dp"
-             android:fontFamily="sans-serif-condensed"
-             android:layout_marginBottom="15dp"
-             android:background="@drawable/ripple_effect_raised"
-             android:layout_width="match_parent"
-             android:layout_height="wrap_content"/>
-
-        </LinearLayout>
-    </androidx.core.widget.NestedScrollView>
-
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

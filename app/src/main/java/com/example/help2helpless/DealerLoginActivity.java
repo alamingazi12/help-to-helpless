@@ -35,17 +35,17 @@ public class DealerLoginActivity extends AppCompatActivity {
     SharedPreferences.Editor dealer_editor;
     ArrayList<Dealer> dealers;
     Button dealer_login;
-    EditText dealeruname,dealerpass;
+    EditText dlrphone, dlr_pass;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dealer_login);
-        setFontToActionBar();
+        //setFontToActionBar();
         initAll();
         dealer_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(TextUtils.isEmpty(dealeruname.getText().toString().trim()) || TextUtils.isEmpty(dealerpass.getText().toString().trim())){
+                if(TextUtils.isEmpty(dlrphone.getText().toString().trim()) || TextUtils.isEmpty(dlr_pass.getText().toString().trim())){
                     StyleableToast.makeText(DealerLoginActivity.this,"One or More Fields Empty", R.style.mytoast).show();
                 }else{
                     login();
@@ -75,7 +75,7 @@ public class DealerLoginActivity extends AppCompatActivity {
     private void login() {
         showProgress();
         ApiInterface apiInterface= ApiClient.getApiClient(DealerLoginActivity.this).create(ApiInterface.class);
-        Call<DealerResponse> dealerResponseCall=apiInterface.getDealerResponse(dealeruname.getText().toString().trim(),dealerpass.getText().toString().trim());
+        Call<DealerResponse> dealerResponseCall=apiInterface.getDealerResponse(dlrphone.getText().toString().trim(), dlr_pass.getText().toString().trim());
         dealerResponseCall.enqueue(new Callback<DealerResponse>() {
         @Override
         public void onResponse(Call<DealerResponse> call, Response<DealerResponse> response) {
@@ -89,8 +89,8 @@ public class DealerLoginActivity extends AppCompatActivity {
                 dealer_editor.putString("uname", dealer.getUsernm());
                 dealer_editor.putString("Zilla", dealer.getShpnmzilla());
                 dealer_editor.apply();
-                dealeruname.setText("");
-                dealerpass.setText("");
+                dlrphone.setText("");
+                dlr_pass.setText("");
                // Toast.makeText(DealerLoginActivity.this," You Loged in Successfully",Toast.LENGTH_LONG).show();
                 Intent intent=new Intent(DealerLoginActivity.this,DealerActivity.class);
                 startActivity(intent);
@@ -124,8 +124,8 @@ public class DealerLoginActivity extends AppCompatActivity {
             dealer_editor=dealerlogininfo.edit();
         }
 
-        dealeruname=findViewById(R.id.dname);
-        dealerpass=findViewById(R.id.dpass);
+        dlrphone =findViewById(R.id.dlphone);
+        dlr_pass =findViewById(R.id.dpass);
         dealer_login=findViewById(R.id.d_login);
     }
 }

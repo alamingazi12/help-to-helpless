@@ -53,16 +53,15 @@
             android:windowSoftInputMode="stateHidden|adjustResize"
             android:parentActivityName=".MainActivity" />
         <activity
-            android:name=".DealerLoginActivity"
+            android:name=".DealerLoginActivity" android:theme="@style/AppTheme.NoActionBar"
             android:parentActivityName=".MainActivity" />
         <activity
             android:name=".CurrencyActivity" android:theme="@style/AppTheme.NoActionBar">
 
-
         </activity>
 
         <activity
-            android:name=".DonarLogin"
+            android:name=".DonarLogin" android:theme="@style/AppTheme.NoActionBar"
             android:parentActivityName=".MainActivity" />
         <activity
             android:name=".AdminDashBoardActivity"

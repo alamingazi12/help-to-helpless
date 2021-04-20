@@ -5,21 +5,28 @@ import com.example.help2helpless.model.AdminResponse;
 import com.example.help2helpless.model.AllDonar;
 import com.example.help2helpless.model.Amount;
 import com.example.help2helpless.model.AvgDealerReceived;
+import com.example.help2helpless.model.Client;
 import com.example.help2helpless.model.ClientResponse;
+import com.example.help2helpless.model.Dealer;
 import com.example.help2helpless.model.DealerAvgPaid;
 import com.example.help2helpless.model.DealerBalance;
 import com.example.help2helpless.model.DealerResponse;
 import com.example.help2helpless.model.DealerTDonation;
 import com.example.help2helpless.model.DealersRequest;
+import com.example.help2helpless.model.Donar;
 import com.example.help2helpless.model.DonarAllDonation;
 import com.example.help2helpless.model.DonarBalance;
 import com.example.help2helpless.model.DonarResponse;
 import com.example.help2helpless.model.DonarsAvgDonation;
 import com.example.help2helpless.model.Responses;
+import com.example.help2helpless.model.Student;
 import com.example.help2helpless.model.TotalClients;
 import com.example.help2helpless.model.TotalDealer;
 import com.example.help2helpless.model.TotalDonars;
 
+import java.util.List;
+
+import io.reactivex.Observable;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -35,9 +42,9 @@ public  interface ApiInterface {
     Call<AdminResponse> getAdminResponse(@Query("username") String username,@Query("password") String  password);
 
     @GET("donar_login.php")
-    Call<DonarResponse> getDonarResponse(@Query("username") String username, @Query("password") String  password);
+    Call<DonarResponse> getDonarResponse(@Query("phone") String phone, @Query("password") String  password);
     @GET("dealer_login.php")
-    Call<DealerResponse> getDealerResponse(@Query("username") String username, @Query("password") String  password);
+    Call<DealerResponse> getDealerResponse(@Query("phone") String phone, @Query("password") String  password);
 
     @GET("temp_dealer_fetch.php")
     Call<DealerResponse> getAlldealers();
@@ -73,6 +80,9 @@ public  interface ApiInterface {
 
     @GET("total_dealer_donation.php")
     Call<DealerTDonation> getTotalDealerDonation(@Query("dlr_contact") String dlr_contact);
+
+    @GET("total_dealer_donations.php")
+    Observable<List<Donar>> getAllDonars();
     ///avg_dealer_received.php
    // total_donar.php
 
@@ -102,16 +112,9 @@ public  interface ApiInterface {
     @POST("donarinsert.php")
      Call<Responses> donarSignResponses(
             @Field("name") String name,
-            @Field("profession") String profession,
             @Field("contact") String contact,
-            @Field("demail") String email,//presentaddr
-            @Field("presentaddr") String presentaddr,
-            @Field("zilla") String zilla,
-            @Field("thana") String thana,
-            @Field("donation") String donation,
-            @Field("uname") String username,
-            @Field("passwrd") String password,
-            @Field("donar_pic") String pic);
+            @Field("passwrd") String password
+            );
 
     @FormUrlEncoded
     @POST("temp_dealerinsert.php")

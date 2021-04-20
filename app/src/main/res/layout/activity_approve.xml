@@ -7,7 +7,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".ApprovedActivity"
     android:orientation="vertical"
-
     >
 
 

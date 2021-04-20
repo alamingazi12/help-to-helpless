@@ -150,7 +150,7 @@ public class DonarAdapter extends RecyclerView.Adapter<DonarAdapter.DonarViewHol
         public DonarViewHolder(@NonNull View itemView) {
             super(itemView);
             dnr_profile_image=itemView.findViewById(R.id.dnr_image);
-            dnr_name=itemView.findViewById(R.id.donar_name);
+            dnr_name=itemView.findViewById(R.id.donar_phones);
             dnr_address=itemView.findViewById(R.id.dnr_address);
             add_dnr_btn=itemView.findViewById(R.id.add_donar_request);
         }

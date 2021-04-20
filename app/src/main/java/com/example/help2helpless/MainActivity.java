@@ -9,10 +9,14 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.Gravity;
+import android.view.View;
+import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -27,16 +31,54 @@ public class MainActivity extends AppCompatActivity {
     public static   DrawerLayout drawer;
     RecyclerView menucontentitems;
 
-
+    Button btn_dealer,btn_donar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-      //  setFontToActionBar();
-        initAll();
-        initDrawerListener();
+       inItAll();
 
+       btn_dealer.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View view) {
+              SharedPreferences dealerlogininfo=getSharedPreferences("dealerinfo",0);
+              if(dealerlogininfo.getString("contact","").equals("")){
+
+                  Intent intent=new Intent(MainActivity.this, DealerLoginActivity.class);
+                  startActivity(intent);
+              }else{
+                  Intent intent=new Intent(MainActivity.this, DealerActivity.class);
+                  startActivity(intent);
+              }
+
+           }
+       });
+       btn_donar.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View view) {
+
+               SharedPreferences   donarinfo=getSharedPreferences("donarinfo",0);
+
+               if(donarinfo.getString("contact","").equals("")){
+                   Intent intent=new Intent(MainActivity.this, DonarLogin.class);
+                   startActivity(intent);
+               }else{
+                   Intent intent=new Intent(MainActivity.this, DonarDashBoardActivity.class);
+                   startActivity(intent);
+               }
+
+           }
+       });
+
+    }
+
+    private void inItAll() {
+
+        btn_dealer=findViewById(R.id.btn_dealer);
+        btn_donar=findViewById(R.id.btn_donar);
     }
 
 
@@ -56,22 +98,9 @@ public class MainActivity extends AppCompatActivity {
         //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
-    private void initAll() {
-        menucontentitems=findViewById(R.id.myrecyclermenucontents);
-        menucontentitems.setHasFixedSize(true);
-        menucontentitems.setLayoutManager(new LinearLayoutManager(MainActivity.this));
-    }
 
-    private void initDrawerListener() {
-        toolbar=findViewById(R.id.toolbar);
-        drawer=findViewById(R.id.drawer_layout);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
 
-        drawer.addDrawerListener(toggle);
-        toggle.syncState();
-        toggle.getDrawerArrowDrawable().setColor(Color.parseColor("#ffffff"));
-        showMenuData();
-    }
+
 
     private void showMenuData() {
 

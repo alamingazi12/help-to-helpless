@@ -26,7 +26,7 @@
             tools:ignore="MissingConstraints" />
 
         <TextView
-            android:id="@+id/donar_name"
+            android:id="@+id/donar_phones"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
@@ -48,8 +48,8 @@
 
             android:textSize="17dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/donar_name"
-            app:layout_constraintTop_toBottomOf="@+id/donar_name"
+            app:layout_constraintStart_toStartOf="@+id/donar_phones"
+            app:layout_constraintTop_toBottomOf="@+id/donar_phones"
             app:layout_constraintVertical_bias="0.08" />
 
         <Button
