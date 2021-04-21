@@ -48,7 +48,7 @@ public class DealerLoginActivity extends AppCompatActivity {
                 if(TextUtils.isEmpty(dlrphone.getText().toString().trim()) || TextUtils.isEmpty(dlr_pass.getText().toString().trim())){
                     StyleableToast.makeText(DealerLoginActivity.this,"One or More Fields Empty", R.style.mytoast).show();
                 }else{
-                    login();
+                    dealerLogin();
                 }
             }
         });
@@ -72,7 +72,7 @@ public class DealerLoginActivity extends AppCompatActivity {
 
     }
 
-    private void login() {
+    private void dealerLogin() {
         showProgress();
         ApiInterface apiInterface= ApiClient.getApiClient(DealerLoginActivity.this).create(ApiInterface.class);
         Call<DealerResponse> dealerResponseCall=apiInterface.getDealerResponse(dlrphone.getText().toString().trim(), dlr_pass.getText().toString().trim());

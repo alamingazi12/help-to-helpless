@@ -72,7 +72,7 @@ public class DonarRegisterActivity extends AppCompatActivity {
     Button donar_sign,browse_image;
 
 
-
+  String type;
    public static Button dZilla;
     ImageView d_image;
     @Override
@@ -94,34 +94,69 @@ public class DonarRegisterActivity extends AppCompatActivity {
                 if(TextUtils.isEmpty(name) ||TextUtils.isEmpty(contact) || TextUtils.isEmpty(password) ){
                     StyleableToast.makeText(DonarRegisterActivity.this,"One or More Fields Empty", R.style.mytoast).show();
                 }else {
-                    showProgress();
-                    //registerProcess();
-                    ApiInterface apiInterface= ApiClient.getApiClient(DonarRegisterActivity.this).create(ApiInterface.class);
-                    Call<Responses> responseCall= apiInterface.donarSignResponses(name,contact,password);
-                    responseCall.enqueue(new Callback<Responses>() {
-                        @Override
-                        public void onResponse(Call<Responses> call, Response<Responses> response) {
-                            String result=response.body().getMessage();
-                            if(result.equals("success")){
-                                 dialogue.cancel();
-                                StyleableToast.makeText(DonarRegisterActivity.this,"Registration Success",R.style.mytoast).show();
-                                Intent intent=new Intent(DonarRegisterActivity.this,DonarLogin.class);
-                                startActivity(intent);
-                            }else{
-                                dialogue.cancel();
-                                StyleableToast.makeText(DonarRegisterActivity.this,""+result,R.style.mytoast).show();
-                            }
-                        }
-
-                        @Override
-                        public void onFailure(Call<Responses> call, Throwable t) {
-                            dialogue.cancel();
-                            StyleableToast.makeText(DonarRegisterActivity.this,"Network Error",R.style.mytoast).show();
-                        }
-                    });
+                    SharedPreferences    usertype=getSharedPreferences("typedata",0);
+                   if(usertype.getString("type","").equals("donar")) {
+                      donarRegister(name,contact,password);
+                   }  else{
+                       dealerRegister(name,contact,password);
+                   }
 
                 }
 
+            }
+        });
+
+    }
+
+    public  void donarRegister(String name,String contact,String password){
+        showProgress();
+        //registerProcess();
+        ApiInterface apiInterface= ApiClient.getApiClient(DonarRegisterActivity.this).create(ApiInterface.class);
+        Call<Responses> responseCall= apiInterface.donarSignResponses(name,contact,password);
+        responseCall.enqueue(new Callback<Responses>() {
+            @Override
+            public void onResponse(Call<Responses> call, Response<Responses> response) {
+                String result=response.body().getMessage();
+                if(result.equals("success")){
+                    dialogue.cancel();
+                    StyleableToast.makeText(DonarRegisterActivity.this,"Registration Success",R.style.mytoast).show();
+                    Intent intent=new Intent(DonarRegisterActivity.this,DonarLogin.class);
+                    startActivity(intent);
+                }else{
+                    dialogue.cancel();
+                    StyleableToast.makeText(DonarRegisterActivity.this,""+result,R.style.mytoast).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Responses> call, Throwable t) {
+                dialogue.cancel();
+                StyleableToast.makeText(DonarRegisterActivity.this,"Network Error",R.style.mytoast).show();
+            }
+        });
+
+    }
+    public void dealerRegister(String name,String phone,String password){
+        showProgress();
+        ApiInterface apiInterface=ApiClient.getApiClient(DonarRegisterActivity.this).create(ApiInterface.class);
+        Call<Responses> responsesCall=apiInterface.dealerSignResponse(name,phone,password);
+        responsesCall.enqueue(new Callback<Responses>() {
+            @Override
+            public void onResponse(Call<Responses> call, Response<Responses> response) {
+                String result=response.body().getMessage();
+                if(result.equals("success")){
+                    dialogue.cancel();
+                    StyleableToast.makeText(DonarRegisterActivity.this,"Registration Success",R.style.mytoast).show();
+                }else {
+                    dialogue.cancel();
+                    StyleableToast.makeText(DonarRegisterActivity.this,""+result,R.style.mytoast).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Responses> call, Throwable t) {
+                dialogue.cancel();
+                StyleableToast.makeText(DonarRegisterActivity.this,"Network Error",R.style.mytoast).show();
             }
         });
 

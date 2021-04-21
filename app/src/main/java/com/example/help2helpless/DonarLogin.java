@@ -18,6 +18,8 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.help2helpless.model.Dealer;
+import com.example.help2helpless.model.DealerResponse;
 import com.example.help2helpless.model.Donar;
 import com.example.help2helpless.model.DonarResponse;
 import com.example.help2helpless.network.ApiClient;
@@ -32,6 +34,10 @@ import retrofit2.Response;
 
 public class DonarLogin extends AppCompatActivity {
     //ProgressBar progressBar;
+    SharedPreferences dealerlogininfo;
+    SharedPreferences.Editor dealer_editor;
+    ArrayList<Dealer> dealers;
+
     ArrayList<Donar> donars;
     Button donar_login,go_sign_up;
     EditText donar_phone,dpasswrd;
@@ -41,13 +47,14 @@ public class DonarLogin extends AppCompatActivity {
 
     SharedPreferences donarsharedpreference;
     SharedPreferences.Editor editor;
-
+    String type;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_donar_login);
        // setFontToActionBar();
         initAll();
+
         donar_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -57,20 +64,63 @@ public class DonarLogin extends AppCompatActivity {
                 if(TextUtils.isEmpty(donar_phone.getText().toString().trim()) || TextUtils.isEmpty(dpasswrd.getText().toString().trim())){
                     StyleableToast.makeText(DonarLogin.this,"Fields Empty", R.style.mytoast).show();
                 }else{
-                    login();
+                SharedPreferences    usertype=getSharedPreferences("typedata",0);
+                    if(usertype.getString("type","").equals("donar")){
+                        login();
+                    }else {
+                        dealerLogin();
+                    }
+
                 }
             }
         });
         go_sign_up.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 Intent intent=new Intent(DonarLogin.this,DonarRegisterActivity.class);
                 startActivity(intent);
             }
         });
     }
 
+    private void dealerLogin() {
+        showProgress();
+        ApiInterface apiInterface= ApiClient.getApiClient(DonarLogin.this).create(ApiInterface.class);
+        Call<DealerResponse> dealerResponseCall=apiInterface.getDealerResponse(donar_phone.getText().toString().trim(),dpasswrd.getText().toString().trim());
+        dealerResponseCall.enqueue(new Callback<DealerResponse>() {
+            @Override
+            public void onResponse(Call<DealerResponse> call, Response<DealerResponse> response) {
+                dealers=response.body().getDealers();
 
+                if(dealers.size()>0){
+                    dialogue.cancel();
+                    Dealer dealer=  dealers.get(0);
+                    dealer_editor.putString("dname", dealer.getName());
+                    dealer_editor.putString("contact", dealer.getPhone());
+                    dealer_editor.putString("uname", dealer.getUsernm());
+                    dealer_editor.putString("Zilla", dealer.getShpnmzilla());
+                    dealer_editor.apply();
+                    donar_phone.setText("");
+                    dpasswrd.setText("");
+                    // Toast.makeText(DealerLoginActivity.this," You Loged in Successfully",Toast.LENGTH_LONG).show();
+                    Intent intent=new Intent(DonarLogin.this,DealerActivity.class);
+                    startActivity(intent);
+                }else {
+                    dialogue.cancel();
+                    StyleableToast.makeText(DonarLogin.this,"Wrong Username and Password",R.style.mytoast).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<DealerResponse> call, Throwable t) {
+                dialogue.cancel();
+                StyleableToast.makeText(DonarLogin.this,"Network Error",R.style.mytoast).show();
+            }
+        });
+
+
+    }
     private void setFontToActionBar() {
         TextView tv = new TextView(DonarLogin.this);
         RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams(ActionBar.LayoutParams.WRAP_CONTENT, ActionBar.LayoutParams.WRAP_CONTENT);
@@ -103,6 +153,10 @@ public class DonarLogin extends AppCompatActivity {
             donarsharedpreference=  this.getSharedPreferences("donarinfo",0);
             editor=donarsharedpreference.edit();
         }
+        if(dealerlogininfo==null){
+            dealerlogininfo=getSharedPreferences("dealerinfo",0);
+            dealer_editor=dealerlogininfo.edit();
+        }
 
     }
     public  void showProgress(){
@@ -125,7 +179,7 @@ public class DonarLogin extends AppCompatActivity {
               donars=response.body().getUsers();
               if(donars.size()>0){
                  dialogue.cancel();
-                 Donar donar=donars.get(0);
+                  Donar donar=donars.get(0);
                   editor.putString("name",donar.getDname());
                   editor.putString("uname",donar.getUsernm());
                   editor.putString("contact",donar.getDcontact());

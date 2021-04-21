@@ -30,6 +30,8 @@ public class MainActivity extends AppCompatActivity {
     ArrayList<MenuItem> items;
     public static   DrawerLayout drawer;
     RecyclerView menucontentitems;
+    SharedPreferences usertype;
+    SharedPreferences.Editor editor;
 
     Button btn_dealer,btn_donar;
 
@@ -39,15 +41,18 @@ public class MainActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-       inItAll();
+        inItAll();
 
        btn_dealer.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View view) {
+
+
               SharedPreferences dealerlogininfo=getSharedPreferences("dealerinfo",0);
               if(dealerlogininfo.getString("contact","").equals("")){
-
-                  Intent intent=new Intent(MainActivity.this, DealerLoginActivity.class);
+                  editor.putString("type","dealer");
+                  editor.apply();
+                  Intent intent=new Intent(MainActivity.this, DonarLogin.class);
                   startActivity(intent);
               }else{
                   Intent intent=new Intent(MainActivity.this, DealerActivity.class);
@@ -56,13 +61,14 @@ public class MainActivity extends AppCompatActivity {
 
            }
        });
+
        btn_donar.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View view) {
-
                SharedPreferences   donarinfo=getSharedPreferences("donarinfo",0);
-
                if(donarinfo.getString("contact","").equals("")){
+                   editor.putString("type","donar");
+                   editor.apply();
                    Intent intent=new Intent(MainActivity.this, DonarLogin.class);
                    startActivity(intent);
                }else{
@@ -76,7 +82,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void inItAll() {
+         if(usertype==null){
 
+             usertype=getSharedPreferences("typedata",0);
+             editor= usertype.edit();
+         }
         btn_dealer=findViewById(R.id.btn_dealer);
         btn_donar=findViewById(R.id.btn_donar);
     }

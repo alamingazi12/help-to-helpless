@@ -156,7 +156,7 @@ public class DealerRegActivity extends AppCompatActivity {
                 }else {
 
                     ApiInterface apiInterface=ApiClient.getApiClient(DealerRegActivity.this).create(ApiInterface.class);
-                    Call<Responses> responsesCall=apiInterface.dealerSignResponse(name,dfname,daddres,dlphone,dlbks,dlmail,dlshpname,dlthana,dlZilla,imageToString(regno_bitmap),dlregno,dlnid,imageToString(nid_bitmap),dluname,dlpass);
+                    Call<Responses> responsesCall=apiInterface.dealerSignResponse(name,dlphone,dlpass);
                     responsesCall.enqueue(new Callback<Responses>() {
                         @Override
                         public void onResponse(Call<Responses> call, Response<Responses> response) {
