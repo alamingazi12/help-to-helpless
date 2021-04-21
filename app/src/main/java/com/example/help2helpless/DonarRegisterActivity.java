@@ -124,12 +124,7 @@ public class DonarRegisterActivity extends AppCompatActivity {
 
             }
         });
-        browse_image.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                browseImage();
-            }
-        });
+
     }
     private void filter(String text) {
         ArrayList<Sections> filteredList = new ArrayList<>();

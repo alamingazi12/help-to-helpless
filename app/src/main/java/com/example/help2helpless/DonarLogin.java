@@ -33,7 +33,7 @@ import retrofit2.Response;
 public class DonarLogin extends AppCompatActivity {
     //ProgressBar progressBar;
     ArrayList<Donar> donars;
-    Button donar_login;
+    Button donar_login,go_sign_up;
     EditText donar_phone,dpasswrd;
     View DialogueView;
 
@@ -61,6 +61,13 @@ public class DonarLogin extends AppCompatActivity {
                 }
             }
         });
+        go_sign_up.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(DonarLogin.this,DonarRegisterActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
 
@@ -84,8 +91,12 @@ public class DonarLogin extends AppCompatActivity {
     private void initAll() {
 
         //progressBar=findViewById(R.id.progrss_login);
+
         donar_phone =findViewById(R.id.donar_phone);
         dpasswrd=findViewById(R.id.donar_pass);
+
+        //Button
+        go_sign_up=findViewById(R.id.go_donar_signup);
         donar_login=findViewById(R.id.donar_login);
         if(donarsharedpreference==null){
 
