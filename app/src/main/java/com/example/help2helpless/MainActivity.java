@@ -1,12 +1,10 @@
 package com.example.help2helpless;
 
 import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
@@ -22,6 +20,7 @@ import android.widget.TextView;
 
 import com.example.help2helpless.adapter.MenuAdapter;
 import com.example.help2helpless.model.MenuItem;
+import com.muddzdev.styleabletoast.StyleableToast;
 
 import java.util.ArrayList;
 
@@ -47,17 +46,22 @@ public class MainActivity extends AppCompatActivity {
            @Override
            public void onClick(View view) {
 
+               SharedPreferences   donarinfo=getSharedPreferences("donarinfo",0);
+               if(donarinfo.getString("contact","").equals("")){
+                   SharedPreferences dealerlogininfo=getSharedPreferences("dealerinfo",0);
+                   if(dealerlogininfo.getString("contact","").equals("")){
+                       editor.putString("type","dealer");
+                       editor.apply();
+                       Intent intent=new Intent(MainActivity.this, DonarLogin.class);
+                       startActivity(intent);
+                   }else{
+                       Intent intent=new Intent(MainActivity.this, DealerActivity.class);
+                       startActivity(intent);
+                   }
 
-              SharedPreferences dealerlogininfo=getSharedPreferences("dealerinfo",0);
-              if(dealerlogininfo.getString("contact","").equals("")){
-                  editor.putString("type","dealer");
-                  editor.apply();
-                  Intent intent=new Intent(MainActivity.this, DonarLogin.class);
-                  startActivity(intent);
-              }else{
-                  Intent intent=new Intent(MainActivity.this, DealerActivity.class);
-                  startActivity(intent);
-              }
+               }else {
+                   StyleableToast.makeText(MainActivity.this,"You Have Logged in as Donar",R.style.mytoast).show();
+               }
 
            }
        });
@@ -65,16 +69,25 @@ public class MainActivity extends AppCompatActivity {
        btn_donar.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View view) {
-               SharedPreferences   donarinfo=getSharedPreferences("donarinfo",0);
-               if(donarinfo.getString("contact","").equals("")){
-                   editor.putString("type","donar");
-                   editor.apply();
-                   Intent intent=new Intent(MainActivity.this, DonarLogin.class);
-                   startActivity(intent);
-               }else{
-                   Intent intent=new Intent(MainActivity.this, DonarDashBoardActivity.class);
-                   startActivity(intent);
+               SharedPreferences dealerlogininfo=getSharedPreferences("dealerinfo",0);
+               if(dealerlogininfo.getString("contact","").equals("")){
+                   SharedPreferences   donarinfo=getSharedPreferences("donarinfo",0);
+                   if(donarinfo.getString("contact","").equals("")){
+                       editor.putString("type","donar");
+                       editor.apply();
+                       Intent intent=new Intent(MainActivity.this, DonarLogin.class);
+                       startActivity(intent);
+                   }else{
+                       Intent intent=new Intent(MainActivity.this, DonarDashBoardActivity.class);
+                       startActivity(intent);
+                   }
+
+               }else {
+
+                   StyleableToast.makeText(MainActivity.this,"You Have Logged in as Dealer",R.style.mytoast).show();
                }
+
+
 
            }
        });
