@@ -221,16 +221,97 @@ public class DealerRegActivity extends AppCompatActivity {
         currencies.add(new Sections("Dhaka","Rajbari"));
         currencies.add(new Sections("Dhaka","Shariatpur"));
         currencies.add(new Sections("Dhaka","Tangail"));
-        currencies.add(new Sections("Khulna","Jessore"));
-        currencies.add(new Sections("Khulna","Chuadanga"));
-        currencies.add(new Sections("Khulna","Bagerhat"));
-        currencies.add(new Sections("Khulna","Jhenaidah"));
-        currencies.add(new Sections("Khulna","Khulna"));
-        currencies.add(new Sections("Khulna","Kushtia"));
-        currencies.add(new Sections("Khulna","Magura"));
 
-        currencies.add(new Sections("Khulna","Meherpur"));
-        currencies.add(new Sections("Khulna","Narail"));
+
+        currencies.add(new Sections("Khulna","Bagerhat","BAGERHAT SADAR"));
+        currencies.add(new Sections("Khulna","Bagerhat","CHITALMARI"));
+        currencies.add(new Sections("Khulna","Bagerhat","FAKIRHAT"));
+        currencies.add(new Sections("Khulna","Bagerhat","KACHUA"));
+        currencies.add(new Sections("Khulna","Bagerhat","MOLLAHAT"));
+        currencies.add(new Sections("Khulna","Bagerhat","MONGLA"));
+        currencies.add(new Sections("Khulna","Bagerhat","MORRELGANJ"));
+        currencies.add(new Sections("Khulna","Bagerhat","RAMPAL"));
+        currencies.add(new Sections("Khulna","Bagerhat","SARANKHOLA"));
+
+
+
+        currencies.add(new Sections("Khulna","Chuadanga","ALAMDANGA"));
+        currencies.add(new Sections("Khulna","Chuadanga","CHUADANGA SADAR"));
+        currencies.add(new Sections("Khulna","Chuadanga","DAMURHUDA"));
+        currencies.add(new Sections("Khulna","Chuadanga"," JIBAN NAGAR"));
+
+
+        currencies.add(new Sections("Khulna","Jessore","ABHAYNAGAR"));
+        currencies.add(new Sections("Khulna","Jessore","BAGHER PARA"));
+        currencies.add(new Sections("Khulna","Jessore","CHAUGACHHA"));
+        currencies.add(new Sections("Khulna","Jessore","JHIKARGACHHA"));
+        currencies.add(new Sections("Khulna","Jessore","KESHABPUR"));
+        currencies.add(new Sections("Khulna","Jessore","JESSORE SADAR"));
+        currencies.add(new Sections("Khulna","Jessore","MANIRAMPUR"));
+        currencies.add(new Sections("Khulna","Jessore","SHARSHA"));
+
+
+        currencies.add(new Sections("Khulna","Jhenaidah","HARINAKUNDA"));
+        currencies.add(new Sections("Khulna","Jhenaidah","JHENAIDAH SADAR"));
+        currencies.add(new Sections("Khulna","Jhenaidah","KALIGANJ"));
+        currencies.add(new Sections("Khulna","Jhenaidah","KOTCHANDPUR"));
+        currencies.add(new Sections("Khulna","Jhenaidah","MAHESHPUR"));
+        currencies.add(new Sections("Khulna","Jhenaidah","SHAILKUPA"));
+
+
+
+
+        currencies.add(new Sections("Khulna","Khulna","BATIAGHATA"));
+        currencies.add(new Sections("Khulna","Khulna","DACOPE"));
+        currencies.add(new Sections("Khulna","Khulna","DAULATPUR"));
+        currencies.add(new Sections("Khulna","Khulna","DUMURIA"));
+        currencies.add(new Sections("Khulna","Khulna","DIGHALIA"));
+        currencies.add(new Sections("Khulna","Khulna","KHALISHPUR"));
+        currencies.add(new Sections("Khulna","Khulna","KHAN JAHAN ALI"));
+        currencies.add(new Sections("Khulna","Khulna","KHULNA SADAR"));
+        currencies.add(new Sections("Khulna","Khulna","KOYRA"));
+        currencies.add(new Sections("Khulna","Khulna","PHULTALA"));
+        currencies.add(new Sections("Khulna","Khulna","RUPSA"));
+        currencies.add(new Sections("Khulna","Khulna","SONADANGA"));
+        currencies.add(new Sections("Khulna","Khulna","TEROKHADA"));
+
+
+
+
+
+        currencies.add(new Sections("Khulna","Kushtia","BHERAMARA"));
+        currencies.add(new Sections("Khulna","Kushtia","DAULATPUR"));
+        currencies.add(new Sections("Khulna","Kushtia","KHOKSA"));
+        currencies.add(new Sections("Khulna","Kushtia","KUSHTIA SADAR"));
+        currencies.add(new Sections("Khulna","Kushtia","MIRPUR"));
+
+
+
+        currencies.add(new Sections("Khulna","Magura","MAGURA SADAR"));
+        currencies.add(new Sections("Khulna","Magura","MOHAMMADPUR"));
+        currencies.add(new Sections("Khulna","Magura","SHALIKHA"));
+        currencies.add(new Sections("Khulna","Magura","SREEPUR"));
+
+
+        currencies.add(new Sections("Khulna","Meherpur","GANGNI"));
+        currencies.add(new Sections("Khulna","Meherpur","MUJIB NAGAR"));
+        currencies.add(new Sections("Khulna","Meherpur","MEHERPUR SADAR"));
+
+        currencies.add(new Sections("Khulna","Narail","KALIA"));
+        currencies.add(new Sections("Khulna","Narail","LOHAGARA"));
+        currencies.add(new Sections("Khulna","Narail","NARAIL SADAR"));
+
+        currencies.add(new Sections("Khulna","SATKHIRA","ASSASUNI"));
+        currencies.add(new Sections("Khulna","SATKHIRA","DEBHATA"));
+        currencies.add(new Sections("Khulna","SATKHIRA","KALAROA"));
+        currencies.add(new Sections("Khulna","SATKHIRA","KALIGANJ"));
+        currencies.add(new Sections("Khulna","SATKHIRA","SATKHIRA SADAR"));
+        currencies.add(new Sections("Khulna","SATKHIRA","SHYAMNAGAR"));
+        currencies.add(new Sections("Khulna","SATKHIRA","TALA"));
+
+
+
+
         currencies.add(new Sections("Mymensingh","Jamalpur"));
         currencies.add(new Sections("Mymensingh","Mymensingh"));
         currencies.add(new Sections("Mymensingh","Netrakona"));
@@ -259,27 +340,191 @@ public class DealerRegActivity extends AppCompatActivity {
         currencies.add(new Sections("Rangpur","Panchagarh"));
         currencies.add(new Sections("Rangpur","Thakurgaon"));
 
-        currencies.add(new Sections("Barisal","Barisal")); //$€£¥₽₩₪฿₫₴₹
-        currencies.add(new Sections("Barisal","Barguna"));
-        currencies.add(new Sections("Barisal","Bhola"));
-        currencies.add(new Sections("Barisal","Jhalokati"));
-        currencies.add(new Sections("Barisal","Patuakhali"));
-        currencies.add(new Sections("Barisal","Pirojpur"));
+      //start Barishal
+
+        currencies.add(new Sections("Barisal","Barisal","AGAILJHARA"));
+        currencies.add(new Sections("Barisal","Barisal","BABUGANJ"));
+        currencies.add(new Sections("Barisal","Barisal","BAKERGANJ"));
+        currencies.add(new Sections("Barisal","Barisal","BANARI PARA"));
+        currencies.add(new Sections("Barisal","Barisal","GAURNADI"));
+        currencies.add(new Sections("Barisal","Barisal","HIZLA"));
+        currencies.add(new Sections("Barisal","Barisal","BARISAL SADAR"));
+        currencies.add(new Sections("Barisal","Barisal","MULADI"));
+        currencies.add(new Sections("Barisal","Barisal","WAZIRPUR"));
+        currencies.add(new Sections("Barisal","Barisal","MHENDIGANJ"));
+
+        //$€£¥₽₩₪฿₫₴₹
+        currencies.add(new Sections("Barisal","Barguna","AMTALI"));
+        currencies.add(new Sections("Barisal","Barguna","BAMNA"));
+        currencies.add(new Sections("Barisal","Barguna","BARGUNA"));
+        currencies.add(new Sections("Barisal","Barguna","BETAGI"));
+        currencies.add(new Sections("Barisal","Barguna","PATHARGHATA"));
+        currencies.add(new Sections("Barisal","Barguna","TALTALI"));
+
+
+        currencies.add(new Sections("Barisal","Bhola","BHOLA SADAR"));
+        currencies.add(new Sections("Barisal","Bhola","BURHANUDDIN"));
+        currencies.add(new Sections("Barisal","Bhola","CHAR FASSON"));
+        currencies.add(new Sections("Barisal","Bhola","DAULAT KHAN"));
+        currencies.add(new Sections("Barisal","Bhola","LALMOHAN"));
+        currencies.add(new Sections("Barisal","Bhola","MANPURA"));
+        currencies.add(new Sections("Barisal","Bhola","TAZUMUDDIN"));
+
+
+
+        currencies.add(new Sections("Barisal","JHALOKATI","JHALOKATI SADAR"));
+        currencies.add(new Sections("Barisal","JHALOKATI","KANTHALIA"));
+        currencies.add(new Sections("Barisal","JHALOKATI","NALCHITY"));
+        currencies.add(new Sections("Barisal","JHALOKATI","RAJAPUR"));
+
+
+
+        currencies.add(new Sections("Barisal","PATUAKHALI","BAUPHAL"));
+        currencies.add(new Sections("Barisal","PATUAKHALI","DASHMINA"));
+        currencies.add(new Sections("Barisal","PATUAKHALI","DUMKI"));
+        currencies.add(new Sections("Barisal","PATUAKHALI","GALACHIPA"));
+        currencies.add(new Sections("Barisal","PATUAKHALI","KALAPARA"));
+        currencies.add(new Sections("Barisal","PATUAKHALI","MIRZAGANJ"));
+        currencies.add(new Sections("Barisal","PATUAKHALI","PATUAKHALI SADAR"));
+        currencies.add(new Sections("Barisal","PATUAKHALI","RANGABALI"));
+
+
+        currencies.add(new Sections("Barisal","PIROJPUR","BHANDARIA"));
+        currencies.add(new Sections("Barisal","PIROJPUR","KAWKHALI"));
+        currencies.add(new Sections("Barisal","PIROJPUR","MATHBARIA"));
+        currencies.add(new Sections("Barisal","PIROJPUR","NAZIRPUR"));
+        currencies.add(new Sections("Barisal","PIROJPUR","PIROJPUR SADAR"));
+        currencies.add(new Sections("Barisal","PIROJPUR","NESARABAD"));
+        currencies.add(new Sections("Barisal","PIROJPUR","ZIANAGAR"));
+
+
+
         // "Chittagong":["Bandarban","Brahmanbaria",   "Chandpur", "Chittagong", "Comilla",    "Cox's Bazar","Feni",     "Khagrachhari","Lakshmipur", "Noakhali", "Rangamati"],
         //$€£¥₽₩₪฿₫₴₹
-        currencies.add(new Sections("Chittagong","Chittagong"));
+        currencies.add(new Sections("Chittagong","Chittagong","ANOWARA"));
+        currencies.add(new Sections("Chittagong","Chittagong","BANSHKHALI"));
+        currencies.add(new Sections("Chittagong","Chittagong","BAYEJID"));
+        currencies.add(new Sections("Chittagong","Chittagong","BAKALIA"));
+
+
+
+
+
+        currencies.add(new Sections("Chittagong","Chittagong","CHANDANAISH"));
+        currencies.add(new Sections("Chittagong","Chittagong","CHANDGAON"));
+        currencies.add(new Sections("Chittagong","Chittagong","CHITTAGONG PORT"));
+        currencies.add(new Sections("Chittagong","Chittagong","DOUBLE MOORING"));
+        currencies.add(new Sections("Chittagong","Chittagong","FATIKCHHARI"));
+        currencies.add(new Sections("Chittagong","Chittagong","HALISHAHAR"));
+        currencies.add(new Sections("Chittagong","Chittagong","HATHAZARI"));
+        currencies.add(new Sections("Chittagong","Chittagong","KOTWALI"));
+        currencies.add(new Sections("Chittagong","Chittagong","KHULSHI"));
+        currencies.add(new Sections("Chittagong","Chittagong","LOHAGARA"));
+        currencies.add(new Sections("Chittagong","Chittagong","MIRSHARAI"));
+        currencies.add(new Sections("Chittagong","Chittagong","PAHARTALI"));
+        currencies.add(new Sections("Chittagong","Chittagong","PANCHLAISH"));
+        currencies.add(new Sections("Chittagong","Chittagong","PATIYA"));
+        currencies.add(new Sections("Chittagong","Chittagong","RANGUNIA"));
+        currencies.add(new Sections("Chittagong","Chittagong","RAOZAN"));
+        currencies.add(new Sections("Chittagong","Chittagong","SANDWIP"));
+        currencies.add(new Sections("Chittagong","Chittagong","SATKANIA"));
+        currencies.add(new Sections("Chittagong","Chittagong","SITAKUNDA"));
+
+
+
+        currencies.add(new Sections("Chittagong","Comilla","BARURA"));
+        currencies.add(new Sections("Chittagong","Comilla","BRAHMAN PARA"));
+        currencies.add(new Sections("Chittagong","Comilla","BURICHANG"));
+        currencies.add(new Sections("Chittagong","Comilla","CHANDINA"));
+        currencies.add(new Sections("Chittagong","Comilla","CHAUDDAGRAM"));
+        currencies.add(new Sections("Chittagong","Comilla","COMILLA SADAR DAKSHIN"));
+        currencies.add(new Sections("Chittagong","Comilla","DAUDKANDI"));
+        currencies.add(new Sections("Chittagong","Comilla","DEBIDWAR"));
+        currencies.add(new Sections("Chittagong","Comilla","HOMNA"));
+        currencies.add(new Sections("Chittagong","Comilla","COMILLA ADARSHA SADAR"));
+        currencies.add(new Sections("Chittagong","Comilla","LAKSAM"));
+        currencies.add(new Sections("Chittagong","Comilla","MANOHARGANJ"));
+        currencies.add(new Sections("Chittagong","Comilla","MEGHNA"));
+        currencies.add(new Sections("Chittagong","Comilla","MURADNAGAR"));
+        currencies.add(new Sections("Chittagong","Comilla","NANGALKOT"));
+        currencies.add(new Sections("Chittagong","Comilla","TITAS"));
+
+
+
         currencies.add(new Sections("Chittagong","Bandarban"));
         currencies.add(new Sections("Chittagong","Brahmanbaria"));
         currencies.add(new Sections("Chittagong","Chandpur"));
-        currencies.add(new Sections("Chittagong","Comilla")); //$€£¥₽₩₪฿₫₴₹
-        currencies.add(new Sections("Chittagong","Cox's Bazar"));
-        currencies.add(new Sections("Chittagong","Feni"));
-        currencies.add(new Sections("Chittagong","Khagrachhari"));
+         //$€£¥₽₩₪฿₫₴₹
 
 
-        currencies.add(new Sections("Chittagong","Lakshmipur"));
-        currencies.add(new Sections("Chittagong","Noakhali")); //$€£¥₽₩₪฿₫₴₹
-        currencies.add(new Sections("Chittagong","Rangamati"));
+        currencies.add(new Sections("Chittagong","Cox's Bazar","CHAKARIA"));
+        currencies.add(new Sections("Chittagong","Cox's Bazar","COX'S BAZAR SADAR"));
+        currencies.add(new Sections("Chittagong","Cox's Bazar","KUTUBDIA"));
+        currencies.add(new Sections("Chittagong","Cox's Bazar","MAHESHKHALI"));
+        currencies.add(new Sections("Chittagong","Cox's Bazar","PEKUA"));
+
+        currencies.add(new Sections("Chittagong","Cox's Bazar","RAMU"));
+        currencies.add(new Sections("Chittagong","Cox's Bazar","TEKNAF"));
+        currencies.add(new Sections("Chittagong","Cox's Bazar","UKHIA"));
+
+
+
+
+        currencies.add(new Sections("Chittagong","Feni","CHHAGALNAIYA"));
+        currencies.add(new Sections("Chittagong","Feni","DAGANBHUIYAN"));
+        currencies.add(new Sections("Chittagong","Feni","FENI SADAR"));
+        currencies.add(new Sections("Chittagong","Feni","FULGAZI"));
+        currencies.add(new Sections("Chittagong","Feni","PARSHURAM"));
+        currencies.add(new Sections("Chittagong","Feni","SONAGAZI"));
+
+
+
+        currencies.add(new Sections("Chittagong","Khagrachhari","DIGHINALA"));
+        currencies.add(new Sections("Chittagong","Khagrachhari","KHAGRACHHARI SADAR"));
+        currencies.add(new Sections("Chittagong","Khagrachhari","LAKSHMICHHARI"));
+        currencies.add(new Sections("Chittagong","Khagrachhari","MAHALCHHARI"));
+        currencies.add(new Sections("Chittagong","Khagrachhari","MANIKCHHARI"));
+
+        currencies.add(new Sections("Chittagong","Khagrachhari","MATIRANGA"));
+        currencies.add(new Sections("Chittagong","Khagrachhari","PANCHHARI"));
+        currencies.add(new Sections("Chittagong","Khagrachhari","RAMGARH"));
+
+
+
+
+        currencies.add(new Sections("Chittagong","Lakshmipur","KAMALNAGAR"));
+        currencies.add(new Sections("Chittagong","Lakshmipur","LAKSHMIPUR SADAR"));
+        currencies.add(new Sections("Chittagong","Lakshmipur","ROYPUR"));
+        currencies.add(new Sections("Chittagong","Lakshmipur","RAMGANJ"));
+        currencies.add(new Sections("Chittagong","Lakshmipur","RAMGATI"));
+
+
+
+        currencies.add(new Sections("Chittagong","Noakhali","BEGUMGANJ"));
+        currencies.add(new Sections("Chittagong","Noakhali","CHATKHIL"));
+        currencies.add(new Sections("Chittagong","Noakhali","COMPANIGANJ"));
+        currencies.add(new Sections("Chittagong","Noakhali","HATIYA"));
+        currencies.add(new Sections("Chittagong","Noakhali","KABIRHAT"));
+        currencies.add(new Sections("Chittagong","Noakhali","SENBAGH"));
+        currencies.add(new Sections("Chittagong","Noakhali","SONAIMURI"));
+        currencies.add(new Sections("Chittagong","Noakhali","SUBARNACHAR"));
+        currencies.add(new Sections("Chittagong","Noakhali","NOAKHALI SADAR"));
+
+
+
+        //$€£¥₽₩₪฿₫₴₹
+        currencies.add(new Sections("Chittagong","Rangamati","BAGHAICHHARI"));
+        currencies.add(new Sections("Chittagong","Rangamati","BARKAL UPAZILA"));
+        currencies.add(new Sections("Chittagong","Rangamati","KAWKHALI (BETBUNIA)"));
+        currencies.add(new Sections("Chittagong","Rangamati","BELAI CHHARI UPAZI"));
+        currencies.add(new Sections("Chittagong","Rangamati","KAPTAI UPAZILA"));
+        currencies.add(new Sections("Chittagong","Rangamati","JURAI CHHARI UPAZIL"));
+
+
+        currencies.add(new Sections("Chittagong","Rangamati","LANGADU UPAZILA"));
+        currencies.add(new Sections("Chittagong","Rangamati"," NANIARCHAR UPAZILA"));
+        currencies.add(new Sections("Chittagong","Rangamati","RAJASTHALI UPAZILA"));
+        currencies.add(new Sections("Chittagong","Rangamati","RANGAMATI SADAR UP"));
 
 
         currencyAdapter=new CurrencyAdapter(currencies, DealerRegActivity.this,2);

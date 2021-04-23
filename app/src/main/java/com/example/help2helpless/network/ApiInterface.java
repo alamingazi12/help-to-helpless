@@ -5,7 +5,6 @@ import com.example.help2helpless.model.AdminResponse;
 import com.example.help2helpless.model.AllDonar;
 import com.example.help2helpless.model.Amount;
 import com.example.help2helpless.model.AvgDealerReceived;
-import com.example.help2helpless.model.Client;
 import com.example.help2helpless.model.ClientResponse;
 import com.example.help2helpless.model.Dealer;
 import com.example.help2helpless.model.DealerAvgPaid;
