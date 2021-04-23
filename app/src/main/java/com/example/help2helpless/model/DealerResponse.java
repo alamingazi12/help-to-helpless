@@ -2,6 +2,8 @@ package com.example.help2helpless.model;
 
 import java.util.ArrayList;
 
+import io.reactivex.Observable;
+
 public class DealerResponse {
     ArrayList<Dealer> dealers=new ArrayList<>();
 

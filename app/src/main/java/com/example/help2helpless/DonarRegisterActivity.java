@@ -80,6 +80,10 @@ public class DonarRegisterActivity extends AppCompatActivity {
         setContentView(R.layout.activity_donar_register);
         setFontToActionBar();
         intAll();
+        SharedPreferences    usertype=getSharedPreferences("typedata",0);
+        if(!usertype.getString("type","").equals("donar")){
+            donar_sign.setText("Next");
+        }
 
 
 
@@ -136,6 +140,17 @@ public class DonarRegisterActivity extends AppCompatActivity {
 
     }
     public void dealerRegister(String name,String phone,String password){
+
+        Bundle dealer_reg_info=new Bundle();
+        dealer_reg_info.putString("name",name);
+        dealer_reg_info.putString("phone",phone);
+        dealer_reg_info.putString("password",password);
+
+        Intent intent=new Intent(DonarRegisterActivity.this,DealerRegActivity.class);
+        intent.putExtras(dealer_reg_info);
+        startActivity(intent);
+
+        /*
         showProgress();
         ApiInterface apiInterface=ApiClient.getApiClient(DonarRegisterActivity.this).create(ApiInterface.class);
         Call<Responses> responsesCall=apiInterface.dealerSignResponse(name,phone,password);
@@ -158,7 +173,7 @@ public class DonarRegisterActivity extends AppCompatActivity {
                 StyleableToast.makeText(DonarRegisterActivity.this,"Network Error",R.style.mytoast).show();
             }
         });
-
+*/
     }
     private void filter(String text) {
         ArrayList<Sections> filteredList = new ArrayList<>();

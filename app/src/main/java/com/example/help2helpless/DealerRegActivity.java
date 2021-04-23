@@ -37,7 +37,6 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.help2helpless.adapter.CurrencyAdapter;
-import com.example.help2helpless.model.Dealer;
 import com.example.help2helpless.model.Responses;
 import com.example.help2helpless.model.Sections;
 import com.example.help2helpless.network.ApiClient;
@@ -50,6 +49,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import de.hdodenhof.circleimageview.CircleImageView;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -66,11 +66,12 @@ public class DealerRegActivity extends AppCompatActivity {
 
     ProgressDialog dialogue;
   public static int image_request=1, image_request2=2;
-  ImageView reg_pic,nid_pic;
-  Button signup,reg_up,id_up;
+  ImageView reg_pic;
+  CircleImageView profile_pic_view;
+  Button signup,reg_up, profile_upload;
   TextInputLayout dname,fname,dladdress,phone,bks,mail,shpname,thana,regno,nid,uname,password;
-  Bitmap nid_bitmap,regno_bitmap;
- public static Button zilla;
+  Bitmap profile_bitmap,regno_bitmap;
+  public static Button zilla;
   SharedPreferences sharedPreferences_zilla;
 
 
@@ -136,27 +137,25 @@ public class DealerRegActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 showProgress();
-                String name=dname.getEditText().getText().toString();
-                String dfname=fname.getEditText().getText().toString();
-                String daddres=dladdress.getEditText().getText().toString();
-                String dlphone=phone.getEditText().getText().toString();
-                String dlbks=bks.getEditText().getText().toString();
-                String dlmail=mail.getEditText().getText().toString();
-                String dlshpname=shpname.getEditText().getText().toString();
-                String dlthana=thana.getEditText().getText().toString();
-                String dlZilla=zilla.getText().toString();
-                String dlregno=regno.getEditText().getText().toString();
-                String dlnid=nid.getEditText().getText().toString();
-                String dluname=uname.getEditText().getText().toString();
-                String dlpass=password.getEditText().getText().toString();
 
-                if(regno_bitmap==null || nid_bitmap==null || TextUtils.isEmpty(name) || TextUtils.isEmpty(dfname) || TextUtils.isEmpty(daddres) || TextUtils.isEmpty(dlphone) ||TextUtils.isEmpty(dlbks) || TextUtils.isEmpty(dlmail) || TextUtils.isEmpty(dlshpname) || TextUtils.isEmpty(dlthana) || TextUtils.isEmpty(dlZilla) || TextUtils.isEmpty(dlregno) || TextUtils.isEmpty(dlnid) || TextUtils.isEmpty(dluname) || TextUtils.isEmpty(dlpass)){
+                Bundle bundle= getIntent().getExtras();
+                String name=bundle.getString("name");
+                String phone=bundle.getString("phone");
+                String password=bundle.getString("password");
+
+
+                String daddres=dladdress.getEditText().getText().toString();
+                String dlmail=mail.getEditText().getText().toString();
+                String dlZilla=zilla.getText().toString();
+
+
+
+                if(profile_bitmap==null || regno_bitmap==null ||TextUtils.isEmpty(daddres) ||  TextUtils.isEmpty(dlmail) || TextUtils.isEmpty(dlZilla) || TextUtils.isEmpty(name) || TextUtils.isEmpty(password) || TextUtils.isEmpty(phone)){
                     dialogue.cancel();
                     StyleableToast.makeText(DealerRegActivity.this,"One or More Fields Empty", R.style.mytoast).show();
                 }else {
-
                     ApiInterface apiInterface=ApiClient.getApiClient(DealerRegActivity.this).create(ApiInterface.class);
-                    Call<Responses> responsesCall=apiInterface.dealerSignResponse(name,dlphone,dlpass);
+                    Call<Responses> responsesCall=apiInterface.dealerSignResponse(name,phone,password,imageToString(profile_bitmap),daddres,"khulna","fultala",dlmail,imageToString(regno_bitmap));
                     responsesCall.enqueue(new Callback<Responses>() {
                         @Override
                         public void onResponse(Call<Responses> call, Response<Responses> response) {
@@ -186,7 +185,7 @@ public class DealerRegActivity extends AppCompatActivity {
                browseImage();
             }
         });
-     id_up.setOnClickListener(new View.OnClickListener() {
+     profile_upload.setOnClickListener(new View.OnClickListener() {
          @Override
          public void onClick(View view) {
              browseImage2();
@@ -329,15 +328,9 @@ public class DealerRegActivity extends AppCompatActivity {
     }
 
     private void initAll() {
-        dname=findViewById(R.id.dlname);
-        fname=findViewById(R.id.dlfname);
+        profile_pic_view=findViewById(R.id.view_profile_image);
         dladdress=findViewById(R.id.dladdres);
-
-        phone=findViewById(R.id.dlphon);
-        bks=findViewById(R.id.dlbknum);
         mail=findViewById(R.id.dlmail);
-        shpname=findViewById(R.id.shpname);
-        thana=findViewById(R.id.shpthana);
         zilla=findViewById(R.id.select_shpzila);
         sharedPreferences_zilla=getSharedPreferences("zilla_info",0);
         if(sharedPreferences_zilla.getString("zilla","").equals("")){
@@ -346,17 +339,14 @@ public class DealerRegActivity extends AppCompatActivity {
             zilla.setText(sharedPreferences_zilla.getString("zilla",""));
         }
 
-        regno=findViewById(R.id.dlregno);
-        nid=findViewById(R.id.nidnum);
-        uname=findViewById(R.id.dluname);
-        password=findViewById(R.id.dlpass);
+
        // imageview_style.xml init
         reg_pic=findViewById(R.id.shpimage);
-        nid_pic=findViewById(R.id.idimage);
+
       // BUtton init
         signup=findViewById(R.id.dealer_signup);
-        reg_up=findViewById(R.id.pic_image1);
-        id_up=findViewById(R.id.pic_image2);
+        reg_up=findViewById(R.id.pic_shop);
+        profile_upload =findViewById(R.id.pic_profile);
 
 
 
@@ -366,7 +356,7 @@ public class DealerRegActivity extends AppCompatActivity {
 
     }
 
-
+/*
     private void registerProcess() {
         showProgress();
         StringRequest stringRequest=new StringRequest(Request.Method.POST, url, new com.android.volley.Response.Listener<String>() {
@@ -434,7 +424,6 @@ public class DealerRegActivity extends AppCompatActivity {
                     params.put("shoppic",imageToString(regno_bitmap));
                     params.put("regno",dlregno);
                     params.put("nid",dlnid);
-                    params.put("nidpic",imageToString(nid_bitmap));
                     params.put("username",dluname);
                     params.put("password",dlpass);
 
@@ -457,7 +446,7 @@ public class DealerRegActivity extends AppCompatActivity {
         requestQueue.add(stringRequest);
 
     }
-
+*/
     private void browseImage(){
         Intent intent=new Intent();
         intent.setType("image/*");
@@ -480,7 +469,7 @@ public class DealerRegActivity extends AppCompatActivity {
             Uri uri=data.getData();
 
             try {
-                    regno_bitmap= MediaStore.Images.Media.getBitmap(getContentResolver(),uri);
+                regno_bitmap= MediaStore.Images.Media.getBitmap(getContentResolver(),uri);
                     reg_pic.setImageBitmap(regno_bitmap);
 
             } catch (IOException e) {
@@ -493,8 +482,9 @@ public class DealerRegActivity extends AppCompatActivity {
        else if(requestCode==image_request2 &&resultCode==RESULT_OK && data!=null){
             Uri uri=data.getData();
             try {
-                nid_bitmap= MediaStore.Images.Media.getBitmap(getContentResolver(),uri);
-                nid_pic.setImageBitmap(nid_bitmap);
+                profile_bitmap= MediaStore.Images.Media.getBitmap(getContentResolver(),uri);
+                profile_pic_view.setImageBitmap(profile_bitmap);
+
             } catch (IOException e) {
                 e.printStackTrace();
             }

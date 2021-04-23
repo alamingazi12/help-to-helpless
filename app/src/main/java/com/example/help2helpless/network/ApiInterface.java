@@ -40,7 +40,6 @@ public  interface ApiInterface {
 
     @GET("adminlogin.php")
     Call<AdminResponse> getAdminResponse(@Query("username") String username,@Query("password") String  password);
-
     @GET("donar_login.php")
     Call<DonarResponse> getDonarResponse(@Query("phone") String phone, @Query("password") String  password);
     @GET("dealer_login.php")
@@ -121,7 +120,14 @@ public  interface ApiInterface {
     Call<Responses> dealerSignResponse(
             @Field("name") String name,
             @Field("phone") String contact,
-            @Field("password") String password);
+            @Field("password") String password,
+            @Field("profile_pic") String profile_pic,
+            @Field("address") String address,
+            @Field("zilla") String zilla,
+            @Field("thana") String thana,
+            @Field("email") String email,
+            @Field("shop_pic") String shop_pic
+            );
 
 
     @FormUrlEncoded

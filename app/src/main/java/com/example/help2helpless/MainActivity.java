@@ -46,8 +46,8 @@ public class MainActivity extends AppCompatActivity {
            @Override
            public void onClick(View view) {
 
-               SharedPreferences   donarinfo=getSharedPreferences("donarinfo",0);
-               if(donarinfo.getString("contact","").equals("")){
+              // SharedPreferences   donarinfo=getSharedPreferences("donarinfo",0);
+              // if(donarinfo.getString("contact","").equals("")){
                    SharedPreferences dealerlogininfo=getSharedPreferences("dealerinfo",0);
                    if(dealerlogininfo.getString("contact","").equals("")){
                        editor.putString("type","dealer");
@@ -59,9 +59,9 @@ public class MainActivity extends AppCompatActivity {
                        startActivity(intent);
                    }
 
-               }else {
-                   StyleableToast.makeText(MainActivity.this,"You Have Logged in as Donar",R.style.mytoast).show();
-               }
+             //  }else {
+                  // StyleableToast.makeText(MainActivity.this,"You Have Logged in as Donar",R.style.mytoast).show();
+             //  }
 
            }
        });
