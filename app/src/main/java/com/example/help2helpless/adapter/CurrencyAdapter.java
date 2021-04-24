@@ -73,16 +73,22 @@ public class CurrencyAdapter extends RecyclerView.Adapter<CurrencyAdapter.Curren
 
                 final Sections sections2=currencies.get(position);
                 Log.d("zilla_adapter",sections2.getZilla());
-                editor.putString("zilla",sections2.getZilla());
-                editor.apply();
-                if(i==2){
 
-                    DealerRegActivity.zilla.setText(sections2.getZilla());
+                if(i==2){
+                    editor.putString("zilla",sections2.getZilla());
+                    editor.putString("divisions",sections2.getDivision());
+                    editor.putString("thana",sections2.getThana().toLowerCase());
+                    editor.apply();
+                    DealerRegActivity.zilla.setText(sections2.getZilla()+","+sections2.getThana().toLowerCase());
                     DealerRegActivity.alertDialog.dismiss();
 
 
                 }if(i==1){
-                    DonarRegisterActivity.dZilla.setText(sections2.getZilla());
+                    editor.putString("zilla",sections2.getZilla());
+                    editor.putString("divisions",sections2.getDivision());
+                    editor.putString("thana",sections2.getThana().toLowerCase());
+                    editor.apply();
+                    DonarRegisterActivity.dZilla.setText(sections2.getZilla()+","+sections2.getThana().toLowerCase());
                     DonarRegisterActivity.alertDialog.dismiss();
                 }
 

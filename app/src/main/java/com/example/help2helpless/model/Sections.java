@@ -29,11 +29,7 @@ public class Sections {
         return division;
     }
 
-    public Sections(String division, String zilla) {
-        this.division = division;
 
-        this.zilla=zilla;
-    }
 
 
 
