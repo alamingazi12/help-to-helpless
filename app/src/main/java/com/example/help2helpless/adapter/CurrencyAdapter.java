@@ -98,7 +98,7 @@ public class CurrencyAdapter extends RecyclerView.Adapter<CurrencyAdapter.Curren
                     editor.putString("thana",sections2.getThana().toLowerCase());
                     editor.apply();
                     UpdateActivity.update_zilla.setText(sections2.getZilla()+","+sections2.getThana().toLowerCase());
-                    DonarRegisterActivity.alertDialog.dismiss();
+                    UpdateActivity.alertDialog.dismiss();
                 }
 
                 /*

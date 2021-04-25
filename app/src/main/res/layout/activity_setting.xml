@@ -11,7 +11,7 @@
 
     <LinearLayout
 
-        android:padding="7dp"
+
 
         android:gravity="center_horizontal"
         android:orientation="vertical"
@@ -23,33 +23,34 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
-            android:layout_marginTop="70dp"
-            android:layout_marginBottom="10dp"
-            android:padding="10dp">
+            android:layout_marginTop="60dp"
+
+            android:padding="5dp">
 
             <TextView
+                android:fontFamily="@font/alexbold"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Settings"
                 android:textColor="#000000"
                 android:textFontWeight="700"
-                android:textSize="36dp" />
+                android:textSize="30dp" />
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
-            android:layout_marginBottom="5dp"
+            android:layout_marginBottom="2dp"
             android:layout_marginTop="5dp"
 
             android:layout_width="match_parent"
-            android:layout_height="130dp">
+            android:layout_height="140dp">
             <androidx.cardview.widget.CardView
                 android:layout_width="0dp"
+                android:layout_margin="5dp"
 
-                app:cardElevation="3dp"
-                android:animationCache="true"
+
                 app:cardCornerRadius="7dp"
                 app:cardBackgroundColor="#ffffff"
 
@@ -73,11 +74,12 @@
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
+
                         android:id="@+id/textView6"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="17dp"
-                        android:fontFamily="sans-serif-light"
+                        android:fontFamily="@font/latom"
                         android:gravity="center"
                         android:text="Profile Information"
                         android:textColor="#000000"
@@ -92,8 +94,9 @@
             <androidx.cardview.widget.CardView
                 app:cardBackgroundColor="#ffffff"
                 android:layout_width="0dp"
+                android:layout_margin="5dp"
                 android:animationCache="true"
-                app:cardElevation="3dp"
+
                 app:cardCornerRadius="7dp"
                 android:layout_marginLeft="5dp"
 
@@ -125,6 +128,7 @@
                     <TextView
                         android:gravity="center"
                         android:id="@+id/textView15"
+                        android:fontFamily="@font/latom"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="17sp"
@@ -145,11 +149,11 @@
         <LinearLayout
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
-            android:layout_marginBottom="5dp"
+            android:layout_marginBottom="2dp"
             android:layout_marginTop="5dp"
 
             android:layout_width="match_parent"
-            android:layout_height="130dp">
+            android:layout_height="140dp">
             <androidx.cardview.widget.CardView
                 android:layout_width="0dp"
 
@@ -160,6 +164,7 @@
 
                 android:layout_marginRight="5dp"
                 app:cardMaxElevation="3dp"
+                android:layout_margin="5dp"
                 android:layout_weight=".5"
                 android:layout_height="match_parent">
 
@@ -178,11 +183,12 @@
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
+
                         android:id="@+id/textView7"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="17sp"
-                        android:fontFamily="sans-serif-light"
+                        android:fontFamily="@font/latom"
                         android:gravity="center"
                         android:text="Notifications"
                         android:textColor="#000000"
@@ -199,6 +205,7 @@
             <androidx.cardview.widget.CardView
                 app:cardBackgroundColor="#ffffff"
                 android:layout_width="0dp"
+                android:layout_margin="5dp"
                 android:animationCache="true"
                 app:cardElevation="3dp"
                 app:cardCornerRadius="7dp"
@@ -213,7 +220,7 @@
                     android:layout_height="match_parent">
 
                     <ImageView
-                        android:layout_marginTop="25sp"
+                        android:layout_marginTop="22dp"
                         android:id="@+id/imageView"
                         android:layout_width="47dp"
                         android:layout_height="47dp"
@@ -224,6 +231,7 @@
 
 
                     <TextView
+                        android:fontFamily="@font/latom"
                         android:id="@+id/textView16"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -245,14 +253,14 @@
         <LinearLayout
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
-            android:layout_marginBottom="5dp"
+            android:layout_marginBottom="2dp"
             android:layout_marginTop="5dp"
 
             android:layout_width="match_parent"
-            android:layout_height="130dp">
+            android:layout_height="140dp">
             <androidx.cardview.widget.CardView
                 android:layout_width="0dp"
-
+                android:layout_margin="5dp"
                 app:cardElevation="3dp"
                 android:animationCache="true"
                 app:cardCornerRadius="7dp"
@@ -288,7 +296,7 @@
                         android:id="@+id/textView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:fontFamily="sans-serif-light"
+                        android:fontFamily="@font/latom"
                         android:gravity="center"
                         android:layout_marginBottom="17sp"
                         android:text="Privacy Policies"
@@ -305,6 +313,7 @@
             <androidx.cardview.widget.CardView
                 app:cardBackgroundColor="#ffffff"
                 android:layout_width="0dp"
+                android:layout_margin="5dp"
                 android:animationCache="true"
                 app:cardElevation="3dp"
                 app:cardCornerRadius="7dp"
@@ -336,6 +345,7 @@
                     </RelativeLayout>
 
                     <TextView
+                        android:fontFamily="@font/latom"
                         android:id="@+id/textView17"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -355,8 +365,9 @@
         </LinearLayout>
 
         <Button
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="20dp"
             android:text="Logout"
+            android:fontFamily="@font/latom"
             android:textSize="18sp"
             android:textAllCaps="false"
             android:textColor="#ffffff"

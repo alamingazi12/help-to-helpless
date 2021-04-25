@@ -24,7 +24,7 @@
             android:layout_marginBottom="20dp"
             android:layout_height="80dp"
             android:src="@drawable/dummy"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="45dp"
             />
 
 <TextView
@@ -49,7 +49,7 @@
             android:layout_marginRight="15dp"
             android:layout_marginLeft="15dp"
 
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="7dp"
             android:focusableInTouchMode="true"
             android:layout_height="wrap_content">
             <com.google.android.material.textfield.TextInputEditText
@@ -71,7 +71,7 @@
             android:id="@+id/edit_mail"
 
             android:textColorHint="#adb5bd"
-            android:imeOptions="actionNext"
+            android:imeOptions="actionDone"
             android:layout_marginRight="15dp"
             android:layout_marginLeft="15dp"
             android:layout_marginTop="10dp"
@@ -139,7 +139,7 @@
 
         <LinearLayout
 
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="15dp"
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="100dp">
@@ -201,7 +201,7 @@
         <Button
             android:id="@+id/edit_dealer"
             android:text="Sign Up"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="35dp"
             android:textColor="#fff"
             android:textSize="20sp"
             android:textAllCaps="false"
@@ -211,7 +211,7 @@
             android:layout_marginBottom="15dp"
             android:background="@drawable/button_style"
             android:layout_width="match_parent"
-            android:layout_height="55dp"/>
+            android:layout_height="50dp"/>
 
 
     </LinearLayout>

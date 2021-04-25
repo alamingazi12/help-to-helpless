@@ -54,9 +54,9 @@ public class UpdateActivity extends AppCompatActivity {
 
     ProgressDialog dialogue;
     public static int image_request = 1, image_request2 = 2;
-    ImageView reg_pic;
+    ImageView document_imageview;
     CircleImageView profile_pic_view;
-    Button signup, reg_upload;
+    Button signup, browse_document;
     TextInputLayout  address, mail,month_donation;
     Bitmap profile_bitmap, regno_bitmap;
     public static Button update_zilla;
@@ -114,7 +114,7 @@ public class UpdateActivity extends AppCompatActivity {
                 browseProfilePic();
             }
         });
-        reg_pic.setOnClickListener(new View.OnClickListener() {
+        browse_document.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 browseImage();
@@ -149,6 +149,7 @@ public class UpdateActivity extends AppCompatActivity {
     }
 
     private void donar_Update(String addres, String email, String zilla, String thana) {
+        showProgress();
         String month_amount=month_donation.getEditText().getText().toString().trim();
         SharedPreferences   donarsharedpreference=  this.getSharedPreferences("donarinfo",0);
         String phone=  donarsharedpreference.getString("contact","");
@@ -180,7 +181,7 @@ public class UpdateActivity extends AppCompatActivity {
     }
 
     private void dealer_update(String addres, String email, String zilla, String thana) {
-
+        showProgress();
         SharedPreferences    dealerlogininfo=getSharedPreferences("dealerinfo",0);
         String phone=dealerlogininfo.getString("contact","");
         ApiInterface apiInterface=ApiClient.getApiClient(UpdateActivity.this).create(ApiInterface.class);
@@ -262,7 +263,7 @@ public class UpdateActivity extends AppCompatActivity {
 
             try {
                 regno_bitmap= MediaStore.Images.Media.getBitmap(getContentResolver(),uri);
-                reg_pic.setImageBitmap(regno_bitmap);
+                document_imageview.setImageBitmap(regno_bitmap);
 
             } catch (IOException e) {
                 e.printStackTrace();
@@ -306,11 +307,12 @@ public class UpdateActivity extends AppCompatActivity {
             update_zilla.setText(sharedPreferences_zilla.getString("zilla", ""));
         }
 
-        reg_pic=findViewById(R.id.editshpimage);
+        document_imageview=findViewById(R.id.editshpimage);
 
         // BUtton init
         signup=findViewById(R.id.edit_dealer);
-        reg_upload=findViewById(R.id.editpic_shop);
+
+        browse_document=findViewById(R.id.editpic_shop);
 
     }
 
