@@ -102,7 +102,10 @@ public class AdminDashBoardActivity extends AppCompatActivity {
         startActivity(intent);
     }
     private void updateProfile() {
+        Bundle bundle=new Bundle();
+        bundle.putString("user_type","donar");
         Intent intent=new Intent(AdminDashBoardActivity.this,UpdateActivity.class);
+        intent.putExtras(bundle);
         startActivity(intent);
 
     }

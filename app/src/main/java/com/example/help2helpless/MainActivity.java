@@ -46,8 +46,8 @@ public class MainActivity extends AppCompatActivity {
            @Override
            public void onClick(View view) {
 
-              // SharedPreferences   donarinfo=getSharedPreferences("donarinfo",0);
-              // if(donarinfo.getString("contact","").equals("")){
+               SharedPreferences   donarinfo=getSharedPreferences("donarinfo",0);
+               if(donarinfo.getString("contact","").equals("")){
                    SharedPreferences dealerlogininfo=getSharedPreferences("dealerinfo",0);
                    if(dealerlogininfo.getString("contact","").equals("")){
                        editor.putString("type","dealer");
@@ -59,9 +59,9 @@ public class MainActivity extends AppCompatActivity {
                        startActivity(intent);
                    }
 
-             //  }else {
-                  // StyleableToast.makeText(MainActivity.this,"You Have Logged in as Donar",R.style.mytoast).show();
-             //  }
+               }else {
+                   StyleableToast.makeText(MainActivity.this,"You Have Logged in as Donar",R.style.mytoast).show();
+               }
 
            }
        });
@@ -105,53 +105,17 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    private void setFontToActionBar() {
-        TextView tv = new TextView(MainActivity.this);
-        RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams(ActionBar.LayoutParams.WRAP_CONTENT, ActionBar.LayoutParams.WRAP_CONTENT);
-        tv.setLayoutParams(lp);
-        tv.setText("Help To Helpless");
-        tv.setTextSize(24);
-        tv.setGravity(Gravity.CENTER);
-        tv.setTextColor(Color.parseColor("#ffffff"));
-        Typeface tf = Typeface.createFromAsset(getAssets(), "fonts/regular.otf");
-        tv.setTypeface(tf);
-//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-//        getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
-        getSupportActionBar().setCustomView(tv);
-        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-    }
 
 
 
 
 
-    private void showMenuData() {
 
-        items=new ArrayList<>();
-        items.add(new MenuItem(R.drawable.ic_baseline_home_24,"Home"));
-        items.add(new MenuItem(R.drawable.profile,"Admin Panel"));
-        items.add(new MenuItem(R.drawable.person,"Dealer"));
-        items.add(new MenuItem(R.drawable.person,"Dealer Registration"));
-        items.add(new MenuItem(R.drawable.person,"Donar"));
-        items.add(new MenuItem(R.drawable.person,"Donar Registration"));
-        items.add(new MenuItem(R.drawable.info,"About Us"));
-
-        MenuAdapter menuAdapter=new MenuAdapter(items,MainActivity.this);
-        menucontentitems.setAdapter(menuAdapter);
-
-    }
 
     @Override
     public void onBackPressed() {
-        if(drawer.isDrawerOpen(GravityCompat.START)){
-
-            drawer.closeDrawer(GravityCompat.START);
-        }
-        else {
 
             super.onBackPressed();
-            finishAffinity();
-        }
 
     }
 }

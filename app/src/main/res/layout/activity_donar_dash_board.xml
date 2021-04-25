@@ -28,6 +28,16 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_width="60dp"
+            android:src="@drawable/documents"
+            android:id="@+id/profile_image"
+            android:layout_height="60dp"
+            android:layout_marginTop="76dp"
+            android:layout_marginEnd="44dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <TextView
             android:id="@+id/textView2"
             android:layout_width="wrap_content"
@@ -71,19 +81,6 @@
             app:layout_constraintTop_toTopOf="@+id/textView3"
             app:layout_constraintVertical_bias="0.0" />
 
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/profile_image_donar"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-
-            android:layout_marginEnd="28dp"
-            android:src="@drawable/persons"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.866"
-            app:layout_constraintStart_toEndOf="@+id/dlr_name"
-            app:layout_constraintTop_toTopOf="parent" />
-
         <ImageButton
             android:id="@+id/back_icon"
             android:layout_width="wrap_content"
@@ -98,15 +95,17 @@
 
         <ImageButton
 
-            android:background="#f8f9fa"
             android:id="@+id/menu_icon_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="7dp"
-            android:layout_marginEnd="5dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="20dp"
+            android:background="#f8f9fa"
+
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_more" />
+            app:srcCompat="@drawable/ic_menu" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
     <LinearLayout
         android:background="#f8f9fa"

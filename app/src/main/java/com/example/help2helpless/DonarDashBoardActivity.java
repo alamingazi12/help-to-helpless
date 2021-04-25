@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -13,6 +14,9 @@ import android.widget.PopupMenu;
 import android.widget.TextView;
 
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.signature.ObjectKey;
 import com.example.help2helpless.model.DonarAllDonation;
 import com.example.help2helpless.model.DonarBalance;
 import com.example.help2helpless.model.DonarsAvgDonation;
@@ -20,6 +24,7 @@ import com.example.help2helpless.model.TotalDealer;
 import com.example.help2helpless.network.ApiClient;
 import com.example.help2helpless.network.ApiInterface;
 import com.muddzdev.styleabletoast.StyleableToast;
+import com.squareup.picasso.MemoryPolicy;
 import com.squareup.picasso.Picasso;
 import de.hdodenhof.circleimageview.CircleImageView;
 import retrofit2.Call;
@@ -100,7 +105,10 @@ public class DonarDashBoardActivity extends AppCompatActivity {
         });
     }
     private void updateProfile() {
+        Bundle bundle=new Bundle();
+        bundle.putString("user_type","donar");
         Intent intent=new Intent(DonarDashBoardActivity.this,UpdateActivity.class);
+        intent.putExtras(bundle);
         startActivity(intent);
 
     }
@@ -147,6 +155,22 @@ public class DonarDashBoardActivity extends AppCompatActivity {
         getDonarBalance();
         getAvgDonation();
         getTotalDealers();
+        donarinfo=this.getSharedPreferences("donarinfo",0);
+        String profile_image_path=imageUrl+donarinfo.getString("donar_pic","");
+        Log.d("path",profile_image_path);
+
+
+        Glide.with(DonarDashBoardActivity.this)
+                .load(profile_image_path).diskCacheStrategy(DiskCacheStrategy.NONE).skipMemoryCache(true)
+                .into(donar_profile_image);
+
+        //  Picasso.get().load()
+        //  Picasso.get().load(profile_image_path).resize(60,60).centerCrop().into(donar_profile_image);
+
+
+
+
+       // Picasso.get().load(donarinfo.getString("donar_pic","")).resize(80,80).centerCrop().into(donar_profile_image);
 
         //getTotalDonation();
     }
@@ -272,13 +296,28 @@ public class DonarDashBoardActivity extends AppCompatActivity {
         donar_balnce=findViewById(R.id.dnr_balance);
         avg_donations=findViewById(R.id.dnr_avg_donation);
         ndealer=findViewById(R.id.num_of_donars);
-        donar_profile_image=findViewById(R.id.profile_image_donar);
+        donar_profile_image=findViewById(R.id.profile_image);
         //t_donation=findViewById(R.id.t_doantion);
         donate_dealers=findViewById(R.id.donate_to_dealer);
         donarinfo=this.getSharedPreferences("donarinfo",0);
         donar_contact=donarinfo.getString("contact",null);
 
         dname.setText(donarinfo.getString("name",null));
-        Picasso.get().load(imageUrl+donarinfo.getString("donar_pic",null)).resize(60,60).centerCrop().into(donar_profile_image);
+        String profile_image_path=imageUrl+donarinfo.getString("donar_pic","");
+        Log.d("path",profile_image_path);
+   /*
+        Glide.with(DonarDashBoardActivity.this)
+                .load(profile_image_path)
+                .into(donar_profile_image);*/
+      //  Picasso.get().load()
+      //  Picasso.get().load(profile_image_path).resize(60,60).centerCrop().into(donar_profile_image);
+      /*  Picasso.get()
+                .load(profile_image_path)
+                .resize(80, 80)
+                .centerCrop()
+                .into(donar_profile_image);*/
+
+
+       // Picasso.get().load(imageUrl+"01732506627.jpg").placeholder(R.drawable.persons).resize(60,60).centerCrop().into(donar_profile_image);
     }
 }

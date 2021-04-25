@@ -66,7 +66,12 @@ public class UpdateActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_update);
+        Bundle bundle= getIntent().getExtras();
+        String type=bundle.getString("user_type");
         initAll();
+        if(type.equals("donar")){
+          month_donation.setVisibility(View.VISIBLE);
+        }
         update_zilla.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -134,13 +139,20 @@ public class UpdateActivity extends AppCompatActivity {
 
                  if(profile_bitmap==null || regno_bitmap==null || TextUtils.isEmpty(addres) || TextUtils.isEmpty(email) || TextUtils.isEmpty(zilla) || TextUtils.isEmpty(thana)){
 
-                     donar_Update(addres,email,zilla,thana);
-                     dealer_update(addres,email,zilla,thana);
-
+                     StyleableToast.makeText(UpdateActivity.this,"One Or More Fields Empty",R.style.mytoast).show();
 
                  }else {
 
-                     StyleableToast.makeText(UpdateActivity.this,"One Or More Fields Empty",R.style.mytoast).show();
+                     Bundle bundle= getIntent().getExtras();
+                     String type=bundle.getString("user_type");
+                     if(type.equals("donar")){
+
+                         donar_Update(addres,email,zilla,thana);
+                     }else {
+                         dealer_update(addres,email,zilla,thana);
+                     }
+
+
                  }
              }
          });

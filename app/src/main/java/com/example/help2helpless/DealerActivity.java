@@ -21,6 +21,8 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.example.help2helpless.model.AvgDealerReceived;
 import com.example.help2helpless.model.Client;
 import com.example.help2helpless.model.Dealer;
@@ -31,6 +33,7 @@ import com.example.help2helpless.model.TotalClients;
 import com.example.help2helpless.model.TotalDonars;
 import com.example.help2helpless.network.ApiClient;
 import com.example.help2helpless.network.ApiInterface;
+import com.squareup.picasso.Picasso;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -107,11 +110,7 @@ public class DealerActivity extends AppCompatActivity {
         });
 
 
-        getDealerBalance();
-        getDealerAvgPaid();
-        getAvgDealerReceived();
-        getTotalDonar();
-        getTotalClients();
+
     }
 
     private void setting() {
@@ -119,9 +118,11 @@ public class DealerActivity extends AppCompatActivity {
         startActivity(intent);
     }
     private void updateProfile() {
+        Bundle bundle=new Bundle();
+        bundle.putString("user_type","dealer");
         Intent intent=new Intent(DealerActivity.this,UpdateActivity.class);
+        intent.putExtras(bundle);
         startActivity(intent);
-
     }
 
 
@@ -321,6 +322,12 @@ public class DealerActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
 
+        getDealerBalance();
+        getDealerAvgPaid();
+        getAvgDealerReceived();
+        getTotalDonar();
+        getTotalClients();
+
     }
 
     private void initAll() {
@@ -340,5 +347,6 @@ public class DealerActivity extends AppCompatActivity {
         dealerlogininfo=getSharedPreferences("dealerinfo",0);
         dealer_contact=dealerlogininfo.getString("contact","");
         dlr_name.setText(dealerlogininfo.getString("dname",""));
+
     }
 }

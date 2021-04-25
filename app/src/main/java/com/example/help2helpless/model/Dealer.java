@@ -16,7 +16,7 @@ public class Dealer implements Parcelable {
     String shoppic;
     String drugsell_regnum;
     String nid;
-    String nid_pic;
+    String profile_pic;
     String usernm;
     String passwrd;
 
@@ -33,7 +33,7 @@ public class Dealer implements Parcelable {
         shoppic = in.readString();
         drugsell_regnum = in.readString();
         nid = in.readString();
-        nid_pic = in.readString();
+        profile_pic = in.readString();
         usernm = in.readString();
         passwrd = in.readString();
     }
@@ -147,11 +147,11 @@ public class Dealer implements Parcelable {
     }
 
     public String getNid_pic() {
-        return nid_pic;
+        return profile_pic;
     }
 
     public void setNid_pic(String nid_pic) {
-        this.nid_pic = nid_pic;
+        this.profile_pic = nid_pic;
     }
 
     public String getUsernm() {
@@ -189,7 +189,7 @@ public class Dealer implements Parcelable {
         parcel.writeString(shoppic);
         parcel.writeString(drugsell_regnum);
         parcel.writeString(nid);
-        parcel.writeString(nid_pic);
+        parcel.writeString(profile_pic);
         parcel.writeString(usernm);
         parcel.writeString(passwrd);
     }

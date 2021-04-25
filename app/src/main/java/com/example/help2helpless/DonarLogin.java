@@ -100,6 +100,7 @@ public class DonarLogin extends AppCompatActivity {
                     dealer_editor.putString("contact", dealer.getPhone());
                     dealer_editor.putString("uname", dealer.getUsernm());
                     dealer_editor.putString("Zilla", dealer.getShpnmzilla());
+
                     dealer_editor.apply();
                     donar_phone.setText("");
                     dpasswrd.setText("");
