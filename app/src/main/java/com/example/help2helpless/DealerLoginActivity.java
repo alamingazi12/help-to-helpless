@@ -102,7 +102,7 @@ public class DealerLoginActivity extends AppCompatActivity {
 
         @Override
         public void onFailure(Call<DealerResponse> call, Throwable t) {
-           dialogue.cancel();
+            dialogue.cancel();
             StyleableToast.makeText(DealerLoginActivity.this,"Network Error",R.style.mytoast).show();
         }
     });

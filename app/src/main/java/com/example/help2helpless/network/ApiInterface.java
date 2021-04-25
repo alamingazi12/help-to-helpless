@@ -151,4 +151,30 @@ public  interface ApiInterface {
            @Field("ccontact") String client_number,
            @Field("dcontact") String donar_contact);
 
+
+    @FormUrlEncoded
+    @POST("update_dealer.php")
+    Call<Responses> dealerUpdateResponse(
+            @Field("profile_pic") String profile_pic,
+            @Field("address") String address,
+            @Field("zilla") String zilla,
+            @Field("thana") String thana,
+            @Field("phone") String phone,
+            @Field("mail") String mail,
+            @Field("document_pic") String document_pic
+    );
+
+    @FormUrlEncoded
+    @POST("update_donar.php")
+    Call<Responses> donarUpdateResponse(
+            @Field("profile_pic") String profile_pic,
+            @Field("address") String address,
+            @Field("zilla") String zilla,
+            @Field("thana") String thana,
+            @Field("phone") String phone,
+            @Field("mail") String mail,
+            @Field("document_pic") String document_pic,
+            @Field("donation") String donation
+    );
+
 }

@@ -86,9 +86,25 @@ public class AdminDashBoardActivity extends AppCompatActivity {
             case R.id.logout:
                 logout();
                 break;
+            case R.id.update:
+                updateProfile();
+                break;
+            case R.id.settings:
+                setting();
+                break;
 
         }
         return true;
+    }
+
+    private void setting() {
+        Intent intent=new Intent(AdminDashBoardActivity.this,SettingActivity.class);
+        startActivity(intent);
+    }
+    private void updateProfile() {
+        Intent intent=new Intent(AdminDashBoardActivity.this,UpdateActivity.class);
+        startActivity(intent);
+
     }
 
     private void logout() {

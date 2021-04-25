@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.help2helpless">
+
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.SEND_SMS" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
@@ -13,21 +14,31 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".DonationHistory" android:theme="@style/AppTheme.NoActionBar"></activity>
-        <activity android:name=".DonateDealerActivity" android:parentActivityName=".AddedDealerActivity"/>
+        <activity android:name=".UpdateActivity"></activity>
+        <activity android:name=".SettingActivity" />
+        <activity
+            android:name=".DonationHistory"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".DonateDealerActivity"
+            android:parentActivityName=".AddedDealerActivity" />
         <activity
             android:name=".AddedDealerActivity"
-            android:parentActivityName=".DonarDashBoardActivity"/>
-        <activity android:name=".RequestActivity"  android:parentActivityName=".DonarDashBoardActivity"/>
-        <activity android:name=".AddDonarActivity" android:parentActivityName=".DealerActivity" />
+            android:parentActivityName=".DonarDashBoardActivity" />
+        <activity
+            android:name=".RequestActivity"
+            android:parentActivityName=".DonarDashBoardActivity" />
+        <activity
+            android:name=".AddDonarActivity"
+            android:parentActivityName=".DealerActivity" />
         <activity
             android:name=".ClientProfileActivity"
             android:parentActivityName=".DiscountActivity" />
         <activity
             android:name=".DealerActivity"
-            android:screenOrientation="portrait"
             android:autoRemoveFromRecents="true"
             android:parentActivityName=".DealerLoginActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".DiscountActivity"
@@ -38,51 +49,55 @@
         <activity
             android:name=".DonarDashBoardActivity"
             android:autoRemoveFromRecents="true"
-            android:theme="@style/AppTheme.NoActionBar" android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".DealerRegActivity"
-            android:windowSoftInputMode="stateHidden|adjustResize"
-            android:parentActivityName=".MainActivity" />
-        <activity android:name=".ApprovedActivity"  android:screenOrientation="portrait" android:theme="@style/AppTheme.NoActionBar"/>
+            android:parentActivityName=".MainActivity"
+            android:windowSoftInputMode="stateHidden|adjustResize" />
+        <activity
+            android:name=".ApprovedActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".DealerRequestActivity"
             android:parentActivityName=".AdminDashBoardActivity" />
         <activity
             android:name=".DonarRegisterActivity"
-
             android:parentActivityName=".MainActivity" />
         <activity
-            android:name=".DealerLoginActivity" android:theme="@style/AppTheme.NoActionBar"
-            android:parentActivityName=".MainActivity" />
+            android:name=".DealerLoginActivity"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".CurrencyActivity" android:theme="@style/AppTheme.NoActionBar">
-
-        </activity>
-
+            android:name=".CurrencyActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".DonarLogin" android:theme="@style/AppTheme.NoActionBar"
-            android:parentActivityName=".MainActivity" />
+            android:name=".DonarLogin"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".AdminDashBoardActivity"
-            android:parentActivityName=".AdminLogin" android:autoRemoveFromRecents="true" />
+            android:autoRemoveFromRecents="true"
+            android:parentActivityName=".AdminLogin" />
         <activity
             android:name=".AdminLogin"
-            android:parentActivityName=".MainActivity"/>
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".ClientActivity"
-            android:windowSoftInputMode="stateHidden|adjustResize"
-            android:parentActivityName=".DealerActivity" android:screenOrientation="portrait" />
+            android:parentActivityName=".DealerActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustResize" />
         <activity
             android:name=".MainActivity"
             android:autoRemoveFromRecents="true"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
 
         <meta-data

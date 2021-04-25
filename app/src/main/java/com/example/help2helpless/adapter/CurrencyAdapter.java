@@ -1,5 +1,4 @@
 package com.example.help2helpless.adapter;
-
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.util.Log;
@@ -16,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.help2helpless.DealerRegActivity;
 import com.example.help2helpless.DonarRegisterActivity;
 import com.example.help2helpless.R;
+import com.example.help2helpless.UpdateActivity;
 import com.example.help2helpless.model.Sections;
 
 import java.util.ArrayList;
@@ -83,12 +83,21 @@ public class CurrencyAdapter extends RecyclerView.Adapter<CurrencyAdapter.Curren
                     DealerRegActivity.alertDialog.dismiss();
 
 
-                }if(i==1){
+                }
+                if(i==1){
                     editor.putString("zilla",sections2.getZilla());
                     editor.putString("divisions",sections2.getDivision());
                     editor.putString("thana",sections2.getThana().toLowerCase());
                     editor.apply();
                     DonarRegisterActivity.dZilla.setText(sections2.getZilla()+","+sections2.getThana().toLowerCase());
+                    DonarRegisterActivity.alertDialog.dismiss();
+                }
+                if(i==3){
+                    editor.putString("zilla",sections2.getZilla());
+                    editor.putString("divisions",sections2.getDivision());
+                    editor.putString("thana",sections2.getThana().toLowerCase());
+                    editor.apply();
+                    UpdateActivity.update_zilla.setText(sections2.getZilla()+","+sections2.getThana().toLowerCase());
                     DonarRegisterActivity.alertDialog.dismiss();
                 }
 

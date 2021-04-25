@@ -4,4 +4,7 @@
       android:title="Log Out"/>
   <item android:id="@+id/update"
       android:title="Update Profile"/>
+
+  <item android:id="@+id/settings"
+      android:title="Settings"/>
 </menu>

@@ -50,7 +50,7 @@
                 android:focusable="true"
                 android:textColorHint="#adb5bd"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-                android:id="@+id/dladdres"
+                android:id="@+id/d_address"
                 android:layout_marginRight="15dp"
                 android:layout_marginLeft="15dp"
 

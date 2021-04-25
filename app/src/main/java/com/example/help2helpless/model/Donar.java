@@ -119,7 +119,18 @@ public class Donar implements Parcelable {
     String thana;
     String mdonation_aamount;
     String usernm;
+    String doc_pic;
     String passwrd;
+
+    public String getDoc_pic() {
+        return doc_pic;
+    }
+
+    public void setDoc_pic(String doc_pic) {
+        this.doc_pic = doc_pic;
+    }
+
+
 
     public String getDonar_photo() {
         return donar_photo;

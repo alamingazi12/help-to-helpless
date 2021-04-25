@@ -83,6 +83,12 @@ public class DonarDashBoardActivity extends AppCompatActivity {
                                 Intent intent=new Intent(DonarDashBoardActivity.this,RequestActivity.class);
                                 startActivity(intent);
                                 break;
+                            case R.id.setting:
+                                  setting();
+                                break;
+                            case R.id.update:
+                                updateProfile();
+                                break;
                             default:
                                 break;
                         }
@@ -92,6 +98,15 @@ public class DonarDashBoardActivity extends AppCompatActivity {
                 popup.show();
             }
         });
+    }
+    private void updateProfile() {
+        Intent intent=new Intent(DonarDashBoardActivity.this,UpdateActivity.class);
+        startActivity(intent);
+
+    }
+    private void setting() {
+        Intent intent=new Intent(DonarDashBoardActivity.this,SettingActivity.class);
+        startActivity(intent);
     }
 
     private void logout() {

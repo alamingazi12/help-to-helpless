@@ -2,6 +2,10 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:id="@+id/logout"
         android:title="Log Out"/>
+    <item android:id="@+id/setting"
+        android:title="Settings"/>
+    <item android:id="@+id/update"
+        android:title="Update Profile"/>
     <item android:id="@+id/requests"
-        android:title="See Requests"/>
+        android:title="Dealer Requests"/>
 </menu>

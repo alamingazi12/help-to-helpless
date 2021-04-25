@@ -92,6 +92,12 @@ public class DealerActivity extends AppCompatActivity {
                             case R.id.logout:
                                 logout();
                                 break;
+                            case R.id.update:
+                                updateProfile();
+                                break;
+                            case R.id.settings:
+                               setting();
+                                break;
                         }
                         return false;
                     }
@@ -108,30 +114,25 @@ public class DealerActivity extends AppCompatActivity {
         getTotalClients();
     }
 
+    private void setting() {
+        Intent intent=new Intent(DealerActivity.this,SettingActivity.class);
+        startActivity(intent);
+    }
+    private void updateProfile() {
+        Intent intent=new Intent(DealerActivity.this,UpdateActivity.class);
+        startActivity(intent);
+
+    }
+
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_item,menu);
         return true;
     }
 
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-       switch (item.getItemId()){
 
-          case  R.id.logout:
-              logout();
-           case  R.id.update:
-               updateProfile();
-              break;
-           default:
-               break;
-       }
-       return true;
-    }
 
-    private void updateProfile() {
-
-    }
 
     private void logout() {
         dealerlogininfo=getSharedPreferences("dealerinfo",0);
