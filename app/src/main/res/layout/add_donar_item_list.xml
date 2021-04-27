@@ -4,69 +4,78 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="150dp"
+    android:layout_height="130dp"
     android:layout_margin="10dp"
     app:cardCornerRadius="10dp"
     android:background="#ffffff"
     app:cardElevation="3dp">
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/dnr_image"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
+        <com.makeramen.roundedimageview.RoundedImageView
+            android:id="@+id/dnr_profile_image"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
             android:layout_marginStart="16dp"
-            android:layout_marginBottom="36dp"
-
+            android:scaleType="fitCenter"
             android:src="@drawable/persons"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
+
+            app:layout_constraintTop_toTopOf="parent"
+            app:riv_border_width="2dip"
+            app:riv_corner_radius="13dip"
+            app:riv_mutate_background="true"
             tools:ignore="MissingConstraints" />
 
         <TextView
-            android:id="@+id/donar_phones"
+            android:id="@+id/donar_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:fontFamily="sans-serif-light"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="24dp"
+            android:fontFamily="@font/latom"
             android:text="Rajib Molla"
             android:textColor="#000000"
             android:textFontWeight="400"
-            android:textSize="19sp"
-            app:layout_constraintStart_toEndOf="@+id/dnr_image"
-            app:layout_constraintTop_toTopOf="@+id/dnr_image"
+            android:textSize="19dp"
+            app:layout_constraintStart_toEndOf="@+id/dnr_profile_image"
+            app:layout_constraintTop_toTopOf="parent"
             tools:ignore="MissingConstraints" />
 
         <TextView
             android:id="@+id/dnr_address"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="14dp"
+            android:fontFamily="@font/latom"
             android:text="Fultala Khulna, Bangladesh"
             android:textColor="#000000"
-
-            android:textSize="17dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/donar_phones"
-            app:layout_constraintTop_toBottomOf="@+id/donar_phones"
-            app:layout_constraintVertical_bias="0.08" />
+            android:textSize="15dp"
+            app:layout_constraintBottom_toTopOf="@+id/add_donar_request"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/donar_name"
+            app:layout_constraintTop_toBottomOf="@+id/donar_name" />
 
         <Button
             android:id="@+id/add_donar_request"
-            android:layout_width="97dp"
-            android:layout_height="26dp"
-            android:layout_marginEnd="22dp"
+            android:layout_width="132dp"
+            android:layout_height="28dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginBottom="16dp"
             android:background="@drawable/button_style"
-            android:fontFamily="sans-serif-light"
-            android:text="Request"
+            android:fontFamily="@font/latom"
+            android:paddingLeft="8dp"
+            android:paddingRight="8dp"
+            android:text="Send Request"
             android:textAllCaps="false"
             android:textColor="#ffffff"
             android:textFontWeight="400"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.782" />
+            app:layout_constraintStart_toStartOf="@+id/dnr_address" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

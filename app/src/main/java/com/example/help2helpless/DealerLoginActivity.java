@@ -86,9 +86,8 @@ public class DealerLoginActivity extends AppCompatActivity {
                 Dealer dealer=  dealers.get(0);
                 dealer_editor.putString("dname", dealer.getName());
                 dealer_editor.putString("contact", dealer.getPhone());
-                dealer_editor.putString("uname", dealer.getUsernm());
                 dealer_editor.putString("Zilla", dealer.getShpnmzilla());
-                dealer_editor.putString("profile_pic", dealer.getNid_pic());
+
                 dealer_editor.apply();
                 dlrphone.setText("");
                 dlr_pass.setText("");

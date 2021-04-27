@@ -44,7 +44,7 @@ public class AdminLogin extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_adminlogin);
-        setFontToActionBar();
+        //setFontToActionBar();
         initAll();
         admin_login.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -129,8 +129,8 @@ public class AdminLogin extends AppCompatActivity {
           editor=adminSharedPreference.edit();
 
        }
-        adusernme=findViewById(R.id.dname);
-        adpasswrd=findViewById(R.id.dpass);
-        admin_login=findViewById(R.id.d_login);
+        adusernme=findViewById(R.id.admin_username);
+        adpasswrd=findViewById(R.id.admin_password);
+        admin_login=findViewById(R.id.admin_login);
     }
 }

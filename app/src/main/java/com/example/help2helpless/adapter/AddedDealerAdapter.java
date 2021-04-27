@@ -41,11 +41,11 @@ public class AddedDealerAdapter extends RecyclerView.Adapter<AddedDealerAdapter.
     public void onBindViewHolder(@NonNull AddedDealerViewHolder holder, final int position) {
         Dealer dealer=dealerslist.get(position);
         holder.name.setText(dealer.getName());
-        holder.shpname.setText(dealer.getShopnme());
-        holder.address.setText(dealer.getShpnmthana());
+
+        holder.address.setText(dealer.getHmaddres());
         holder.dlr_phone.setText(dealer.getPhone());
 
-        String url=imageUrl+dealer.getShoppic();
+        String url=imageUrl+dealer.getProfile_pic();
         //Picasso.get().load(imageUrl).into(shpimage);
         Picasso.get()
                 .load(url)
@@ -83,7 +83,7 @@ public class AddedDealerAdapter extends RecyclerView.Adapter<AddedDealerAdapter.
             address= itemView.findViewById(R.id.shopaddress);
             dlr_phone=itemView.findViewById(R.id.dlr_contact);
             donate_dealer=itemView.findViewById(R.id.donate_dlr);
-            imageView_dealer=itemView.findViewById(R.id.dlr_shop_image);
+            imageView_dealer=itemView.findViewById(R.id.dlr_profile_image);
         }
     }
 }

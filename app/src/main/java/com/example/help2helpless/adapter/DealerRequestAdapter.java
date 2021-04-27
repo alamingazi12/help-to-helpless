@@ -57,7 +57,7 @@ public class DealerRequestAdapter extends RecyclerView.Adapter<DealerRequestAdap
     public void onBindViewHolder(@NonNull DealerRequestViewHolder holder, final int position) {
         Dealer dealer=dealerlist.get(position);
         holder.name.setText(dealer.getName());
-        holder.shpname.setText(dealer.getShopnme());
+
         holder.address.setText(dealer.getShpnmthana());
         holder.dlr_phone.setText(dealer.getPhone());
 
@@ -249,7 +249,7 @@ public class DealerRequestAdapter extends RecyclerView.Adapter<DealerRequestAdap
             address= itemView.findViewById(R.id.shopaddress);
             dlr_phone=itemView.findViewById(R.id.dlr_contact);
             add_dealer=itemView.findViewById(R.id.confirm_dlr);
-            imageView_dealer=itemView.findViewById(R.id.dlr_shop_image);
+            imageView_dealer=itemView.findViewById(R.id.dlr_profile_image);
         }
     }
 }

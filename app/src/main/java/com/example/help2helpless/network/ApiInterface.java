@@ -133,23 +133,14 @@ public  interface ApiInterface {
     @POST("insertclient.php")
     Call<Responses> clientSignResponse(
             @Field("name") String name,
-            @Field("fname") String fname,
-            @Field("profession") String profession,
-            @Field("age") String age,//presentaddr
-            @Field("mincome") String address,
-            @Field("incomesrc") String incomesrc,
-            @Field("nson") String nson,
-            @Field("ndaughter") String ndaughter,
-            @Field("guardian") String guardian,
-            @Field("guardianno") String guardian_no,
-            @Field("clientbksnum") String client_bkash,
-            @Field("cdisease") String diases,
-            @Field("cmedicost") String month_cost,
-            @Field("caddress") String caddress,
-            @Field("cphoto") String photo,
-
-           @Field("ccontact") String client_number,
-           @Field("dcontact") String donar_contact);
+            @Field("profile_pic") String profile_pic,
+            @Field("caddress") String address,//presentaddr
+            @Field("thana") String thana,
+            @Field("district") String district,
+            @Field("phone") String phone,
+            @Field("client_type") String client_type,
+            @Field("document_pic") String document_pic,
+            @Field("dcontact") String dealer_contact);
 
 
     @FormUrlEncoded

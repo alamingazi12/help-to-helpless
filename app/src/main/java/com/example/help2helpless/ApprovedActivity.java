@@ -93,19 +93,16 @@ public class ApprovedActivity extends AppCompatActivity {
 
 
                     params.put("name",dealer.getName());
-                    params.put("fname",dealer.getFathername());
+
                     params.put("homaddr",dealer.getHmaddres());
                     params.put("phone",dealer.getPhone());
-                    params.put("bknumber",dealer.getBksnum());
+
                     params.put("email",dealer.getEmail());
-                    params.put("shopname",dealer.getShopnme());
+
                     params.put("shopthana",dealer.getShpnmthana());
                     params.put("shopzilla",dealer.getShpnmzilla());
                     params.put("shoppic","123");
-                    params.put("regno",dealer.getDrugsell_regnum());
-                    params.put("nid",dealer.getNid());
                     params.put("nidpic","456");
-                    params.put("username",dealer.getUsernm());
                     params.put("password",dealer.getPasswrd());
 
 
@@ -146,10 +143,8 @@ public class ApprovedActivity extends AppCompatActivity {
         dlrname.setText(dealer.getName());
         zilla.setText(dealer.getShpnmzilla());
         thana.setText(dealer.getShpnmthana());
-        shopname.setText(dealer.getShopnme());
-        drugregno.setText(dealer.getDrugsell_regnum());
         phone.setText(dealer.getPhone());
-         String url=imageUrl+dealer.getNid_pic();
+
         //Picasso.get().load(imageUrl).into(shpimage);
         Picasso.get()
                 .load(url)

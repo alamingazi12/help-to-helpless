@@ -12,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 
+import com.example.help2helpless.ClientActivity;
 import com.example.help2helpless.DealerRegActivity;
 import com.example.help2helpless.DonarRegisterActivity;
 import com.example.help2helpless.R;
@@ -66,6 +67,7 @@ public class CurrencyAdapter extends RecyclerView.Adapter<CurrencyAdapter.Curren
 
         holder.divisions.setText(sections.getDivision());
         holder.zilla.setText(sections.getZilla());
+        holder.thana.setText(sections.getThana());
         holder.select.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -101,6 +103,15 @@ public class CurrencyAdapter extends RecyclerView.Adapter<CurrencyAdapter.Curren
                     UpdateActivity.alertDialog.dismiss();
                 }
 
+                if(i==4){
+                    editor.putString("zilla",sections2.getZilla());
+                    editor.putString("divisions",sections2.getDivision());
+                    editor.putString("thana",sections2.getThana().toLowerCase());
+                    editor.apply();
+                    ClientActivity.btn_district_thana.setText(sections2.getZilla()+","+sections2.getThana().toLowerCase());
+                    ClientActivity.alertDialog.dismiss();
+                }
+
                 /*
                 if (CurrencyActivity.activity_value.equals("dealer")){
                     Intent intent=new Intent(context, DealerRegActivity.class);
@@ -126,7 +137,7 @@ public class CurrencyAdapter extends RecyclerView.Adapter<CurrencyAdapter.Curren
 
     public class CurrencyViewHolder extends RecyclerView.ViewHolder {
 
-        private TextView divisions,zilla;
+        private TextView divisions,zilla,thana;
         Button select;
         Button ok_button,ok_cancel,currency;
         public CurrencyViewHolder(@NonNull View itemView,final OnItemClickListener listener) {
@@ -134,6 +145,7 @@ public class CurrencyAdapter extends RecyclerView.Adapter<CurrencyAdapter.Curren
             divisions=itemView.findViewById(R.id._division);
             zilla=itemView.findViewById(R.id._zilla);
             select=itemView.findViewById(R.id._currency);
+            thana=itemView.findViewById(R.id.thana);
 
 
 

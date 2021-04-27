@@ -8,18 +8,22 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
     <application
-        android:largeHeap="true"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        android:largeHeap="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".UpdateActivity" android:theme="@style/AppTheme.NoActionBar">
-
+        <activity android:name=".ClientRegActivity" android:theme="@style/AppTheme.NoActionBar">
 
         </activity>
-        <activity android:name=".SettingActivity" android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".UpdateActivity"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".SettingActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".DonationHistory"
             android:theme="@style/AppTheme.NoActionBar" />
@@ -82,16 +86,19 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".AdminDashBoardActivity"
+            android:theme="@style/AppTheme.NoActionBar"
             android:autoRemoveFromRecents="true"
             android:parentActivityName=".AdminLogin" />
         <activity
             android:name=".AdminLogin"
+            android:theme="@style/AppTheme.NoActionBar"
             android:parentActivityName=".MainActivity" />
         <activity
+            android:theme="@style/AppTheme.NoActionBar"
             android:name=".ClientActivity"
             android:parentActivityName=".DealerActivity"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden|adjustResize" />
+             />
         <activity
             android:name=".MainActivity"
             android:autoRemoveFromRecents="true"

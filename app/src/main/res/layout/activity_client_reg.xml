@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    tools:context=".ClientRegActivity">
+
+    <TextView
+        android:id="@+id/textView18"
+        android:layout_width="wrap_content"
+        android:layout_height="51dp"
+        android:layout_marginTop="72dp"
+        android:fontFamily="@font/artifika"
+        android:text="Add Client"
+        android:textColor="#000000"
+        android:textSize="34sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.691"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/cl_ful_name"
+        android:layout_width="0dp"
+        android:layout_height="45dp"
+
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="124dp"
+        android:layout_marginEnd="32dp"
+        android:background="@drawable/edit_text_style"
+        android:ems="10"
+        android:fontFamily="@font/latom"
+        android:hint="Full Name"
+        android:imeOptions="actionDone"
+        android:inputType="textCapWords"
+        android:paddingLeft="13dp"
+        android:textColor="#000000"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView18" />
+
+    <Button
+        android:id="@+id/btn_client_next"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="132dp"
+        android:background="@drawable/button_style"
+        android:fontFamily="@font/latom"
+        android:text="Next"
+        android:textAllCaps="false"
+        android:textColor="#ffffff"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <com.makeramen.roundedimageview.RoundedImageView
+        android:id="@+id/cl_profile_view"
+        android:layout_width="100dp"
+
+        android:layout_height="100dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="72dp"
+
+        android:src="@drawable/persons"
+        app:layout_constraintStart_toStartOf="@+id/cl_ful_name"
+
+
+        app:layout_constraintTop_toBottomOf="@+id/cl_ful_name"
+        app:riv_border_color="#333333"
+        app:riv_border_width="2dip"
+        android:scaleType="fitCenter"
+        app:riv_corner_radius="13dip"
+        app:riv_mutate_background="true" />
+
+    <Button
+        android:id="@+id/btn_browse_profile_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="104dp"
+        android:background="@drawable/button_style"
+        android:fontFamily="@font/latom"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:text="Upload Picture"
+        android:textAllCaps="false"
+        android:textColor="#ffffff"
+        app:layout_constraintEnd_toEndOf="@+id/cl_ful_name"
+        app:layout_constraintTop_toBottomOf="@+id/cl_ful_name" />
+
+    <ImageButton
+        android:id="@+id/imageButton"
+        android:layout_width="93dp"
+        android:layout_height="62dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="28dp"
+        android:background="#ffffff"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/back_icon" />
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -64,7 +64,7 @@ public class DealerAdapter extends RecyclerView.Adapter<DealerAdapter.DealerView
         dealer=dealers.get(position);
       
         holder.name.setText(dealer.getName());
-        holder.shpname.setText(dealer.getShopnme());
+
         holder.address.setText(dealer.getShpnmthana());
         holder.dlr_phone.setText(dealer.getPhone());
 
@@ -74,7 +74,7 @@ public class DealerAdapter extends RecyclerView.Adapter<DealerAdapter.DealerView
                 .load(url)
                 .resize(128, 128)
                 .centerCrop()
-                .into(holder.imageView_dealer);
+                .into(holder.profile_pic_dealer);
 
         holder.add_dealer.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -246,7 +246,7 @@ public class DealerAdapter extends RecyclerView.Adapter<DealerAdapter.DealerView
     public class DealerViewHolder extends RecyclerView.ViewHolder {
         TextView name,shpname,address,dlr_phone;
         Button add_dealer;
-        ImageView imageView_dealer;
+        ImageView profile_pic_dealer;
         public DealerViewHolder(@NonNull View itemView) {
             super(itemView);
             name= itemView.findViewById(R.id.dname);
@@ -254,7 +254,7 @@ public class DealerAdapter extends RecyclerView.Adapter<DealerAdapter.DealerView
             address= itemView.findViewById(R.id.shopaddress);
             dlr_phone=itemView.findViewById(R.id.dlr_contact);
             add_dealer=itemView.findViewById(R.id.confirm_dlr);
-            imageView_dealer=itemView.findViewById(R.id.dlr_shop_image);
+            profile_pic_dealer =itemView.findViewById(R.id.dlr_profile_image);
 
         }
     }

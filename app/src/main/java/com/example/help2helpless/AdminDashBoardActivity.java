@@ -55,7 +55,7 @@ public class AdminDashBoardActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_dashboard);
-        setFontToActionBar();
+        //setFontToActionBar();
        //Bundle bundle= getIntent().getExtras();
 //       Admin admin=bundle.getParcelable("obj");
        initAll();
@@ -247,8 +247,8 @@ public class AdminDashBoardActivity extends AppCompatActivity {
     }
 
     private void initAll() {
-        show_request=findViewById(R.id.rq_btn);
-        add_amount_donar=findViewById(R.id.btn_amount);
+        show_request=findViewById(R.id.btn_dealer_aprove);
+        add_amount_donar=findViewById(R.id.btn_admin_add_money);
         show_request.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

@@ -88,19 +88,15 @@ public class RequestAdapter extends RecyclerView.Adapter<RequestAdapter.RequestV
 
 
                     params.put("name",dealer.getName());
-                    params.put("fname",dealer.getFathername());
+
                     params.put("homaddr",dealer.getHmaddres());
                     params.put("phone",dealer.getPhone());
-                    params.put("bknumber",dealer.getBksnum());
+
                     params.put("email",dealer.getEmail());
-                    params.put("shopname",dealer.getShopnme());
+
                     params.put("shopthana",dealer.getShpnmthana());
                     params.put("shopzilla",dealer.getShpnmzilla());
                     params.put("shoppic",dealer.getShoppic());
-                    params.put("regno",dealer.getDrugsell_regnum());
-                    params.put("nid",dealer.getNid());
-                    params.put("nidpic",dealer.getNid_pic());
-                    params.put("username",dealer.getUsernm());
                     params.put("password",dealer.getPasswrd());
 
 
@@ -127,7 +123,7 @@ public class RequestAdapter extends RecyclerView.Adapter<RequestAdapter.RequestV
     public void onBindViewHolder(@NonNull RequestViewHolder holder, final int position) {
                 final Dealer dealer=dealersList.get(position);
         holder.name.setText(dealer.getName());
-        holder.shpname.setText(dealer.getShopnme());
+
         holder.address.setText(dealer.getShpnmthana());
         holder.dlr_contact.setText(dealer.getPhone());
         String url=imageUrl+dealer.getShoppic();
@@ -183,7 +179,7 @@ public class RequestAdapter extends RecyclerView.Adapter<RequestAdapter.RequestV
             address= itemView.findViewById(R.id.shopaddress);
             dlr_contact=itemView.findViewById(R.id.dlr_contact);
             reg_confirm=itemView.findViewById(R.id.confirm_dlr);
-            dlr_shop_pic=itemView.findViewById(R.id.dlr_shop_image);
+            dlr_shop_pic=itemView.findViewById(R.id.dlr_profile_image);
             more_btn=itemView.findViewById(R.id.btn_more);
 
         }

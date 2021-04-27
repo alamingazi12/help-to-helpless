@@ -20,6 +20,7 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.help2helpless.R;
 import com.example.help2helpless.model.Donar;
+import com.makeramen.roundedimageview.RoundedImageView;
 import com.muddzdev.styleabletoast.StyleableToast;
 import com.squareup.picasso.Picasso;
 
@@ -146,11 +147,11 @@ public class DonarAdapter extends RecyclerView.Adapter<DonarAdapter.DonarViewHol
     public class DonarViewHolder extends RecyclerView.ViewHolder {
         TextView dnr_name,dnr_address;
         Button add_dnr_btn;
-        CircleImageView dnr_profile_image;
+        RoundedImageView dnr_profile_image;
         public DonarViewHolder(@NonNull View itemView) {
             super(itemView);
-            dnr_profile_image=itemView.findViewById(R.id.dnr_image);
-            dnr_name=itemView.findViewById(R.id.donar_phones);
+            dnr_profile_image=itemView.findViewById(R.id.dnr_profile_image);
+            dnr_name=itemView.findViewById(R.id.donar_name);
             dnr_address=itemView.findViewById(R.id.dnr_address);
             add_dnr_btn=itemView.findViewById(R.id.add_donar_request);
         }

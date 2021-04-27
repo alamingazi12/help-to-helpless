@@ -204,6 +204,7 @@
             <androidx.cardview.widget.CardView
                 app:cardBackgroundColor="#ffffff"
                 android:layout_width="0dp"
+                android:id="@+id/card_admin"
                 android:layout_margin="5dp"
                 android:animationCache="true"
                 app:cardElevation="3dp"

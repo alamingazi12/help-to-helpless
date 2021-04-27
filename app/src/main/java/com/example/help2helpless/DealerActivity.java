@@ -55,7 +55,7 @@ public class DealerActivity extends AppCompatActivity {
         client_sign.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(DealerActivity.this, ClientActivity.class);
+                Intent intent=new Intent(DealerActivity.this, ClientRegActivity.class);
                 startActivity(intent);
             }
         });
