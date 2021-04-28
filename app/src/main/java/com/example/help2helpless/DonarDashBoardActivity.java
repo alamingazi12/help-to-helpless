@@ -3,7 +3,10 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -32,26 +35,35 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class DonarDashBoardActivity extends AppCompatActivity {
-    Button show_dealers,show_dealer_req,donate_dealers,btn_history;
+    Button show_dealers, show_dealer_req, donate_dealers, btn_history;
     ImageButton back_button;
+    private volatile boolean stopThread = false;
     String donar_contact;
     SharedPreferences donarinfo;
-    TextView donar_balnce,avg_donations,t_donation,ndealer,dname;
+    TextView donar_balnce, avg_donations, t_donation, ndealer, dname;
     CircleImageView donar_profile_image;
-    String imageUrl="https://apps.help2helpless.com/donar_profile/";
+    String imageUrl = "https://apps.help2helpless.com/donar_profile/";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_donar_dash_board);
 
 
-       // final Bundle bundle= getIntent().getExtras();
+        // final Bundle bundle= getIntent().getExtras();
         //donar=bundle.getParcelable("obj");
         initAll();
+
+        stopThread = false;
+        ExampleRunnable runnable = new ExampleRunnable(10);
+        new Thread(runnable).start();
+
+        // Glide.get(this).clearDiskCache();
+        //Glide.get(this).clearMemory();
         show_dealers.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(DonarDashBoardActivity.this,AddDealerActivity.class);
+                Intent intent = new Intent(DonarDashBoardActivity.this, AddDealerActivity.class);
                 startActivity(intent);
             }
         });
@@ -59,14 +71,14 @@ public class DonarDashBoardActivity extends AppCompatActivity {
         donate_dealers.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(DonarDashBoardActivity.this,AddedDealerActivity.class);
+                Intent intent = new Intent(DonarDashBoardActivity.this, AddedDealerActivity.class);
                 startActivity(intent);
             }
         });
         back_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(DonarDashBoardActivity.this,MainActivity.class);
+                Intent intent = new Intent(DonarDashBoardActivity.this, MainActivity.class);
                 startActivity(intent);
             }
         });
@@ -85,11 +97,11 @@ public class DonarDashBoardActivity extends AppCompatActivity {
                                 logout();
                                 break;
                             case R.id.requests:
-                                Intent intent=new Intent(DonarDashBoardActivity.this,RequestActivity.class);
+                                Intent intent = new Intent(DonarDashBoardActivity.this, RequestActivity.class);
                                 startActivity(intent);
                                 break;
                             case R.id.setting:
-                                  setting();
+                                setting();
                                 break;
                             case R.id.update:
                                 updateProfile();
@@ -104,46 +116,106 @@ public class DonarDashBoardActivity extends AppCompatActivity {
             }
         });
     }
+
+    class ExampleRunnable implements Runnable {
+        int seconds;
+
+        ExampleRunnable(int seconds) {
+            this.seconds = seconds;
+        }
+
+        @Override
+        public void run() {
+            for (int i = 0; i < seconds; i++) {
+                if (stopThread)
+                    return;
+                if (i == 5) {
+
+                    Handler threadHandler = new Handler(Looper.getMainLooper());
+                    threadHandler.post(new Runnable() {
+                        @Override
+                        public void run() {
+
+                            new MyTask().execute("hi");
+                           // Glide.get(DonarDashBoardActivity.this).clearMemory();
+                          //  Glide.get(DonarDashBoardActivity.this).clearDiskCache();
+
+                            // buttonStartThread.setText("50%");
+                        }
+                    });
+
+
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            new MyTask().execute("hi");
+                          //  Glide.get(DonarDashBoardActivity.this).clearMemory();
+                            //Glide.get(DonarDashBoardActivity.this).clearDiskCache();
+                            //buttonStartThread.setText("50%");
+                        }
+                    });
+                }
+                // Log.d(TAG, "startThread: " + i);
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+   public class MyTask extends AsyncTask<String,Void,Void>{
+
+
+       @Override
+       protected Void doInBackground(String... strings) {
+           Glide.get(DonarDashBoardActivity.this).clearDiskCache();
+         //  Glide.get(DonarDashBoardActivity.this).clearMemory();
+           return null;
+
+       }
+   }
     private void updateProfile() {
-        Bundle bundle=new Bundle();
-        bundle.putString("user_type","donar");
-        Intent intent=new Intent(DonarDashBoardActivity.this,UpdateActivity.class);
+        Bundle bundle = new Bundle();
+        bundle.putString("user_type", "donar");
+        Intent intent = new Intent(DonarDashBoardActivity.this, UpdateActivity.class);
         intent.putExtras(bundle);
         startActivity(intent);
 
     }
+
     private void setting() {
-        Intent intent=new Intent(DonarDashBoardActivity.this,SettingActivity.class);
+        Intent intent = new Intent(DonarDashBoardActivity.this, SettingActivity.class);
         startActivity(intent);
     }
 
     private void logout() {
-        SharedPreferences   dealerlogininfo=getSharedPreferences("donarinfo",0);
-        SharedPreferences.Editor   dealer_editor=dealerlogininfo.edit();
+        SharedPreferences dealerlogininfo = getSharedPreferences("donarinfo", 0);
+        SharedPreferences.Editor dealer_editor = dealerlogininfo.edit();
         dealer_editor.remove("contact");
         dealer_editor.commit();
-        Intent intent=new Intent(DonarDashBoardActivity.this,MainActivity.class);
+        Intent intent = new Intent(DonarDashBoardActivity.this, MainActivity.class);
         startActivity(intent);
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_item,menu);
+        getMenuInflater().inflate(R.menu.menu_item, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-       switch (item.getItemId()){
-           case R.id.logout:
-               logOut();
-               StyleableToast.makeText(DonarDashBoardActivity.this,"Logged Out",R.style.mytoast).show();
-               break;
+        switch (item.getItemId()) {
+            case R.id.logout:
+                logOut();
+                StyleableToast.makeText(DonarDashBoardActivity.this, "Logged Out", R.style.mytoast).show();
+                break;
 
-           default:
-               break;
-       }
-       return true;
+            default:
+                break;
+        }
+        return true;
     }
 
     private void logOut() {
@@ -155,25 +227,40 @@ public class DonarDashBoardActivity extends AppCompatActivity {
         getDonarBalance();
         getAvgDonation();
         getTotalDealers();
-        donarinfo=this.getSharedPreferences("donarinfo",0);
-        String profile_image_path=imageUrl+donarinfo.getString("donar_pic","");
-        Log.d("path",profile_image_path);
+
+        donarinfo = this.getSharedPreferences("donarinfo", 0);
+        String profile_image_path = "";
+        Glide.with(this).clear(donar_profile_image);
+        Glide.with(DonarDashBoardActivity.this)
+                .load(profile_image_path).skipMemoryCache(true)
+                .into(donar_profile_image);
+        profile_image_path = imageUrl + donarinfo.getString("donar_pic", "");
+        Log.d("path", profile_image_path);
+
+
 
 
         Glide.with(DonarDashBoardActivity.this)
-                .load(profile_image_path).diskCacheStrategy(DiskCacheStrategy.NONE).skipMemoryCache(true)
+                .load(profile_image_path).skipMemoryCache(true)// .diskCacheStrategy(DiskCacheStrategy.NONE).skipMemoryCache(true)
                 .into(donar_profile_image);
 
         //  Picasso.get().load()
         //  Picasso.get().load(profile_image_path).resize(60,60).centerCrop().into(donar_profile_image);
 
 
-
-
-       // Picasso.get().load(donarinfo.getString("donar_pic","")).resize(80,80).centerCrop().into(donar_profile_image);
+        // Picasso.get().load(donarinfo.getString("donar_pic","")).resize(80,80).centerCrop().into(donar_profile_image);
 
         //getTotalDonation();
     }
+
+
+
+
+
+
+
+
+
 
     private void getTotalDealers() {
         ApiInterface apiInterface= ApiClient.getApiClient(DonarDashBoardActivity.this).create(ApiInterface.class);
@@ -280,6 +367,8 @@ public class DonarDashBoardActivity extends AppCompatActivity {
 
     }
 
+
+
     private void initAll() {
         btn_history=findViewById(R.id.btn_history);
         btn_history.setOnClickListener(new View.OnClickListener() {
@@ -289,6 +378,8 @@ public class DonarDashBoardActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+
         //button
         back_button=findViewById(R.id.back_icon);
         dname=findViewById(R.id.dlr_name);
@@ -305,10 +396,12 @@ public class DonarDashBoardActivity extends AppCompatActivity {
         dname.setText(donarinfo.getString("name",null));
         String profile_image_path=imageUrl+donarinfo.getString("donar_pic","");
         Log.d("path",profile_image_path);
-   /*
-        Glide.with(DonarDashBoardActivity.this)
-                .load(profile_image_path)
-                .into(donar_profile_image);*/
+       runOnUiThread(new Runnable() {
+            public void run() {
+
+            }
+        });
+
       //  Picasso.get().load()
       //  Picasso.get().load(profile_image_path).resize(60,60).centerCrop().into(donar_profile_image);
       /*  Picasso.get()

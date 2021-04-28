@@ -20,19 +20,21 @@ import android.widget.TextView;
 
 import com.example.help2helpless.adapter.MenuAdapter;
 import com.example.help2helpless.model.MenuItem;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.muddzdev.styleabletoast.StyleableToast;
 
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
+    FloatingActionButton floatingActionButton;
     Toolbar toolbar;
     ArrayList<MenuItem> items;
-    public static   DrawerLayout drawer;
+    public static DrawerLayout drawer;
     RecyclerView menucontentitems;
     SharedPreferences usertype;
     SharedPreferences.Editor editor;
 
-    Button btn_dealer,btn_donar;
+    Button btn_dealer, btn_donar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +42,8 @@ public class MainActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        inItAll();
+
+          inItAll();
 
        btn_dealer.setOnClickListener(new View.OnClickListener() {
            @Override
@@ -102,6 +105,14 @@ public class MainActivity extends AppCompatActivity {
          }
         btn_dealer=findViewById(R.id.btn_dealer);
         btn_donar=findViewById(R.id.btn_donar);
+        floatingActionButton=findViewById(R.id.orderPlus);
+        floatingActionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(MainActivity.this,SettingActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
 
@@ -118,4 +129,7 @@ public class MainActivity extends AppCompatActivity {
             super.onBackPressed();
 
     }
-}
+
+
+    }
+

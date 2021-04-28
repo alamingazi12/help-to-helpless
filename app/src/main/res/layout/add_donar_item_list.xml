@@ -20,14 +20,15 @@
             android:layout_height="100dp"
             android:layout_marginStart="16dp"
             android:scaleType="fitCenter"
+            app:riv_corner_radius="13dip"
+            app:riv_mutate_background="true"
             android:src="@drawable/persons"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
 
             app:layout_constraintTop_toTopOf="parent"
             app:riv_border_width="2dip"
-            app:riv_corner_radius="13dip"
-            app:riv_mutate_background="true"
+
             tools:ignore="MissingConstraints" />
 
         <TextView

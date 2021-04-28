@@ -8,7 +8,8 @@
     android:layout_margin="10dp"
     app:cardElevation="3dp"
     app:cardCornerRadius="7dp"
-    android:background="#f0efeb"
+    app:cardBackgroundColor="#3f37c9"
+
     xmlns:app="http://schemas.android.com/apk/res-auto"
     >
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -16,11 +17,13 @@
         android:layout_height="match_parent">
 
 
-        <ImageView
+        <com.makeramen.roundedimageview.RoundedImageView
             android:id="@+id/dlr_profile_image"
-            android:layout_width="128dp"
-            android:layout_height="128dp"
-
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:scaleType="fitCenter"
+            app:riv_corner_radius="13dip"
+            app:riv_mutate_background="true"
             android:layout_marginStart="16dp"
             android:src="@drawable/shopimg"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -33,85 +36,59 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="20dp"
             android:fontFamily="@font/relway_semibold"
             android:text="Alamin Gazi"
-            android:textColor="#000000"
+            android:textColor="#ffffff"
             android:textFontWeight="400"
             android:textSize="22dp"
             app:layout_constraintStart_toEndOf="@+id/dlr_profile_image"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="@+id/dlr_profile_image" />
 
         <TextView
-            android:id="@+id/rdshpname"
-            android:textFontWeight="400"
+            android:id="@+id/shopaddress"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="2dp"
+            android:layout_marginStart="4dp"
             android:fontFamily="@font/relway_regular"
-            android:text="Shaeen Store"
-            android:textColor="#000000"
-            android:textSize="18sp"
+            android:text="Fultala High school Khulna"
+            android:textColor="#fff"
+
+            android:textFontWeight="400"
+            android:textSize="17sp"
             app:layout_constraintStart_toStartOf="@+id/dname"
             app:layout_constraintTop_toBottomOf="@+id/dname" />
 
         <TextView
-            android:fontFamily="@font/relway_regular"
-            android:id="@+id/shopaddress"
-            android:textFontWeight="400"
-            android:textSize="17sp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="2dp"
-            android:text="Fultala High school Khulna"
-            android:textColor="#000000"
-            app:layout_constraintStart_toStartOf="@+id/rdshpname"
-            app:layout_constraintTop_toBottomOf="@+id/rdshpname" />
-
-        <TextView
-            android:fontFamily="@font/number_font"
+            android:fontFamily="@font/latom"
             android:id="@+id/dlr_contact"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="2dp"
-            android:text="019889836"
+            android:text="01988983612"
+
 
             android:textSize="17dp"
-            android:textColor="#000000"
+            android:textColor="#fff"
             app:layout_constraintStart_toStartOf="@+id/shopaddress"
             app:layout_constraintTop_toBottomOf="@+id/shopaddress" />
 
         <Button
             android:id="@+id/confirm_dlr"
-            android:layout_width="79dp"
-            android:layout_height="23dp"
-            android:layout_marginEnd="20dp"
+            android:layout_width="90dp"
+            android:layout_height="27dp"
+            android:layout_marginStart="28dp"
             android:layout_marginBottom="16dp"
             android:background="@drawable/item_button"
-            android:fontFamily="@font/alexbold"
+            android:fontFamily="@font/relway_semibold"
             android:paddingLeft="5dp"
             android:paddingRight="5dp"
-            android:text="Confirm"
+            android:text="Approve"
             android:textAllCaps="false"
-            android:textColor="#ffffff"
+            android:textColor="#000000"
             android:textFontWeight="500"
             android:textSize="15dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
-
-        <Button
-            android:id="@+id/btn_more"
-            android:layout_width="56dp"
-            android:layout_height="22dp"
-            android:background="@drawable/button_style"
-            android:fontFamily="@font/alexbold"
-            android:text="More"
-            android:textAllCaps="false"
-            android:textColor="#ffffff"
-            android:textSize="14dp"
-            app:layout_constraintBottom_toBottomOf="@+id/confirm_dlr"
-            app:layout_constraintStart_toStartOf="@+id/dlr_contact"
-            app:layout_constraintTop_toTopOf="@+id/confirm_dlr" />
+            app:layout_constraintStart_toStartOf="@+id/dlr_contact" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

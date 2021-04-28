@@ -23,6 +23,7 @@ import com.android.volley.toolbox.Volley;
 import com.example.help2helpless.ApprovedActivity;
 import com.example.help2helpless.R;
 import com.example.help2helpless.model.Dealer;
+import com.makeramen.roundedimageview.RoundedImageView;
 import com.muddzdev.styleabletoast.StyleableToast;
 import com.squareup.picasso.Picasso;
 
@@ -62,7 +63,6 @@ public class RequestAdapter extends RecyclerView.Adapter<RequestAdapter.RequestV
                        // Toast.makeText(context,"You registered"+result,Toast.LENGTH_LONG).show();
                     }
                     else{
-
                         StyleableToast.makeText(context,"Something Wrong",R.style.mytoast).show();
                     }
                 } catch (JSONException e) {
@@ -85,18 +85,14 @@ public class RequestAdapter extends RecyclerView.Adapter<RequestAdapter.RequestV
                 JSONObject params = new JSONObject();
                 try {
 
-
-
                     params.put("name",dealer.getName());
-
                     params.put("homaddr",dealer.getHmaddres());
                     params.put("phone",dealer.getPhone());
-
                     params.put("email",dealer.getEmail());
-
                     params.put("shopthana",dealer.getShpnmthana());
                     params.put("shopzilla",dealer.getShpnmzilla());
                     params.put("shoppic",dealer.getShoppic());
+                    params.put("profile_pic",dealer.getProfile_pic());
                     params.put("password",dealer.getPasswrd());
 
 
@@ -124,15 +120,15 @@ public class RequestAdapter extends RecyclerView.Adapter<RequestAdapter.RequestV
                 final Dealer dealer=dealersList.get(position);
         holder.name.setText(dealer.getName());
 
-        holder.address.setText(dealer.getShpnmthana());
+        holder.address.setText(dealer.getHmaddres());
         holder.dlr_contact.setText(dealer.getPhone());
-        String url=imageUrl+dealer.getShoppic();
+        String url=imageUrl+dealer.getProfile_pic();
         //Picasso.get().load(imageUrl).into(shpimage);
         Picasso.get()
                 .load(url)
                 .resize(128, 128)
                 .centerCrop()
-                .into(holder.dlr_shop_pic);
+                .into(holder.dlr_profile_pic);
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -150,6 +146,8 @@ public class RequestAdapter extends RecyclerView.Adapter<RequestAdapter.RequestV
                   registerProcess(dealer1);
             }
         });
+
+        /*
         holder.more_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -161,6 +159,8 @@ public class RequestAdapter extends RecyclerView.Adapter<RequestAdapter.RequestV
                 context.startActivity(intent);
             }
         });
+
+         */
     }
 
     @Override
@@ -169,18 +169,17 @@ public class RequestAdapter extends RecyclerView.Adapter<RequestAdapter.RequestV
     }
 
     public class RequestViewHolder extends RecyclerView.ViewHolder {
-        TextView name,shpname,address,dlr_contact;
+        TextView name,address,dlr_contact;
                 Button reg_confirm,more_btn;
-        ImageView dlr_shop_pic;
+        RoundedImageView dlr_profile_pic;
         public RequestViewHolder(@NonNull View itemView) {
             super(itemView);
             name= itemView.findViewById(R.id.dname);
-            shpname= itemView.findViewById(R.id.rdshpname);
             address= itemView.findViewById(R.id.shopaddress);
             dlr_contact=itemView.findViewById(R.id.dlr_contact);
             reg_confirm=itemView.findViewById(R.id.confirm_dlr);
-            dlr_shop_pic=itemView.findViewById(R.id.dlr_profile_image);
-            more_btn=itemView.findViewById(R.id.btn_more);
+            dlr_profile_pic=itemView.findViewById(R.id.dlr_profile_image);
+
 
         }
     }
