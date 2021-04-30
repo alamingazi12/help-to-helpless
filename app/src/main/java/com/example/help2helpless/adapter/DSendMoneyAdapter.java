@@ -14,10 +14,12 @@ import com.example.help2helpless.R;
 import com.example.help2helpless.model.Donar;
 import com.makeramen.roundedimageview.RoundedImageView;
 import com.squareup.picasso.Picasso;
+
+import java.util.ArrayList;
 import java.util.List;
 
 public class DSendMoneyAdapter extends RecyclerView.Adapter<DSendMoneyAdapter.DonarViewHolder> {
-    List<Donar> donarList;
+  public   List<Donar> donarList;
     Context context;
 
     public DSendMoneyAdapter(List<Donar> donarList, Context context) {
@@ -33,6 +35,11 @@ public class DSendMoneyAdapter extends RecyclerView.Adapter<DSendMoneyAdapter.Do
         return new DonarViewHolder(view);
     }
 
+    public  void addList(ArrayList<Donar> dealers){
+        donarList.addAll(dealers);
+        notifyDataSetChanged();
+
+    }
     @Override
     public void onBindViewHolder(@NonNull DonarViewHolder holder, final int position) {
         Donar donar=donarList.get(position);
