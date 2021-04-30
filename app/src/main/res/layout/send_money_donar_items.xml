@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="140dp"
+    android:layout_margin="10dp"
+    app:cardCornerRadius="10dp"
+    android:background="#ffffff"
+    app:cardElevation="3dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.makeramen.roundedimageview.RoundedImageView
+            android:id="@+id/dnr_profile_image"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginStart="16dp"
+            android:scaleType="fitCenter"
+            app:riv_corner_radius="13dip"
+            app:riv_mutate_background="true"
+            android:src="@drawable/persons"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+
+            app:layout_constraintTop_toTopOf="parent"
+            app:riv_border_width="2dip"
+
+            tools:ignore="MissingConstraints" />
+
+        <TextView
+            android:id="@+id/donar_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/latom"
+            android:text="Rajib Molla"
+            android:textColor="#000000"
+            android:textFontWeight="400"
+            android:textSize="19dp"
+            app:layout_constraintStart_toEndOf="@+id/dnr_profile_image"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="MissingConstraints" />
+
+        <TextView
+            android:id="@+id/dnr_address"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/latom"
+            android:text="Fultala Khulna, Bangladesh"
+            android:textColor="#000000"
+            android:textSize="15dp"
+            app:layout_constraintStart_toStartOf="@+id/donar_name"
+            app:layout_constraintTop_toBottomOf="@+id/donar_name" />
+
+        <Button
+
+            android:id="@+id/add_donar_request"
+            android:layout_width="129dp"
+            android:layout_height="43dp"
+            android:layout_marginBottom="4dp"
+            android:background="@drawable/button_style"
+            android:fontFamily="@font/latom"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:text="Send Request"
+            android:textAllCaps="false"
+            android:textColor="#ffffff"
+
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/donar_contact"
+            app:layout_constraintTop_toBottomOf="@+id/donar_contact"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:textColor="#000"
+            android:fontFamily="@font/alexbold"
+            android:id="@+id/donar_contact"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="01732506657"
+            android:textSize="15dp"
+
+            android:padding="3dp"
+            app:layout_constraintStart_toStartOf="@+id/dnr_address"
+            app:layout_constraintTop_toBottomOf="@+id/dnr_address" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>

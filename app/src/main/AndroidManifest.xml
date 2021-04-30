@@ -15,12 +15,20 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ClientRegActivity" android:theme="@style/AppTheme.NoActionBar">
+        <activity android:name=".AllDonarActivity" android:configChanges="screenSize|orientation">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
 
         </activity>
         <activity
-            android:name=".UpdateActivity"
+            android:name=".ClientRegActivity"
             android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".UpdateActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".SettingActivity"
             android:theme="@style/AppTheme.NoActionBar" />
@@ -32,9 +40,11 @@
             android:parentActivityName=".AddedDealerActivity" />
         <activity
             android:name=".AddedDealerActivity"
+            android:configChanges="orientation|screenSize"
             android:parentActivityName=".DonarDashBoardActivity" />
         <activity
             android:name=".RequestActivity"
+            android:configChanges="orientation|screenSize"
             android:parentActivityName=".DonarDashBoardActivity" />
         <activity
             android:name=".AddDonarActivity"
@@ -69,6 +79,7 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".DealerRequestActivity"
+            android:configChanges="orientation|screenSize"
             android:parentActivityName=".AdminDashBoardActivity" />
         <activity
             android:name=".DonarRegisterActivity"
@@ -86,29 +97,24 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".AdminDashBoardActivity"
-            android:theme="@style/AppTheme.NoActionBar"
             android:autoRemoveFromRecents="true"
-            android:parentActivityName=".AdminLogin" />
+            android:parentActivityName=".AdminLogin"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".AdminLogin"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:parentActivityName=".MainActivity" />
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:theme="@style/AppTheme.NoActionBar"
             android:name=".ClientActivity"
             android:parentActivityName=".DealerActivity"
             android:screenOrientation="portrait"
-             />
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".MainActivity"
             android:autoRemoveFromRecents="true"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBars">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
 
         <meta-data

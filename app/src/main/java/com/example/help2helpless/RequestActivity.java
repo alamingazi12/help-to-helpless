@@ -63,7 +63,7 @@ public class RequestActivity extends AppCompatActivity {
 
     private void getDealers() {
     SharedPreferences donarinfo=this.getSharedPreferences("donarinfo",0);
-    String    donar_contact=donarinfo.getString("contact",null);
+    String   donar_contact=donarinfo.getString("contact",null);
         ApiInterface apiInterface= ApiClient.getApiClient(RequestActivity.this).create(ApiInterface.class);
         Call<DealersRequest>  dealersRequestCall=apiInterface.getAllDealerRequest(donar_contact);
         dealersRequestCall.enqueue(new Callback<DealersRequest>() {

@@ -47,6 +47,9 @@ public  interface ApiInterface {
     @GET("temp_dealer_fetch.php")
     Call<DealerResponse> getAlldealers();
 
+    @GET("temp_dealer_fetch.php")
+    Observable<DealerResponse> getAlldealer();
+
     @GET("fetchdealer.php")
     Call<DealerResponse> fetchAllDealers(@Query("donar_contact") String donar_contact);
     //search_client.php
@@ -79,8 +82,8 @@ public  interface ApiInterface {
     @GET("total_dealer_donation.php")
     Call<DealerTDonation> getTotalDealerDonation(@Query("dlr_contact") String dlr_contact);
 
-    @GET("total_dealer_donations.php")
-    Observable<List<Donar>> getAllDonars();
+   // @GET("total_dealer_donations.php")
+   // Observable<List<Donar>> getAllDonars();
     ///avg_dealer_received.php
    // total_donar.php
 
@@ -105,6 +108,9 @@ public  interface ApiInterface {
 
     @GET("total_dealers_list.php")
     Call<AddDealerList> getAllAddedDealers(@Query("dnr_contact") String dnr_contact);
+
+    @GET("send_money_donar.php")
+    Call<DonarResponse> getAllDonars(@Query("page") int page,@Query("row_per_page") int row_per_page,@Query("phone") String phone);
 
     @FormUrlEncoded
     @POST("donarinsert.php")

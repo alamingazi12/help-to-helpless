@@ -30,7 +30,7 @@ public class DealerRequestActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.dealer_request_activity);
-        setFontToActionBar();
+       // setFontToActionBar();
         initAll();
         //fetchAllDealer();
     }
