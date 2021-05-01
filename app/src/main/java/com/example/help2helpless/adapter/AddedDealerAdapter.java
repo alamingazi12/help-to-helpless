@@ -30,6 +30,12 @@ public class AddedDealerAdapter extends RecyclerView.Adapter<AddedDealerAdapter.
         this.context = context;
     }
 
+    public  void addLists(ArrayList<Dealer> dealers){
+        dealerslist.addAll(dealers);
+        notifyDataSetChanged();
+
+    }
+
     @NonNull
     @Override
     public AddedDealerViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {

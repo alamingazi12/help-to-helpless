@@ -107,7 +107,7 @@ public  interface ApiInterface {
    ///AddDealerList
     //pagination api ok
     @GET("total_dealers_list.php")
-    Call<AddDealerList> getAllAddedDealers(@Query("dnr_contact") String dnr_contact);
+    Call<AddDealerList> getAllAddedDealers(@Query("page") int page, @Query("row_per_page") int row_per_page, @Query("dnr_contact") String dnr_contact);
    // pagination api ok total complete
     @GET("send_money_donar.php")
     Call<DonarResponse> getAllDonars(@Query("page") int page,@Query("row_per_page") int row_per_page,@Query("phone") String phone);

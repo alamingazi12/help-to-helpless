@@ -16,6 +16,7 @@ import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.help2helpless.adapter.DealerAdapter;
 import com.example.help2helpless.model.Dealer;
@@ -99,7 +100,7 @@ public class AddDealerActivity extends AppCompatActivity {
                 dealerslist= response.body().getDealers();
                 if(dealerslist.size()>0){
                      dealerAdapter=new DealerAdapter(dealerslist,AddDealerActivity.this,donar_contact);
-                    dealer_add_container.setAdapter(dealerAdapter);
+                     dealer_add_container.setAdapter(dealerAdapter);
                 }else{
 
 
@@ -164,20 +165,11 @@ public class AddDealerActivity extends AppCompatActivity {
         dealerResponseCall.enqueue(new Callback<DealerResponse>() {
             @Override
             public void onResponse(Call<DealerResponse> call, Response<DealerResponse> response) {
-                  if(has_more){
-                     // StyleableToast.makeText(AddDealerActivity.this,"Data"+response.body().getDealers().size(),R.style.mytoast).show();
-                  }
-                if(has_more){
-                    dealerAdapter.addLists(response.body().getDealers());
-                   // StyleableToast.makeText(AddDealerActivity.this,"Data Not Empty",R.style.mytoast).show();
-                }
-                else {
 
-
-                }
                 has_more= response.body().isHas_more();
-                if(has_more){
-                    dealerAdapter.addLists(dealerslist);
+                if(has_more && response.body().getDealers().size()>0){
+                    Toast.makeText(AddDealerActivity.this,"data not null"+response.body().getDealers().size(),Toast.LENGTH_LONG).show();
+                    dealerAdapter.addLists(response.body().getDealers());
                     progressBar.setVisibility(View.GONE);
                 }else{
                     progressBar.setVisibility(View.GONE);

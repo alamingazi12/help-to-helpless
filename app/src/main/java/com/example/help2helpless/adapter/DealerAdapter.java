@@ -194,8 +194,8 @@ public class DealerAdapter extends RecyclerView.Adapter<DealerAdapter.DealerView
     }
 
 
-    public  void addLists(ArrayList<Dealer> dealers){
-        dealers.addAll(dealers);
+    public  void addLists(ArrayList<Dealer> dealerlist){
+        dealers.addAll(dealerlist);
         notifyDataSetChanged();
 
     }

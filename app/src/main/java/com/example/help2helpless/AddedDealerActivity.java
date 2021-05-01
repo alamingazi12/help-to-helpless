@@ -1,5 +1,6 @@
 package com.example.help2helpless;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -10,7 +11,10 @@ import android.graphics.Color;
 import android.graphics.Typeface;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Gravity;
+import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -30,11 +34,21 @@ import retrofit2.Response;
 public class AddedDealerActivity extends AppCompatActivity {
      RecyclerView added_dealers;
      ArrayList<Dealer> dealerslist;
+
+    int page=1,row_per_page=5;
+    public  boolean has_more;
+    LinearLayoutManager linearLayoutManager;
+    ProgressBar progressBar;
+    AddedDealerAdapter addedDealerAdapter;
+    //for pagination
+    private boolean isloading=true;
+    int pastVisibleItems,totalItemcount,previous_total,visible_item_count=0;
+    private  int view_thresold=5;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_added_dealer);
-        setFontToActionBar();
+        //setFontToActionBar();
         initAll();
         getAddedDealer();
     }
@@ -59,15 +73,15 @@ public class AddedDealerActivity extends AppCompatActivity {
     private void getAddedDealer() {
         SharedPreferences donarinfo=getSharedPreferences("donarinfo",0);
         String dcontact=donarinfo.getString("contact",null);
-       ApiInterface apiInterface= ApiClient.getApiClient(AddedDealerActivity.this).create(ApiInterface.class);
-       Call<AddDealerList> addDealerListCall=apiInterface.getAllAddedDealers(dcontact);
-       addDealerListCall.enqueue(new Callback<AddDealerList>() {
+        ApiInterface apiInterface= ApiClient.getApiClient(AddedDealerActivity.this).create(ApiInterface.class);
+        Call<AddDealerList> addDealerListCall=apiInterface.getAllAddedDealers(page,row_per_page,dcontact);
+        addDealerListCall.enqueue(new Callback<AddDealerList>() {
            @Override
            public void onResponse(Call<AddDealerList> call, Response<AddDealerList> response) {
              dealerslist=  response.body().getDealerlist();
              if(dealerslist.size()>0){
-                 AddedDealerAdapter addedDealerAdapter=new AddedDealerAdapter(dealerslist,AddedDealerActivity.this);
-                 added_dealers.setAdapter(addedDealerAdapter);
+                  addedDealerAdapter=new AddedDealerAdapter(dealerslist,AddedDealerActivity.this);
+                  added_dealers.setAdapter(addedDealerAdapter);
 
              }else{
                  StyleableToast.makeText(AddedDealerActivity.this,"No Dealer Added",R.style.mytoast).show();
@@ -81,11 +95,81 @@ public class AddedDealerActivity extends AppCompatActivity {
            }
        });
 
+        added_dealers.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+
+
+                if(!has_more){
+                    progressBar.setVisibility(View.GONE);
+                }
+
+
+                visible_item_count=linearLayoutManager.getChildCount();
+                totalItemcount=linearLayoutManager.getItemCount();
+                pastVisibleItems=linearLayoutManager.findFirstVisibleItemPosition();
+
+
+                if(dy>0){
+                    if(isloading) {
+
+                        if(totalItemcount>previous_total){
+
+                            isloading=false;
+                            previous_total=totalItemcount;
+                        }
+
+                    }
+                    if(!isloading && (totalItemcount-visible_item_count)<=(pastVisibleItems+view_thresold)){
+                        Log.d("page","called");
+                        performPagination();
+                        isloading=true;
+                    }
+
+
+                }
+            }
+        });
+
+    }
+
+    private void performPagination() {
+
+        SharedPreferences donarinfo=getSharedPreferences("donarinfo",0);
+        String dcontact=donarinfo.getString("contact",null);
+        ApiInterface apiInterface= ApiClient.getApiClient(AddedDealerActivity.this).create(ApiInterface.class);
+        Call<AddDealerList> addDealerListCall=apiInterface.getAllAddedDealers(page,row_per_page,dcontact);
+        addDealerListCall.enqueue(new Callback<AddDealerList>() {
+            @Override
+            public void onResponse(Call<AddDealerList> call, Response<AddDealerList> response) {
+
+
+                has_more= response.body().isHas_more();
+                if(has_more && response.body().getDealerlist().size()>0){
+                    addedDealerAdapter.addLists(response.body().getDealerlist());
+                    progressBar.setVisibility(View.GONE);
+                    StyleableToast.makeText(AddedDealerActivity.this,"data not null",R.style.mytoast).show();
+                }
+                else{
+                    StyleableToast.makeText(AddedDealerActivity.this,"data null",R.style.mytoast).show();
+                    progressBar.setVisibility(View.GONE);
+                }
+                progressBar.setVisibility(View.GONE);
+            }
+
+            @Override
+            public void onFailure(Call<AddDealerList> call, Throwable t) {
+                StyleableToast.makeText(AddedDealerActivity.this,"Netword Error",R.style.mytoast).show();
+            }
+        });
     }
 
     private void initAll() {
         added_dealers=findViewById(R.id.added_dealer_container);
         added_dealers.setHasFixedSize(true);
-        added_dealers.setLayoutManager(new LinearLayoutManager(this));
+        linearLayoutManager =new LinearLayoutManager(this);
+        added_dealers.setLayoutManager(linearLayoutManager);
+        progressBar=findViewById(R.id._progress);
     }
 }
