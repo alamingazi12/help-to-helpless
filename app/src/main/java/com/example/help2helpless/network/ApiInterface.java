@@ -51,7 +51,7 @@ public  interface ApiInterface {
     Observable<DealerResponse> getAlldealer();
 
     @GET("fetchdealer.php")
-    Call<DealerResponse> fetchAllDealers(@Query("donar_contact") String donar_contact);
+    Call<DealerResponse> fetchAllDealers(@Query("page") int page,@Query("row_per_page") int row_per_page,@Query("donar_contact") String donar_contact);
     //search_client.php
 
     @GET("search_client.php")
@@ -98,17 +98,17 @@ public  interface ApiInterface {
 
     @GET("total_dealers.php")
     Call<TotalDealer> getTotalDealer(@Query("dnr_contact") String dnr_contact);
-
+    // paging api ok
     @GET("fetchdonar_item.php")
     Call<AllDonar> getTotalDonar(@Query("dlr_contact") String dlr_contact);
 
     @GET("fetch_request.php")
     Call<DealersRequest> getAllDealerRequest(@Query("dnr_contact") String dnr_contact);
    ///AddDealerList
-
+    //pagination api ok
     @GET("total_dealers_list.php")
     Call<AddDealerList> getAllAddedDealers(@Query("dnr_contact") String dnr_contact);
-
+   // pagination api ok total complete
     @GET("send_money_donar.php")
     Call<DonarResponse> getAllDonars(@Query("page") int page,@Query("row_per_page") int row_per_page,@Query("phone") String phone);
 

@@ -49,17 +49,12 @@ public class DonarDashBoardActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_donar_dash_board);
 
-
-        // final Bundle bundle= getIntent().getExtras();
-        //donar=bundle.getParcelable("obj");
         initAll();
 
         stopThread = false;
         ExampleRunnable runnable = new ExampleRunnable(10);
         new Thread(runnable).start();
 
-        // Glide.get(this).clearDiskCache();
-        //Glide.get(this).clearMemory();
         show_dealers.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

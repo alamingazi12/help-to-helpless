@@ -15,12 +15,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".AllDonarActivity" android:configChanges="screenSize|orientation">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+        <activity android:name=".AllDonarActivity" android:theme="@style/AppTheme.CustomTheme" android:configChanges="screenSize|orientation">
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
 
         </activity>
         <activity
@@ -63,7 +59,9 @@
             android:parentActivityName=".DealerActivity" />
         <activity
             android:name=".AddDealerActivity"
-            android:parentActivityName=".DonarDashBoardActivity" />
+            android:configChanges="orientation|screenSize"
+            android:parentActivityName=".DonarDashBoardActivity"
+            android:theme="@style/AppTheme.CustomTheme"/>
         <activity
             android:name=".DonarDashBoardActivity"
             android:autoRemoveFromRecents="true"
@@ -78,6 +76,7 @@
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
+            android:theme="@style/AppTheme.CustomTheme"
             android:name=".DealerRequestActivity"
             android:configChanges="orientation|screenSize"
             android:parentActivityName=".AdminDashBoardActivity" />
@@ -94,7 +93,7 @@
         <activity
             android:name=".DonarLogin"
             android:parentActivityName=".MainActivity"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.CustomTheme" />
         <activity
             android:name=".AdminDashBoardActivity"
             android:autoRemoveFromRecents="true"
@@ -103,7 +102,7 @@
         <activity
             android:name=".AdminLogin"
             android:parentActivityName=".MainActivity"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.CustomTheme" />
         <activity
             android:name=".ClientActivity"
             android:parentActivityName=".DealerActivity"
@@ -113,7 +112,13 @@
             android:name=".MainActivity"
             android:autoRemoveFromRecents="true"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBars">
+            android:theme="@style/AppTheme.NoActionBarss">
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
 
         </activity>
 

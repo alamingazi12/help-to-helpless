@@ -79,7 +79,6 @@ public class AllDonarActivity extends AppCompatActivity {
 
     private void showDonar() {
 
-
         ApiInterface apiInterface=ApiClient.getApiClient(this).create(ApiInterface.class);
         Call<DonarResponse> donarResponseCall=apiInterface.getAllDonars(page,row_per_page,text);
         donarResponseCall.enqueue(new Callback<DonarResponse>() {

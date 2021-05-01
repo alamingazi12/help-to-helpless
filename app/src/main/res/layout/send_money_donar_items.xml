@@ -60,18 +60,18 @@
         <Button
 
             android:id="@+id/add_donar_request"
-            android:layout_width="129dp"
-            android:layout_height="43dp"
+            android:layout_width="109dp"
+            android:layout_height="36dp"
             android:layout_marginBottom="4dp"
             android:background="@drawable/button_style"
             android:fontFamily="@font/latom"
             android:paddingLeft="5dp"
             android:paddingRight="5dp"
-            android:text="Send Request"
+            android:text="Send Money"
             android:textAllCaps="false"
-            android:textColor="#ffffff"
+            android:textColor="#fff"
 
-            android:textSize="14sp"
+            android:textSize="13sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="@+id/donar_contact"
             app:layout_constraintTop_toBottomOf="@+id/donar_contact"

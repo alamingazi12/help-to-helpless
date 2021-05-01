@@ -24,6 +24,7 @@ import com.android.volley.toolbox.Volley;
 import com.example.help2helpless.AddDealerActivity;
 import com.example.help2helpless.R;
 import com.example.help2helpless.model.Dealer;
+import com.example.help2helpless.model.Donar;
 import com.muddzdev.styleabletoast.StyleableToast;
 import com.squareup.picasso.Picasso;
 
@@ -192,6 +193,12 @@ public class DealerAdapter extends RecyclerView.Adapter<DealerAdapter.DealerView
 
     }
 
+
+    public  void addLists(ArrayList<Dealer> dealers){
+        dealers.addAll(dealers);
+        notifyDataSetChanged();
+
+    }
     private String getMonthString(String s) {
 
         String monthName=null;

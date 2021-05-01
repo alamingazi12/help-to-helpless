@@ -63,7 +63,9 @@ public class AdminDashBoardActivity extends AppCompatActivity {
       add_amount_donar.setOnClickListener(new View.OnClickListener() {
           @Override
           public void onClick(View view) {
-              createDialoge();
+             // createDialoge();
+              Intent intent=new Intent(AdminDashBoardActivity.this,AllDonarActivity.class);
+              startActivity(intent);
           }
       });
     }
