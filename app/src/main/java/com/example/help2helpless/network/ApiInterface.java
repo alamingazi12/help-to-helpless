@@ -6,7 +6,6 @@ import com.example.help2helpless.model.AllDonar;
 import com.example.help2helpless.model.Amount;
 import com.example.help2helpless.model.AvgDealerReceived;
 import com.example.help2helpless.model.ClientResponse;
-import com.example.help2helpless.model.Dealer;
 import com.example.help2helpless.model.DealerAvgPaid;
 import com.example.help2helpless.model.DealerBalance;
 import com.example.help2helpless.model.DealerResponse;
@@ -100,7 +99,7 @@ public  interface ApiInterface {
     Call<TotalDealer> getTotalDealer(@Query("dnr_contact") String dnr_contact);
     // paging api ok
     @GET("fetchdonar_item.php")
-    Call<AllDonar> getTotalDonar(@Query("dlr_contact") String dlr_contact);
+    Call<AllDonar> getTotalDonar(@Query("page") int page,@Query("row_per_page") int row_per_page,@Query("dlr_contact") String dlr_contact);
 
     @GET("fetch_request.php")
     Call<DealersRequest> getAllDealerRequest(@Query("dnr_contact") String dnr_contact);

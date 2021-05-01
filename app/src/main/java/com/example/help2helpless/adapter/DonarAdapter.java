@@ -42,6 +42,11 @@ public class DonarAdapter extends RecyclerView.Adapter<DonarAdapter.DonarViewHol
         this.context = context;
     }
 
+    public  void addList(ArrayList<Donar> dealers){
+        this.donarlist.addAll(dealers);
+        notifyDataSetChanged();
+
+    }
 
     @NonNull
     @Override

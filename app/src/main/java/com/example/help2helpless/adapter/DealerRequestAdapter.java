@@ -22,6 +22,7 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.help2helpless.R;
 import com.example.help2helpless.model.Dealer;
+import com.makeramen.roundedimageview.RoundedImageView;
 import com.muddzdev.styleabletoast.StyleableToast;
 import com.squareup.picasso.Picasso;
 
@@ -241,7 +242,7 @@ public class DealerRequestAdapter extends RecyclerView.Adapter<DealerRequestAdap
     public class DealerRequestViewHolder extends RecyclerView.ViewHolder {
         TextView name,shpname,address,dlr_phone;
         Button add_dealer;
-        ImageView imageView_dealer;
+        RoundedImageView imageView_dealer;
         public DealerRequestViewHolder(@NonNull View itemView) {
             super(itemView);
             name= itemView.findViewById(R.id.dname);

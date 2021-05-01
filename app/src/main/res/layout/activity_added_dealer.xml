@@ -12,5 +12,10 @@
         android:layout_height="match_parent">
 
     </androidx.recyclerview.widget.RecyclerView>
-
+   <ProgressBar
+       android:layout_centerHorizontal="true"
+       android:layout_alignParentBottom="true"
+       android:id="@+id/_progress"
+       android:layout_width="50dp"
+       android:layout_height="50dp"/>
 </RelativeLayout>

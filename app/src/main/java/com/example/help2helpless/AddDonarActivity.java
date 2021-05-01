@@ -1,5 +1,6 @@
 package com.example.help2helpless;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -9,7 +10,10 @@ import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Gravity;
+import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -29,49 +33,48 @@ import retrofit2.Response;
 public class AddDonarActivity extends AppCompatActivity {
      ArrayList<Donar> donarList;
      RecyclerView donar_item_container;
+     DonarAdapter donarAdapter;
+     ProgressBar progressBar;
+     LinearLayoutManager linearLayoutManager;
+
+
+     boolean has_more;
+    int page=1,row_per_page=5;
+    private boolean isloading=true;
+    int pastVisibleItems,totalItemcount,previous_total,visible_item_count=0;
+    private  int view_thresold=5;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_donar);
-        setFontToActionBar();
+       // setFontToActionBar();
         initAll();
         getAllDonar();
     }
 
-    private void setFontToActionBar() {
-        TextView tv = new TextView(AddDonarActivity.this);
-        RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams(ActionBar.LayoutParams.WRAP_CONTENT, ActionBar.LayoutParams.WRAP_CONTENT);
-        tv.setLayoutParams(lp);
-        tv.setText("Donars");
-        tv.setTextSize(22);
-        tv.setGravity(Gravity.CENTER);
-        tv.setTextColor(Color.parseColor("#ffffff"));
-        Typeface tf = Typeface.createFromAsset(getAssets(), "fonts/relway_regular.ttf");
-        tv.setTypeface(tf);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
-        getSupportActionBar().setCustomView(tv);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-    }
 
     private void initAll() {
+
       donar_item_container=findViewById(R.id.donar_item_container);
       donar_item_container.setHasFixedSize(true);
-      donar_item_container.setLayoutManager(new LinearLayoutManager(this));
+      linearLayoutManager=new LinearLayoutManager(this);
+      donar_item_container.setLayoutManager(linearLayoutManager);
+      progressBar=findViewById(R.id._progress);
     }
 
     private void getAllDonar() {
         SharedPreferences dealerharedpreference= getSharedPreferences("dealerinfo",0);
         ApiInterface apiInterface= ApiClient.getApiClient(AddDonarActivity.this).create(ApiInterface.class);
-        Call<AllDonar> allDonarCall= apiInterface.getTotalDonar(dealerharedpreference.getString("contact",null));
+        Call<AllDonar> allDonarCall= apiInterface.getTotalDonar(page,row_per_page,dealerharedpreference.getString("contact",null));
         allDonarCall.enqueue(new Callback<AllDonar>() {
             @Override
             public void onResponse(Call<AllDonar> call, Response<AllDonar> response) {
              donarList= response.body().getDealers();
              if(donarList.size()>0){
-                 DonarAdapter donarAdapter=new DonarAdapter(donarList,AddDonarActivity.this);
+                 donarAdapter=new DonarAdapter(donarList,AddDonarActivity.this);
                  donar_item_container.setAdapter(donarAdapter);
+                 progressBar.setVisibility(View.GONE);
                 // Toast.makeText(AddDonarActivity.this,"gets data",Toast.LENGTH_LONG).show();
              }
              else{
@@ -84,8 +87,80 @@ public class AddDonarActivity extends AppCompatActivity {
             public void onFailure(Call<AllDonar> call, Throwable t) {
                 Toast.makeText(AddDonarActivity.this,"Network Error",Toast.LENGTH_LONG).show();
             }
+
+
         });
 
+        donar_item_container.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+                if(!has_more){
+                    progressBar.setVisibility(View.GONE);
+                }
+
+
+
+
+
+                visible_item_count=linearLayoutManager.getChildCount();
+                totalItemcount=linearLayoutManager.getItemCount();
+                pastVisibleItems=linearLayoutManager.findFirstVisibleItemPosition();
+
+
+                if(dy>0){
+                    if(isloading) {
+
+                        if(totalItemcount>previous_total){
+
+                            isloading=false;
+                            previous_total=totalItemcount;
+                        }
+
+                    }
+                    if(!isloading && (totalItemcount-visible_item_count)<=(pastVisibleItems+view_thresold)){
+                        Log.d("page","called");
+                        performPagination();
+                        isloading=true;
+                    }
+
+
+                }
+            }
+        });
+
+    }
+
+
+   public void performPagination(){
+
+       progressBar.setVisibility(View.VISIBLE);
+       page++;
+       Log.d("page",String.valueOf(page));
+
+       SharedPreferences dealerharedpreference= getSharedPreferences("dealerinfo",0);
+       ApiInterface apiInterface= ApiClient.getApiClient(AddDonarActivity.this).create(ApiInterface.class);
+       Call<AllDonar> allDonarCall= apiInterface.getTotalDonar(page,row_per_page,dealerharedpreference.getString("contact",null));
+       allDonarCall.enqueue(new Callback<AllDonar>() {
+           @Override
+           public void onResponse(Call<AllDonar> call, Response<AllDonar> response) {
+               has_more= response.body().isHas_more();
+               if(has_more){
+                   donarAdapter.addList(response.body().getDealers());
+                   progressBar.setVisibility(View.GONE);
+               }else{
+                   progressBar.setVisibility(View.GONE);
+               }
+               progressBar.setVisibility(View.GONE);
+           }
+
+           @Override
+           public void onFailure(Call<AllDonar> call, Throwable t) {
+               Toast.makeText(AddDonarActivity.this,"Network Error",Toast.LENGTH_LONG).show();
+           }
+
+
+       });
     }
 
 }

@@ -135,6 +135,9 @@ public class AddedDealerActivity extends AppCompatActivity {
     }
 
     private void performPagination() {
+        progressBar.setVisibility(View.VISIBLE);
+        page++;
+        Log.d("page",String.valueOf(page));
 
         SharedPreferences donarinfo=getSharedPreferences("donarinfo",0);
         String dcontact=donarinfo.getString("contact",null);
@@ -146,8 +149,9 @@ public class AddedDealerActivity extends AppCompatActivity {
 
 
                 has_more= response.body().isHas_more();
-                if(has_more && response.body().getDealerlist().size()>0){
+                if(response.body().getDealerlist().size()>0){
                     addedDealerAdapter.addLists(response.body().getDealerlist());
+                   // addedDealerAdapter.addLists(response.body().getDealerlist());
                     progressBar.setVisibility(View.GONE);
                     StyleableToast.makeText(AddedDealerActivity.this,"data not null",R.style.mytoast).show();
                 }

@@ -15,11 +15,13 @@
         android:layout_height="match_parent">
 
 
-        <ImageView
+        <com.makeramen.roundedimageview.RoundedImageView
             android:id="@+id/dlr_profile_image"
-            android:layout_width="128dp"
-            android:layout_height="128dp"
-
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:scaleType="fitCenter"
+            app:riv_corner_radius="13dip"
+            app:riv_mutate_background="true"
             android:layout_marginStart="16dp"
             android:src="@drawable/shopimg"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -33,7 +35,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="28dp"
-            android:fontFamily="@font/alexbold"
+            android:fontFamily="@font/latom"
             android:text="Alamin Gazi"
             android:textColor="#000000"
             android:textFontWeight="400"
@@ -46,8 +48,8 @@
             android:textFontWeight="400"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="3dp"
-            android:fontFamily="@font/relway_regular"
+
+            android:fontFamily="@font/latom"
             android:text="Shaeen Store"
             android:textColor="#000000"
             android:textSize="18sp"
@@ -55,24 +57,24 @@
             app:layout_constraintTop_toBottomOf="@+id/dname" />
 
         <TextView
-            android:fontFamily="@font/relway_regular"
+            android:fontFamily="@font/latom"
             android:id="@+id/shopaddress"
             android:textFontWeight="400"
             android:textSize="17sp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="3dp"
+
             android:text="Fultala High school Khulna"
             android:textColor="#000000"
             app:layout_constraintStart_toStartOf="@+id/rdshpname"
             app:layout_constraintTop_toBottomOf="@+id/rdshpname" />
 
         <TextView
-            android:fontFamily="@font/phone_font"
+            android:fontFamily="@font/alexbold"
             android:id="@+id/dlr_contact"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
+
             android:text="01988983612"
             android:textFontWeight="600"
             android:textSize="17dp"
@@ -84,9 +86,10 @@
             android:id="@+id/donate_dlr"
             android:layout_width="wrap_content"
             android:layout_height="27dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginBottom="15dp"
-            android:background="@drawable/item_button"
+            android:layout_marginEnd="136dp"
+            android:layout_marginBottom="8dp"
+
+            android:background="@drawable/button_style"
             android:fontFamily="@font/artifika"
             android:text="Donate"
             android:textAllCaps="false"
@@ -94,7 +97,9 @@
             android:textFontWeight="500"
             android:textSize="16dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/dlr_contact" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

@@ -38,7 +38,7 @@ public class DiscountActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_discount);
-        setFontToActionBar();
+        //setFontToActionBar();
         initAll();
         getAllContact();
 

@@ -35,15 +35,19 @@
             android:name=".DonateDealerActivity"
             android:parentActivityName=".AddedDealerActivity" />
         <activity
+            android:theme="@style/AppTheme.CustomTheme"
             android:name=".AddedDealerActivity"
             android:configChanges="orientation|screenSize"
             android:parentActivityName=".DonarDashBoardActivity" />
         <activity
             android:name=".RequestActivity"
+            android:theme="@style/AppTheme.CustomTheme"
             android:configChanges="orientation|screenSize"
             android:parentActivityName=".DonarDashBoardActivity" />
         <activity
             android:name=".AddDonarActivity"
+            android:configChanges="screenSize|orientation"
+            android:theme="@style/AppTheme.CustomTheme"
             android:parentActivityName=".DealerActivity" />
         <activity
             android:name=".ClientProfileActivity"

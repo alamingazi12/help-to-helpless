@@ -32,27 +32,11 @@ public class RequestActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_request);
-        setFontToActionBar();
+      //  setFontToActionBar();
        init();
         getDealers();
     }
 
-    private void setFontToActionBar() {
-        TextView tv = new TextView(RequestActivity.this);
-        RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams(ActionBar.LayoutParams.WRAP_CONTENT, ActionBar.LayoutParams.WRAP_CONTENT);
-        tv.setLayoutParams(lp);
-        tv.setText("Requests");
-        tv.setTextSize(22);
-        tv.setGravity(Gravity.CENTER);
-        tv.setTextColor(Color.parseColor("#ffffff"));
-        Typeface tf = Typeface.createFromAsset(getAssets(), "fonts/relway_regular.ttf");
-        tv.setTypeface(tf);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
-        getSupportActionBar().setCustomView(tv);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
-    }
 
     private void init() {
         dealer_request_containers=findViewById(R.id.dealer_request_container);

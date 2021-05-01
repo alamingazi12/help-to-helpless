@@ -30,8 +30,8 @@ public class AddedDealerAdapter extends RecyclerView.Adapter<AddedDealerAdapter.
         this.context = context;
     }
 
-    public  void addLists(ArrayList<Dealer> dealers){
-        dealerslist.addAll(dealers);
+    public  void addLists(ArrayList<Dealer> dealer){
+        this.dealerslist.addAll(dealer);
         notifyDataSetChanged();
 
     }
