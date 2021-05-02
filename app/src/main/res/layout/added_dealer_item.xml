@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="170dp"
     android:layout_margin="10dp"
+    app:cardBackgroundColor="#3f37c9"
     app:cardElevation="3dp"
     app:cardCornerRadius="7dp"
     android:background="#f0efeb"
@@ -37,37 +38,24 @@
             android:layout_marginTop="28dp"
             android:fontFamily="@font/latom"
             android:text="Alamin Gazi"
-            android:textColor="#000000"
+            android:textColor="#ffffff"
             android:textFontWeight="400"
             android:textSize="22sp"
             app:layout_constraintStart_toEndOf="@+id/dlr_profile_image"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/rdshpname"
-            android:textFontWeight="400"
+            android:id="@+id/shopaddress"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-
             android:fontFamily="@font/latom"
-            android:text="Shaeen Store"
-            android:textColor="#000000"
-            android:textSize="18sp"
-            app:layout_constraintStart_toStartOf="@+id/dname"
-            app:layout_constraintTop_toBottomOf="@+id/dname" />
+            android:text="Fultala High school Khulna"
+            android:textColor="#ffffff"
 
-        <TextView
-            android:fontFamily="@font/latom"
-            android:id="@+id/shopaddress"
             android:textFontWeight="400"
             android:textSize="17sp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-
-            android:text="Fultala High school Khulna"
-            android:textColor="#000000"
-            app:layout_constraintStart_toStartOf="@+id/rdshpname"
-            app:layout_constraintTop_toBottomOf="@+id/rdshpname" />
+            app:layout_constraintStart_toStartOf="@+id/dname"
+            app:layout_constraintTop_toBottomOf="@+id/dname" />
 
         <TextView
             android:fontFamily="@font/alexbold"
@@ -78,7 +66,7 @@
             android:text="01988983612"
             android:textFontWeight="600"
             android:textSize="17dp"
-            android:textColor="#000000"
+            android:textColor="#ffffff"
             app:layout_constraintStart_toStartOf="@+id/shopaddress"
             app:layout_constraintTop_toBottomOf="@+id/shopaddress" />
 
@@ -86,19 +74,16 @@
             android:id="@+id/donate_dlr"
             android:layout_width="wrap_content"
             android:layout_height="27dp"
-            android:layout_marginEnd="136dp"
-            android:layout_marginBottom="8dp"
+            android:layout_marginBottom="24dp"
 
             android:background="@drawable/button_style"
             android:fontFamily="@font/artifika"
             android:text="Donate"
             android:textAllCaps="false"
-            android:textColor="#ffffff"
+            android:textColor="#000000"
             android:textFontWeight="500"
             android:textSize="16dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/dlr_contact" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -27,6 +27,7 @@ import com.example.help2helpless.model.DonarBalance;
 import com.example.help2helpless.network.ApiClient;
 import com.example.help2helpless.network.ApiInterface;
 import com.google.android.material.textfield.TextInputLayout;
+import com.makeramen.roundedimageview.RoundedImageView;
 import com.muddzdev.styleabletoast.StyleableToast;
 import com.squareup.picasso.Picasso;
 
@@ -46,13 +47,16 @@ public class DonateDealerActivity extends AppCompatActivity {
     TextView donar_balace;
     TextInputLayout damount;
     Button btn_donate;
+
+    TextView deader_name,address,dealer_phone;
+    RoundedImageView dealer_profile_img;
     String imageUrl="https://apps.help2helpless.com/donar_profile/";
     String url="https://apps.help2helpless.com/donar_donation.php";
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_donate_dealer);
-        setFontToActionBar();
+        //setFontToActionBar();
         getData();
         initAll();
         btn_donate.setOnClickListener(new View.OnClickListener() {
@@ -84,9 +88,29 @@ public class DonateDealerActivity extends AppCompatActivity {
     }
 
     private void initAll() {
+
+
+
+        deader_name=findViewById(R.id.dealer_name);
+        address=findViewById(R.id.dealer_address);
+        dealer_phone=findViewById(R.id.dealer_phone);
+
         donar_balace=findViewById(R.id.d_balance);
         damount=findViewById(R.id.donate_amount);
         btn_donate=findViewById(R.id.btn_donate);
+        dealer_profile_img=findViewById(R.id.dealer_profile_pic);
+        deader_name.setText(dealer.getName());
+        address.setText(dealer.getHmaddres());
+        dealer_phone.setText(dealer.getPhone());
+        String   profile_imageUrl="https://apps.help2helpless.com/uploads/"+dealer.getProfile_pic();
+        Picasso.get()
+                .load(profile_imageUrl)
+                .resize(90, 90)
+                .centerCrop()
+                .into(dealer_profile_img);
+
+
+
         CircleImageView d_image=findViewById(R.id.donar_profile_pic);
         SharedPreferences   donarinfo=this.getSharedPreferences("donarinfo",0);
         Picasso.get().load(imageUrl+donarinfo.getString("donar_pic",null)).resize(60,60).centerCrop().into(d_image);

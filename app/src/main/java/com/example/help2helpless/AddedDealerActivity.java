@@ -153,7 +153,7 @@ public class AddedDealerActivity extends AppCompatActivity {
                     addedDealerAdapter.addLists(response.body().getDealerlist());
                    // addedDealerAdapter.addLists(response.body().getDealerlist());
                     progressBar.setVisibility(View.GONE);
-                    StyleableToast.makeText(AddedDealerActivity.this,"data not null",R.style.mytoast).show();
+                  //  StyleableToast.makeText(AddedDealerActivity.this,"data not null",R.style.mytoast).show();
                 }
                 else{
                     StyleableToast.makeText(AddedDealerActivity.this,"data null",R.style.mytoast).show();

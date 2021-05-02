@@ -32,6 +32,7 @@
             android:name=".DonationHistory"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
+            android:theme="@style/AppTheme.CustomTheme"
             android:name=".DonateDealerActivity"
             android:parentActivityName=".AddedDealerActivity" />
         <activity

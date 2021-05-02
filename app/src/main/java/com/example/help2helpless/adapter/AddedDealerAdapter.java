@@ -79,13 +79,13 @@ public class AddedDealerAdapter extends RecyclerView.Adapter<AddedDealerAdapter.
     }
 
     public class AddedDealerViewHolder extends RecyclerView.ViewHolder {
-        TextView name,shpname,address,dlr_phone;
+        TextView name,address,dlr_phone;
         Button donate_dealer;
         ImageView imageView_dealer;
         public AddedDealerViewHolder(@NonNull View itemView) {
             super(itemView);
             name= itemView.findViewById(R.id.dname);
-            shpname= itemView.findViewById(R.id.rdshpname);
+
             address= itemView.findViewById(R.id.shopaddress);
             dlr_phone=itemView.findViewById(R.id.dlr_contact);
             donate_dealer=itemView.findViewById(R.id.donate_dlr);
