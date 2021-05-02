@@ -35,11 +35,7 @@ public class DSendMoneyAdapter extends RecyclerView.Adapter<DSendMoneyAdapter.Do
         return new DonarViewHolder(view);
     }
 
-    public  void addList(ArrayList<Donar> dealers){
-        donarList.addAll(dealers);
-        notifyDataSetChanged();
 
-    }
     @Override
     public void onBindViewHolder(@NonNull DonarViewHolder holder, final int position) {
         Donar donar=donarList.get(position);
@@ -60,6 +56,11 @@ public class DSendMoneyAdapter extends RecyclerView.Adapter<DSendMoneyAdapter.Do
     @Override
     public int getItemCount() {
         return donarList.size();
+    }
+
+    public void addList(ArrayList<Donar> users) {
+        donarList.addAll(users);
+        notifyDataSetChanged();
     }
 
     public class DonarViewHolder extends RecyclerView.ViewHolder {

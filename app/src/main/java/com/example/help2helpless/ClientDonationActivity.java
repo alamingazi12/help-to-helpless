@@ -42,7 +42,7 @@ public class ClientDonationActivity extends AppCompatActivity {
         setContentView(R.layout.activity_client_donation);
         Bundle bundle= getIntent().getExtras();
          client_data= bundle.getParcelable("client");
-        iniiAll();
+         iniiAll();
 
         donat_to_client.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -58,6 +58,7 @@ public class ClientAdapter extends RecyclerView.Adapter<ClientAdapter.ClientView
         return new ClientViewHolder(view);
     }
 
+
     @Override
     public void onBindViewHolder(@NonNull ClientAdapter.ClientViewHolder holder, final int position) {
             Client client=clientList.get(position);
@@ -234,6 +235,12 @@ public class ClientAdapter extends RecyclerView.Adapter<ClientAdapter.ClientView
         }
         return monthName;
     }
+
+    public void addList(ArrayList<Client> result) {
+        clientList.addAll(result);
+        notifyDataSetChanged();
+    }
+
     public class ClientViewHolder extends RecyclerView.ViewHolder {
         TextView cname,address,cl_phone;
         RoundedImageView client_image;
