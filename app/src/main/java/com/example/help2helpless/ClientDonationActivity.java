@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -18,10 +19,14 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.help2helpless.model.Client;
+import com.example.help2helpless.model.DealerBalance;
+import com.example.help2helpless.network.ApiClient;
+import com.example.help2helpless.network.ApiInterface;
 import com.google.android.material.textfield.TextInputLayout;
 import com.makeramen.roundedimageview.RoundedImageView;
 import com.muddzdev.styleabletoast.StyleableToast;
 import com.squareup.picasso.Picasso;
+import com.squareup.picasso.PicassoProvider;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -29,11 +34,17 @@ import org.json.JSONObject;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 public class ClientDonationActivity extends AppCompatActivity {
     String url="https://apps.help2helpless.com/add_discount.php";
     Client client_data;
     RoundedImageView profile_view_image;
-    TextView text_client_name,address,phone;
+    CircleImageView dealer_profile_image;
+    TextView text_client_name,address,phone,dealer_balance;
     Button donat_to_client;
     TextInputLayout amount;
     @Override
@@ -58,23 +69,66 @@ public class ClientDonationActivity extends AppCompatActivity {
         });
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        getDealerBalance();
+    }
+
     private void iniiAll() {
+        dealer_profile_image=findViewById(R.id.dealer_profile_pic);
         profile_view_image=findViewById(R.id.client_profile_pic);
         text_client_name=findViewById(R.id.client_name);
         address=findViewById(R.id.client_address);
         phone=findViewById(R.id.client_phone);
         donat_to_client=findViewById(R.id.btn_donate_client);
         amount=findViewById(R.id.donate_amount);
+        dealer_balance=findViewById(R.id.d_balance);
+
 
         text_client_name.setText(client_data.getcName());
         address.setText(client_data.getAddress());
         phone.setText(client_data.getPhone());
 
+
         String imageUrl="https://apps.help2helpless.com/client_profile/"+client_data.getProfile_pic();
+        Picasso.get().invalidate(imageUrl);
         Picasso.get().load(imageUrl).resize(80,80).centerCrop().into(profile_view_image);
+        SharedPreferences dealerlogininfo=getSharedPreferences("dealerinfo",0);
+        String  dealer_image_url="https://apps.help2helpless.com/uploads/"+dealerlogininfo.getString("dealer_pic","");
+        Log.d("images",dealer_image_url);
+        Picasso.get().invalidate(dealer_image_url);
+        Picasso.get().load(dealer_image_url).resize(80,80).centerCrop().into(dealer_profile_image);
 
     }
 
+
+    private void getDealerBalance() {
+        SharedPreferences dealerlogininfo=getSharedPreferences("dealerinfo",0);
+        ApiInterface apiInterface=ApiClient.getApiClient(this).create(ApiInterface.class);
+        Call<DealerBalance> dealerBalanceCall=  apiInterface.getDealerBalance(dealerlogininfo.getString("contact",""));
+        dealerBalanceCall.enqueue(new Callback<DealerBalance>() {
+            @Override
+            public void onResponse(Call<DealerBalance> call, Response<DealerBalance> response) {
+                String dealer_balances=  response.body().getDealer_balance();
+                //Log.d("balance",dealer_balance);
+
+                if(dealer_balances==null){
+                    dealer_balances="0";
+                    dealer_balance.setText(""+dealer_balances);
+
+                }else {
+                    dealer_balance.setText(""+dealer_balances);
+                    //} Toast.makeText(DealerActivity.this,"avg:"+dealer_balance,Toast.LENGTH_LONG).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<DealerBalance> call, Throwable t) {
+                Toast.makeText(ClientDonationActivity.this,"Network Error",Toast.LENGTH_LONG).show();
+            }
+        });
+    }
     private void addDiscount(final String cnumber) {
 
         StringRequest stringRequest=new StringRequest(Request.Method.POST, url, new com.android.volley.Response.Listener<String>() {
@@ -84,6 +138,7 @@ public class ClientDonationActivity extends AppCompatActivity {
                     JSONObject jsonObject=new JSONObject(response);
                     String result=jsonObject.getString("response");
                     if(result.equals("success")){
+                        onResume();
                         StyleableToast.makeText(ClientDonationActivity.this,"Donation Sent Successfully",R.style.mytoast).show();
                        // Toast.makeText(ClientDonationActivity.this,"Discount added Successfully",Toast.LENGTH_LONG).show();
                     }

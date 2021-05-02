@@ -24,11 +24,13 @@
             android:configChanges="screenSize|orientation"
             android:theme="@style/AppTheme.CustomTheme"></activity>
         <activity
+
             android:name=".ClientRegActivity"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.CustomTheme" />
         <activity
+
             android:name=".UpdateActivity"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.CustomTheme" />
         <activity
             android:name=".SettingActivity"
             android:theme="@style/AppTheme.NoActionBar" />
@@ -118,7 +120,7 @@
             android:name=".ClientActivity"
             android:parentActivityName=".DealerActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.CustomTheme" />
         <activity
             android:name=".MainActivity"
             android:autoRemoveFromRecents="true"
