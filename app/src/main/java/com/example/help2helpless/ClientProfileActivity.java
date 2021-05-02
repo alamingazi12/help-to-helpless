@@ -32,13 +32,13 @@ public class ClientProfileActivity extends AppCompatActivity {
 
     private void setValue(Client client) {
         cname.setText(client.getcName());
-        cdeases.setText(client.getCdisase());
-        phone.setText(client.getCnumber());
-        month_income.setText(client.getMincome());
-        month_cost.setText(client.getCmedicost());
-        caddres.setText(client.getCaddres());
-        String imageUrl="https://apps.help2helpless.com/uploads/"+client.getCphoto();
-        Picasso.get().load(imageUrl).resize(90,90).centerCrop().into(image_profile);
+        cdeases.setText(client.getAddress());
+        phone.setText(client.getPhone());
+
+       // month_cost.setText(client.getCmedicost());
+       // caddres.setText(client.getCaddres());
+     //   String imageUrl="https://apps.help2helpless.com/uploads/"+client.getCphoto();
+     //   Picasso.get().load(imageUrl).resize(90,90).centerCrop().into(image_profile);
 
     }
 

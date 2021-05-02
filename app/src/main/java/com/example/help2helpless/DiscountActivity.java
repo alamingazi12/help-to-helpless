@@ -31,8 +31,14 @@ import retrofit2.Response;
 public class DiscountActivity extends AppCompatActivity {
      public RecyclerView clientItem_container;
      ArrayList<Client> clients;
-     EditText client_contact;
-    
+     EditText client_search_text;
+
+    boolean has_more;
+    int page=1,row_per_page=5;
+    private boolean isloading=true;
+    int pastVisibleItems,totalItemcount,previous_total,visible_item_count=0;
+    private  int view_thresold=5;
+    String search_text;
     String url="https://apps.help2helpless.com/search_client.php";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,7 +72,7 @@ public class DiscountActivity extends AppCompatActivity {
     private void getAllContact() {
         SharedPreferences dealerlogininfo=getSharedPreferences("dealerinfo",0);
         ApiInterface apiInterface= ApiClient.getApiClient(DiscountActivity.this).create(ApiInterface.class);
-        Call<ClientResponse> clientResponseCall=apiInterface.fetchClient(dealerlogininfo.getString("contact",null));
+        Call<ClientResponse> clientResponseCall=apiInterface.fetchClient(page,row_per_page,dealerlogininfo.getString("contact",null),"");
         clientResponseCall.enqueue(new Callback<ClientResponse>() {
             @Override
             public void onResponse(Call<ClientResponse> call, Response<ClientResponse> response) {
@@ -86,8 +92,8 @@ public class DiscountActivity extends AppCompatActivity {
     }
 
     private void initAll() {
-   
-     
+
+        client_search_text=findViewById(R.id.client_search_input);
         clientItem_container=findViewById(R.id.client_container);
         clientItem_container.setHasFixedSize(true);
         clientItem_container.setLayoutManager(new LinearLayoutManager(this));

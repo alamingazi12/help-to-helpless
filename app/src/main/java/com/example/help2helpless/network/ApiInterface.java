@@ -54,7 +54,7 @@ public  interface ApiInterface {
     //search_client.php
 
     @GET("search_client.php")
-    Call<ClientResponse> fetchClient(@Query("dnumber") String dnumber);
+    Call<ClientResponse> fetchClient(@Query("page") int page,@Query("row_per_page") int row_per_page,@Query("dnumber") String dnumber,@Query("client_phone") String client_phone);
 
     @GET("fetchamount.php")
     Call<Amount> getAmount();
