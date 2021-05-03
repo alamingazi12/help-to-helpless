@@ -35,6 +35,8 @@ import com.example.help2helpless.network.ApiClient;
 import com.example.help2helpless.network.ApiInterface;
 import com.squareup.picasso.Picasso;
 
+import java.util.Random;
+
 import de.hdodenhof.circleimageview.CircleImageView;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -51,6 +53,7 @@ public class DealerActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dealer);
         //setFontToActionBar();
+        Log.d("called","oncreaed");
 
         initAll();
         client_sign.setOnClickListener(new View.OnClickListener() {
@@ -118,6 +121,8 @@ public class DealerActivity extends AppCompatActivity {
         Intent intent=new Intent(DealerActivity.this,SettingActivity.class);
         startActivity(intent);
     }
+
+
     private void updateProfile() {
         Bundle bundle=new Bundle();
         bundle.putString("user_type","dealer");
@@ -329,6 +334,12 @@ public class DealerActivity extends AppCompatActivity {
         getTotalDonar();
         getTotalClients();
 
+        CircleImageView dealer_profile_image=findViewById(R.id.dealer_profile_pic);
+        String  dealer_image_url="https://apps.help2helpless.com/uploads/"+dealerlogininfo.getString("dealer_pic","");
+        Log.d("images",dealer_image_url);
+        Picasso.get().invalidate(dealer_image_url);
+        Picasso.get().load(dealer_image_url).resize(80,80).centerCrop().into(dealer_profile_image);
+
     }
 
     private void initAll() {
@@ -353,7 +364,7 @@ public class DealerActivity extends AppCompatActivity {
         String  dealer_image_url="https://apps.help2helpless.com/uploads/"+dealerlogininfo.getString("dealer_pic","");
         Log.d("images",dealer_image_url);
         Picasso.get().invalidate(dealer_image_url);
-        Picasso.get().load(dealer_image_url).resize(80,80).centerCrop().into(dealer_profile_image);
+        Picasso.get().load(dealer_image_url+"?rand"+(new Random().nextInt())).resize(80,80).centerCrop().into(dealer_profile_image);
 
     }
 }

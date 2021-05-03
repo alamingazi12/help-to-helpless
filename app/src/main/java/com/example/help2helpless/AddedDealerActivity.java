@@ -11,9 +11,13 @@ import android.graphics.Color;
 import android.graphics.Typeface;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -21,6 +25,7 @@ import android.widget.TextView;
 import com.example.help2helpless.adapter.AddedDealerAdapter;
 import com.example.help2helpless.model.AddDealerList;
 import com.example.help2helpless.model.Dealer;
+import com.example.help2helpless.model.Sections;
 import com.example.help2helpless.network.ApiClient;
 import com.example.help2helpless.network.ApiInterface;
 import com.muddzdev.styleabletoast.StyleableToast;
@@ -34,12 +39,14 @@ import retrofit2.Response;
 public class AddedDealerActivity extends AppCompatActivity {
      RecyclerView added_dealers;
      ArrayList<Dealer> dealerslist;
-
+     EditText search_dealer;
     int page=1,row_per_page=5;
     public  boolean has_more;
     LinearLayoutManager linearLayoutManager;
     ProgressBar progressBar;
     AddedDealerAdapter addedDealerAdapter;
+
+   int row ;
     //for pagination
     private boolean isloading=true;
     int pastVisibleItems,totalItemcount,previous_total,visible_item_count=0;
@@ -51,6 +58,35 @@ public class AddedDealerActivity extends AppCompatActivity {
         //setFontToActionBar();
         initAll();
         getAddedDealer();
+
+        search_dealer.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                Log.d("text",s.toString());
+                if(TextUtils.isEmpty(s.toString()) || s.toString().equals("0") ){
+                    Log.d("text","Empty");
+                    row_per_page=4;
+                    page=1;
+
+                            pastVisibleItems=0;
+                            totalItemcount=0;
+                            previous_total=0;
+                            visible_item_count=0;
+                    getAddedDealer();
+                }
+                filter(s.toString());
+            }
+        });
     }
     private void setFontToActionBar() {
         TextView tv = new TextView(AddedDealerActivity.this);
@@ -70,7 +106,19 @@ public class AddedDealerActivity extends AppCompatActivity {
 
     }
 
+    private void filter(String text) {
+        ArrayList<Dealer> filteredList = new ArrayList<>();
+
+        for (Dealer item : AddedDealerAdapter.dealerslist) {
+            if ((item.getPhone().toLowerCase().contains(text.toLowerCase())) || (item.getShpnmthana().toLowerCase().contains(text.toLowerCase())) || (item.getShpnmzilla().toLowerCase().contains(text.toLowerCase()))) {
+                filteredList.add(item);
+            }
+        }
+        addedDealerAdapter.filterList(filteredList);
+    }
+
     private void getAddedDealer() {
+        Log.d("text",String.valueOf(page));
         SharedPreferences donarinfo=getSharedPreferences("donarinfo",0);
         String dcontact=donarinfo.getString("contact",null);
         ApiInterface apiInterface= ApiClient.getApiClient(AddedDealerActivity.this).create(ApiInterface.class);
@@ -170,6 +218,7 @@ public class AddedDealerActivity extends AppCompatActivity {
     }
 
     private void initAll() {
+        search_dealer=findViewById(R.id.edittext_search_dealer);
         added_dealers=findViewById(R.id.added_dealer_container);
         added_dealers.setHasFixedSize(true);
         linearLayoutManager =new LinearLayoutManager(this);

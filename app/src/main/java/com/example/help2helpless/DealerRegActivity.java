@@ -79,13 +79,20 @@ public class DealerRegActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dealer_reg);
-        setFontToActionBar();
+        //setFontToActionBar();
 
         initAll();
+        profile_pic_view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                browseImage2();
+            }
+        });
+
+
         zilla.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 Rect displayRectangle = new Rect();
                 Window window = DealerRegActivity.this.getWindow();
                 window.getDecorView().getWindowVisibleDisplayFrame(displayRectangle);
@@ -188,12 +195,7 @@ public class DealerRegActivity extends AppCompatActivity {
                browseImage();
             }
         });
-     profile_upload.setOnClickListener(new View.OnClickListener() {
-         @Override
-         public void onClick(View view) {
-             browseImage2();
-         }
-     });
+
     }
 
     private void dealerSign() {
@@ -1005,7 +1007,7 @@ public class DealerRegActivity extends AppCompatActivity {
       // BUtton init
         signup=findViewById(R.id.dealer_signup);
         reg_up=findViewById(R.id.pic_shop);
-        profile_upload =findViewById(R.id.pic_profile);
+
 
 
 

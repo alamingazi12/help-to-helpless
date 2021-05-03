@@ -81,9 +81,10 @@
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
+            android:theme="@style/AppTheme.CustomTheme"
             android:name=".DealerRegActivity"
             android:parentActivityName=".MainActivity"
-            android:windowSoftInputMode="stateHidden|adjustResize" />
+            />
         <activity
             android:name=".ApprovedActivity"
             android:screenOrientation="portrait"
@@ -94,6 +95,7 @@
             android:parentActivityName=".AdminDashBoardActivity"
             android:theme="@style/AppTheme.CustomTheme" />
         <activity
+            android:theme="@style/AppTheme.CustomTheme"
             android:name=".DonarRegisterActivity"
             android:parentActivityName=".MainActivity" />
         <activity

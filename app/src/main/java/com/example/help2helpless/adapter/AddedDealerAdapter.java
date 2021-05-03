@@ -16,12 +16,13 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.help2helpless.DonateDealerActivity;
 import com.example.help2helpless.R;
 import com.example.help2helpless.model.Dealer;
+import com.example.help2helpless.model.Sections;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
 public class AddedDealerAdapter extends RecyclerView.Adapter<AddedDealerAdapter.AddedDealerViewHolder> {
-    ArrayList<Dealer> dealerslist;
+  public static   ArrayList<Dealer> dealerslist;
     Context context;
     String imageUrl="https://apps.help2helpless.com/uploads/";
 
@@ -34,6 +35,11 @@ public class AddedDealerAdapter extends RecyclerView.Adapter<AddedDealerAdapter.
         this.dealerslist.addAll(dealer);
         notifyDataSetChanged();
 
+    }
+
+    public void filterList(ArrayList<Dealer> filteredList) {
+        dealerslist = filteredList;
+        notifyDataSetChanged();
     }
 
     @NonNull

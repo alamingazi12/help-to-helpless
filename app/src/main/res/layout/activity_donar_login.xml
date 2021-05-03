@@ -32,12 +32,13 @@
     <EditText
         android:id="@+id/donar_phone"
         android:layout_width="0dp"
-        android:layout_height="50dp"
+        android:layout_height="45dp"
         android:layout_marginStart="32dp"
         android:layout_marginEnd="32dp"
         android:layout_marginBottom="40dp"
         android:background="@drawable/edit_text_style"
         android:ems="10"
+        android:textSize="14sp"
         android:fontFamily="sans-serif-light"
         android:hint="Mobile Number"
         android:inputType="textPersonName"
@@ -50,9 +51,10 @@
     <EditText
         android:id="@+id/donar_pass"
         android:layout_width="0dp"
-        android:layout_height="50dp"
+        android:layout_height="45dp"
         android:layout_marginStart="32dp"
         android:layout_marginEnd="32dp"
+        android:textSize="14sp"
 
         android:layout_marginBottom="56dp"
         android:background="@drawable/edit_text_style"
@@ -90,15 +92,15 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginBottom="96dp"
+        android:layout_marginTop="5dp"
         android:background="@null"
         android:fontFamily="@font/latom"
         android:text="Forget Password"
         android:textAllCaps="false"
         android:textColor="#80ffdb"
         android:textSize="15dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/donar_login" />
+        app:layout_constraintStart_toStartOf="@+id/donar_login"
+        app:layout_constraintTop_toBottomOf="@+id/donar_login" />
 
     <TextView
         android:id="@+id/textView11"

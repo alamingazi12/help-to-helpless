@@ -78,7 +78,7 @@ public class DonarRegisterActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_donar_register);
-        setFontToActionBar();
+
         intAll();
         SharedPreferences    usertype=getSharedPreferences("typedata",0);
         if(!usertype.getString("type","").equals("donar")){
@@ -195,22 +195,7 @@ public class DonarRegisterActivity extends AppCompatActivity {
         currencycontainer.setHasFixedSize(true);
         currencycontainer.setLayoutManager(new LinearLayoutManager(DonarRegisterActivity.this));
     }
-    private void setFontToActionBar() {
-        TextView tv = new TextView(DonarRegisterActivity.this);
-        RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams(ActionBar.LayoutParams.WRAP_CONTENT, ActionBar.LayoutParams.WRAP_CONTENT);
-        tv.setLayoutParams(lp);
-        tv.setText("Donar Registration");
-        tv.setTextSize(24);
-        tv.setGravity(Gravity.CENTER);
-        tv.setTextColor(Color.parseColor("#ffffff"));
-        Typeface tf = Typeface.createFromAsset(getAssets(), "fonts/regular.otf");
-        tv.setTypeface(tf);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
-        getSupportActionBar().setCustomView(tv);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-    }
 
 
     private void intAll() {
