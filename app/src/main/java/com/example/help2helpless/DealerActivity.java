@@ -118,7 +118,10 @@ public class DealerActivity extends AppCompatActivity {
     }
 
     private void setting() {
+        Bundle bundle=new Bundle();
+        bundle.putString("user_type","dealer");
         Intent intent=new Intent(DealerActivity.this,SettingActivity.class);
+        intent.putExtras(bundle);
         startActivity(intent);
     }
 

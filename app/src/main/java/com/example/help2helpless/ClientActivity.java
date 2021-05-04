@@ -162,7 +162,9 @@ public class ClientActivity extends AppCompatActivity {
                         String   result=response.body().getMessage();
                         if(result.equals("success")){
                             progressDialog.cancel();
-                            StyleableToast.makeText(ClientActivity.this,"Registration Success",R.style.mytoast).show();
+                            StyleableToast.makeText(ClientActivity.this,"Client Added Successfully",R.style.greentoast).show();
+                            Intent intent=new Intent(ClientActivity.this,DiscountActivity.class);
+                            startActivity(intent);
                         }
                         else{
                             progressDialog.cancel();

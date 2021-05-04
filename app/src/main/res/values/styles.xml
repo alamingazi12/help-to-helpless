@@ -69,9 +69,20 @@
         <item name="stSolidBackground">true</item>
         <item name="stStrokeWidth">3dp</item>
         <item name="stStrokeColor">#fff</item>
-
         <item name="stLength">LONG</item> LONG or SHORT
+        <item name="stRadius">15dp</item>
+    </style>
 
+    <style name="greentoast">
+        <item name="stTextBold">true</item>
+        <item name="stTextColor">#32CD32</item>
+        <item name="stFont">@font/raleway_light</item>
+        <item name="stTextSize">14sp</item>
+        <item name="stColorBackground">#fad4c0</item>
+        <item name="stSolidBackground">true</item>
+        <item name="stStrokeWidth">3dp</item>
+        <item name="stStrokeColor">#fff</item>
+        <item name="stLength">LONG</item> LONG or SHORT
         <item name="stRadius">15dp</item>
     </style>
     <style name="TextBlackTitle">

@@ -180,7 +180,10 @@ public class DonarDashBoardActivity extends AppCompatActivity {
     }
 
     private void setting() {
+        Bundle bundle=new Bundle();
+        bundle.putString("user_type","donar");
         Intent intent = new Intent(DonarDashBoardActivity.this, SettingActivity.class);
+        intent.putExtras(bundle);
         startActivity(intent);
     }
 

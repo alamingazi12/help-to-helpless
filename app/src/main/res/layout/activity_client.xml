@@ -196,7 +196,7 @@
 
         <Button
             android:id="@+id/btn_client_sign"
-            android:text="Sign Up"
+            android:text="Add Client"
 
             android:layout_marginTop="35dp"
             android:textColor="#fff"

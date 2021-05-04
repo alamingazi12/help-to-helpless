@@ -13,6 +13,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.PopupMenu;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -50,98 +52,97 @@ public class AdminDashBoardActivity extends AppCompatActivity {
     AlertDialog dialog;
     View DialogueView;
     Button show_request,add_amount_donar;
+    ImageButton admin_menu;
     EditText amount,donar_contact;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_dashboard);
         //setFontToActionBar();
-       //Bundle bundle= getIntent().getExtras();
+        //Bundle bundle= getIntent().getExtras();
 //       Admin admin=bundle.getParcelable("obj");
-       initAll();
-       getAmount();
-      add_amount_donar.setOnClickListener(new View.OnClickListener() {
-          @Override
-          public void onClick(View view) {
-             // createDialoge();
-              Intent intent=new Intent(AdminDashBoardActivity.this,AllDonarActivity.class);
-              startActivity(intent);
-          }
-      });
+        initAll();
+
+        add_amount_donar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // createDialoge();
+                Intent intent = new Intent(AdminDashBoardActivity.this, AllDonarActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        admin_menu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                PopupMenu popup = new PopupMenu(AdminDashBoardActivity.this, admin_menu);
+                //inflating menu from xml resource
+                popup.inflate(R.menu.admin_menu_item);
+                //adding click listener
+                popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                    @Override
+                    public boolean onMenuItemClick(MenuItem item) {
+                        switch (item.getItemId()) {
+                            case R.id.logout:
+                                logout();
+                                break;
+                            case R.id.settings:
+                                setting();
+                                break;
+                        }
+                        return false;
+                    }
+                });
+                popup.show();
+            }
+        });
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-        getAmount();
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_item,menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()){
-            case R.id.logout:
-                logout();
-                break;
-            case R.id.update:
-                updateProfile();
-                break;
-            case R.id.settings:
-                setting();
-                break;
-
+        @Override
+        protected void onResume () {
+            super.onResume();
+            //  getAmount();
         }
-        return true;
-    }
 
-    private void setting() {
-        Intent intent=new Intent(AdminDashBoardActivity.this,SettingActivity.class);
-        startActivity(intent);
-    }
-    private void updateProfile() {
-        Bundle bundle=new Bundle();
-        bundle.putString("user_type","donar");
-        Intent intent=new Intent(AdminDashBoardActivity.this,UpdateActivity.class);
-        intent.putExtras(bundle);
-        startActivity(intent);
 
-    }
+        private void setting () {
+            Bundle bundle=new Bundle();
+            bundle.putString("main","");
+            Intent intent = new Intent(AdminDashBoardActivity.this, SettingActivity.class);
+            intent.putExtras(bundle);
+            startActivity(intent);
+        }
 
-    private void logout() {
-        SharedPreferences    adminSharedPreference=getSharedPreferences("admininfo",0);
-        SharedPreferences.Editor   editor=adminSharedPreference.edit();
-        editor.remove("adminuser");
-        editor.commit();
-        Intent intent=new Intent(AdminDashBoardActivity.this,MainActivity.class);
-        startActivity(intent);
 
-    }
+        private void logout () {
+            SharedPreferences adminSharedPreference = getSharedPreferences("admininfo", 0);
+            SharedPreferences.Editor editor = adminSharedPreference.edit();
+            editor.remove("adminuser");
+            editor.commit();
+            Intent intent = new Intent(AdminDashBoardActivity.this, MainActivity.class);
+            startActivity(intent);
+        }
 
-    private void getAmount() {
-        Log.d("value","running");
-        ApiInterface apiInterface= ApiClient.getApiClient(AdminDashBoardActivity.this).create(ApiInterface.class);
-        Call<Amount> amountCall =apiInterface.getAmount();
-       amountCall.enqueue(new Callback<Amount>() {
-          @Override
-          public void onResponse(Call<Amount> call, Response<Amount> response) {
-              Amount amounts=response.body();
-              Log.d("amount:",amounts.getValue());
+        private void getAmount () {
+            Log.d("value", "running");
+            ApiInterface apiInterface = ApiClient.getApiClient(AdminDashBoardActivity.this).create(ApiInterface.class);
+            Call<Amount> amountCall = apiInterface.getAmount();
+            amountCall.enqueue(new Callback<Amount>() {
+                @Override
+                public void onResponse(Call<Amount> call, Response<Amount> response) {
+                    Amount amounts = response.body();
+                    Log.d("amount:", amounts.getValue());
 
-          }
+                }
 
-          @Override
-          public void onFailure(Call<Amount> call, Throwable t) {
-              Log.d("amount:","something wrong");
-              Toast.makeText(AdminDashBoardActivity.this," something wrong"+amount,Toast.LENGTH_SHORT).show();
-          }
-      });
-    }
-
+                @Override
+                public void onFailure(Call<Amount> call, Throwable t) {
+                    Log.d("amount:", "something wrong");
+                    Toast.makeText(AdminDashBoardActivity.this, " something wrong" + amount, Toast.LENGTH_SHORT).show();
+                }
+            });
+        }
+   /*
     public void   createDialoge(){
         AlertDialog.Builder builder=new AlertDialog.Builder(this);
         DialogueView= LayoutInflater.from(this).inflate(R.layout.add_donar_amount,null);
@@ -152,7 +153,7 @@ public class AdminDashBoardActivity extends AppCompatActivity {
         button_ok.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                addBalance();
+              //  addBalance();
                 dialog.dismiss();
             }
         });
@@ -231,32 +232,24 @@ public class AdminDashBoardActivity extends AppCompatActivity {
 
 
     }
-    private void setFontToActionBar() {
-        TextView tv = new TextView(AdminDashBoardActivity.this);
-        RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams(ActionBar.LayoutParams.WRAP_CONTENT, ActionBar.LayoutParams.WRAP_CONTENT);
-        tv.setLayoutParams(lp);
-        tv.setText("Admin Dashboard");
-        tv.setTextSize(24);
-        tv.setGravity(Gravity.CENTER);
-        tv.setTextColor(Color.parseColor("#ffffff"));
-        Typeface tf = Typeface.createFromAsset(getAssets(), "fonts/regular.otf");
-        tv.setTypeface(tf);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
-        getSupportActionBar().setCustomView(tv);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-    }
+*/
+        private void initAll () {
+            admin_menu = findViewById(R.id.admin_menu_icon);
+            show_request = findViewById(R.id.btn_dealer_aprove);
+            add_amount_donar = findViewById(R.id.btn_admin_add_money);
+            show_request.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(AdminDashBoardActivity.this, DealerRequestActivity.class);
+                    startActivity(intent);
+                }
+            });
+        }
 
-    private void initAll() {
-        show_request=findViewById(R.id.btn_dealer_aprove);
-        add_amount_donar=findViewById(R.id.btn_admin_add_money);
-        show_request.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent=new Intent(AdminDashBoardActivity.this,DealerRequestActivity.class);
-                startActivity(intent);
-            }
-        });
-    }
+
+
+
 }
+
+

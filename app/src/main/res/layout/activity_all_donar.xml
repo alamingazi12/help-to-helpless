@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_margin="5dp"
+    android:background="#f5f3f4"
     tools:context=".AllDonarActivity">
 
     <TextView
@@ -21,15 +22,15 @@
 
     <EditText
         android:id="@+id/dsearch_text"
-        android:layout_width="259dp"
-        android:layout_height="54dp"
-        android:layout_marginEnd="3dp"
+        android:layout_width="wrap_content"
+        android:layout_height="28dp"
         android:layout_below="@+id/heading_text"
         android:layout_alignBottom="@+id/btn_search_money"
         android:layout_alignParentStart="true"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="7dp"
-        android:layout_marginTop="53dp"
+        android:layout_marginTop="49dp"
+        android:layout_marginEnd="14dp"
 
         android:layout_marginRight="7dp"
 
@@ -49,14 +50,16 @@
 
     <Button
         android:id="@+id/btn_search_money"
-        android:layout_width="95dp"
-        android:layout_height="35dp"
-        android:textColor="#fff"
+        android:layout_width="90dp"
+        android:layout_height="32dp"
+        android:textColor="#000"
+
+        android:fontFamily="@font/latom"
         android:background="@drawable/button_style"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_marginTop="130dp"
-        android:layout_marginEnd="5dp"
+        android:layout_marginEnd="10dp"
         android:text="Search"
         android:textAllCaps="false"
         android:textSize="14sp" />

@@ -109,7 +109,10 @@ public class MainActivity extends AppCompatActivity {
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Bundle bundle=new Bundle();
+                bundle.putString("main","data");
                 Intent intent=new Intent(MainActivity.this,SettingActivity.class);
+                intent.putExtras(bundle);
                 startActivity(intent);
             }
         });
