@@ -184,7 +184,6 @@ public class DonarDashBoardActivity extends AppCompatActivity {
         Intent intent = new Intent(DonarDashBoardActivity.this, UpdateActivity.class);
         intent.putExtras(bundle);
         startActivity(intent);
-
     }
 
     private void setting() {
