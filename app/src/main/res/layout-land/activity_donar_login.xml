@@ -8,24 +8,24 @@
 
 
     <EditText
-        android:drawableLeft="@drawable/ic_user"
         android:id="@+id/dname"
         android:layout_width="0dp"
         android:layout_height="47dp"
         android:layout_marginStart="100dp"
         android:layout_marginEnd="100dp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="36dp"
         android:background="@drawable/edit_text_style"
+        android:drawableLeft="@drawable/ic_user"
+        android:drawablePadding="8dp"
         android:ems="10"
         android:hint="Username"
         android:inputType="textPersonName"
         android:paddingLeft="8dp"
-        android:drawablePadding="8dp"
 
         android:textColorHint="#adb5bd"
         app:layout_constraintBottom_toTopOf="@+id/dpass"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
@@ -49,10 +49,11 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/d_login"
+        android:id="@+id/donar_login"
         android:layout_width="260dp"
         android:layout_height="45dp"
-        android:layout_marginBottom="36dp"
+        android:layout_marginStart="104dp"
+        android:layout_marginBottom="44dp"
         android:background="@drawable/ripple_effect_raised"
         android:fontFamily="@font/raleway_light"
         android:rotationX="21"
@@ -61,7 +62,6 @@
         android:textColor="#f7fff7"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <androidx.constraintlayout.widget.Guideline
@@ -78,4 +78,31 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_percent=".70"
         app:layout_constraintGuide_begin="20dp" />
+
+    <Button
+        android:id="@+id/button3"
+        android:textAllCaps="false"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="36dp"
+        android:layout_marginBottom="20dp"
+        android:text="Forget Password"
+        android:textColor="#80ffdb"
+        android:textSize="17dp"
+        android:background="@null"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/donar_login" />
+
+    <Button
+        android:textAllCaps="false"
+        android:id="@+id/go_donar_signup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:text="Sign Up"
+        android:textSize="17dp"
+        android:textColor="#80ffdb"
+        android:background="@null"
+        app:layout_constraintStart_toEndOf="@+id/button3"
+        app:layout_constraintTop_toTopOf="@+id/button3" />
 </androidx.constraintlayout.widget.ConstraintLayout>

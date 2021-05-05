@@ -110,7 +110,6 @@ public class DealerAdapter extends RecyclerView.Adapter<DealerAdapter.DealerView
           dialog.setCanceledOnTouchOutside(false);
           dialog.show();
 
-
      }
 
     private void saveAmount(final Dealer dealer) {
@@ -124,7 +123,7 @@ public class DealerAdapter extends RecyclerView.Adapter<DealerAdapter.DealerView
                         if(result.equals("success")){
 
                            // Toast.makeText(context,"Dealer Added Successfully",Toast.LENGTH_LONG).show();
-                            StyleableToast.makeText(context, "Dealer Added Successfully", Toast.LENGTH_LONG, R.style.mytoast).show();
+                            StyleableToast.makeText(context, "Dealer Added Successfully", Toast.LENGTH_LONG, R.style.greentoast).show();
                             AddDealerActivity addDealerActivity=new AddDealerActivity();
                             //addDealerActivity.initRecycler();
                             //addDealerActivity.Back();

@@ -117,7 +117,7 @@ public class DonarLogin extends AppCompatActivity {
                     startActivity(intent);
                 }else {
                     dialogue.cancel();
-                    StyleableToast.makeText(DonarLogin.this,"Wrong Username and Password",R.style.mytoast).show();
+                    StyleableToast.makeText(DonarLogin.this,""+response.body().getMessage(),R.style.mytoast).show();
                 }
             }
 

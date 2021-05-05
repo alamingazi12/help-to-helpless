@@ -57,7 +57,7 @@ public class RequestAdapter extends RecyclerView.Adapter<RequestAdapter.RequestV
                     JSONObject jsonObject=new JSONObject(response);
                     String result=jsonObject.getString("response");
                     if(result.equals("success")){
-                        StyleableToast.makeText(context," Request Approved",R.style.mytoast).show();
+                        StyleableToast.makeText(context," Request Approved",R.style.greentoast).show();
                           dealersList.remove(dealer);
                           notifyDataSetChanged();
                        // Toast.makeText(context,"You registered"+result,Toast.LENGTH_LONG).show();

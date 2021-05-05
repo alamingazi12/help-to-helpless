@@ -122,7 +122,7 @@ public class DonarRegisterActivity extends AppCompatActivity {
                 String result=response.body().getMessage();
                 if(result.equals("success")){
                     dialogue.cancel();
-                    StyleableToast.makeText(DonarRegisterActivity.this,"Registration Success",R.style.mytoast).show();
+                    StyleableToast.makeText(DonarRegisterActivity.this,"Registration Success",R.style.greentoast).show();
                     Intent intent=new Intent(DonarRegisterActivity.this,DonarLogin.class);
                     startActivity(intent);
                 }else{

@@ -171,7 +171,7 @@ public class DealerRegActivity extends AppCompatActivity {
                             String result=response.body().getMessage();
                             if(result.equals("success")){
                               dialogue.cancel();
-                                StyleableToast.makeText(DealerRegActivity.this,"Registration Success",R.style.mytoast).show();
+                                StyleableToast.makeText(DealerRegActivity.this,"Registration Success",R.style.greentoast).show();
                             }else {
                                 dialogue.cancel();
                                 StyleableToast.makeText(DealerRegActivity.this,""+result,R.style.mytoast).show();

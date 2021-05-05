@@ -7,6 +7,7 @@
     android:layout_height="130dp"
     android:layout_margin="10dp"
     app:cardCornerRadius="10dp"
+    app:cardBackgroundColor="#6200EE"
     android:background="#ffffff"
     app:cardElevation="3dp">
 
@@ -28,18 +29,17 @@
 
             app:layout_constraintTop_toTopOf="parent"
             app:riv_border_width="2dip"
-
             tools:ignore="MissingConstraints" />
 
         <TextView
             android:id="@+id/donar_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="24dp"
+            android:layout_marginStart="28dp"
+            android:layout_marginTop="28dp"
             android:fontFamily="@font/latom"
             android:text="Rajib Molla"
-            android:textColor="#000000"
+            android:textColor="#ffffff"
             android:textFontWeight="400"
             android:textSize="19dp"
             app:layout_constraintStart_toEndOf="@+id/dnr_profile_image"
@@ -53,7 +53,7 @@
             android:layout_marginBottom="14dp"
             android:fontFamily="@font/latom"
             android:text="Fultala Khulna, Bangladesh"
-            android:textColor="#000000"
+            android:textColor="#ffffff"
             android:textSize="15dp"
             app:layout_constraintBottom_toTopOf="@+id/add_donar_request"
             app:layout_constraintEnd_toEndOf="parent"
@@ -73,7 +73,7 @@
             android:paddingRight="8dp"
             android:text="Send Request"
             android:textAllCaps="false"
-            android:textColor="#ffffff"
+            android:textColor="#000000"
             android:textFontWeight="400"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="@+id/dnr_address" />

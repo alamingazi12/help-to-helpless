@@ -66,7 +66,7 @@
             android:autoRemoveFromRecents="true"
             android:parentActivityName=".DealerLoginActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.CustomTheme" />
         <activity
             android:name=".DiscountActivity"
             android:configChanges="orientation|screenSize"
@@ -81,7 +81,7 @@
             android:name=".DonarDashBoardActivity"
             android:autoRemoveFromRecents="true"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.CustomTheme" />
         <activity
             android:name=".DealerRegActivity"
             android:parentActivityName=".MainActivity"
