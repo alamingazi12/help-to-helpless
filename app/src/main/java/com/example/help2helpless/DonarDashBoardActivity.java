@@ -101,6 +101,9 @@ public class DonarDashBoardActivity extends AppCompatActivity {
                             case R.id.update:
                                 updateProfile();
                                 break;
+                            case R.id.show_profile:
+                                viewProfile();
+                                break;
                             default:
                                 break;
                         }
@@ -169,6 +172,11 @@ public class DonarDashBoardActivity extends AppCompatActivity {
            return null;
 
        }
+   }
+
+   public void viewProfile(){
+       Intent intent = new Intent(DonarDashBoardActivity.this, DonarProfileActivity.class);
+       startActivity(intent);
    }
     private void updateProfile() {
         Bundle bundle = new Bundle();

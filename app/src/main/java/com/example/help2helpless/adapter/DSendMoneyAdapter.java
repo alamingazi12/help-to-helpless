@@ -1,6 +1,8 @@
 package com.example.help2helpless.adapter;
 
 import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +12,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.help2helpless.AdminSendMoneyActivity;
 import com.example.help2helpless.R;
 import com.example.help2helpless.model.Donar;
 import com.makeramen.roundedimageview.RoundedImageView;
@@ -21,6 +24,7 @@ import java.util.List;
 public class DSendMoneyAdapter extends RecyclerView.Adapter<DSendMoneyAdapter.DonarViewHolder> {
   public   List<Donar> donarList;
     Context context;
+    Donar donar3;
 
     public DSendMoneyAdapter(List<Donar> donarList, Context context) {
         this.donarList = donarList;
@@ -47,8 +51,12 @@ public class DSendMoneyAdapter extends RecyclerView.Adapter<DSendMoneyAdapter.Do
         holder.add_dnr_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Donar donar1=   donarList.get(position);
-
+            donar3=   donarList.get(position);
+                Bundle bundle=new Bundle();
+                bundle.putParcelable("donar_obj",donar3);
+                Intent intent=new Intent(context, AdminSendMoneyActivity.class);
+                intent.putExtras(bundle);
+                context.startActivity(intent);
             }
         });
     }

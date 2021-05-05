@@ -69,21 +69,20 @@ public class SettingActivity extends AppCompatActivity {
 
         }
 
-        button.setOnClickListener(new View.OnClickListener() {
+         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
          Bundle bundle= getIntent().getExtras();
          String type= bundle.getString("user_type");
              if(TextUtils.isEmpty(type)){
-                 StyleableToast.makeText(SettingActivity.this,"its Empty",R.style.mytoast).show();
+                 adminLogout();
+                 //StyleableToast.makeText(SettingActivity.this,"its Empty",R.style.mytoast).show();
              }else{
                  if(type.equals("donar")){
                      logout();
                  }
                  else if(type.equals("dealer")){
                      dealerLogout();
-                 }else{
-                     adminLogout();
                  }
              }
 

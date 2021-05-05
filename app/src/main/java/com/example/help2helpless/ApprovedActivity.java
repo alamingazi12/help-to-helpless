@@ -1,6 +1,7 @@
 package com.example.help2helpless;
 import android.app.PendingIntent;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.telephony.SmsManager;
 import android.view.View;
@@ -18,6 +19,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.help2helpless.model.Dealer;
+import com.google.gson.Gson;
 import com.squareup.picasso.Picasso;
 
 import org.json.JSONException;
@@ -38,14 +40,14 @@ public class ApprovedActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_approve);
         Bundle bundle=getIntent().getExtras();
-         dealer= bundle.getParcelable("deler");
+        // dealer= bundle.getParcelable("deler");
 
         initAll();
         ImageButton back_image_btn=findViewById(R.id.btn_back);
         back_image_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(ApprovedActivity.this,DealerRequestActivity.class);
+                Intent intent=new Intent(ApprovedActivity.this,DealerActivity.class);
                 startActivity(intent);
             }
         });
@@ -140,14 +142,19 @@ public class ApprovedActivity extends AppCompatActivity {
         shpimage=findViewById(R.id.shop_image);
         phone=findViewById(R.id.dlrphone);
 
-        dlrname.setText(dealer.getName());
-        zilla.setText(dealer.getShpnmzilla());
-        thana.setText(dealer.getShpnmthana());
-        phone.setText(dealer.getPhone());
+        SharedPreferences dealerlogininfo=getSharedPreferences("dealerinfo",0);
+        Gson gson = new Gson();
+        String json = dealerlogininfo.getString("MyObject", "");
+        Dealer dealers = gson.fromJson(json, Dealer.class);
+
+        dlrname.setText(dealers.getName());
+        zilla.setText(dealers.getShpnmzilla());
+        thana.setText(dealers.getShpnmthana());
+        phone.setText(dealers.getPhone());
 
         //Picasso.get().load(imageUrl).into(shpimage);
         Picasso.get()
-                .load(url)
+                .load(imageUrl+dealers.getProfile_pic())
                 .resize(90, 90)
                 .centerCrop()
                 .into(shpimage);

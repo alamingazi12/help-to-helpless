@@ -8,4 +8,6 @@
         android:title="Update Profile"/>
     <item android:id="@+id/requests"
         android:title="Dealer Requests"/>
+    <item android:id="@+id/show_profile"
+        android:title="Profile Info"/>
 </menu>

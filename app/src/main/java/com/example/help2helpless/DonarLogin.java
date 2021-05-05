@@ -24,6 +24,7 @@ import com.example.help2helpless.model.Donar;
 import com.example.help2helpless.model.DonarResponse;
 import com.example.help2helpless.network.ApiClient;
 import com.example.help2helpless.network.ApiInterface;
+import com.google.gson.Gson;
 import com.muddzdev.styleabletoast.StyleableToast;
 
 import java.util.ArrayList;
@@ -96,6 +97,13 @@ public class DonarLogin extends AppCompatActivity {
                 if(dealers.size()>0){
                     dialogue.cancel();
                     Dealer dealer=  dealers.get(0);
+                    Gson gson = new Gson();
+                    String json = gson.toJson(dealer); // myObject - instance of MyObject
+                    dealer_editor.putString("MyObject", json);
+                    //getting object
+                    //  Gson gson = new Gson();
+                    //  String json = mPrefs.getString("MyObject", "");
+                    // MyObject obj = gson.fromJson(json, MyObject.class);
                     dealer_editor.putString("dname", dealer.getName());
                     dealer_editor.putString("contact", dealer.getPhone());
                     dealer_editor.putString("Zilla", dealer.getShpnmzilla());
@@ -181,6 +189,10 @@ public class DonarLogin extends AppCompatActivity {
               if(donars.size()>0){
                  dialogue.cancel();
                   Donar donar=donars.get(0);
+
+                  Gson gson = new Gson();
+                  String json = gson.toJson(donar); // myObject - instance of MyObject
+                  dealer_editor.putString("MyObject", json);
                   editor.putString("name",donar.getDname());
                   editor.putString("uname",donar.getUsernm());
                   editor.putString("contact",donar.getDcontact());

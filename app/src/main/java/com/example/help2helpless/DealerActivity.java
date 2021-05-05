@@ -105,6 +105,9 @@ public class DealerActivity extends AppCompatActivity {
                             case R.id.settings:
                                setting();
                                 break;
+                            case R.id.show_profile:
+                                showProfile();
+                                break;
                         }
                         return false;
                     }
@@ -115,6 +118,13 @@ public class DealerActivity extends AppCompatActivity {
 
 
 
+    }
+
+    private void showProfile() {
+
+        Intent intent=new Intent(DealerActivity.this,ApprovedActivity.class);
+       // intent.putExtras(bundle);
+         startActivity(intent);
     }
 
     private void setting() {

@@ -12,6 +12,7 @@ import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
@@ -48,9 +49,19 @@ public class MainActivity extends AppCompatActivity {
        btn_dealer.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View view) {
-
+               SharedPreferences    adminSharedPreference=getSharedPreferences("admininfo",0);
+               String user= adminSharedPreference.getString("adminuser","");
                SharedPreferences   donarinfo=getSharedPreferences("donarinfo",0);
-               if(donarinfo.getString("contact","").equals("")){
+               if(!donarinfo.getString("contact","").equals("")){
+
+                   StyleableToast.makeText(MainActivity.this,"You Have Logged in as Donar",R.style.mytoast).show();
+               }
+
+                   else if(!TextUtils.isEmpty(user)){
+                       StyleableToast.makeText(MainActivity.this,"You Have Logged in as Admin",R.style.mytoast).show();
+                   }
+
+               else {
                    SharedPreferences dealerlogininfo=getSharedPreferences("dealerinfo",0);
                    if(dealerlogininfo.getString("contact","").equals("")){
                        editor.putString("type","dealer");
@@ -60,10 +71,8 @@ public class MainActivity extends AppCompatActivity {
                    }else{
                        Intent intent=new Intent(MainActivity.this, DealerActivity.class);
                        startActivity(intent);
-                   }
 
-               }else {
-                   StyleableToast.makeText(MainActivity.this,"You Have Logged in as Donar",R.style.mytoast).show();
+                   }
                }
 
            }
@@ -72,10 +81,23 @@ public class MainActivity extends AppCompatActivity {
        btn_donar.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View view) {
+               SharedPreferences    adminSharedPreference=getSharedPreferences("admininfo",0);
+               String user= adminSharedPreference.getString("adminuser","");
+
+
                SharedPreferences dealerlogininfo=getSharedPreferences("dealerinfo",0);
-               if(dealerlogininfo.getString("contact","").equals("")){
+               if(!dealerlogininfo.getString("contact","").equals("")){
+
+                    StyleableToast.makeText(MainActivity.this,"You Have Logged in as Dealer",R.style.mytoast).show();
+               }
+               else if(!TextUtils.isEmpty(user)){
+
+                   StyleableToast.makeText(MainActivity.this,"You Have Logged in as Admin",R.style.mytoast).show();
+               }
+               else{
                    SharedPreferences   donarinfo=getSharedPreferences("donarinfo",0);
                    if(donarinfo.getString("contact","").equals("")){
+
                        editor.putString("type","donar");
                        editor.apply();
                        Intent intent=new Intent(MainActivity.this, DonarLogin.class);
@@ -84,10 +106,6 @@ public class MainActivity extends AppCompatActivity {
                        Intent intent=new Intent(MainActivity.this, DonarDashBoardActivity.class);
                        startActivity(intent);
                    }
-
-               }else {
-
-                   StyleableToast.makeText(MainActivity.this,"You Have Logged in as Dealer",R.style.mytoast).show();
                }
 
 
