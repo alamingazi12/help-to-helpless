@@ -19,6 +19,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.help2helpless.R;
+import com.example.help2helpless.model.Dealer;
 import com.example.help2helpless.model.Donar;
 import com.makeramen.roundedimageview.RoundedImageView;
 import com.muddzdev.styleabletoast.StyleableToast;
@@ -35,7 +36,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class DonarAdapter extends RecyclerView.Adapter<DonarAdapter.DonarViewHolder> {
     String url="https://apps.help2helpless.com/add_request.php";
-    ArrayList<Donar> donarlist;
+  public static   ArrayList<Donar> donarlist;
     Context context;
     public DonarAdapter(ArrayList<Donar> donarlist, Context context) {
         this.donarlist = donarlist;
@@ -46,6 +47,11 @@ public class DonarAdapter extends RecyclerView.Adapter<DonarAdapter.DonarViewHol
         this.donarlist.addAll(dealers);
         notifyDataSetChanged();
 
+    }
+
+    public void filterList(ArrayList<Donar> filteredList) {
+        donarlist = filteredList;
+        notifyDataSetChanged();
     }
 
     @NonNull
@@ -82,14 +88,15 @@ public class DonarAdapter extends RecyclerView.Adapter<DonarAdapter.DonarViewHol
                     JSONObject jsonObject=new JSONObject(response);
                     String result=jsonObject.getString("response");
                     if(result.equals("success")){
-                        StyleableToast.makeText(context,"Request Sent",R.style.mytoast).show();
+                        StyleableToast.makeText(context,"Request Sent",R.style.greentoast).show();
                         donarlist.remove(donars);
                         notifyDataSetChanged();
                         //Toast.makeText(context,"Discount added Successfully",Toast.LENGTH_LONG).show();
 
                     }
                     else{
-                        Toast.makeText(context," "+result,Toast.LENGTH_LONG).show();
+                        StyleableToast.makeText(context,"Request Sent",R.style.mytoast).show();
+                       // Toast.makeText(context," "+result,Toast.LENGTH_LONG).show();
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();

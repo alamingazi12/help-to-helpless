@@ -5,7 +5,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
+import android.text.Editable;
 import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -75,6 +77,39 @@ public class AllDonarActivity extends AppCompatActivity {
             showDonar();
         }
 
+        search_text_donar.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+                if(TextUtils.isEmpty(s) ||  s.toString().equals("0")){
+                    Log.d("empty","empty");
+                    isloading=true;
+                    pastVisibleItems=0;
+                    totalItemcount=0;
+                    previous_total=0;
+                    visible_item_count=0;
+                    text="";
+                    row_per_page=20;
+                    // dSendMoneyAdapter=null;
+
+                    page=1;
+                    donars.clear();
+                    dSendMoneyAdapter.notifyDataSetChanged();
+                    showDonar();
+                }
+            }
+        });
+
     }
 
     private void showDonar() {
@@ -90,7 +125,6 @@ public class AllDonarActivity extends AppCompatActivity {
                     dSendMoneyAdapter=new DSendMoneyAdapter(donars,AllDonarActivity.this);
                     donar_send_money_item_container.setAdapter(dSendMoneyAdapter);
                }else{
-
                    StyleableToast.makeText(AllDonarActivity.this,"Empty",R.style.mytoast).show();
                }
 

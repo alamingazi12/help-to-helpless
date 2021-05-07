@@ -87,7 +87,7 @@
         android:layout_marginStart="36dp"
         android:layout_marginBottom="20dp"
         android:text="Forget Password"
-        android:textColor="#80ffdb"
+        android:textColor="@color/sign_button_text_color"
         android:textSize="17dp"
         android:background="@null"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -101,7 +101,7 @@
         android:layout_marginStart="20dp"
         android:text="Sign Up"
         android:textSize="17dp"
-        android:textColor="#80ffdb"
+        android:textColor="@color/sign_button_text_color"
         android:background="@null"
         app:layout_constraintStart_toEndOf="@+id/button3"
         app:layout_constraintTop_toTopOf="@+id/button3" />

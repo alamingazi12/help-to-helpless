@@ -35,7 +35,7 @@
             android:theme="@style/AppTheme.CustomTheme" />
         <activity
             android:name=".SettingActivity"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.CustomTheme" />
         <activity
             android:name=".DonationHistory"
             android:theme="@style/AppTheme.NoActionBar" />
@@ -66,7 +66,7 @@
             android:autoRemoveFromRecents="true"
             android:parentActivityName=".DealerLoginActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.CustomTheme" />
+            android:theme="@style/AppTheme.NoActionBarss"/>
         <activity
             android:name=".DiscountActivity"
             android:configChanges="orientation|screenSize"

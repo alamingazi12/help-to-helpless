@@ -44,7 +44,7 @@ public  interface ApiInterface {
     Call<DealerResponse> getDealerResponse(@Query("phone") String phone, @Query("password") String  password);
 
     @GET("temp_dealer_fetch.php")
-    Call<DealerResponse> getAlldealers();
+    Call<DealerResponse> getAlldealers(@Query("page") int page,@Query("row_per_page") int row_per_page,@Query("search_text") String search_text);
 
     @GET("temp_dealer_fetch.php")
     Observable<DealerResponse> getAlldealer();

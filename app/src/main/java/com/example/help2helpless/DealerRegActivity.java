@@ -60,7 +60,6 @@ public class DealerRegActivity extends AppCompatActivity {
     CurrencyAdapter currencyAdapter;
     public  static SharedPreferences sharedPreferences;
     public static SharedPreferences.Editor editor;
-
     public static   AlertDialog alertDialog;
 
     ProgressDialog dialogue;

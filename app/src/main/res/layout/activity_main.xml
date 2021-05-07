@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:background="@color/page_background_tranparent"
     android:layout_height="match_parent"
 
     tools:context=".MainActivity">
@@ -11,7 +12,7 @@
         android:id="@+id/constraintLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#F7F7F7"
+        android:background="@color/page_background_tranparent"
         app:layout_anchor="@+id/constraintLayout"
         app:layout_anchorGravity="center"
         tools:context=".AdminDashBoardActivity">
@@ -103,6 +104,7 @@
 
     <com.google.android.material.bottomappbar.BottomAppBar
         android:id="@+id/bar"
+        android:visibility="visible"
         style="@style/Widget.MaterialComponents.BottomAppBar"
         android:layout_width="match_parent"
         android:layout_height="50dp"
@@ -113,100 +115,15 @@
         app:fabCradleMargin="9dp"
         app:hideOnScroll="true" >
 
-
-        <LinearLayout
-
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:weightSum="15"
-            android:layout_marginRight="10dp"
-            >
-
-            <LinearLayout
-                android:layout_weight="3"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_gravity="center"
-                android:gravity="center"
-                >
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="20dp"
-                    android:padding="0dp"
-                    android:src="@drawable/ic_menu"/>
+    <LinearLayout
+        android:background="@color/page_background_white"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
 
 
-                    />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_weight="3"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_gravity="center"
-                android:gravity="center"
-                >
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="20dp"
-                    android:padding="0dp"
-                    android:src="@drawable/ic_baseline_arrow_back_ios_new_24"/>
 
 
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_weight="3"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_gravity="center"
-                android:gravity="center"
-                >
-
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_weight="3"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_gravity="center"
-                android:gravity="center"
-                >
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="20dp"
-                    android:padding="0dp"
-                    android:src="@drawable/ic_baseline_person_24"/>
-
-
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_weight="3"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_gravity="center"
-                android:gravity="center"
-                >
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="20dp"
-                    android:padding="0dp"
-                    android:src="@drawable/ic_baseline_share_24"/>
-
-
-            </LinearLayout>
 
         </LinearLayout>
 
@@ -214,8 +131,10 @@
     </com.google.android.material.bottomappbar.BottomAppBar>
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/orderPlus"
+        android:visibility="visible"
+        android:clickable="false"
         android:layout_width="wrap_content"
-        app:backgroundTint="#ffffff"
+        app:backgroundTint="@color/sign_button_text_color"
         android:layout_height="wrap_content"
 
 
@@ -225,7 +144,7 @@
         app:fabSize="normal"
         app:layout_anchor="@+id/bar"
         app:layout_anchorGravity="top|center"
-        app:srcCompat="@drawable/add64" />
+         />
 
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

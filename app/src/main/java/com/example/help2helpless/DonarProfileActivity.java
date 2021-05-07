@@ -1,9 +1,7 @@
 package com.example.help2helpless;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
-
 public class DonarProfileActivity extends AppCompatActivity {
 
     @Override

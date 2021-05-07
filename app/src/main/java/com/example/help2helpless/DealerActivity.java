@@ -151,8 +151,12 @@ public class DealerActivity extends AppCompatActivity {
         return true;
     }
 
-
-
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent intent=new Intent(DealerActivity.this,MainActivity.class);
+        startActivity(intent);
+    }
 
     private void logout() {
         dealerlogininfo=getSharedPreferences("dealerinfo",0);

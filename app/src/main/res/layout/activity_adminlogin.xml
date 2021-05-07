@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F7F7F7">
+    android:background="@color/page_background_tranparent">
     <ImageView
         android:id="@+id/imageView3"
         android:layout_width="100dp"
@@ -91,13 +91,13 @@
         android:id="@+id/textView9"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
-        android:layout_marginBottom="108dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginBottom="96dp"
         android:background="@null"
         android:fontFamily="@font/latom"
         android:text="Forget Password"
         android:textAllCaps="false"
-        android:textColor="#80ffdb"
+        android:textColor="@color/sign_button_text_color"
         android:textSize="17dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="@+id/admin_login" />
@@ -123,9 +123,11 @@
         android:fontFamily="@font/latom"
         android:text="Sign Up"
         android:textAllCaps="false"
-        android:textColor="#80ffdb"
+        android:textColor="@color/sign_button_text_color"
         android:textSize="17dp"
         app:layout_constraintBottom_toBottomOf="@+id/textView11"
+        app:layout_constraintEnd_toEndOf="@+id/admin_login"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/textView11"
         app:layout_constraintTop_toTopOf="@+id/textView9"
         app:layout_constraintVertical_bias="0.0" />

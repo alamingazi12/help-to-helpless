@@ -10,15 +10,23 @@ import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.help2helpless.adapter.AddedDealerAdapter;
 import com.example.help2helpless.adapter.DonarAdapter;
 import com.example.help2helpless.model.AllDonar;
+import com.example.help2helpless.model.Dealer;
 import com.example.help2helpless.model.Donar;
 import com.example.help2helpless.model.TotalDonars;
 import com.example.help2helpless.network.ApiClient;
@@ -37,6 +45,12 @@ public class AddDonarActivity extends AppCompatActivity {
      ProgressBar progressBar;
      LinearLayoutManager linearLayoutManager;
 
+     //button initialize
+     Button btn_search;
+     //edittext search
+     EditText edit_search_text;
+
+
 
      boolean has_more;
     int page=1,row_per_page=5;
@@ -50,11 +64,52 @@ public class AddDonarActivity extends AppCompatActivity {
        // setFontToActionBar();
         initAll();
         getAllDonar();
+
+        edit_search_text.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+                if(TextUtils.isEmpty(s.toString()) || s.toString().equals("0") ){
+                    Log.d("text","Empty");
+                    row_per_page=20;
+                    page=1;
+
+                    pastVisibleItems=0;
+                    totalItemcount=0;
+                    previous_total=0;
+                    visible_item_count=0;
+                    getAllDonar();
+                }
+                filter(s.toString());
+
+            }
+        });
+
+
     }
 
-
+    private void filter(String text) {
+        ArrayList<Donar> filteredList = new ArrayList<>();
+        for (Donar item : DonarAdapter.donarlist) {
+            if ((item.getDname().toLowerCase().contains(text.toLowerCase())) || (item.getDcontact().toLowerCase().contains(text.toLowerCase())) || (item.getThana().toLowerCase().contains(text.toLowerCase())) || (item.getZilla().toLowerCase().contains(text.toLowerCase()))) {
+                filteredList.add(item);
+            }
+        }
+        donarAdapter.filterList(filteredList);
+    }
 
     private void initAll() {
+        edit_search_text=findViewById(R.id.search_text);
 
       donar_item_container=findViewById(R.id.donar_item_container);
       donar_item_container.setHasFixedSize(true);

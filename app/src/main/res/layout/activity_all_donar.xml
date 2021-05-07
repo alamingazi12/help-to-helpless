@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_margin="5dp"
-    android:background="#f5f3f4"
+
+    android:background="@color/page_background_tranparent"
     tools:context=".AllDonarActivity">
 
     <TextView

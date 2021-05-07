@@ -23,6 +23,7 @@ import com.android.volley.toolbox.Volley;
 import com.example.help2helpless.ApprovedActivity;
 import com.example.help2helpless.R;
 import com.example.help2helpless.model.Dealer;
+import com.example.help2helpless.model.Donar;
 import com.makeramen.roundedimageview.RoundedImageView;
 import com.muddzdev.styleabletoast.StyleableToast;
 import com.squareup.picasso.Picasso;
@@ -39,6 +40,11 @@ public class RequestAdapter extends RecyclerView.Adapter<RequestAdapter.RequestV
         this.dealersList = dealersList;
 
         this.context = context;
+    }
+
+    public void addList(ArrayList<Dealer> users) {
+        this.dealersList.addAll(users);
+        notifyDataSetChanged();
     }
 
     ArrayList<Dealer> dealersList;

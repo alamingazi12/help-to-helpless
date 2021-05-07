@@ -73,7 +73,7 @@
             android:layout_height="wrap_content">
             <com.google.android.material.textfield.TextInputEditText
                 android:hint="Mobile No"
-                android:inputType="textEmailAddress"
+                android:inputType="number"
                 android:ems="10"
                 android:imeOptions="actionDone"
                 android:layout_width="match_parent"
@@ -88,7 +88,6 @@
         <Button
             android:textColor="#ffffff"
             android:paddingRight="20dp"
-
             android:drawableRight="@drawable/ic_down_select"
             android:background="@drawable/butttonstyle"
             android:layout_width="match_parent"
@@ -123,7 +122,7 @@
             android:layout_height="wrap_content">
             <com.google.android.material.textfield.TextInputEditText
                 android:hint="Client Category"
-                android:inputType="number
+                android:inputType="text
 "                   android:imeOptions="actionDone"
                 android:ems="10"
                 android:layout_width="match_parent"
