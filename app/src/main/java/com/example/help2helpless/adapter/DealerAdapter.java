@@ -36,7 +36,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class DealerAdapter extends RecyclerView.Adapter<DealerAdapter.DealerViewHolder> {
-    ArrayList<Dealer> dealers;
+    public static ArrayList<Dealer> dealers;
     String donar_contact;
     String imageUrl="https://apps.help2helpless.com/uploads/";
     String url="https://apps.help2helpless.com/add_dealer.php";
@@ -51,6 +51,11 @@ public class DealerAdapter extends RecyclerView.Adapter<DealerAdapter.DealerView
         this.dealers = dealers;
         this.context = context;
         this.donar_contact=donar_contact;
+    }
+
+    public void filterList(ArrayList<Dealer> filteredList) {
+        dealers = filteredList;
+        notifyDataSetChanged();
     }
 
     @NonNull

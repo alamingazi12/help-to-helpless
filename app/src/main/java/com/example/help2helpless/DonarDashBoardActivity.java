@@ -26,6 +26,7 @@ import com.example.help2helpless.model.DonarsAvgDonation;
 import com.example.help2helpless.model.TotalDealer;
 import com.example.help2helpless.network.ApiClient;
 import com.example.help2helpless.network.ApiInterface;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.muddzdev.styleabletoast.StyleableToast;
 import com.squareup.picasso.MemoryPolicy;
 import com.squareup.picasso.Picasso;
@@ -37,6 +38,7 @@ import retrofit2.Response;
 public class DonarDashBoardActivity extends AppCompatActivity {
     Button show_dealers, show_dealer_req, donate_dealers, btn_history;
     ImageButton back_button;
+    FloatingActionButton btn_press_home;
     private volatile boolean stopThread = false;
     String donar_contact;
     SharedPreferences donarinfo;
@@ -113,6 +115,22 @@ public class DonarDashBoardActivity extends AppCompatActivity {
                 popup.show();
             }
         });
+        btn_press_home.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(DonarDashBoardActivity.this,MainActivity.class);
+                startActivity(intent);
+            }
+        });
+
+    }
+
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent intent=new Intent(DonarDashBoardActivity.this,MainActivity.class);
+        startActivity(intent);
     }
 
     class ExampleRunnable implements Runnable {
@@ -260,13 +278,6 @@ public class DonarDashBoardActivity extends AppCompatActivity {
 
 
 
-
-
-
-
-
-
-
     private void getTotalDealers() {
         ApiInterface apiInterface= ApiClient.getApiClient(DonarDashBoardActivity.this).create(ApiInterface.class);
        Call<TotalDealer> totalDealerCall=  apiInterface.getTotalDealer(donar_contact);
@@ -375,6 +386,7 @@ public class DonarDashBoardActivity extends AppCompatActivity {
 
 
     private void initAll() {
+        btn_press_home=findViewById(R.id.orderPlus);
         btn_history=findViewById(R.id.btn_history);
         btn_history.setOnClickListener(new View.OnClickListener() {
             @Override

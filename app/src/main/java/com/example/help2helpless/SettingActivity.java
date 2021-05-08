@@ -9,11 +9,15 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.muddzdev.styleabletoast.StyleableToast;
 
 public class SettingActivity extends AppCompatActivity {
     CardView admin_cardview;
+    FloatingActionButton fleatin_button;
+    ImageButton btn_image_back;
     String type;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,7 +25,12 @@ public class SettingActivity extends AppCompatActivity {
         setContentView(R.layout.activity_setting);
         initAll();
 
-
+        btn_image_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
 
         admin_cardview.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -91,6 +100,19 @@ public class SettingActivity extends AppCompatActivity {
 
             }
         });
+
+        fleatin_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(SettingActivity.this,MainActivity.class);
+                startActivity(intent);
+            }
+        });
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
     }
 
     private void adminLogout() {
@@ -122,7 +144,9 @@ public class SettingActivity extends AppCompatActivity {
     }
 
     private void initAll() {
-
+        btn_image_back=findViewById(R.id.btn_back);
+        fleatin_button=findViewById(R.id.orderPlus);
         admin_cardview=findViewById(R.id.card_admin);
     }
+
 }

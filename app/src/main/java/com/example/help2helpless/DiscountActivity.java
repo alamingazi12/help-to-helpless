@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.Typeface;
@@ -16,6 +17,7 @@ import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -38,6 +40,7 @@ public class DiscountActivity extends AppCompatActivity {
      ArrayList<Client> clients;
      EditText client_search_text;
      Button btn_search_client;
+     ImageButton btn_image_back;
      ClientAdapter clientAdapter;
      LinearLayoutManager linearLayoutManager;
      ProgressBar progressBar;
@@ -58,6 +61,12 @@ public class DiscountActivity extends AppCompatActivity {
         //setFontToActionBar();
         initAll();
         getAllContact();
+        btn_image_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
         btn_search_client.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -174,6 +183,7 @@ public class DiscountActivity extends AppCompatActivity {
     }
 
     private void initAll() {
+        btn_image_back=findViewById(R.id.btn_back);
         progressBar=findViewById(R.id._progress);
         client_search_text=findViewById(R.id.client_search_input);
         clientItem_container=findViewById(R.id.client_container);

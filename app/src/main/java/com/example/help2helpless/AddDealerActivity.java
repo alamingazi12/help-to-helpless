@@ -10,14 +10,20 @@ import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
+import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.help2helpless.adapter.AddedDealerAdapter;
 import com.example.help2helpless.adapter.DealerAdapter;
 import com.example.help2helpless.model.Dealer;
 import com.example.help2helpless.model.DealerResponse;
@@ -39,10 +45,13 @@ public class AddDealerActivity extends AppCompatActivity {
     RecyclerView dealer_add_container;
     ProgressBar progressBar;
     DealerAdapter dealerAdapter;
+    LinearLayoutManager linearLayoutManager;
+    ImageButton btn_image_back;
+    EditText search_edit_text;
+
+
     int page=1,row_per_page=5;
     public  boolean has_more;
-    LinearLayoutManager linearLayoutManager;
-
     //for pagination
     private boolean isloading=true;
     int pastVisibleItems,totalItemcount,previous_total,visible_item_count=0;
@@ -53,25 +62,58 @@ public class AddDealerActivity extends AppCompatActivity {
         setContentView(R.layout.activity_add_dealer);
         //setFontToActionBar();
         initRecycler();
+
         fetchAllDealer();
+        btn_image_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
+
+        search_edit_text.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                Log.d("text",s.toString());
+                if(TextUtils.isEmpty(s.toString()) || s.toString().equals("0") ){
+                    Log.d("text","Empty");
+                    row_per_page=4;
+                    page=1;
+
+                    pastVisibleItems=0;
+                    totalItemcount=0;
+                    previous_total=0;
+                    visible_item_count=0;
+                    fetchAllDealer();
+                }
+                filter(s.toString());
+            }
+        });
+
+
     }
 
-    private void setFontToActionBar() {
-        TextView tv = new TextView(AddDealerActivity.this);
-        RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams(ActionBar.LayoutParams.WRAP_CONTENT, ActionBar.LayoutParams.WRAP_CONTENT);
-        tv.setLayoutParams(lp);
-        tv.setText("Add Dealer");
-        tv.setTextSize(24);
-        tv.setGravity(Gravity.CENTER);
-        tv.setTextColor(Color.parseColor("#ffffff"));
-        Typeface tf = Typeface.createFromAsset(getAssets(), "fonts/regular.otf");
-        tv.setTypeface(tf);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
-        getSupportActionBar().setCustomView(tv);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+    private void filter(String text) {
+        ArrayList<Dealer> filteredList = new ArrayList<>();
 
+        for (Dealer item : DealerAdapter.dealers) {
+            if ((item.getName().toLowerCase().contains(text.toLowerCase())) ||(item.getPhone().toLowerCase().contains(text.toLowerCase())) || (item.getShpnmthana().toLowerCase().contains(text.toLowerCase())) || (item.getShpnmzilla().toLowerCase().contains(text.toLowerCase()))) {
+                filteredList.add(item);
+            }
+        }
+        dealerAdapter.filterList(filteredList);
     }
+
 
     public void initRecycler() {
         donarsharedpreference= getSharedPreferences("donarinfo",0);
@@ -81,6 +123,9 @@ public class AddDealerActivity extends AppCompatActivity {
         linearLayoutManager=new LinearLayoutManager(this);
         dealer_add_container.setLayoutManager(linearLayoutManager);
         progressBar=findViewById(R.id._progress);
+        btn_image_back=findViewById(R.id.btn_back);
+
+        search_edit_text=findViewById(R.id.search_text);
 
     }
 
@@ -168,7 +213,7 @@ public class AddDealerActivity extends AppCompatActivity {
 
                 has_more= response.body().isHas_more();
                 if(has_more && response.body().getDealers().size()>0){
-                    Toast.makeText(AddDealerActivity.this,"data not null"+response.body().getDealers().size(),Toast.LENGTH_LONG).show();
+                   // Toast.makeText(AddDealerActivity.this,"data not null"+response.body().getDealers().size(),Toast.LENGTH_LONG).show();
                     dealerAdapter.addLists(response.body().getDealers());
                     progressBar.setVisibility(View.GONE);
                 }else{

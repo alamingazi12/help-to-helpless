@@ -18,6 +18,7 @@ import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -40,6 +41,7 @@ public class AddedDealerActivity extends AppCompatActivity {
      RecyclerView added_dealers;
      ArrayList<Dealer> dealerslist;
      EditText search_dealer;
+     ImageButton btns_back;
     int page=1,row_per_page=5;
     public  boolean has_more;
     LinearLayoutManager linearLayoutManager;
@@ -58,6 +60,13 @@ public class AddedDealerActivity extends AppCompatActivity {
         //setFontToActionBar();
         initAll();
         getAddedDealer();
+
+        btns_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
 
         search_dealer.addTextChangedListener(new TextWatcher() {
             @Override
@@ -115,6 +124,11 @@ public class AddedDealerActivity extends AppCompatActivity {
             }
         }
         addedDealerAdapter.filterList(filteredList);
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
     }
 
     private void getAddedDealer() {
@@ -218,6 +232,7 @@ public class AddedDealerActivity extends AppCompatActivity {
     }
 
     private void initAll() {
+        btns_back=findViewById(R.id.btn_back);
         search_dealer=findViewById(R.id.edittext_search_dealer);
         added_dealers=findViewById(R.id.added_dealer_container);
         added_dealers.setHasFixedSize(true);

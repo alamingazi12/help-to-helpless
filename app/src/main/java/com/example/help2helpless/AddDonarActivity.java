@@ -5,7 +5,6 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.Typeface;
@@ -18,6 +17,7 @@ import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -47,6 +47,7 @@ public class AddDonarActivity extends AppCompatActivity {
 
      //button initialize
      Button btn_search;
+     ImageButton btn_back;
      //edittext search
      EditText edit_search_text;
 
@@ -64,6 +65,13 @@ public class AddDonarActivity extends AppCompatActivity {
        // setFontToActionBar();
         initAll();
         getAllDonar();
+
+        btn_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
 
         edit_search_text.addTextChangedListener(new TextWatcher() {
             @Override
@@ -110,7 +118,7 @@ public class AddDonarActivity extends AppCompatActivity {
 
     private void initAll() {
         edit_search_text=findViewById(R.id.search_text);
-
+        btn_back=findViewById(R.id.btn_back);
       donar_item_container=findViewById(R.id.donar_item_container);
       donar_item_container.setHasFixedSize(true);
       linearLayoutManager=new LinearLayoutManager(this);

@@ -2,7 +2,6 @@ package com.example.help2helpless;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.util.Log;
@@ -34,14 +33,7 @@ import com.example.help2helpless.model.Admin;
 import com.example.help2helpless.model.Amount;
 import com.example.help2helpless.network.ApiClient;
 import com.example.help2helpless.network.ApiInterface;
-import com.muddzdev.styleabletoast.StyleableToast;
-
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -54,13 +46,11 @@ public class AdminDashBoardActivity extends AppCompatActivity {
     Button show_request,add_amount_donar;
     ImageButton admin_menu;
     EditText amount,donar_contact;
+    FloatingActionButton floatingActionButton;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_dashboard);
-        //setFontToActionBar();
-        //Bundle bundle= getIntent().getExtras();
-//       Admin admin=bundle.getParcelable("obj");
         initAll();
 
         add_amount_donar.setOnClickListener(new View.OnClickListener() {
@@ -69,6 +59,13 @@ public class AdminDashBoardActivity extends AppCompatActivity {
                 // createDialoge();
                 Intent intent = new Intent(AdminDashBoardActivity.this, AllDonarActivity.class);
                 startActivity(intent);
+            }
+        });
+
+        floatingActionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                goHome();
             }
         });
 
@@ -102,9 +99,19 @@ public class AdminDashBoardActivity extends AppCompatActivity {
         protected void onResume () {
             super.onResume();
             //  getAmount();
+
         }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        goHome();
+    }
 
+    private void goHome(){
+        Intent intent=new Intent(AdminDashBoardActivity.this,MainActivity.class);
+        startActivity(intent);
+    }
         private void setting () {
             Bundle bundle=new Bundle();
             bundle.putString("main","");
@@ -235,6 +242,7 @@ public class AdminDashBoardActivity extends AppCompatActivity {
 
 */
         private void initAll () {
+            floatingActionButton=findViewById(R.id.orderPlus);
             admin_menu = findViewById(R.id.admin_menu_icon);
             show_request = findViewById(R.id.btn_dealer_aprove);
             add_amount_donar = findViewById(R.id.btn_admin_add_money);

@@ -18,7 +18,6 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.example.help2helpless.adapter.RequestAdapter;
 import com.example.help2helpless.model.Dealer;
 import com.example.help2helpless.model.DealerResponse;
@@ -37,7 +36,6 @@ public class DealerRequestActivity extends AppCompatActivity {
     ProgressBar progressBar;
     Button button_search;
     EditText edit_input_search;
-
     int page=1,row_per_page=5;
     public  boolean has_more;
     String search_text="";
@@ -49,9 +47,8 @@ public class DealerRequestActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.dealer_request_activity);
-       // setFontToActionBar();
         initAll();
-        //fetchAllDealer();
+
 
         button_search.setOnClickListener(new View.OnClickListener() {
             @Override
