@@ -113,6 +113,8 @@
         android:layout_marginTop="32dp"
         android:layout_marginEnd="24dp"
         android:background="@null"
+        android:textSize="17sp"
+        android:fontFamily="@font/latom"
         android:textAllCaps="false"
         android:textColor="@color/sign_button_text_color"
         android:text="Forget Password"

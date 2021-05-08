@@ -35,7 +35,7 @@
             android:theme="@style/AppTheme.CustomTheme" />
         <activity
             android:name=".SettingActivity"
-            android:theme="@style/AppTheme.CustomTheme" />
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".DonationHistory"
             android:theme="@style/AppTheme.NoActionBar" />
@@ -81,7 +81,7 @@
             android:name=".DonarDashBoardActivity"
             android:autoRemoveFromRecents="true"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.CustomTheme" />
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".DealerRegActivity"
             android:parentActivityName=".MainActivity"

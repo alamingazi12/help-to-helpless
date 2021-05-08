@@ -65,4 +65,13 @@
         android:textAllCaps="false"
         android:textColor="#ffffff" />
 
+  <ImageButton
+      android:background="@drawable/back_style_background"
+      android:id="@+id/btn_back"
+      android:layout_marginStart="10dp"
+      android:layout_marginTop="10dp"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      app:srcCompat="@drawable/ic_back" />
+
 </RelativeLayout>

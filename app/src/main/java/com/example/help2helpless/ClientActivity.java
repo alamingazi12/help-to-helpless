@@ -26,19 +26,27 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.help2helpless.adapter.CurrencyAdapter;
+import com.example.help2helpless.model.Category;
+import com.example.help2helpless.model.CategoryResponse;
 import com.example.help2helpless.model.Responses;
 import com.example.help2helpless.model.Sections;
 import com.example.help2helpless.network.ApiClient;
@@ -46,6 +54,7 @@ import com.example.help2helpless.network.ApiInterface;
 import com.google.android.material.textfield.TextInputLayout;
 import com.muddzdev.styleabletoast.StyleableToast;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -57,11 +66,15 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class ClientActivity extends AppCompatActivity {
+public class ClientActivity extends AppCompatActivity implements
+        AdapterView.OnItemSelectedListener {
 
+    String[] country = {"Select Country","India", "USA", "China", "Japan", "Other"};
     RecyclerView currencycontainer;
     ArrayList<Sections> currencies;
+    ArrayAdapter aa;
     CurrencyAdapter currencyAdapter;
+    ArrayList<String> categories=new ArrayList<>();
 
     public static AlertDialog alertDialog;
 
@@ -69,8 +82,10 @@ public class ClientActivity extends AppCompatActivity {
      ProgressDialog progressDialog;
      Bitmap bitmap;
      ImageView document_view;
-     TextInputLayout address,mobile_no,client_category;
-
+     TextInputLayout address,mobile_no;
+     ImageButton btn_image_back;
+     Spinner spin;
+     String client_category="";
      Button client_btn_signup,btn_browse_docs;
          public static    Button btn_district_thana;
     @Override
@@ -79,6 +94,14 @@ public class ClientActivity extends AppCompatActivity {
         setContentView(R.layout.activity_client);
 
         initAll();
+         getCategories();
+        spin.setOnItemSelectedListener(this);
+
+        //Creating the ArrayAdapter instance having the country list
+       // ArrayAdapter aa = new ArrayAdapter(this,android.R.layout.simple_spinner_item,country);
+       // aa.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        //Setting the ArrayAdapter data on the Spinner
+       // spin.setAdapter(aa);
         btn_district_thana.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -117,7 +140,12 @@ public class ClientActivity extends AppCompatActivity {
             }
         });
 
-
+        btn_image_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
 
         btn_browse_docs.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -142,12 +170,12 @@ public class ClientActivity extends AppCompatActivity {
 
                String caddress= address.getEditText().getText().toString().trim();
                String phone= mobile_no.getEditText().getText().toString().trim();
-               String category= client_category.getEditText().getText().toString().trim();
 
 
 
 
-                if(TextUtils.isEmpty(name) || TextUtils.isEmpty(district) || TextUtils.isEmpty(thana) || TextUtils.isEmpty(stringProfile_image) || TextUtils.isEmpty(name) || TextUtils.isEmpty(caddress) || TextUtils.isEmpty(phone) || TextUtils.isEmpty(category)  || bitmap==null){
+
+                if(TextUtils.isEmpty(name) || TextUtils.isEmpty(district) || TextUtils.isEmpty(thana) || TextUtils.isEmpty(stringProfile_image) || TextUtils.isEmpty(name) || TextUtils.isEmpty(caddress) || TextUtils.isEmpty(phone) || TextUtils.isEmpty(client_category)  || bitmap==null){
                     progressDialog.cancel();
                     StyleableToast.makeText(ClientActivity.this,"One or More Fields Empty", R.style.mytoast).show();
                 }else{
@@ -155,7 +183,7 @@ public class ClientActivity extends AppCompatActivity {
                    SharedPreferences dealerlogininfo=getSharedPreferences("dealerinfo",0);
                    String dcontact=dealerlogininfo.getString("contact","");
                    ApiInterface apiInterface= ApiClient.getApiClient(ClientActivity.this).create(ApiInterface.class);
-                   Call<Responses> responsesCall =apiInterface.clientSignResponse(name,stringProfile_image,caddress,thana,district,phone,category,imageToString(bitmap),dcontact);
+                   Call<Responses> responsesCall =apiInterface.clientSignResponse(name,stringProfile_image,caddress,thana,district,phone,client_category,imageToString(bitmap),dcontact);
                    responsesCall.enqueue(new Callback<Responses>() {
                        @Override
                        public void onResponse(Call<Responses> call, Response<Responses> response) {
@@ -186,7 +214,68 @@ public class ClientActivity extends AppCompatActivity {
         });
     }
 
+    private void getCategories() {
+/*
+       ApiInterface apiInterface= ApiClient.getApiClient(ClientActivity.this).create(ApiInterface.class);
+       apiInterface.get_clientCategory().enqueue(new Callback<CategoryResponse>() {
+           @Override
+           public void onResponse(Call<CategoryResponse> call, Response<CategoryResponse> response) {
+             categories=  response.body().getCategories();
 
+             if(categories.size()>0){
+                  aa= new ArrayAdapter(ClientActivity.this,android.R.layout.simple_spinner_item,categories);
+                  aa.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                 //Setting the ArrayAdapter data on the Spinner
+                  spin.setAdapter(aa);
+
+             }
+             else{
+
+
+             }
+           }
+
+           @Override
+           public void onFailure(Call<CategoryResponse> call, Throwable t) {
+
+           }
+       });
+*/
+
+
+            // Toast.makeText(Registration.this,"json parsing calling",Toast.LENGTH_LONG).show();
+               RequestQueue requestQueue=Volley.newRequestQueue(this);
+             JsonObjectRequest jsonObjectRequest=new JsonObjectRequest(Request.Method.GET, "https://apps.help2helpless.com/get_categories.php", null, new com.android.volley.Response.Listener<JSONObject>() {
+                @Override
+                public void onResponse(JSONObject response) {
+                    try {
+                        JSONArray jsonArray=response.getJSONArray("categories");
+                        for(int i=0;i<jsonArray.length();i++){
+                            JSONObject hit=jsonArray.getJSONObject(i);
+                            String oid= hit.getString("id");
+                            String ohead= hit.getString("c_name");
+                            categories.add(ohead);
+
+                        }
+                        if(categories.size()>0){
+                            aa= new ArrayAdapter(ClientActivity.this,android.R.layout.simple_spinner_item,categories);
+                            aa.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                            //Setting the ArrayAdapter data on the Spinner
+                            spin.setAdapter(aa);
+                        }
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }, new com.android.volley.Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                }
+            });
+            requestQueue.add(jsonObjectRequest);
+
+    }
 
 
     private void filter(String text) {
@@ -975,13 +1064,18 @@ public class ClientActivity extends AppCompatActivity {
     }
 
     private void initAll() {
+        btn_image_back=findViewById(R.id.back_icon);
         btn_browse_docs=findViewById(R.id.btn_upload_docs);
       address=findViewById(R.id.cl_address);
       mobile_no=findViewById(R.id.client_phone);
-      client_category=findViewById(R.id.cl_category);
       document_view=findViewById(R.id.cl_doc_view);
       client_btn_signup=findViewById(R.id.btn_client_sign);
       btn_district_thana=findViewById(R.id.select_district_thana);
+
+      //init spinner
+
+        spin = (Spinner) findViewById(R.id.spinner_categories);
+
 
     }
 
@@ -1019,6 +1113,17 @@ public class ClientActivity extends AppCompatActivity {
         String imageImage= Base64.encodeToString(imageByte,Base64.DEFAULT);
 
         return imageImage;
+
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+        //Toast.makeText(getApplicationContext(),  categories.get(i), Toast.LENGTH_LONG).show();
+        client_category=categories.get(i);
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> adapterView) {
 
     }
 }

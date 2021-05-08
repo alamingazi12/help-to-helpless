@@ -1,4 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+
+
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -19,7 +28,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20sp"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="43dp"
             android:fontFamily="@font/raleway_medium"
             android:text="Md.Sirazul Islam"
             android:textColor="#000000"
@@ -87,7 +96,7 @@
             android:id="@+id/back_icon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
+            android:layout_marginStart="12dp"
             android:layout_marginTop="10dp"
 
             android:background="@drawable/back_style_background"
@@ -263,7 +272,7 @@
 
         <LinearLayout
 
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="10dp"
             android:layout_marginLeft="8dp"
             android:layout_marginRight="8dp"
             android:layout_width="match_parent"
@@ -327,3 +336,47 @@
 
     </LinearLayout>
 </LinearLayout>
+    <com.google.android.material.bottomappbar.BottomAppBar
+        android:id="@+id/bar"
+        android:visibility="visible"
+        style="@style/Widget.MaterialComponents.BottomAppBar"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#f1faee"
+        android:layout_gravity="bottom"
+        app:backgroundTint="#ffffff"
+        app:fabAlignmentMode="center"
+        app:fabCradleMargin="9dp"
+        app:hideOnScroll="true" >
+
+        <LinearLayout
+            android:background="@color/page_background_white"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+
+
+
+
+        </LinearLayout>
+
+
+    </com.google.android.material.bottomappbar.BottomAppBar>
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/orderPlus"
+        android:visibility="visible"
+        android:clickable="false"
+        android:layout_width="wrap_content"
+        app:backgroundTint="@color/page_background_white"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_home_black"
+
+        android:outlineSpotShadowColor="#ffffff"
+        android:tint="#ffffff"
+
+        app:fabSize="normal"
+        app:layout_anchor="@+id/bar"
+        app:layout_anchorGravity="top|center"
+        />
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

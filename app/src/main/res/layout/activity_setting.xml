@@ -1,10 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:tools="http://schemas.android.com/tools"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+
+<LinearLayout
     android:layout_width="match_parent"
     android:orientation="vertical"
-    android:background="@color/page_background_white"
+    android:background="@color/page_background_tranparent"
     android:layout_height="match_parent"
     tools:context=".SettingActivity">
 
@@ -17,15 +23,24 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
+        <ImageButton
+            android:id="@+id/btn_back"
+            android:layout_marginLeft="12dp"
+            android:layout_marginTop="10dp"
+            android:layout_gravity="start"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/ic_back"
+            android:background="@drawable/back_style_background" />
+
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
-            android:layout_marginBottom="5dp"
-            android:layout_marginTop="70dp"
 
-            android:padding="5dp">
+            android:layout_marginTop="20dp"
+            >
 
             <TextView
                 android:fontFamily="@font/alexbold"
@@ -34,7 +49,7 @@
                 android:text="Settings"
                 android:textColor="#000000"
                 android:textFontWeight="700"
-                android:textSize="30dp" />
+                android:textSize="27dp" />
 
         </LinearLayout>
 
@@ -367,16 +382,16 @@
 
         <Button
             android:id="@+id/btn_logout"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="15dp"
             android:text="Logout"
             android:fontFamily="@font/latom"
-            android:textSize="18sp"
+            android:textSize="16sp"
             android:textAllCaps="false"
             android:textColor="#ffffff"
-            android:background="@drawable/button_style"
+            android:background="@drawable/butttonstyle"
             android:layout_marginBottom="5dp"
             android:layout_width="170dp"
-            android:layout_height="50dp"/>
+            android:layout_height="46dp"/>
 
 
 
@@ -384,3 +399,47 @@
 
     </LinearLayout>
 </LinearLayout>
+
+    <com.google.android.material.bottomappbar.BottomAppBar
+        android:id="@+id/bar"
+        android:visibility="visible"
+        style="@style/Widget.MaterialComponents.BottomAppBar"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#f1faee"
+        android:layout_gravity="bottom"
+        app:backgroundTint="#ffffff"
+        app:fabAlignmentMode="center"
+        app:fabCradleMargin="9dp"
+        app:hideOnScroll="true" >
+
+        <LinearLayout
+            android:background="@color/page_background_white"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+
+
+
+
+        </LinearLayout>
+
+
+    </com.google.android.material.bottomappbar.BottomAppBar>
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/orderPlus"
+        android:layout_width="wrap_content"
+        app:backgroundTint="@color/page_background_white"
+        android:layout_height="wrap_content"
+
+
+        android:outlineSpotShadowColor="#ffffff"
+        android:tint="#ffffff"
+        android:src="@drawable/ic_home_black"
+        app:fabSize="normal"
+        app:layout_anchor="@+id/bar"
+        app:layout_anchorGravity="top|center"
+        />
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

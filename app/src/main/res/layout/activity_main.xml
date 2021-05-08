@@ -100,6 +100,17 @@
             app:riv_corner_radius="13dip"
             app:riv_mutate_background="true" />
 
+        <ImageButton
+            android:background="@color/page_background_tranparent"
+            android:id="@+id/admin_menu_icon"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="13dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_menu" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <com.google.android.material.bottomappbar.BottomAppBar

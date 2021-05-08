@@ -5,6 +5,7 @@ import com.example.help2helpless.model.AdminResponse;
 import com.example.help2helpless.model.AllDonar;
 import com.example.help2helpless.model.Amount;
 import com.example.help2helpless.model.AvgDealerReceived;
+import com.example.help2helpless.model.CategoryResponse;
 import com.example.help2helpless.model.ClientResponse;
 import com.example.help2helpless.model.DealerAvgPaid;
 import com.example.help2helpless.model.DealerBalance;
@@ -58,6 +59,9 @@ public  interface ApiInterface {
 
     @GET("fetchamount.php")
     Call<Amount> getAmount();
+
+    @GET("get_categories.php")
+    Call<CategoryResponse> get_clientCategory();
 
    // donar Dashbord Api
    @GET("donar_tamount.php")

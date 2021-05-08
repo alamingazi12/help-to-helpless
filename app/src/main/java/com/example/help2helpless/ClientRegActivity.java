@@ -13,6 +13,7 @@ import android.util.Base64;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 
 import com.example.help2helpless.model.Sections;
 import com.makeramen.roundedimageview.RoundedImageView;
@@ -27,14 +28,23 @@ public class ClientRegActivity extends AppCompatActivity {
     String profile_image_string;
     public static int image_request=1;
     Button btn_client_next,btn_browse_profile_pic;
+    ImageButton btn_back_image;
     EditText client_full_name;
     RoundedImageView client_Profile_picView;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_client_reg);
         initAll();
+
+        btn_back_image.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+               onBackPressed();
+            }
+        });
 
         btn_browse_profile_pic.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -106,6 +116,7 @@ public class ClientRegActivity extends AppCompatActivity {
     }
     private void initAll() {
                 //button initialize
+              btn_back_image=findViewById(R.id.back_icon);
                 btn_client_next =findViewById(R.id.btn_client_next);
                 btn_browse_profile_pic=findViewById(R.id.btn_browse_profile_image);
 

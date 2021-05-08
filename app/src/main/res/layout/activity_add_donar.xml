@@ -52,4 +52,14 @@
         android:paddingLeft="9dp"
         android:text="" />
 
+    <ImageButton
+
+        android:background="@drawable/back_style_background"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="10dp"
+        android:id="@+id/btn_back"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        app:srcCompat="@drawable/ic_back" />
+
 </RelativeLayout>
