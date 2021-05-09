@@ -183,4 +183,7 @@ public  interface ApiInterface {
     @GET("get_donar_send_record_today.php")
     Call<RecordResponse> getDonarSendRecordToday(@Query("contact") String contact, @Query("date") String  date);
 
+    @GET("get_donar_send_record_older.php")
+    Call<RecordResponse> getDonarSendRecordOlder(@Query("contact") String contact, @Query("date") String  date);
+
 }

@@ -9,10 +9,12 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.help2helpless.adapter.RecordOlderAdapter;
 import com.example.help2helpless.adapter.RecordTodayAdapter;
 import com.example.help2helpless.model.DonarSendRecord;
 import com.example.help2helpless.model.RecordResponse;
@@ -34,6 +36,8 @@ import retrofit2.Response;
  */
 public class FragmentSent extends Fragment {
     RecyclerView today_record_container;
+    RecyclerView yesterday_record_container;
+    RecyclerView older_record_container;
      ArrayList<DonarSendRecord> records;
 
     // TODO: Rename parameter arguments, choose names that match
@@ -83,6 +87,8 @@ public class FragmentSent extends Fragment {
        View view=inflater.inflate(R.layout.fragment_sent, container, false);
         initAll(view);
         showTodayRecords();
+        showYesterdayRecords();
+        showOlderRecords();
        return view;
     }
 
@@ -114,11 +120,84 @@ public class FragmentSent extends Fragment {
 
     }
 
+    private void showYesterdayRecords() {
+        Date date=new Date();
+        SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
+        String today=sdf.format(date);
+
+        String pdatarr[]=today.split("-");
+        int days=(Integer.parseInt(pdatarr[2]))-1;
+        String day= String.valueOf(days);
+        String yesterday=pdatarr[0]+"-"+pdatarr[1]+"-"+day;
+        Log.d("yesterday",yesterday);
+        SharedPreferences sharedPreferences=getContext().getSharedPreferences("donarinfo",0);
+        String contact=  sharedPreferences.getString("contact","") ;
+        ApiInterface apiInterface= ApiClient.getApiClient(getContext()).create(ApiInterface.class);
+        apiInterface.getDonarSendRecordToday(contact,yesterday).enqueue(new Callback<RecordResponse>() {
+            @Override
+            public void onResponse(Call<RecordResponse> call, Response<RecordResponse> response) {
+                records= response.body().getRecordsList();
+
+                if(records.size()>0){
+                    RecordTodayAdapter recordTodayAdapter=new RecordTodayAdapter(records,getContext());
+                    yesterday_record_container.setAdapter(recordTodayAdapter);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<RecordResponse> call, Throwable t) {
+
+            }
+        });
+
+    }
+
+
+    private void showOlderRecords() {
+        Date date=new Date();
+        SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
+        String today=sdf.format(date);
+
+        String pdatarr[]=today.split("-");
+        int days=(Integer.parseInt(pdatarr[2]))-1;
+        String day= String.valueOf(days);
+        String yesterday=pdatarr[0]+"-"+pdatarr[1]+"-"+day;
+        Log.d("yesterday",yesterday);
+        SharedPreferences sharedPreferences=getContext().getSharedPreferences("donarinfo",0);
+        String contact=  sharedPreferences.getString("contact","") ;
+        ApiInterface apiInterface= ApiClient.getApiClient(getContext()).create(ApiInterface.class);
+        apiInterface.getDonarSendRecordOlder(contact,yesterday).enqueue(new Callback<RecordResponse>() {
+            @Override
+            public void onResponse(Call<RecordResponse> call, Response<RecordResponse> response) {
+                records= response.body().getRecordsList();
+
+                if(records.size()>0){
+                    RecordOlderAdapter Adapter=new RecordOlderAdapter(records,getContext());
+                    older_record_container.setAdapter(Adapter);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<RecordResponse> call, Throwable t) {
+
+            }
+        });
+
+    }
+
     private void initAll(View view) {
+        //today container;
      today_record_container=view.findViewById(R.id.donar_today_container);
      today_record_container.setHasFixedSize(true);
      today_record_container.setLayoutManager(new LinearLayoutManager(getContext()));
-
+    // yesterday container
+        yesterday_record_container=view.findViewById(R.id.donar_yesterday_container);
+        yesterday_record_container.setHasFixedSize(true);
+        yesterday_record_container.setLayoutManager(new LinearLayoutManager(getContext()));
+     //older container
+        older_record_container=view.findViewById(R.id.donar_old_container);
+        older_record_container.setHasFixedSize(true);
+        older_record_container.setLayoutManager(new LinearLayoutManager(getContext()));
     }
 
     @Override

@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:orientation="vertical"
     android:layout_margin="10dp"
+    android:background="@color/page_background_tranparent"
     android:layout_height="match_parent"
     tools:context=".FragmentSent">
     <androidx.core.widget.NestedScrollView
@@ -36,6 +37,7 @@
     </androidx.recyclerview.widget.RecyclerView>
 
     <TextView
+        android:layout_marginLeft="12dp"
         android:textSize="22sp"
         android:textColor="#000"
         android:text="Yesterday"
@@ -52,6 +54,7 @@
 
     </androidx.recyclerview.widget.RecyclerView>
     <TextView
+        android:layout_marginLeft="12dp"
         android:textSize="22sp"
         android:textColor="#000"
         android:layout_marginTop="20dp"
