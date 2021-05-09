@@ -94,10 +94,10 @@
 
 
         <Button
-            android:textColor="#ffffff"
+            android:textColor="#000"
             android:paddingRight="20dp"
             android:drawableRight="@drawable/ic_down_select"
-            android:background="@drawable/butttonstyle"
+            android:background="@drawable/button_style"
             android:layout_width="match_parent"
             android:imeOptions="actionDone"
             android:textSize="19sp"

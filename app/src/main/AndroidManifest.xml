@@ -38,6 +38,7 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".DonationHistory"
+            android:configChanges="orientation|screenSize"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".DonateDealerActivity"

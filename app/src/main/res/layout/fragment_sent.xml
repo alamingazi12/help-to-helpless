@@ -1,14 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_margin="10dp"
     android:layout_height="match_parent"
     tools:context=".FragmentSent">
-
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="match_parent">
 
-</FrameLayout>
+       <LinearLayout
+           android:orientation="vertical"
+           android:layout_width="match_parent"
+           android:layout_height="match_parent">
+
+
+
+
+    <TextView
+        android:layout_marginLeft="12dp"
+        android:textSize="22sp"
+        android:textColor="#000"
+        android:layout_marginBottom="10dp"
+        android:text="Today"
+
+        android:fontFamily="@font/latom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/donar_today_container"
+       android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </androidx.recyclerview.widget.RecyclerView>
+
+    <TextView
+        android:textSize="22sp"
+        android:textColor="#000"
+        android:text="Yesterday"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:fontFamily="@font/latom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_below="@+id/donar_today_container"
+        android:id="@+id/donar_yesterday_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </androidx.recyclerview.widget.RecyclerView>
+    <TextView
+        android:textSize="22sp"
+        android:textColor="#000"
+        android:layout_marginTop="20dp"
+        android:text="Olders"
+        android:layout_marginBottom="10dp"
+        android:fontFamily="@font/latom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_below="@+id/donar_yesterday_container"
+        android:id="@+id/donar_old_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </androidx.recyclerview.widget.RecyclerView>
+       </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+</LinearLayout>

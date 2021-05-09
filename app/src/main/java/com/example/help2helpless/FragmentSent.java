@@ -1,12 +1,31 @@
 package com.example.help2helpless;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.example.help2helpless.adapter.RecordTodayAdapter;
+import com.example.help2helpless.model.DonarSendRecord;
+import com.example.help2helpless.model.RecordResponse;
+import com.example.help2helpless.network.ApiClient;
+import com.example.help2helpless.network.ApiInterface;
+
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -14,6 +33,8 @@ import android.view.ViewGroup;
  * create an instance of this fragment.
  */
 public class FragmentSent extends Fragment {
+    RecyclerView today_record_container;
+     ArrayList<DonarSendRecord> records;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -59,6 +80,51 @@ public class FragmentSent extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_sent, container, false);
+       View view=inflater.inflate(R.layout.fragment_sent, container, false);
+        initAll(view);
+        showTodayRecords();
+       return view;
+    }
+
+    private void showTodayRecords() {
+        Date date=new Date();
+        SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
+        String today=sdf.format(date);
+
+        String pdatarr[]=today.split("-");
+        SharedPreferences sharedPreferences=getContext().getSharedPreferences("donarinfo",0);
+        String contact=  sharedPreferences.getString("contact","") ;
+        ApiInterface apiInterface= ApiClient.getApiClient(getContext()).create(ApiInterface.class);
+        apiInterface.getDonarSendRecordToday(contact,today).enqueue(new Callback<RecordResponse>() {
+           @Override
+           public void onResponse(Call<RecordResponse> call, Response<RecordResponse> response) {
+              records= response.body().getRecordsList();
+
+              if(records.size()>0){
+                  RecordTodayAdapter recordTodayAdapter=new RecordTodayAdapter(records,getContext());
+                  today_record_container.setAdapter(recordTodayAdapter);
+              }
+           }
+
+           @Override
+           public void onFailure(Call<RecordResponse> call, Throwable t) {
+
+           }
+       });
+
+    }
+
+    private void initAll(View view) {
+     today_record_container=view.findViewById(R.id.donar_today_container);
+     today_record_container.setHasFixedSize(true);
+     today_record_container.setLayoutManager(new LinearLayoutManager(getContext()));
+
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+
     }
 }

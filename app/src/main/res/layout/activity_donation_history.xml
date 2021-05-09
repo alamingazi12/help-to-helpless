@@ -53,6 +53,7 @@
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/donation_tab"
             app:tabTextColor="#ffffff"
+            android:background="@color/sign_button_text_color"
             app:tabIndicatorColor="#ffffff"
             app:tabTextAppearance="@style/Custom_Style"
             android:layout_width="match_parent"

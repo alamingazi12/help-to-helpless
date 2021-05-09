@@ -17,6 +17,7 @@ import com.example.help2helpless.model.DonarAllDonation;
 import com.example.help2helpless.model.DonarBalance;
 import com.example.help2helpless.model.DonarResponse;
 import com.example.help2helpless.model.DonarsAvgDonation;
+import com.example.help2helpless.model.RecordResponse;
 import com.example.help2helpless.model.Responses;
 import com.example.help2helpless.model.Student;
 import com.example.help2helpless.model.TotalClients;
@@ -176,5 +177,10 @@ public  interface ApiInterface {
             @Field("document_pic") String document_pic,
             @Field("donation") String donation
     );
+
+
+    ///donation history
+    @GET("get_donar_send_record_today.php")
+    Call<RecordResponse> getDonarSendRecordToday(@Query("contact") String contact, @Query("date") String  date);
 
 }
