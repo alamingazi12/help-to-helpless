@@ -179,11 +179,18 @@ public  interface ApiInterface {
     );
 
 
-    ///donation history
+    ///donation history send
     @GET("get_donar_send_record_today.php")
     Call<RecordResponse> getDonarSendRecordToday(@Query("contact") String contact, @Query("date") String  date);
 
     @GET("get_donar_send_record_older.php")
     Call<RecordResponse> getDonarSendRecordOlder(@Query("contact") String contact, @Query("date") String  date);
+
+    ///donation history send
+    @GET("get_donar_recive_record_today.php")
+    Call<RecordResponse> getDonarReceiveRecordToday(@Query("contact") String contact, @Query("date") String  date);
+
+    @GET("get_donar_receive_record_older.php")
+    Call<RecordResponse> getDonarReceiveRecordOlder(@Query("contact") String contact, @Query("date") String  date);
 
 }

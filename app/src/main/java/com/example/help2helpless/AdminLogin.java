@@ -68,22 +68,6 @@ public class AdminLogin extends AppCompatActivity {
 
     }
 
-    private void setFontToActionBar() {
-        TextView tv = new TextView(AdminLogin.this);
-        RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams(ActionBar.LayoutParams.WRAP_CONTENT, ActionBar.LayoutParams.WRAP_CONTENT);
-        tv.setLayoutParams(lp);
-        tv.setText("Admin Login");
-        tv.setTextSize(24);
-        tv.setGravity(Gravity.CENTER);
-        tv.setTextColor(Color.parseColor("#ffffff"));
-        Typeface tf = Typeface.createFromAsset(getAssets(), "fonts/regular.otf");
-        tv.setTypeface(tf);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
-        getSupportActionBar().setCustomView(tv);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
-    }
 
     private void login() {
         showProgress();
@@ -98,6 +82,7 @@ public class AdminLogin extends AppCompatActivity {
                    Admin admin=admins.get(0);
 
                    editor.putString("adminuser",admin.getAname());
+                   editor.putString("id",admin.getId());
                    //StyleableToast.makeText(AdminLogin.this,"Usernames"+adminSharedPreference.getString("adminuser",""),R.style.mytoast).show();
                  //  StyleableToast.makeText(AdminLogin.this,"Usernames"+admin.getAname(),R.style.mytoast).show();
                    editor.apply();

@@ -2,6 +2,7 @@ package com.example.help2helpless;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -119,16 +120,22 @@ public class AdminSendMoneyActivity extends AppCompatActivity {
             public byte[] getBody() throws AuthFailureError {
                 JSONObject params = new JSONObject();
                 try {
+                   SharedPreferences adminSharedPreference=getSharedPreferences("admininfo",0);
+                   String id=  adminSharedPreference.getString("id","");
+                   
                    String amount= donar_amount.getEditText().getText().toString();
                    if(!TextUtils.isEmpty(amount)){
 
                        Date date=new Date();
-                       SimpleDateFormat sdf=new SimpleDateFormat("dd-MM-yyyy");
+                       SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
                        String today=sdf.format(date);
 
                        String pdatarr[]=today.split("-");
                        params.put("dnr_cont",donar.getDcontact());
                        params.put("amount",amount);
+                       params.put("admin_id",id);
+                       params.put("date",today);
+
                    }else{
                      StyleableToast.makeText(AdminSendMoneyActivity.this,"Amount is Empty",R.style.mytoast).show();
 
