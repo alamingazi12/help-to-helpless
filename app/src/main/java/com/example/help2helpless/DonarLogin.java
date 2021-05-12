@@ -43,9 +43,7 @@ public class DonarLogin extends AppCompatActivity {
     Button donar_login,go_sign_up;
     EditText donar_phone,dpasswrd;
     View DialogueView;
-
     ProgressDialog dialogue;
-
     SharedPreferences donarsharedpreference;
     SharedPreferences.Editor editor;
     String type;
@@ -104,6 +102,8 @@ public class DonarLogin extends AppCompatActivity {
                     Gson gson = new Gson();
                     String json = gson.toJson(dealer); // myObject - instance of MyObject
                     dealer_editor.putString("MyObject", json);
+                    Essentials.storeDealerData(DonarLogin.this,dealer);
+
                     //getting object
                     //  Gson gson = new Gson();
                     //  String json = mPrefs.getString("MyObject", "");

@@ -65,7 +65,6 @@ public class AdminLogin extends AppCompatActivity {
         dialogue.setMessage("Please Wait...");
         dialogue.setCanceledOnTouchOutside(false);
         dialogue.show();
-
     }
 
 

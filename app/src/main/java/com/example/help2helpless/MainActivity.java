@@ -1,7 +1,6 @@
 package com.example.help2helpless;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -18,9 +17,7 @@ import android.widget.PopupMenu;
 import com.example.help2helpless.model.MenuItem;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.muddzdev.styleabletoast.StyleableToast;
-
 import java.util.ArrayList;
-
 public class MainActivity extends AppCompatActivity {
     FloatingActionButton floatingActionButton;
     Toolbar toolbar;
@@ -43,7 +40,6 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);

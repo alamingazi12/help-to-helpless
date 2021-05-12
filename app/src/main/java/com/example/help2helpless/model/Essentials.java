@@ -7,6 +7,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
 
+import com.example.help2helpless.AdminDashBoardActivity;
 import com.example.help2helpless.DealerRequestActivity;
 import com.example.help2helpless.DonarLogin;
 import com.example.help2helpless.MainActivity;
@@ -18,9 +19,12 @@ import com.google.gson.Gson;
 import com.muddzdev.styleabletoast.StyleableToast;
 
 public class Essentials {
-   static SharedPreferences donarlogininfo;
-   static   SharedPreferences.Editor donar_editor;
-  static   ProgressDialog dialogue;
+    static SharedPreferences donarlogininfo;
+    static SharedPreferences dealerlogininfo;
+    static   SharedPreferences.Editor donar_editor;
+    static   SharedPreferences.Editor dealer_editor;
+    static   ProgressDialog dialogue;
+
 
     public Essentials(Context context) {
 
@@ -30,6 +34,8 @@ public class Essentials {
         }
 
     }
+
+
 
    public static void dismissDialogue(){
        dialogue.cancel();
@@ -47,6 +53,8 @@ public class Essentials {
         Donar   donar = gson.fromJson(json, Donar.class);
         return donar;
     }
+
+
 
     public static void dangerMessage(Context context,String message){
         StyleableToast.makeText(context,message,R.style.mytoast).show();
@@ -78,9 +86,21 @@ public class Essentials {
         Gson gson = new Gson();
         String json = gson.toJson(donar); // myObject - instance of MyObject
         donar_editor.putString("MyObject", json);
+        donar_editor.apply();
     }
 
+    public static void storeDealerData(Context context,Dealer dealer){
 
+        if(donarlogininfo==null){
+            dealerlogininfo=context.getSharedPreferences("dealerinfo",0);
+            dealer_editor=donarlogininfo.edit();
+        }
+
+        Gson gson = new Gson();
+        String json = gson.toJson(dealer); // myObject - instance of MyObject
+        dealer_editor.putString("MyObject", json);
+        dealer_editor.apply();
+    }
 
     public Dealer getDealerData(Context context){
         SharedPreferences dealerlogininfo=context.getSharedPreferences("dealerinfo",0);
@@ -103,8 +123,15 @@ public class Essentials {
         intent.putExtras(bundle);
         context.startActivity(intent);
     }
+    private void Adminlogout (Context context) {
+        SharedPreferences adminSharedPreference = context.getSharedPreferences("admininfo", 0);
+        SharedPreferences.Editor editor = adminSharedPreference.edit();
+        editor.remove("adminuser");
+        editor.commit();
+        Intent intent = new Intent(context, MainActivity.class);
+        context.startActivity(intent);
+    }
     public static void logout(Context context) {
-
         SharedPreferences adminSharedPreference=context.getSharedPreferences("admininfo",0);
         String user= adminSharedPreference.getString("adminuser","");
         SharedPreferences   donarinfo=context.getSharedPreferences("donarinfo",0);
