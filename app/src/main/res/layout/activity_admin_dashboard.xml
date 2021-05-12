@@ -1,109 +1,116 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout android:layout_width="match_parent"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/page_background_tranparent"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
 
-
-
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/page_background_tranparent"
-    tools:context=".AdminDashBoardActivity">
-
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="238dp"
-
-        android:layout_height="86dp"
-
-        android:layout_marginTop="56dp"
-
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/helplogo" />
-
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:fontFamily="@font/latom"
-        android:padding="7dp"
-        android:text="Welcome to Help2Helpless"
-        android:textColor="#6200EE"
-        android:textSize="23sp"
-
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
-
-    <Button
-        android:id="@+id/btn_dealer_aprove"
-        android:layout_width="0dp"
-        android:layout_height="50dp"
-        android:layout_marginLeft="12dp"
-        android:layout_marginRight="5dp"
-        android:background="@drawable/button_style"
-        android:fontFamily="@font/latom"
-        android:text="Dealer Approval"
-        android:textAllCaps="false"
-        android:textColor="#fff"
-        app:layout_constraintEnd_toStartOf="@+id/btn_admin_add_money"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/btn_admin_add_money" />
-
-    <Button
-        android:id="@+id/btn_admin_add_money"
-        android:layout_width="0dp"
-        android:layout_height="50dp"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="12dp"
-        android:layout_marginBottom="148dp"
-        android:background="@drawable/button_style"
-        android:fontFamily="@font/latom"
-        android:text="Add Money"
-        android:textAllCaps="false"
-        android:textColor="#fff"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/btn_dealer_aprove" />
-
-    <com.makeramen.roundedimageview.RoundedImageView
-        android:id="@+id/imageView2"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="157dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="52dp"
-        android:layout_marginEnd="32dp"
-        android:src="@drawable/trustee"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView3"
-        app:riv_corner_radius="15dp" />
+        android:layout_height="match_parent"
+        android:background="@color/page_background_tranparent"
+        tools:context=".AdminDashBoardActivity">
 
-    <ImageButton
-        android:id="@+id/admin_menu_icon"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:background="#F7F7F7"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_menu" />
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="238dp"
+
+            android:layout_height="86dp"
+
+            android:layout_marginTop="56dp"
+
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/helplogo" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:fontFamily="@font/latom"
+            android:padding="7dp"
+            android:text="Welcome to Help2Helpless"
+            android:textColor="#6200EE"
+            android:textSize="23sp"
+
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+        <Button
+            android:id="@+id/btn_dealer_aprove"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="12dp"
+            android:layout_marginRight="5dp"
+            android:background="@drawable/button_style"
+            android:fontFamily="@font/latom"
+            android:text="Dealer Approval"
+            android:textAllCaps="false"
+            android:textColor="#fff"
+            app:layout_constraintEnd_toStartOf="@+id/btn_admin_add_money"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/btn_admin_add_money" />
+
+        <Button
+            android:id="@+id/btn_admin_add_money"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="12dp"
+            android:layout_marginBottom="148dp"
+            android:background="@drawable/button_style"
+            android:fontFamily="@font/latom"
+            android:text="Add Money"
+            android:textAllCaps="false"
+            android:textColor="#fff"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/btn_dealer_aprove" />
+
+        <com.makeramen.roundedimageview.RoundedImageView
+            android:id="@+id/imageView2"
+            android:layout_width="match_parent"
+            android:layout_height="157dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="52dp"
+            android:layout_marginEnd="32dp"
+            android:src="@drawable/trustee"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView3"
+            app:riv_corner_radius="15dp" />
+
+        <ImageButton
+            android:id="@+id/admin_menu_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:background="#F7F7F7"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_menu" />
+
+        <ImageButton
+            android:background="@drawable/back_style_background"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
+            android:id="@+id/btn_back"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_back" />
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
-
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <com.google.android.material.bottomappbar.BottomAppBar
         android:id="@+id/bar"

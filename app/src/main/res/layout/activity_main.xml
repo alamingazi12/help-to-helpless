@@ -69,7 +69,7 @@
             android:layout_height="55dp"
             android:layout_marginLeft="5dp"
             android:layout_marginRight="12dp"
-            android:layout_marginBottom="164dp"
+            android:layout_marginBottom="148dp"
             android:background="@drawable/button_style"
             android:fontFamily="@font/latom"
             android:text="I am Dealer"
@@ -115,7 +115,7 @@
 
     <com.google.android.material.bottomappbar.BottomAppBar
         android:id="@+id/bar"
-        android:visibility="visible"
+        android:visibility="invisible"
         style="@style/Widget.MaterialComponents.BottomAppBar"
         android:layout_width="match_parent"
         android:layout_height="50dp"
@@ -142,7 +142,7 @@
     </com.google.android.material.bottomappbar.BottomAppBar>
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/orderPlus"
-        android:visibility="visible"
+        android:visibility="invisible"
         android:clickable="false"
         android:layout_width="wrap_content"
         app:backgroundTint="@color/sign_button_text_color"

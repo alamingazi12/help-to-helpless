@@ -30,8 +30,16 @@ public class MainActivity extends AppCompatActivity {
     SharedPreferences usertype;
     SharedPreferences.Editor editor;
 
+    SharedPreferences dealerlogininfo;
+    SharedPreferences    adminSharedPreference;
+    SharedPreferences   donarinfo;
+
     Button btn_dealer, btn_donar;
     ImageButton menu;
+
+    String admin_user;
+    String dealer_contact;
+    String donar_contact;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,21 +53,20 @@ public class MainActivity extends AppCompatActivity {
        btn_dealer.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View view) {
-               SharedPreferences    adminSharedPreference=getSharedPreferences("admininfo",0);
-               String user= adminSharedPreference.getString("adminuser","");
-               SharedPreferences   donarinfo=getSharedPreferences("donarinfo",0);
-               if(!donarinfo.getString("contact","").equals("")){
-
+              // SharedPreferences    adminSharedPreference=getSharedPreferences("admininfo",0);
+              // String user= adminSharedPreference.getString("adminuser","");
+                 // donarinfo=getSharedPreferences("donarinfo",0);
+               if(!TextUtils.isEmpty(donar_contact)){
                    StyleableToast.makeText(MainActivity.this,"You Have Logged in as Donar",R.style.mytoast).show();
                }
 
-                   else if(!TextUtils.isEmpty(user)){
+                   else if(!TextUtils.isEmpty(admin_user)){
                        StyleableToast.makeText(MainActivity.this,"You Have Logged in as Admin",R.style.mytoast).show();
                    }
 
                else {
-                   SharedPreferences dealerlogininfo=getSharedPreferences("dealerinfo",0);
-                   if(dealerlogininfo.getString("contact","").equals("")){
+                  // SharedPreferences dealerlogininfo=getSharedPreferences("dealerinfo",0);
+                   if(TextUtils.isEmpty(dealer_contact)){
                        editor.putString("type","dealer");
                        editor.apply();
                        Intent intent=new Intent(MainActivity.this, DonarLogin.class);
@@ -103,22 +110,22 @@ public class MainActivity extends AppCompatActivity {
        btn_donar.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View view) {
-               SharedPreferences    adminSharedPreference=getSharedPreferences("admininfo",0);
-               String user= adminSharedPreference.getString("adminuser","");
+                // adminSharedPreference=getSharedPreferences("admininfo",0);
+                //admin_user= adminSharedPreference.getString("adminuser","");
 
 
-               SharedPreferences dealerlogininfo=getSharedPreferences("dealerinfo",0);
-               if(!dealerlogininfo.getString("contact","").equals("")){
+              // dealerlogininfo=getSharedPreferences("dealerinfo",0);
+               if(!TextUtils.isEmpty(dealer_contact)){
 
                     StyleableToast.makeText(MainActivity.this,"You Have Logged in as Dealer",R.style.mytoast).show();
                }
-               else if(!TextUtils.isEmpty(user)){
+               else if(!TextUtils.isEmpty(admin_user)){
 
                    StyleableToast.makeText(MainActivity.this,"You Have Logged in as Admin",R.style.mytoast).show();
                }
                else{
-                   SharedPreferences   donarinfo=getSharedPreferences("donarinfo",0);
-                   if(donarinfo.getString("contact","").equals("")){
+                 //  SharedPreferences   donarinfo=getSharedPreferences("donarinfo",0);
+                   if(TextUtils.isEmpty(donar_contact)){
 
                        editor.putString("type","donar");
                        editor.apply();
@@ -176,6 +183,15 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void inItAll() {
+     //   init sharedPreference
+        dealerlogininfo=getSharedPreferences("dealerinfo",0);
+        dealer_contact=  dealerlogininfo.getString("contact","");
+        adminSharedPreference=getSharedPreferences("admininfo",0);
+        donarinfo=getSharedPreferences("donarinfo",0);
+        donar_contact=  donarinfo.getString("contact","");
+
+        admin_user= adminSharedPreference.getString("adminuser","");
+
          if(usertype==null){
 
              usertype=getSharedPreferences("typedata",0);

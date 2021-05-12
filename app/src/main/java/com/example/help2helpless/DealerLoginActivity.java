@@ -49,7 +49,7 @@ public class DealerLoginActivity extends AppCompatActivity {
                 if(TextUtils.isEmpty(dlrphone.getText().toString().trim()) || TextUtils.isEmpty(dlr_pass.getText().toString().trim())){
                     StyleableToast.makeText(DealerLoginActivity.this,"One or More Fields Empty", R.style.mytoast).show();
                 }else{
-                    dealerLogin();
+                    dealerLogins();
                 }
             }
         });
@@ -116,6 +116,53 @@ public class DealerLoginActivity extends AppCompatActivity {
             StyleableToast.makeText(DealerLoginActivity.this,"Network Error",R.style.mytoast).show();
         }
     });
+
+
+    }
+
+
+    private void dealerLogins() {
+        showProgress();
+        ApiInterface apiInterface= ApiClient.getApiClient(DealerLoginActivity.this).create(ApiInterface.class);
+        Call<DealerResponse> dealerResponseCall=apiInterface.getDealerResponse(dlrphone.getText().toString().trim(), dlr_pass.getText().toString().trim());
+        dealerResponseCall.enqueue(new Callback<DealerResponse>() {
+            @Override
+            public void onResponse(Call<DealerResponse> call, Response<DealerResponse> response) {
+                dealers=response.body().getDealers();
+
+                if(dealers.size()>0){
+                    dialogue.cancel();
+                    Dealer dealer=  dealers.get(0);
+                    Gson gson = new Gson();
+                    String json = gson.toJson(dealer); // myObject - instance of MyObject
+                    dealer_editor.putString("MyObject", json);
+                    //getting object
+                    //  Gson gson = new Gson();
+                    //  String json = mPrefs.getString("MyObject", "");
+                    // MyObject obj = gson.fromJson(json, MyObject.class);
+                    dealer_editor.putString("dname", dealer.getName());
+                    dealer_editor.putString("contact", dealer.getPhone());
+                    dealer_editor.putString("Zilla", dealer.getShpnmzilla());
+                    dealer_editor.putString("dealer_pic", dealer.getProfile_pic());
+
+                    dealer_editor.apply();
+                    dlrphone.setText("");
+                    dlr_pass.setText("");
+                    // Toast.makeText(DealerLoginActivity.this," You Loged in Successfully",Toast.LENGTH_LONG).show();
+                    Intent intent=new Intent(DealerLoginActivity.this,DealerActivity.class);
+                    startActivity(intent);
+                }else {
+                    dialogue.cancel();
+                    StyleableToast.makeText(DealerLoginActivity.this,""+response.body().getMessage(),R.style.mytoast).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<DealerResponse> call, Throwable t) {
+                dialogue.cancel();
+                StyleableToast.makeText(DealerLoginActivity.this,"Network Error",R.style.mytoast).show();
+            }
+        });
 
 
     }

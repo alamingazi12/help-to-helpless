@@ -184,7 +184,7 @@ public  interface ApiInterface {
     Call<RecordResponse> getDonarSendRecordToday(@Query("contact") String contact, @Query("date") String  date);
 
     @GET("get_donar_send_record_older.php")
-    Call<RecordResponse> getDonarSendRecordOlder(@Query("contact") String contact, @Query("date") String  date);
+    Call<RecordResponse> getDonarSendRecordOlder(@Query("contact") String contact, @Query("date") String  date,@Query("page") int  page,@Query("row_per_page") int  row_per_page);
 
     ///donation history send
     @GET("get_donar_recive_record_today.php")

@@ -24,14 +24,20 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.example.help2helpless.adapter.CurrencyAdapter;
+import com.example.help2helpless.model.Dealer;
+import com.example.help2helpless.model.Donar;
 import com.example.help2helpless.model.Responses;
 import com.example.help2helpless.model.Sections;
 import com.example.help2helpless.network.ApiClient;
 import com.example.help2helpless.network.ApiInterface;
 import com.google.android.material.textfield.TextInputLayout;
+import com.google.gson.Gson;
 import com.muddzdev.styleabletoast.StyleableToast;
 
 import java.io.ByteArrayOutputStream;
@@ -55,12 +61,17 @@ public class UpdateActivity extends AppCompatActivity {
     ProgressDialog dialogue;
     public static int image_request = 1, image_request2 = 2;
     ImageView document_imageview;
+    ImageButton back_btn;
     CircleImageView profile_pic_view;
     Button signup, browse_document;
     TextInputLayout  address, mail,month_donation;
     Bitmap profile_bitmap, regno_bitmap;
     public static Button update_zilla;
     SharedPreferences sharedPreferences_zilla;
+    TextView update_name;
+
+    Donar donar;
+    Dealer dealers;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,8 +80,53 @@ public class UpdateActivity extends AppCompatActivity {
         Bundle bundle= getIntent().getExtras();
         String type=bundle.getString("user_type");
         initAll();
+
+
+        back_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
+
         if(type.equals("donar")){
-          month_donation.setVisibility(View.VISIBLE);
+            SharedPreferences donarlogininfo=getSharedPreferences("donarinfo",0);
+            Gson gson = new Gson();
+            String json = donarlogininfo.getString("MyObject", "");
+             donar = gson.fromJson(json, Donar.class);
+            update_name.setText(donar.getDname());
+            month_donation.setVisibility(View.VISIBLE);
+            String imageUrl = "https://apps.help2helpless.com/donar_profile/";
+           // profile_pic_view.setTe
+            address.getEditText().setText(donar.getPresentaddr());
+            mail.getEditText().setText(donar.getDemail());
+            update_zilla.setText(donar.getZilla()+","+donar.getThana());
+            month_donation.getEditText().setText(donar.getMdonation_aamount());
+            Glide.with(UpdateActivity.this)
+                    .load(imageUrl+donar.getDonar_photo()).skipMemoryCache(true)// .diskCacheStrategy(DiskCacheStrategy.NONE).skipMemoryCache(true)
+                    .into(profile_pic_view);
+
+            Glide.with(UpdateActivity.this)
+                    .load(imageUrl+donar.getDoc_pic()).skipMemoryCache(true)// .diskCacheStrategy(DiskCacheStrategy.NONE).skipMemoryCache(true)
+                    .into(document_imageview);
+        }
+        else{
+            SharedPreferences dealerlogininfo=getSharedPreferences("dealerinfo",0);
+            Gson gson = new Gson();
+            String json = dealerlogininfo.getString("MyObject", "");
+            dealers = gson.fromJson(json, Dealer.class);
+            update_name.setText(dealers.getName());
+            String imageUrldealer = "https://apps.help2helpless.com/uploads/";
+            address.getEditText().setText(dealers.getHmaddres());
+            mail.getEditText().setText(dealers.getEmail());
+            update_zilla.setText(dealers.getShpnmzilla()+","+dealers.getShpnmthana());
+            Glide.with(UpdateActivity.this)
+                    .load(imageUrldealer+dealers.getProfile_pic()).skipMemoryCache(true)// .diskCacheStrategy(DiskCacheStrategy.NONE).skipMemoryCache(true)
+                    .into(profile_pic_view);
+            Glide.with(UpdateActivity.this)
+                    .load(imageUrldealer+dealers.getShoppic()).skipMemoryCache(true)// .diskCacheStrategy(DiskCacheStrategy.NONE).skipMemoryCache(true)
+                    .into(document_imageview);
+           // month_donation.getEditText().setText(donar.getMdonation_aamount());
         }
         update_zilla.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -131,7 +187,6 @@ public class UpdateActivity extends AppCompatActivity {
              public void onClick(View view) {
                 String addres= address.getEditText().getText().toString().trim();
                 String email=mail.getEditText().getText().toString().trim();
-
                  sharedPreferences_zilla=getSharedPreferences("zilla_info",0);
                  String zilla =sharedPreferences_zilla.getString("zilla","");
                  String thana =sharedPreferences_zilla.getString("thana","");
@@ -176,7 +231,7 @@ public class UpdateActivity extends AppCompatActivity {
                       String message=   response.body().getMessage();
                       if(message.equals("success")){
                           dialogue.cancel();
-                          StyleableToast.makeText(UpdateActivity.this,"Information Updated",R.style.mytoast).show();
+                          StyleableToast.makeText(UpdateActivity.this,"Information Updated",R.style.greentoast).show();
                       }else{
                           dialogue.cancel();
                           StyleableToast.makeText(UpdateActivity.this,"Something wrong",R.style.mytoast).show();
@@ -204,7 +259,7 @@ public class UpdateActivity extends AppCompatActivity {
                 String message=   response.body().getMessage();
                 if(message.equals("success")){
                     dialogue.cancel();
-                    StyleableToast.makeText(UpdateActivity.this,"Information Updated",R.style.mytoast).show();
+                    StyleableToast.makeText(UpdateActivity.this,"Information Updated",R.style.greentoast).show();
                 }else{
                     dialogue.cancel();
                     StyleableToast.makeText(UpdateActivity.this,"Something wrong",R.style.mytoast).show();
@@ -307,6 +362,8 @@ public class UpdateActivity extends AppCompatActivity {
 
     }
     private void initAll() {
+        back_btn=findViewById(R.id.btn_back);
+        update_name=findViewById(R.id.edit_name);
         profile_pic_view = findViewById(R.id.edit_profile_image);
         address = findViewById(R.id.edit_address);
         mail = findViewById(R.id.edit_mail);

@@ -11,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.help2helpless.R;
+import com.example.help2helpless.model.Dealer;
 import com.example.help2helpless.model.DonarSendRecord;
 import com.squareup.picasso.Picasso;
 
@@ -58,6 +59,12 @@ public void onBindViewHolder(@NonNull RecordViewHolder holder, int position) {
         String imageUrl="https://apps.help2helpless.com/uploads/"+record.getProfile_pic();
         Log.d("Image",imageUrl);
         Picasso.get().load(imageUrl).resize(80,80).centerCrop().into(holder.dealer_image);
+
+        }
+
+        public  void addList(ArrayList<DonarSendRecord> dealer){
+                this.recordslist.addAll(dealer);
+                notifyDataSetChanged();
 
         }
 

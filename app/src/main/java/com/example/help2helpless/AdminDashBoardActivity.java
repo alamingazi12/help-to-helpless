@@ -44,7 +44,7 @@ public class AdminDashBoardActivity extends AppCompatActivity {
     AlertDialog dialog;
     View DialogueView;
     Button show_request,add_amount_donar;
-    ImageButton admin_menu;
+    ImageButton admin_menu,back_btn;
     EditText amount,donar_contact;
     FloatingActionButton floatingActionButton;
     @Override
@@ -53,6 +53,12 @@ public class AdminDashBoardActivity extends AppCompatActivity {
         setContentView(R.layout.activity_admin_dashboard);
         initAll();
 
+       back_btn.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View view) {
+               goHome();
+           }
+       });
         add_amount_donar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -242,6 +248,7 @@ public class AdminDashBoardActivity extends AppCompatActivity {
 
 */
         private void initAll () {
+            back_btn=findViewById(R.id.btn_back);
             floatingActionButton=findViewById(R.id.orderPlus);
             admin_menu = findViewById(R.id.admin_menu_icon);
             show_request = findViewById(R.id.btn_dealer_aprove);

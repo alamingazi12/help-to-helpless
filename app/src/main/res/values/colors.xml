@@ -7,4 +7,7 @@
     <color name="sign_button_text_color">#6200EE</color>
     <color name="page_background_white">#ffffff</color>
     <color name="page_background_tranparent">#f7f7f7</color>
+    <color name="balance_color">#b7b7a4</color>
+    <color name="balance_amount_color">#000000</color>
+
 </resources>

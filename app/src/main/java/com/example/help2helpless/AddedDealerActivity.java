@@ -42,11 +42,12 @@ public class AddedDealerActivity extends AppCompatActivity {
      ArrayList<Dealer> dealerslist;
      EditText search_dealer;
      ImageButton btns_back;
-    int page=1,row_per_page=5;
+    int page=1,row_per_page=6;
     public  boolean has_more;
     LinearLayoutManager linearLayoutManager;
     ProgressBar progressBar;
     AddedDealerAdapter addedDealerAdapter;
+    ImageButton btn_back_image;
 
    int row ;
     //for pagination
@@ -215,10 +216,10 @@ public class AddedDealerActivity extends AppCompatActivity {
                     addedDealerAdapter.addLists(response.body().getDealerlist());
                    // addedDealerAdapter.addLists(response.body().getDealerlist());
                     progressBar.setVisibility(View.GONE);
-                  //  StyleableToast.makeText(AddedDealerActivity.this,"data not null",R.style.mytoast).show();
+                    StyleableToast.makeText(AddedDealerActivity.this,"data size"+response.body().getDealerlist().size(),R.style.mytoast).show();
                 }
                 else{
-                    StyleableToast.makeText(AddedDealerActivity.this,"data null",R.style.mytoast).show();
+                    //StyleableToast.makeText(AddedDealerActivity.this,"data null",R.style.mytoast).show();
                     progressBar.setVisibility(View.GONE);
                 }
                 progressBar.setVisibility(View.GONE);
@@ -232,6 +233,7 @@ public class AddedDealerActivity extends AppCompatActivity {
     }
 
     private void initAll() {
+
         btns_back=findViewById(R.id.btn_back);
         search_dealer=findViewById(R.id.edittext_search_dealer);
         added_dealers=findViewById(R.id.added_dealer_container);

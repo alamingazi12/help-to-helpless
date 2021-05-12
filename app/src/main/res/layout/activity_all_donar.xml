@@ -16,10 +16,11 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="50dp"
-        android:fontFamily="@font/alexbold"
+        android:fontFamily="@font/latom"
         android:text="Add Money"
+
         android:textColor="#000"
-        android:textSize="28sp" />
+        android:textSize="30sp" />
 
     <EditText
         android:id="@+id/dsearch_text"
@@ -30,8 +31,8 @@
         android:layout_alignParentStart="true"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginTop="49dp"
-        android:layout_marginEnd="7dp"
+        android:layout_marginTop="43dp"
+        android:layout_marginEnd="13dp"
 
         android:layout_marginRight="7dp"
 
@@ -53,16 +54,16 @@
         android:id="@+id/btn_search_money"
         android:layout_width="85dp"
         android:layout_height="32dp"
-        android:textColor="#000"
+        android:layout_below="@+id/heading_text"
 
-        android:fontFamily="@font/latom"
-        android:background="@drawable/button_style"
-        android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="130dp"
+        android:layout_marginTop="39dp"
         android:layout_marginEnd="10dp"
+        android:background="@drawable/button_style"
+        android:fontFamily="@font/latom"
         android:text="Search"
         android:textAllCaps="false"
+        android:textColor="#000"
         android:textSize="14sp" />
     <ProgressBar
         android:id="@+id/progress_donar_item"
@@ -71,5 +72,25 @@
         android:layout_centerHorizontal="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
+
+    <ImageButton
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:id="@+id/btn_back"
+        android:layout_width="30dp"
+        android:background="@drawable/back_style_background"
+        android:layout_height="30dp"
+        app:srcCompat="@drawable/ic_back" />
+
+    <ImageButton
+        android:background="@color/page_background_tranparent"
+        android:layout_marginTop="10dp"
+        android:id="@+id/admin_menu_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="10dp"
+        app:srcCompat="@drawable/ic_menu" />
 
 </RelativeLayout>

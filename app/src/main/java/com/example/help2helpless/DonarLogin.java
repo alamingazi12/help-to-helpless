@@ -21,6 +21,7 @@ import com.example.help2helpless.model.Dealer;
 import com.example.help2helpless.model.DealerResponse;
 import com.example.help2helpless.model.Donar;
 import com.example.help2helpless.model.DonarResponse;
+import com.example.help2helpless.model.Essentials;
 import com.example.help2helpless.network.ApiClient;
 import com.example.help2helpless.network.ApiInterface;
 import com.google.gson.Gson;
@@ -59,7 +60,7 @@ public class DonarLogin extends AppCompatActivity {
             @Override
             public void onClick(View view) {
               // createDialoge();
-
+              //  login();
 
                 if(TextUtils.isEmpty(donar_phone.getText().toString().trim()) || TextUtils.isEmpty(dpasswrd.getText().toString().trim())){
                     StyleableToast.makeText(DonarLogin.this,"Fields Empty", R.style.mytoast).show();
@@ -72,7 +73,11 @@ public class DonarLogin extends AppCompatActivity {
                     }
 
                 }
+
+
             }
+
+
         });
         go_sign_up.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -157,16 +162,18 @@ public class DonarLogin extends AppCompatActivity {
         go_sign_up=findViewById(R.id.go_donar_signup);
         donar_login=findViewById(R.id.donar_login);
         if(donarsharedpreference==null){
-
             donarsharedpreference=  this.getSharedPreferences("donarinfo",0);
             editor=donarsharedpreference.edit();
         }
+
         if(dealerlogininfo==null){
             dealerlogininfo=getSharedPreferences("dealerinfo",0);
             dealer_editor=dealerlogininfo.edit();
         }
 
     }
+
+
     public  void showProgress(){
         dialogue=new ProgressDialog(this);
         dialogue.setProgressStyle(ProgressDialog.STYLE_SPINNER);
@@ -174,24 +181,27 @@ public class DonarLogin extends AppCompatActivity {
         dialogue.setMessage("Please Wait...");
         dialogue.setCanceledOnTouchOutside(false);
         dialogue.show();
-
     }
 
     private void login() {
-         showProgress();
-        ApiInterface apiInterface= ApiClient.getApiClient(DonarLogin.this).create(ApiInterface.class);
-        Call<DonarResponse> donarResponseCall=apiInterface.getDonarResponse(donar_phone.getText().toString().trim(),dpasswrd.getText().toString().trim());
-        donarResponseCall.enqueue(new Callback<DonarResponse>() {
+         //showProgress();
+        Essentials.showProgress(DonarLogin.this);
+      //  ApiInterface apiInterface= ApiClient.getApiClient(DonarLogin.this).create(ApiInterface.class);
+       // Call<DonarResponse> donarResponseCall=Essentials.getApiInterface(this).getDonarResponse(donar_phone.getText().toString().trim(),dpasswrd.getText().toString().trim());
+        Essentials.getApiInterface(this).getDonarResponse(donar_phone.getText().toString().trim(),dpasswrd.getText().toString().trim()).enqueue(new Callback<DonarResponse>() {
           @Override
           public void onResponse(Call<DonarResponse> call, Response<DonarResponse> response) {
               donars=response.body().getUsers();
               if(donars.size()>0){
-                 dialogue.cancel();
+                  Essentials.dismissDialogue();
                   Donar donar=donars.get(0);
 
                   Gson gson = new Gson();
                   String json = gson.toJson(donar); // myObject - instance of MyObject
-                  dealer_editor.putString("MyObject", json);
+                  editor.putString("MyObject", json);
+                  Essentials essentials=new Essentials(DonarLogin.this);
+                  Essentials.storeDonarData(DonarLogin.this,donar);
+
                   editor.putString("name",donar.getDname());
                   editor.putString("uname",donar.getUsernm());
                   editor.putString("contact",donar.getDcontact());
@@ -206,9 +216,10 @@ public class DonarLogin extends AppCompatActivity {
                   Intent intent=new Intent(DonarLogin.this,DonarDashBoardActivity.class);
                   startActivity(intent);
              }else{
-                 dialogue.cancel();
+                  Essentials.dismissDialogue();
                 // dialog.dismiss();
-                 StyleableToast.makeText(DonarLogin.this,"Wrong Username and Password",R.style.mytoast).show();
+                  Essentials.dangerMessage(DonarLogin.this,"something wrong");
+                // StyleableToast.makeText(DonarLogin.this,"Wrong Username and Password",R.style.mytoast).show();
                 // Toast.makeText(DonarLogin.this,"Wrong Username and Password",Toast.LENGTH_LONG).show();
 
              }
@@ -217,7 +228,7 @@ public class DonarLogin extends AppCompatActivity {
           @Override
           public void onFailure(Call<DonarResponse> call, Throwable t) {
 
-              dialogue.cancel();
+              Essentials.dismissDialogue();
               StyleableToast.makeText(DonarLogin.this,"Network Error",R.style.mytoast).show();
 //              dialog.dismiss();
           }

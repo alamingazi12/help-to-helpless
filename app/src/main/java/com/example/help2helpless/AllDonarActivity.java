@@ -4,6 +4,9 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextUtils;
@@ -12,6 +15,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.PopupMenu;
 import android.widget.ProgressBar;
 
 import com.example.help2helpless.adapter.DSendMoneyAdapter;
@@ -39,6 +44,7 @@ public class AllDonarActivity extends AppCompatActivity {
     ArrayList<Donar> donars;
     //pagination variable
     String text;
+    ImageButton btn_back_image,menu;
 
 
     private boolean isloading=true;
@@ -51,6 +57,39 @@ public class AllDonarActivity extends AppCompatActivity {
         setContentView(R.layout.activity_all_donar);
         initAll();
         showDonar();
+
+        menu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                PopupMenu popup = new PopupMenu(AllDonarActivity.this, menu);
+                //inflating menu from xml resource
+                popup.inflate(R.menu.admin_menu_item);
+                //adding click listener
+                popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                    @Override
+                    public boolean onMenuItemClick(android.view.MenuItem item) {
+                        switch (item.getItemId()) {
+                            case R.id.logout:
+                                logout();
+                                break;
+                            case R.id.settings:
+                                goSettings();
+                                break;
+                        }
+                        return false;
+                    }
+                });
+                popup.show();
+            }
+        });
+
+
+        btn_back_image.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
         btn_search_donar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -209,7 +248,10 @@ public class AllDonarActivity extends AppCompatActivity {
 
     }
 
-    private void initAll() {
+    private void initAll()
+    {
+        menu=findViewById(R.id.admin_menu_icon);
+        btn_back_image=findViewById(R.id.btn_back);
         btn_search_donar=findViewById(R.id.btn_search_money);
       donar_send_money_item_container=findViewById(R.id.donar_send_money_container);
       donar_send_money_item_container.setHasFixedSize(true);
@@ -217,5 +259,49 @@ public class AllDonarActivity extends AppCompatActivity {
       donar_send_money_item_container.setLayoutManager(linearLayoutManager);
       search_text_donar=findViewById(R.id.dsearch_text);
       progressBar=findViewById(R.id.progress_donar_item);
+    }
+    public void goSettings(){
+        Bundle bundle=new Bundle();
+        bundle.putString("main","");
+        Intent intent=new Intent(AllDonarActivity.this,SettingActivity.class);
+        intent.putExtras(bundle);
+        startActivity(intent);
+    }
+
+
+    private void logout() {
+
+        SharedPreferences adminSharedPreference=getSharedPreferences("admininfo",0);
+        String user= adminSharedPreference.getString("adminuser","");
+        SharedPreferences   donarinfo=getSharedPreferences("donarinfo",0);
+
+        SharedPreferences dealerlogininfo=getSharedPreferences("dealerinfo",0);
+        if(!dealerlogininfo.getString("contact","").equals("")){
+            SharedPreferences.Editor   dealer_editor=dealerlogininfo.edit();
+            dealer_editor.remove("contact");
+            dealer_editor.commit();
+            StyleableToast.makeText(AllDonarActivity.this,"You Logged out Successfully",R.style.greentoast).show();
+            Intent intent=new Intent(AllDonarActivity.this,MainActivity.class);
+            startActivity(intent);
+        }
+        else if(!TextUtils.isEmpty(user)){
+            SharedPreferences.Editor editor = adminSharedPreference.edit();
+            editor.remove("adminuser");
+            editor.commit();
+            StyleableToast.makeText(AllDonarActivity.this,"You Logged out Successfully",R.style.greentoast).show();
+            Intent intent=new Intent(AllDonarActivity.this,MainActivity.class);
+            startActivity(intent);
+        }
+        else if(!donarinfo.getString("contact","").equals("")){
+            SharedPreferences.Editor donar_editor = donarinfo.edit();
+            donar_editor.remove("contact");
+            donar_editor.commit();
+            StyleableToast.makeText(AllDonarActivity.this,"You Logged out Successfully",R.style.greentoast).show();
+            Intent intent=new Intent(AllDonarActivity.this,MainActivity.class);
+            startActivity(intent);
+        }else {
+            StyleableToast.makeText(AllDonarActivity.this,"You Did,nt Login",R.style.mytoast).show();
+        }
+
     }
 }
