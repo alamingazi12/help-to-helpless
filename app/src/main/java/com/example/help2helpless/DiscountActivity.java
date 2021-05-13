@@ -92,6 +92,12 @@ public class DiscountActivity extends AppCompatActivity {
         }
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent intent=new Intent(DiscountActivity.this,DealerActivity.class);
+        startActivity(intent);
+    }
 
     private void getAllContact() {
         SharedPreferences dealerlogininfo=getSharedPreferences("dealerinfo",0);

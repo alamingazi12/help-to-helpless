@@ -14,6 +14,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.PopupMenu;
+
+import com.example.help2helpless.model.Essentials;
 import com.example.help2helpless.model.MenuItem;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.muddzdev.styleabletoast.StyleableToast;
@@ -90,7 +92,7 @@ public class MainActivity extends AppCompatActivity {
                     public boolean onMenuItemClick(android.view.MenuItem item) {
                         switch (item.getItemId()) {
                             case R.id.logout:
-                                logout();
+                                Essentials.logout(MainActivity.this);
                                 break;
                             case R.id.settings:
                                 goSettings();

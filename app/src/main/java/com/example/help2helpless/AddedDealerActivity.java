@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.Typeface;
@@ -98,6 +99,7 @@ public class AddedDealerActivity extends AppCompatActivity {
             }
         });
     }
+
     private void setFontToActionBar() {
         TextView tv = new TextView(AddedDealerActivity.this);
         RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams(ActionBar.LayoutParams.WRAP_CONTENT, ActionBar.LayoutParams.WRAP_CONTENT);
@@ -130,6 +132,8 @@ public class AddedDealerActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
+        Intent intent=new Intent(AddedDealerActivity.this,DonarDashBoardActivity.class);
+        startActivity(intent);
     }
 
     private void getAddedDealer() {

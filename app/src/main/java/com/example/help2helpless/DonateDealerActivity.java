@@ -2,6 +2,7 @@ package com.example.help2helpless;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.Typeface;
@@ -12,6 +13,7 @@ import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -47,6 +49,7 @@ public class DonateDealerActivity extends AppCompatActivity {
     TextView donar_balace;
     TextInputLayout damount;
     Button btn_donate;
+    ImageButton btn_back_image;
 
     TextView deader_name,address,dealer_phone;
     RoundedImageView dealer_profile_img;
@@ -59,6 +62,13 @@ public class DonateDealerActivity extends AppCompatActivity {
         //setFontToActionBar();
         getData();
         initAll();
+
+        btn_back_image.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
         btn_donate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -90,7 +100,7 @@ public class DonateDealerActivity extends AppCompatActivity {
     private void initAll() {
 
 
-
+        btn_back_image=findViewById(R.id.btn_back);
         deader_name=findViewById(R.id.dealer_name);
         address=findViewById(R.id.dealer_address);
         dealer_phone=findViewById(R.id.dealer_phone);
@@ -168,8 +178,10 @@ public class DonateDealerActivity extends AppCompatActivity {
                         damount.getEditText().setText("");
                         onResume();
                         // Toast.makeText(context,"Dealer Added Successfully",Toast.LENGTH_LONG).show();
-                        StyleableToast.makeText(DonateDealerActivity.this, "Donation Added Successfully", Toast.LENGTH_LONG, R.style.mytoast).show();
+                        StyleableToast.makeText(DonateDealerActivity.this, "Donation Added Successfully", Toast.LENGTH_LONG, R.style.greentoast).show();
                         AddDealerActivity addDealerActivity=new AddDealerActivity();
+                        Intent intent=new Intent(DonateDealerActivity.this,AddedDealerActivity.class);
+                        startActivity(intent);
                         //addDealerActivity.initRecycler();
                         //addDealerActivity.Back();
 

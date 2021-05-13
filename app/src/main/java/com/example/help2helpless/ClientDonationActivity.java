@@ -2,6 +2,7 @@ package com.example.help2helpless;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -9,6 +10,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -44,6 +46,7 @@ public class ClientDonationActivity extends AppCompatActivity {
     Client client_data;
     RoundedImageView profile_view_image;
     CircleImageView dealer_profile_image;
+    ImageButton btn_image_back;
     TextView text_client_name,address,phone,dealer_balance;
     Button donat_to_client;
     TextInputLayout amount;
@@ -54,6 +57,13 @@ public class ClientDonationActivity extends AppCompatActivity {
         Bundle bundle= getIntent().getExtras();
          client_data= bundle.getParcelable("client");
          iniiAll();
+
+         btn_image_back.setOnClickListener(new View.OnClickListener() {
+             @Override
+             public void onClick(View view) {
+                 onBackPressed();
+             }
+         });
 
         donat_to_client.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -76,6 +86,7 @@ public class ClientDonationActivity extends AppCompatActivity {
     }
 
     private void iniiAll() {
+        btn_image_back=findViewById(R.id.btn_back);
         dealer_profile_image=findViewById(R.id.dealer_profile_pic);
         profile_view_image=findViewById(R.id.client_profile_pic);
         text_client_name=findViewById(R.id.client_name);
@@ -131,7 +142,7 @@ public class ClientDonationActivity extends AppCompatActivity {
     }
     private void addDiscount(final String cnumber) {
 
-        StringRequest stringRequest=new StringRequest(Request.Method.POST, url, new com.android.volley.Response.Listener<String>() {
+        final StringRequest stringRequest=new StringRequest(Request.Method.POST, url, new com.android.volley.Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 try {
@@ -140,6 +151,8 @@ public class ClientDonationActivity extends AppCompatActivity {
                     if(result.equals("success")){
                         onResume();
                         StyleableToast.makeText(ClientDonationActivity.this,"Donation Sent Successfully",R.style.mytoast).show();
+                        Intent intent=new Intent(ClientDonationActivity.this,DiscountActivity.class);
+                        startActivity(intent);
                        // Toast.makeText(ClientDonationActivity.this,"Discount added Successfully",Toast.LENGTH_LONG).show();
                     }
                     else{

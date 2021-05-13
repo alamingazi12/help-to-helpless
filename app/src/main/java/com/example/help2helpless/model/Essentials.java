@@ -93,7 +93,7 @@ public class Essentials {
 
         if(donarlogininfo==null){
             dealerlogininfo=context.getSharedPreferences("dealerinfo",0);
-            dealer_editor=donarlogininfo.edit();
+            dealer_editor=dealerlogininfo.edit();
         }
 
         Gson gson = new Gson();

@@ -53,7 +53,7 @@ public class AdminDashBoardActivity extends AppCompatActivity {
         setContentView(R.layout.activity_admin_dashboard);
         initAll();
 
-       back_btn.setOnClickListener(new View.OnClickListener() {
+        back_btn.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View view) {
                goHome();

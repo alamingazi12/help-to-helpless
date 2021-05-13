@@ -2,12 +2,14 @@ package com.example.help2helpless;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -34,14 +36,14 @@ public class AdminSendMoneyActivity extends AppCompatActivity {
 
     //initialize button
     Button btn_send_money_to_donar;
-
+    ImageButton btn_back_image;
     //image initialize
     RoundedImageView donar_profile_pic;
-
     //textview initialize
     TextView donar_name,address,phone;
-
     TextInputLayout donar_amount;
+
+
 
     Donar donar;
     @Override
@@ -51,6 +53,12 @@ public class AdminSendMoneyActivity extends AppCompatActivity {
         Bundle bundle = getIntent().getExtras();
         donar = bundle.getParcelable("donar_obj");
         initAll();
+        btn_back_image.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
 
         btn_send_money_to_donar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -61,7 +69,7 @@ public class AdminSendMoneyActivity extends AppCompatActivity {
     }
 
     private void initAll() {
-
+        btn_back_image=findViewById(R.id.btn_back);
         //button
         btn_send_money_to_donar=findViewById(R.id.btn_donate_client);
 
@@ -96,6 +104,8 @@ public class AdminSendMoneyActivity extends AppCompatActivity {
                     if(result.equals("success")){
                        // Toast.makeText(AdminDashBoardActivity.this,"Amount added Successfully",Toast.LENGTH_LONG).show();
                         StyleableToast.makeText(AdminSendMoneyActivity.this,"Money Added Succesfully",R.style.greentoast).show();
+                        Intent intent=new Intent(AdminSendMoneyActivity.this,AllDonarActivity.class);
+                        startActivity(intent);
                     }else{
                         StyleableToast.makeText(AdminSendMoneyActivity.this,""+result,R.style.mytoast).show();
                         //Log.d("result","No Donar with this Contact");
