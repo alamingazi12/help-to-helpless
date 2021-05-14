@@ -18,6 +18,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.PopupMenu;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -26,6 +27,7 @@ import android.widget.TextView;
 import com.example.help2helpless.adapter.ClientAdapter;
 import com.example.help2helpless.model.Client;
 import com.example.help2helpless.model.ClientResponse;
+import com.example.help2helpless.model.Essentials;
 import com.example.help2helpless.network.ApiClient;
 import com.example.help2helpless.network.ApiInterface;
 
@@ -40,7 +42,7 @@ public class DiscountActivity extends AppCompatActivity {
      ArrayList<Client> clients;
      EditText client_search_text;
      Button btn_search_client;
-     ImageButton btn_image_back;
+     ImageButton btn_image_back,menu;
      ClientAdapter clientAdapter;
      LinearLayoutManager linearLayoutManager;
      ProgressBar progressBar;
@@ -61,6 +63,34 @@ public class DiscountActivity extends AppCompatActivity {
         //setFontToActionBar();
         initAll();
         getAllContact();
+
+        menu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                PopupMenu popup = new PopupMenu(DiscountActivity.this, menu);
+                //inflating menu from xml resource
+                popup.inflate(R.menu.admin_menu_item);
+                //adding click listener
+                popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                    @Override
+                    public boolean onMenuItemClick(android.view.MenuItem item) {
+                        switch (item.getItemId()) {
+                            case R.id.logout:
+                                Essentials.logout(DiscountActivity.this);
+                                break;
+                            case R.id.settings:
+                                Essentials.goSettings(DiscountActivity.this);
+                                break;
+                            case R.id.go_dash:
+                                Essentials.goDealerHome(DiscountActivity.this);
+                                break;
+                        }
+                        return false;
+                    }
+                });
+                popup.show();
+            }
+        });
         btn_image_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -189,6 +219,7 @@ public class DiscountActivity extends AppCompatActivity {
     }
 
     private void initAll() {
+        menu=findViewById(R.id.admin_menu_icon);
         btn_image_back=findViewById(R.id.btn_back);
         progressBar=findViewById(R.id._progress);
         client_search_text=findViewById(R.id.client_search_input);

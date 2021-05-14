@@ -22,6 +22,7 @@ import android.widget.ProgressBar;
 import com.example.help2helpless.adapter.DSendMoneyAdapter;
 import com.example.help2helpless.model.Donar;
 import com.example.help2helpless.model.DonarResponse;
+import com.example.help2helpless.model.Essentials;
 import com.example.help2helpless.network.ApiClient;
 import com.example.help2helpless.network.ApiInterface;
 import com.muddzdev.styleabletoast.StyleableToast;
@@ -74,6 +75,9 @@ public class AllDonarActivity extends AppCompatActivity {
                                 break;
                             case R.id.settings:
                                 goSettings();
+                                break;
+                            case R.id.go_dash:
+                                Essentials.goAdminHome(AllDonarActivity.this);
                                 break;
                         }
                         return false;

@@ -2,7 +2,6 @@ package com.example.help2helpless;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
@@ -14,7 +13,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.PopupMenu;
 
+import com.example.help2helpless.model.Essentials;
 import com.example.help2helpless.model.Sections;
 import com.makeramen.roundedimageview.RoundedImageView;
 import com.muddzdev.styleabletoast.StyleableToast;
@@ -28,7 +29,7 @@ public class ClientRegActivity extends AppCompatActivity {
     String profile_image_string;
     public static int image_request=1;
     Button btn_client_next,btn_browse_profile_pic;
-    ImageButton btn_back_image;
+    ImageButton btn_back_image,menu;
     EditText client_full_name;
     RoundedImageView client_Profile_picView;
 
@@ -38,6 +39,34 @@ public class ClientRegActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_client_reg);
         initAll();
+
+        menu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                PopupMenu popup = new PopupMenu(ClientRegActivity.this, menu);
+                //inflating menu from xml resource
+                popup.inflate(R.menu.admin_menu_item);
+                //adding click listener
+                popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                    @Override
+                    public boolean onMenuItemClick(android.view.MenuItem item) {
+                        switch (item.getItemId()) {
+                            case R.id.logout:
+                                Essentials.logout(ClientRegActivity.this);
+                                break;
+                            case R.id.settings:
+                                Essentials.goSettings(ClientRegActivity.this);
+                                break;
+                            case R.id.go_dash:
+                                Essentials.goDealerHome(ClientRegActivity.this);
+                                break;
+                        }
+                        return false;
+                    }
+                });
+                popup.show();
+            }
+        });
 
         btn_back_image.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -116,7 +145,8 @@ public class ClientRegActivity extends AppCompatActivity {
     }
     private void initAll() {
                 //button initialize
-              btn_back_image=findViewById(R.id.back_icon);
+               menu=findViewById(R.id.admin_menu_icon);
+               btn_back_image=findViewById(R.id.back_icon);
                 btn_client_next =findViewById(R.id.btn_client_next);
                 btn_browse_profile_pic=findViewById(R.id.btn_browse_profile_image);
 

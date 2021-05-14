@@ -32,6 +32,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.PopupMenu;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -47,6 +48,7 @@ import com.android.volley.toolbox.Volley;
 import com.example.help2helpless.adapter.CurrencyAdapter;
 import com.example.help2helpless.model.Category;
 import com.example.help2helpless.model.CategoryResponse;
+import com.example.help2helpless.model.Essentials;
 import com.example.help2helpless.model.Responses;
 import com.example.help2helpless.model.Sections;
 import com.example.help2helpless.network.ApiClient;
@@ -83,7 +85,7 @@ public class ClientActivity extends AppCompatActivity implements
      Bitmap bitmap;
      ImageView document_view;
      TextInputLayout address,mobile_no;
-     ImageButton btn_image_back;
+     ImageButton btn_image_back,menu;
      Spinner spin;
      String client_category="";
      Button client_btn_signup,btn_browse_docs;
@@ -93,9 +95,36 @@ public class ClientActivity extends AppCompatActivity implements
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_client);
 
-        initAll();
+         initAll();
          getCategories();
         spin.setOnItemSelectedListener(this);
+        menu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                PopupMenu popup = new PopupMenu(ClientActivity.this, menu);
+                //inflating menu from xml resource
+                popup.inflate(R.menu.admin_menu_item);
+                //adding click listener
+                popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                    @Override
+                    public boolean onMenuItemClick(android.view.MenuItem item) {
+                        switch (item.getItemId()) {
+                            case R.id.logout:
+                                Essentials.logout(ClientActivity.this);
+                                break;
+                            case R.id.settings:
+                                Essentials.goSettings(ClientActivity.this);
+                                break;
+                            case R.id.go_dash:
+                                Essentials.goDealerHome(ClientActivity.this);
+                                break;
+                        }
+                        return false;
+                    }
+                });
+                popup.show();
+            }
+        });
 
         //Creating the ArrayAdapter instance having the country list
        // ArrayAdapter aa = new ArrayAdapter(this,android.R.layout.simple_spinner_item,country);
@@ -1064,6 +1093,7 @@ public class ClientActivity extends AppCompatActivity implements
     }
 
     private void initAll() {
+        menu=findViewById(R.id.admin_menu_icon);
         btn_image_back=findViewById(R.id.back_icon);
         btn_browse_docs=findViewById(R.id.btn_upload_docs);
       address=findViewById(R.id.cl_address);

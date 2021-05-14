@@ -133,6 +133,7 @@
             android:layout_width="match_parent"
             android:layout_height="200dp">
             <androidx.cardview.widget.CardView
+                android:id="@+id/addded_dealers"
                 android:layout_width="0dp"
                 app:cardElevation="3dp"
                 android:animationCache="true"

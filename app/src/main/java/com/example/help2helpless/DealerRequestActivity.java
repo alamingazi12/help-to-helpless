@@ -25,6 +25,7 @@ import com.example.help2helpless.adapter.DealerRequestAdapter;
 import com.example.help2helpless.adapter.RequestAdapter;
 import com.example.help2helpless.model.Dealer;
 import com.example.help2helpless.model.DealerResponse;
+import com.example.help2helpless.model.Essentials;
 import com.example.help2helpless.network.ApiClient;
 import com.example.help2helpless.network.ApiInterface;
 import com.muddzdev.styleabletoast.StyleableToast;
@@ -72,6 +73,9 @@ public class DealerRequestActivity extends AppCompatActivity {
                                 break;
                             case R.id.settings:
                                 goSettings();
+                                break;
+                            case R.id.go_dash:
+                                Essentials.goAdminHome(DealerRequestActivity.this);
                                 break;
                         }
                         return false;

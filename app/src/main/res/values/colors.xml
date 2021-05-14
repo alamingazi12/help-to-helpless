@@ -9,5 +9,6 @@
     <color name="page_background_tranparent">#f7f7f7</color>
     <color name="balance_color">#b7b7a4</color>
     <color name="balance_amount_color">#000000</color>
+    <color name="background_deep_transparent">#e9ecef</color>
 
 </resources>

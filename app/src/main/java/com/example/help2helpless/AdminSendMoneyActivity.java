@@ -20,6 +20,9 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.help2helpless.model.Donar;
+import com.example.help2helpless.model.DonarBalance;
+import com.example.help2helpless.network.ApiClient;
+import com.example.help2helpless.network.ApiInterface;
 import com.google.android.material.textfield.TextInputLayout;
 import com.makeramen.roundedimageview.RoundedImageView;
 import com.muddzdev.styleabletoast.StyleableToast;
@@ -31,6 +34,10 @@ import org.json.JSONObject;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 public class AdminSendMoneyActivity extends AppCompatActivity {
     String url="https://apps.help2helpless.com/donar_amount.php";
 
@@ -40,7 +47,7 @@ public class AdminSendMoneyActivity extends AppCompatActivity {
     //image initialize
     RoundedImageView donar_profile_pic;
     //textview initialize
-    TextView donar_name,address,phone;
+    TextView donar_name,address,phone,donar_balance;
     TextInputLayout donar_amount;
 
 
@@ -84,12 +91,45 @@ public class AdminSendMoneyActivity extends AppCompatActivity {
         donar_name=findViewById(R.id.client_name);
         address=findViewById(R.id.client_address);
         phone=findViewById(R.id.client_phone);
+        donar_balance=findViewById(R.id.d_balance);
 
         donar_name.setText(donar.getDname());
         address.setText(donar.getPresentaddr());
         phone.setText(donar.getDcontact());
 
 
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        getDonarBalance();
+    }
+
+    private void getDonarBalance() {
+        ApiInterface apiInterface= ApiClient.getApiClient(AdminSendMoneyActivity.this).create(ApiInterface.class);
+        Call<DonarBalance> donarBalanceCall= apiInterface.getDonarBalance(donar.getDcontact());
+        donarBalanceCall.enqueue(new Callback<DonarBalance>() {
+            @Override
+            public void onResponse(Call<DonarBalance> call, Response<DonarBalance> response) {
+                String balance=response.body().getDonar_balance();
+                // Toast.makeText(DonarDashBoardActivity.this,""+balance,Toast.LENGTH_LONG).show();
+                donar_balance.setText(balance);
+                if(balance==null){
+                    balance="0";
+                    donar_balance.setText(balance);
+                }else{
+                    donar_balance.setText(balance);
+                }
+//
+            }
+
+            @Override
+            public void onFailure(Call<DonarBalance> call, Throwable t) {
+
+            }
+        });
 
     }
 
@@ -102,6 +142,7 @@ public class AdminSendMoneyActivity extends AppCompatActivity {
                     JSONObject jsonObject=new JSONObject(response);
                     String result=jsonObject.getString("response");
                     if(result.equals("success")){
+                        onResume();
                        // Toast.makeText(AdminDashBoardActivity.this,"Amount added Successfully",Toast.LENGTH_LONG).show();
                         StyleableToast.makeText(AdminSendMoneyActivity.this,"Money Added Succesfully",R.style.greentoast).show();
                         Intent intent=new Intent(AdminSendMoneyActivity.this,AllDonarActivity.class);

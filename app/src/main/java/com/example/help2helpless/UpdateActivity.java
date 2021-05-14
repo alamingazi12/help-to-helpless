@@ -362,6 +362,7 @@ public class UpdateActivity extends AppCompatActivity {
 
     }
     private void initAll() {
+
         back_btn=findViewById(R.id.btn_back);
         update_name=findViewById(R.id.edit_name);
         profile_pic_view = findViewById(R.id.edit_profile_image);

@@ -4,4 +4,7 @@
         android:title="Log Out"/>
     <item android:id="@+id/settings"
         android:title="Settings"/>
+    <item android:id="@+id/go_dash"
+        android:title="DashBoard"/>
+
 </menu>

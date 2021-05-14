@@ -2,6 +2,7 @@ package com.example.help2helpless;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
@@ -11,7 +12,6 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -20,15 +20,11 @@ import android.widget.PopupMenu;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.example.help2helpless.model.AvgDealerReceived;
-import com.example.help2helpless.model.Client;
-import com.example.help2helpless.model.Dealer;
 import com.example.help2helpless.model.DealerAvgPaid;
 import com.example.help2helpless.model.DealerBalance;
 import com.example.help2helpless.model.DealerTDonation;
+import com.example.help2helpless.model.Essentials;
 import com.example.help2helpless.model.TotalClients;
 import com.example.help2helpless.model.TotalDonars;
 import com.example.help2helpless.network.ApiClient;
@@ -43,6 +39,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class DealerActivity extends AppCompatActivity {
+    CardView card_client_con;
     Button client_sign,btn_add_dealer,btn_discount;
     ImageButton back_btn,menu_icon;
     SharedPreferences dealerlogininfo;
@@ -56,6 +53,14 @@ public class DealerActivity extends AppCompatActivity {
         Log.d("called","oncreaed");
 
         initAll();
+
+        card_client_con.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(DealerActivity.this,DiscountActivity.class);
+                startActivity(intent);
+            }
+        });
         client_sign.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -121,9 +126,10 @@ public class DealerActivity extends AppCompatActivity {
     }
 
     private void showProfile() {
-
+        Bundle bundle=new Bundle();
+        bundle.putParcelable("deler",null);
         Intent intent=new Intent(DealerActivity.this,ApprovedActivity.class);
-       // intent.putExtras(bundle);
+        intent.putExtras(bundle);
          startActivity(intent);
     }
 
@@ -360,6 +366,7 @@ public class DealerActivity extends AppCompatActivity {
     }
 
     private void initAll() {
+        card_client_con=findViewById(R.id.card_client_conn);
         dealer_balances=findViewById(R.id.dlr_balance);
         avg_dlr_discount=findViewById(R.id.avg_dlr_donation);
         avg_dealer_received=findViewById(R.id.dealer_recived_avg);

@@ -5,7 +5,6 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
@@ -220,7 +219,7 @@ public class AddedDealerActivity extends AppCompatActivity {
                     addedDealerAdapter.addLists(response.body().getDealerlist());
                    // addedDealerAdapter.addLists(response.body().getDealerlist());
                     progressBar.setVisibility(View.GONE);
-                    StyleableToast.makeText(AddedDealerActivity.this,"data size"+response.body().getDealerlist().size(),R.style.mytoast).show();
+                   // StyleableToast.makeText(AddedDealerActivity.this,"data size"+response.body().getDealerlist().size(),R.style.mytoast).show();
                 }
                 else{
                     //StyleableToast.makeText(AddedDealerActivity.this,"data null",R.style.mytoast).show();

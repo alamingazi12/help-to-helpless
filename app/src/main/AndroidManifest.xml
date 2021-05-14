@@ -15,7 +15,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".DonarProfileActivity"></activity>
+        <activity android:name=".DonarProfileActivity" android:theme="@style/AppTheme.CustomThemeProfile"></activity>
         <activity
             android:name=".AdminSendMoneyActivity"
             android:theme="@style/AppTheme.CustomTheme"></activity>
@@ -90,7 +90,7 @@
         <activity
             android:name=".ApprovedActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.CustomThemeProfile" />
         <activity
             android:name=".DealerRequestActivity"
             android:configChanges="orientation|screenSize"

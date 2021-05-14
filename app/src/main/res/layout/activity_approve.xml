@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="#fffbfa"
+    android:background="@color/page_background_tranparent"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".ApprovedActivity"
     android:orientation="vertical"
@@ -68,31 +68,58 @@
     </LinearLayout>
 
     <LinearLayout
-
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
 
         android:layout_marginTop="40dp"
-        android:background="#fffbfa"
+        android:background="@color/page_background_tranparent"
         android:orientation="vertical"
         android:padding="10dp">
 
-
         <LinearLayout
+            android:layout_marginTop="30dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="50dp">
+            android:layout_height="wrap_content">
 
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1.3"
-                android:fontFamily="@font/alexbold"
+                android:fontFamily="@font/latom"
                 android:gravity="center"
-                android:padding="10dp"
+                android:padding="5dp"
+                android:text="Address"
+                android:textColor="#4b3f72"
+                android:textSize="@dimen/dealer_profile_text_size_heading" />
+
+            <TextView
+                android:id="@+id/address"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.7"
+                android:fontFamily="@font/relway_medium"
+                android:padding="5dp"
+
+                android:text="alamin gazi"
+                android:textColor="#3d5a80"
+                android:textSize="@dimen/dealer_profile_text_size" />
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.3"
+                android:fontFamily="@font/latom"
+                android:gravity="center"
+                android:padding="5dp"
                 android:text="Zilla"
                 android:textColor="#4b3f72"
-                android:textSize="20sp" />
+                android:textSize="@dimen/dealer_profile_text_size_heading" />
 
             <TextView
                 android:id="@+id/dlrzilla"
@@ -100,12 +127,14 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1.7"
                 android:fontFamily="@font/relway_medium"
-                android:padding="10dp"
+                android:padding="5dp"
                 android:text="Khulna"
                 android:textColor="#3d5a80"
-                android:textSize="20sp" />
+                android:textSize="@dimen/dealer_profile_text_size" />
 
         </LinearLayout>
+
+
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -115,41 +144,12 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1.3"
-                android:fontFamily="@font/alexbold"
+                android:fontFamily="@font/latom"
                 android:gravity="center"
-                android:padding="10dp"
-                android:text="Shop Name"
-                android:textColor="#4b3f72"
-                android:textSize="20sp" />
-
-            <TextView
-                android:id="@+id/shopname"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1.7"
-                android:fontFamily="@font/relway_medium"
-                android:padding="10dp"
-
-                android:text="alamin gazi"
-                android:textColor="#3d5a80"
-                android:textSize="18sp" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1.3"
-                android:fontFamily="@font/alexbold"
-                android:gravity="center"
-                android:padding="10dp"
+                android:padding="5dp"
                 android:text="Thana"
                 android:textColor="#4b3f72"
-                android:textSize="20sp" />
+                android:textSize="@dimen/dealer_profile_text_size_heading" />
 
             <TextView
                 android:id="@+id/dlrthana"
@@ -157,41 +157,14 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1.7"
                 android:fontFamily="@font/relway_medium"
-                android:padding="10dp"
+                android:padding="5dp"
                 android:text="Khan Jahan Ali"
                 android:textColor="#3d5a80"
-                android:textSize="18sp" />
+                android:textSize="@dimen/dealer_profile_text_size" />
 
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
 
-            <TextView
-
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1.3"
-                android:fontFamily="@font/alexbold"
-                android:gravity="center"
-                android:padding="10dp"
-                android:text="Drug RegNo"
-                android:textColor="#4b3f72"
-                android:textSize="20sp" />
-
-            <TextView
-                android:id="@+id/regno"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1.7"
-                android:fontFamily="@font/number_font"
-                android:padding="10dp"
-                android:text="301257"
-                android:textColor="#3d5a80"
-                android:textSize="18sp" />
-
-        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -201,23 +174,23 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1.3"
-                android:fontFamily="@font/alexbold"
+                android:fontFamily="@font/latom"
                 android:gravity="center"
-                android:padding="10dp"
+                android:padding="5dp"
                 android:text="Phone"
                 android:textColor="#4b3f72"
-                android:textSize="20sp" />
+                android:textSize="@dimen/dealer_profile_text_size_heading" />
 
             <TextView
                 android:id="@+id/dlrphone"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1.7"
-                android:fontFamily="@font/number_font"
-                android:padding="10dp"
+                android:fontFamily="@font/alexbold"
+                android:padding="5dp"
                 android:text="01988983512"
                 android:textColor="#3d5a80"
-                android:textSize="18sp" />
+                android:textSize="@dimen/dealer_profile_text_size" />
 
 
         </LinearLayout>

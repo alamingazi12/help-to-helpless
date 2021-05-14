@@ -180,6 +180,7 @@
 
             </androidx.cardview.widget.CardView>
             <androidx.cardview.widget.CardView
+                android:id="@+id/card_client_conn"
                 android:layout_width="0dp"
                 android:layout_marginBottom="2dp"
                 app:cardElevation="3dp"

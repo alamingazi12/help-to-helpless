@@ -10,6 +10,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.Gravity;
+import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -42,7 +43,6 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -85,13 +85,14 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 PopupMenu popup = new PopupMenu(MainActivity.this, menu);
                 //inflating menu from xml resource
-                popup.inflate(R.menu.admin_menu_item);
+                popup.inflate(R.menu.item_menu_home);
                 //adding click listener
                 popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
                     @Override
                     public boolean onMenuItemClick(android.view.MenuItem item) {
                         switch (item.getItemId()) {
                             case R.id.logout:
+
                                 Essentials.logout(MainActivity.this);
                                 break;
                             case R.id.settings:
@@ -212,12 +213,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
 
+        return super.onCreateOptionsMenu(menu);
 
-
-
-
-
+    }
 
     @Override
     public void onBackPressed() {

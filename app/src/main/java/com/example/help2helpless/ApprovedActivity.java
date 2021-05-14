@@ -32,7 +32,7 @@ public class ApprovedActivity extends AppCompatActivity {
      String url="https://apps.help2helpless.com/dealerinsert.php";
      Dealer dealer;
      String imageUrl="https://apps.help2helpless.com/uploads/";
-     TextView dlrname,zilla,thana,shopname,drugregno,phone;
+     TextView dlrname,zilla,thana,address,drugregno,phone;
 
 
     @Override
@@ -40,15 +40,14 @@ public class ApprovedActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_approve);
         Bundle bundle=getIntent().getExtras();
-        // dealer= bundle.getParcelable("deler");
+         dealer= bundle.getParcelable("deler");
 
         initAll();
         ImageButton back_image_btn=findViewById(R.id.btn_back);
         back_image_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(ApprovedActivity.this,DealerActivity.class);
-                startActivity(intent);
+               onBackPressed();
             }
         });
 
@@ -137,27 +136,44 @@ public class ApprovedActivity extends AppCompatActivity {
         dlrname=findViewById(R.id.dname);
         zilla=findViewById(R.id.dlrzilla);
         thana=findViewById(R.id.dlrthana);
-        shopname=findViewById(R.id.shopname);
-        drugregno=findViewById(R.id.regno);
+        address=findViewById(R.id.address);
+
         shpimage=findViewById(R.id.shop_image);
         phone=findViewById(R.id.dlrphone);
+        if(dealer!=null){
+            address.setText(dealer.getHmaddres());
+            dlrname.setText(dealer.getName());
+            zilla.setText(dealer.getShpnmzilla());
+            thana.setText(dealer.getShpnmthana());
+            phone.setText(dealer.getPhone());
 
-        SharedPreferences dealerlogininfo=getSharedPreferences("dealerinfo",0);
-        Gson gson = new Gson();
-        String json = dealerlogininfo.getString("MyObject", "");
-        Dealer dealers = gson.fromJson(json, Dealer.class);
+            //Picasso.get().load(imageUrl).into(shpimage);
+            Picasso.get()
+                    .load(imageUrl+dealer.getProfile_pic())
+                    .resize(90, 90)
+                    .centerCrop()
+                    .into(shpimage);
 
-        dlrname.setText(dealers.getName());
-        zilla.setText(dealers.getShpnmzilla());
-        thana.setText(dealers.getShpnmthana());
-        phone.setText(dealers.getPhone());
+        }else{
+            SharedPreferences dealerlogininfo=getSharedPreferences("dealerinfo",0);
+            Gson gson = new Gson();
+            String json = dealerlogininfo.getString("MyObject", "");
+            Dealer dealers = gson.fromJson(json, Dealer.class);
+            address.setText(dealers.getHmaddres());
+            dlrname.setText(dealers.getName());
+            zilla.setText(dealers.getShpnmzilla());
+            thana.setText(dealers.getShpnmthana());
+            phone.setText(dealers.getPhone());
 
-        //Picasso.get().load(imageUrl).into(shpimage);
-        Picasso.get()
-                .load(imageUrl+dealers.getProfile_pic())
-                .resize(90, 90)
-                .centerCrop()
-                .into(shpimage);
+            //Picasso.get().load(imageUrl).into(shpimage);
+            Picasso.get()
+                    .load(imageUrl+dealers.getProfile_pic())
+                    .resize(90, 90)
+                    .centerCrop()
+                    .into(shpimage);
+
+        }
+
 
 
     }

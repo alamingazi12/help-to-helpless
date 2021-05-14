@@ -208,12 +208,11 @@
 
         </LinearLayout>
 
-
         <Button
             android:id="@+id/edit_dealer"
             android:text="Update"
 
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="10dp"
             android:textColor="#fff"
             android:textSize="20sp"
             android:textAllCaps="false"

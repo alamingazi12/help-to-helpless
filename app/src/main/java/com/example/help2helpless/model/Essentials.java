@@ -8,7 +8,9 @@ import android.os.Bundle;
 import android.text.TextUtils;
 
 import com.example.help2helpless.AdminDashBoardActivity;
+import com.example.help2helpless.DealerActivity;
 import com.example.help2helpless.DealerRequestActivity;
+import com.example.help2helpless.DonarDashBoardActivity;
 import com.example.help2helpless.DonarLogin;
 import com.example.help2helpless.MainActivity;
 import com.example.help2helpless.R;
@@ -33,6 +35,21 @@ public class Essentials {
             donar_editor=donarlogininfo.edit();
         }
 
+    }
+
+    public static void goDonarHome(Context context) {
+      Intent intent=new Intent(context, DonarDashBoardActivity.class);
+      context.startActivity(intent);
+    }
+    public static void goDealerHome(Context context) {
+
+        Intent intent=new Intent(context, DealerActivity.class);
+        context.startActivity(intent);
+
+    }
+    public static void goAdminHome(Context context) {
+        Intent intent=new Intent(context, AdminDashBoardActivity.class);
+        context.startActivity(intent);
     }
 
 

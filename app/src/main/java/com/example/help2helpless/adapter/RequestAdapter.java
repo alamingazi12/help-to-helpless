@@ -138,9 +138,11 @@ public class RequestAdapter extends RecyclerView.Adapter<RequestAdapter.RequestV
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                final Dealer dealer_item=dealersList.get(position);
                 Intent intent=new Intent(context, ApprovedActivity.class);
                 Bundle bundle=new Bundle();
-                bundle.putParcelable("deler",dealer);
+                bundle.putParcelable("deler",dealer_item);
                 intent.putExtras(bundle);
                 context.startActivity(intent);
             }

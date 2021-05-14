@@ -1,6 +1,8 @@
 package com.example.help2helpless;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
+
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
@@ -34,6 +36,8 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class DonarDashBoardActivity extends AppCompatActivity {
+
+    CardView all_added_dealer;
     Button show_dealers, show_dealer_req, donate_dealers, btn_history;
     ImageButton back_button;
     FloatingActionButton btn_press_home;
@@ -50,7 +54,13 @@ public class DonarDashBoardActivity extends AppCompatActivity {
         setContentView(R.layout.activity_donar_dash_board);
 
         initAll();
-
+        all_added_dealer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(DonarDashBoardActivity.this, AddedDealerActivity.class);
+                startActivity(intent);
+            }
+        });
         stopThread = false;
         ExampleRunnable runnable = new ExampleRunnable(10);
         new Thread(runnable).start();
@@ -384,6 +394,8 @@ public class DonarDashBoardActivity extends AppCompatActivity {
 
 
     private void initAll() {
+
+        all_added_dealer=findViewById(R.id.addded_dealers);
         btn_press_home=findViewById(R.id.orderPlus);
         btn_history=findViewById(R.id.btn_history);
         btn_history.setOnClickListener(new View.OnClickListener() {

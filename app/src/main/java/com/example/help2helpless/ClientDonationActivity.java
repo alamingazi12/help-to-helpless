@@ -180,6 +180,7 @@ public class ClientDonationActivity extends AppCompatActivity {
                     SharedPreferences dealerlogininfo=getSharedPreferences("dealerinfo",0);
                     Date date=new Date();
                     SimpleDateFormat sdf=new SimpleDateFormat("dd-MM-yyyy");
+                    SimpleDateFormat sdf2=new SimpleDateFormat("yyyy-MM-dd");
                     String today=sdf.format(date);
                     String pdatarr[]=today.split("-");
                     params.put("cl_contact",cnumber);
@@ -187,6 +188,7 @@ public class ClientDonationActivity extends AppCompatActivity {
                     params.put("month",getMonthString(pdatarr[1]));
                     params.put("year",pdatarr[2]);
                     params.put("amount",amount.getEditText().getText().toString().trim());
+                    params.put("date",sdf2.format(date));
 
 
                 } catch (JSONException e) {

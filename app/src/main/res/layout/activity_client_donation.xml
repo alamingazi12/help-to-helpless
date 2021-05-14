@@ -105,7 +105,7 @@
         android:layout_height="wrap_content">
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="150dp"
+            android:layout_height="130dp"
             app:cardBackgroundColor="#3f37c9"
             app:cardCornerRadius="10dp"
             android:layout_margin="10dp">
@@ -141,7 +141,7 @@
 
                 <TextView
                     android:id="@+id/client_address"
-                    android:layout_width="0dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Fultala,Khulna"
                     android:textColor="#fff"
@@ -198,7 +198,7 @@
                 android:layout_marginStart="0dp"
 
                 android:layout_marginBottom="0dp"
-                android:fontFamily="@font/raleway_light"
+                android:fontFamily="@font/alexbold"
                 android:inputType="number"
 
                 android:textSize="16dp" />
@@ -252,7 +252,7 @@
 
             android:background="@drawable/butttonstyle"
             android:fontFamily="sans-serif-light"
-            android:text="Confirm"
+            android:text="Send Money"
             android:textAllCaps="false"
             android:textColor="#ffffff"
             android:textFontWeight="500"
