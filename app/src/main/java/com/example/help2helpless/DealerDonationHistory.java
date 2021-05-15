@@ -33,7 +33,6 @@ public class DealerDonationHistory extends AppCompatActivity {
     ImageButton back_button_history,menu;
     TextView balance_dealer;
     String dealer_contact;
-
     TextView dealer_balances;
     
     @Override

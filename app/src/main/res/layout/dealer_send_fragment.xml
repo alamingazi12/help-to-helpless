@@ -15,21 +15,43 @@
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-            <EditText
-                android:background="@drawable/edit_text_style"
-                android:padding="10dp"
-                android:drawablePadding="8dp"
-                android:drawableLeft="@drawable/ic_baseline_search_24"
-                android:hint="Search Transaction"
-                android:layout_marginLeft="15dp"
-                android:textSize="14sp"
-
-                android:imeOptions="actionSearch"
-                android:layout_marginRight="15dp"
-                android:layout_marginTop="35sp"
-                android:layout_marginBottom="15dp"
+            <LinearLayout
+                android:layout_marginTop="30dp"
+                android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/edit_search_history"
+                    android:layout_width="0dp"
+                    android:layout_height="43dp"
+                    android:layout_marginLeft="10dp"
+
+                    android:layout_marginRight="10dp"
+                    android:layout_marginBottom="15dp"
+                    android:layout_weight="7"
+
+                    android:background="@drawable/edit_text_style"
+                    android:drawableLeft="@drawable/ic_baseline_search_24"
+                    android:drawablePadding="8dp"
+                    android:hint="Search Transaction"
+                    android:imeOptions="actionSearch"
+                    android:padding="10dp"
+                    android:textSize="14sp" />
+
+                <Button
+                    android:id="@+id/btn_search_history"
+                      android:textColor="#ffffff"
+                      android:layout_weight="3"
+                     android:text="Search"
+                    android:fontFamily="@font/latom"
+                     android:textAllCaps="false"
+                      android:layout_width="0dp"
+                    android:layout_marginEnd="10dp"
+                      android:layout_height="55dp"/>
+
+            </LinearLayout>
+
 
 
 

@@ -9,10 +9,15 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.text.Editable;
+import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ProgressBar;
 
 import com.example.help2helpless.adapter.RecordOlderAdapter;
@@ -37,6 +42,10 @@ import retrofit2.Response;
  * create an instance of this fragment.
  */
 public class FragmentSent extends Fragment {
+
+    EditText editText_input_search;
+    Button btn_seach_history;
+    String search_text="";
     RecyclerView today_record_container;
     RecyclerView yesterday_record_container;
     RecyclerView older_record_container;
@@ -97,11 +106,49 @@ public class FragmentSent extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-       View view=inflater.inflate(R.layout.fragment_sent, container, false);
+        View view=inflater.inflate(R.layout.fragment_sent, container, false);
         initAll(view);
         showTodayRecords();
         showYesterdayRecords();
         showOlderRecords();
+
+        if(TextUtils.isEmpty(search_text)){
+            showOlderRecords();
+        }
+
+        btn_seach_history.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                search_text=editText_input_search.getText().toString();
+                if(TextUtils.isEmpty(search_text)){
+
+                    StyleableToast.makeText(getContext(),"Search Box Empty",R.style.mytoast).show();
+                }else{
+                    showOlderRecords();
+                }
+            }
+        });
+        editText_input_search.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                String data= editable.toString();
+                search_text=editText_input_search.getText().toString();
+                if(TextUtils.isEmpty(data) || TextUtils.isEmpty(search_text)){
+                    //StyleableToast.makeText(getContext(),"Search Box Empty",R.style.mytoast).show();
+                    showOlderRecords();
+                }
+            }
+        });
         return view;
     }
 
@@ -179,7 +226,7 @@ public class FragmentSent extends Fragment {
         SharedPreferences sharedPreferences=getContext().getSharedPreferences("donarinfo",0);
         String contact=  sharedPreferences.getString("contact","") ;
         ApiInterface apiInterface= ApiClient.getApiClient(getContext()).create(ApiInterface.class);
-        apiInterface.getDonarSendRecordOlder(contact,yesterday,page,row_per_page).enqueue(new Callback<RecordResponse>() {
+        apiInterface.getDonarSendRecordOlder(contact,yesterday,page,row_per_page,search_text).enqueue(new Callback<RecordResponse>() {
             @Override
             public void onResponse(Call<RecordResponse> call, Response<RecordResponse> response) {
                 records= response.body().getRecordsList();
@@ -248,7 +295,7 @@ public class FragmentSent extends Fragment {
         SharedPreferences sharedPreferences=getContext().getSharedPreferences("donarinfo",0);
         String contact=  sharedPreferences.getString("contact","") ;
         ApiInterface apiInterface= ApiClient.getApiClient(getContext()).create(ApiInterface.class);
-        apiInterface.getDonarSendRecordOlder(contact,yesterday,page,row_per_page).enqueue(new Callback<RecordResponse>() {
+        apiInterface.getDonarSendRecordOlder(contact,yesterday,page,row_per_page,search_text).enqueue(new Callback<RecordResponse>() {
             @Override
             public void onResponse(Call<RecordResponse> call, Response<RecordResponse> response) {
 
@@ -274,6 +321,9 @@ public class FragmentSent extends Fragment {
     }
 
     private void initAll(View view) {
+
+        editText_input_search=view.findViewById(R.id.edit_search_history);
+        btn_seach_history=view.findViewById(R.id.btn_search_history);
         progressBar=view.findViewById(R.id._progress);
         linearLayoutManager=new LinearLayoutManager(getContext());
         //today container;

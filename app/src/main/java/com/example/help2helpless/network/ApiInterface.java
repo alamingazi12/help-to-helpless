@@ -186,14 +186,14 @@ public  interface ApiInterface {
     Call<RecordResponse> getDonarSendRecordToday(@Query("contact") String contact, @Query("date") String  date);
 
     @GET("get_donar_send_record_older.php")
-    Call<RecordResponse> getDonarSendRecordOlder(@Query("contact") String contact, @Query("date") String  date,@Query("page") int  page,@Query("row_per_page") int  row_per_page);
+    Call<RecordResponse> getDonarSendRecordOlder(@Query("contact") String contact, @Query("date") String  date,@Query("page") int  page,@Query("row_per_page") int  row_per_page,@Query("search_text") String  search_text);
 
     ///donation history send
     @GET("get_donar_recive_record_today.php")
     Call<RecordResponse> getDonarReceiveRecordToday(@Query("contact") String contact, @Query("date") String  date);
 
     @GET("get_donar_receive_record_older.php")
-    Call<RecordResponse> getDonarReceiveRecordOlder(@Query("contact") String contact, @Query("date") String  date);
+    Call<RecordResponse> getDonarReceiveRecordOlder(@Query("contact") String contact, @Query("date") String  date,@Query("search_text") String  search_text);
 
 
 
@@ -202,12 +202,12 @@ public  interface ApiInterface {
     Call<DealerSendResponse> getDealerSendRecordToday(@Query("contact") String contact, @Query("date") String  date);
 
     @GET("get_dealer_send_record_older.php")
-    Call<DealerSendResponse> getDealerSendRecordOlder(@Query("contact") String contact, @Query("date") String date);
+    Call<DealerSendResponse> getDealerSendRecordOlder(@Query("contact") String contact, @Query("date") String date,@Query("search_text") String  search_text);
     
     @GET("get_dealer_recive_record_today.php")
     Call<DealerReciveResponse> getDealerReceiveRecordToday(@Query("contact") String contact, @Query("date") String  date);
 
     @GET("get_dealer_receive_record_older.php")
-    Call<DealerReciveResponse> getDealerReceiveRecordOlder(@Query("contact") String contact, @Query("date") String  date);
+    Call<DealerReciveResponse> getDealerReceiveRecordOlder(@Query("contact") String contact, @Query("date") String  date,@Query("search_text") String  search_text);
 
 }

@@ -2,10 +2,15 @@ package com.example.help2helpless;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ProgressBar;
 
 import androidx.annotation.NonNull;
@@ -23,6 +28,7 @@ import com.example.help2helpless.model.DealerSendRecord;
 import com.example.help2helpless.model.DealerSendResponse;
 import com.example.help2helpless.network.ApiClient;
 import com.example.help2helpless.network.ApiInterface;
+import com.muddzdev.styleabletoast.StyleableToast;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -38,6 +44,11 @@ public class DealerSendFragment extends Fragment {
     RecyclerView yesterday_record_container;
     RecyclerView older_record_container;
 
+    EditText editText_input_search;
+    Button btn_seach_history;
+
+    String search_text="";
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,12 +61,54 @@ public class DealerSendFragment extends Fragment {
         initAll(view);
         showTodayRecords();
         showYesterdayRecords();
-        showOlderRecords();
+
+        if(TextUtils.isEmpty(search_text)){
+            showOlderRecords();
+        }
+
+        btn_seach_history.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                search_text=editText_input_search.getText().toString();
+                if(TextUtils.isEmpty(search_text)){
+
+                    StyleableToast.makeText(getContext(),"Search Box Empty",R.style.mytoast).show();
+                }else{
+                    showOlderRecords();
+                }
+            }
+        });
+        editText_input_search.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                String data= editable.toString();
+                search_text=editText_input_search.getText().toString();
+                if(TextUtils.isEmpty(data) || TextUtils.isEmpty(search_text)){
+                    //StyleableToast.makeText(getContext(),"Search Box Empty",R.style.mytoast).show();
+                    showOlderRecords();
+                }
+            }
+        });
+
+
         return view;
     }
 
     private void initAll(View view) {
         progressBar=view.findViewById(R.id._progress);
+        editText_input_search=view.findViewById(R.id.edit_search_history);
+        btn_seach_history=view.findViewById(R.id.btn_search_history);
+
 
         //today container;
         today_record_container=view.findViewById(R.id.donar_today_container);
@@ -116,7 +169,7 @@ public class DealerSendFragment extends Fragment {
         SharedPreferences sharedPreferences=getContext().getSharedPreferences("dealerinfo",0);
         String contact=  sharedPreferences.getString("contact","") ;
         ApiInterface apiInterface= ApiClient.getApiClient(getContext()).create(ApiInterface.class);
-        apiInterface.getDealerSendRecordOlder(contact,yesterday).enqueue(new Callback<DealerSendResponse>() {
+        apiInterface.getDealerSendRecordOlder(contact,yesterday,search_text).enqueue(new Callback<DealerSendResponse>() {
             @Override
             public void onResponse(Call<DealerSendResponse> call, Response<DealerSendResponse> response) {
                 ArrayList<DealerSendRecord> records= response.body().getRecords();
