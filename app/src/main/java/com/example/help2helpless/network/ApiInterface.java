@@ -9,7 +9,9 @@ import com.example.help2helpless.model.CategoryResponse;
 import com.example.help2helpless.model.ClientResponse;
 import com.example.help2helpless.model.DealerAvgPaid;
 import com.example.help2helpless.model.DealerBalance;
+import com.example.help2helpless.model.DealerReciveResponse;
 import com.example.help2helpless.model.DealerResponse;
+import com.example.help2helpless.model.DealerSendResponse;
 import com.example.help2helpless.model.DealerTDonation;
 import com.example.help2helpless.model.DealersRequest;
 import com.example.help2helpless.model.Donar;
@@ -179,7 +181,7 @@ public  interface ApiInterface {
     );
 
 
-    ///donation history send
+    ///donation history record
     @GET("get_donar_send_record_today.php")
     Call<RecordResponse> getDonarSendRecordToday(@Query("contact") String contact, @Query("date") String  date);
 
@@ -192,5 +194,20 @@ public  interface ApiInterface {
 
     @GET("get_donar_receive_record_older.php")
     Call<RecordResponse> getDonarReceiveRecordOlder(@Query("contact") String contact, @Query("date") String  date);
+
+
+
+    //dealer history record
+    @GET("get_dealer_send_record_today.php")
+    Call<DealerSendResponse> getDealerSendRecordToday(@Query("contact") String contact, @Query("date") String  date);
+
+    @GET("get_dealer_send_record_older.php")
+    Call<DealerSendResponse> getDealerSendRecordOlder(@Query("contact") String contact, @Query("date") String date);
+    
+    @GET("get_dealer_recive_record_today.php")
+    Call<DealerReciveResponse> getDealerReceiveRecordToday(@Query("contact") String contact, @Query("date") String  date);
+
+    @GET("get_dealer_receive_record_older.php")
+    Call<DealerReciveResponse> getDealerReceiveRecordOlder(@Query("contact") String contact, @Query("date") String  date);
 
 }

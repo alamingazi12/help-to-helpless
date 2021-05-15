@@ -9,4 +9,6 @@
       android:title="Settings"/>
   <item android:id="@+id/show_profile"
       android:title="Profile Info"/>
+  <item android:id="@+id/add_donar"
+      android:title="Add Donar"/>
 </menu>

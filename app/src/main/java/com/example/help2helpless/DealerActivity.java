@@ -40,7 +40,7 @@ import retrofit2.Response;
 
 public class DealerActivity extends AppCompatActivity {
     CardView card_client_con;
-    Button client_sign,btn_add_dealer,btn_discount;
+    Button client_sign,btn_add_dealer,btn_discount,view_donation_history;
     ImageButton back_btn,menu_icon;
     SharedPreferences dealerlogininfo;
     String dealer_contact;
@@ -53,6 +53,14 @@ public class DealerActivity extends AppCompatActivity {
         Log.d("called","oncreaed");
 
         initAll();
+
+        view_donation_history.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(DealerActivity.this,DealerDonationHistory.class);
+                startActivity(intent);
+            }
+        });
 
         card_client_con.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -68,13 +76,7 @@ public class DealerActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        btn_add_dealer.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent=new Intent(DealerActivity.this,AddDonarActivity.class);
-                startActivity(intent);
-            }
-        });
+
         btn_discount.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -113,6 +115,11 @@ public class DealerActivity extends AppCompatActivity {
                             case R.id.show_profile:
                                 showProfile();
                                 break;
+                            case R.id.add_donar:
+                                Intent intent=new Intent(DealerActivity.this,AddDonarActivity.class);
+                                startActivity(intent);
+                                break;
+
                         }
                         return false;
                     }
@@ -366,6 +373,8 @@ public class DealerActivity extends AppCompatActivity {
     }
 
     private void initAll() {
+
+        view_donation_history=findViewById(R.id.view_history);
         card_client_con=findViewById(R.id.card_client_conn);
         dealer_balances=findViewById(R.id.dlr_balance);
         avg_dlr_discount=findViewById(R.id.avg_dlr_donation);
@@ -378,7 +387,7 @@ public class DealerActivity extends AppCompatActivity {
         back_btn=findViewById(R.id.back_pic_btn);
         menu_icon=findViewById(R.id.menu_icon);
        // total_discount_paid=findViewById(R.id.total_discount);
-        btn_add_dealer=findViewById(R.id.dealer_add);
+
         client_sign=findViewById(R.id.btn_csign);
         dealerlogininfo=getSharedPreferences("dealerinfo",0);
         dealer_contact=dealerlogininfo.getString("contact","");

@@ -150,7 +150,7 @@ public class ClientDonationActivity extends AppCompatActivity {
                     String result=jsonObject.getString("response");
                     if(result.equals("success")){
                         onResume();
-                        StyleableToast.makeText(ClientDonationActivity.this,"Donation Sent Successfully",R.style.mytoast).show();
+                        StyleableToast.makeText(ClientDonationActivity.this,"Donation Sent Successfully",R.style.greentoast).show();
                         Intent intent=new Intent(ClientDonationActivity.this,DiscountActivity.class);
                         startActivity(intent);
                        // Toast.makeText(ClientDonationActivity.this,"Discount added Successfully",Toast.LENGTH_LONG).show();

@@ -1,4 +1,4 @@
-package com.example.help2helpless.adapter;
+package com.example.help2helpless.dealeradapter;
 
 import android.content.Context;
 import android.util.Log;
@@ -11,56 +11,56 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.help2helpless.R;
-import com.example.help2helpless.model.Client;
-import com.example.help2helpless.model.DonarSendRecord;
+import com.example.help2helpless.model.DealerReceiveRecord;
+import com.example.help2helpless.model.DealerSendRecord;
 import com.squareup.picasso.Picasso;
-
 import java.util.ArrayList;
-
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class RecordTodayAdapter extends RecyclerView.Adapter<RecordTodayAdapter.RecordViewHolder> {
+public class DealerSendAdapterToday extends RecyclerView.Adapter<DealerSendAdapterToday.RecordViewHolder> {
 
-    public RecordTodayAdapter(ArrayList<DonarSendRecord> recordslist, Context context) {
+    public DealerSendAdapterToday(ArrayList<DealerSendRecord> recordslist, Context context) {
         this.recordslist = recordslist;
         this.context = context;
     }
-    public RecordTodayAdapter(ArrayList<DonarSendRecord> recordslist, Context context,int value) {
+    public DealerSendAdapterToday(ArrayList<DealerSendRecord> recordslist, Context context,int value) {
         this.recordslist = recordslist;
         this.context = context;
         this.value=value;
     }
 
-    ArrayList<DonarSendRecord> recordslist;
+    static   ArrayList<DealerSendRecord> recordslist;
     Context context;
     int value;
     @NonNull
     @Override
-    public RecordViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public DealerSendAdapterToday.RecordViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(context).inflate(R.layout.send_record_item,parent,false);
-        return new RecordViewHolder(view);
+        return new DealerSendAdapterToday.RecordViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull RecordViewHolder holder, int position) {
-         DonarSendRecord record=  recordslist.get(position);
+    public void onBindViewHolder(@NonNull DealerSendAdapterToday.RecordViewHolder holder, int position) {
 
-         holder.dealer_name.setText(record.getName());
-         holder.amount.setText(record.getAmount());
 
-         String date=record.getT_date();
-         String datearr[] =date.split("-");
-         String years=datearr[0];
-         String months=datearr[1];
-         String days=datearr[2];
-         holder.month.setText(getMonthString(months));
-         holder.day.setText(days);
-         holder.year.setText(years);
+        DealerSendRecord record=  recordslist.get(position);
 
-         holder.dealer_name.setText(record.getName());
-        // holder.dealer_name.setText(record.getName());
-         //holder.dealer_name.setText(record.getName());
-        // holder.dealer_name.setText(record.getName());
+        holder.dealer_name.setText(record.getcName());
+        holder.amount.setText(""+record.getDiscount());
+        String date=record.getT_date();
+        String datearr[] =date.split("-");
+        String years=datearr[0];
+        String months=datearr[1];
+        String days=datearr[2];
+        holder.month.setText(getMonthString(months));
+        holder.day.setText(days);
+        holder.year.setText(years);
+
+        String imageUrl="https://apps.help2helpless.com/client_profile/"+record.getProfile_pic();
+        Log.d("Image",imageUrl);
+        Picasso.get().load(imageUrl).resize(80,80).centerCrop().into(holder.dealer_image);
+
+        /*
         if(value==2){
             String imageUrl_admin="https://apps.help2helpless.com/admin_photo/"+record.getProfile_pic();
             Picasso.get().load(imageUrl_admin).resize(80,80).centerCrop().into(holder.dealer_image);
@@ -71,8 +71,10 @@ public class RecordTodayAdapter extends RecyclerView.Adapter<RecordTodayAdapter.
 
         }
 
-
+         */
     }
+
+
 
     @Override
     public int getItemCount() {
@@ -125,9 +127,9 @@ public class RecordTodayAdapter extends RecyclerView.Adapter<RecordTodayAdapter.
         return monthName;
     }
 
-     public static class RecordViewHolder extends RecyclerView.ViewHolder {
-         TextView dealer_name,amount,day,month,year;
-         CircleImageView dealer_image;
+    public class RecordViewHolder extends RecyclerView.ViewHolder {
+        TextView dealer_name,amount,day,month,year;
+        CircleImageView dealer_image;
         public RecordViewHolder(@NonNull View itemView) {
             super(itemView);
             dealer_image=itemView.findViewById(R.id.dealer_profile_img);

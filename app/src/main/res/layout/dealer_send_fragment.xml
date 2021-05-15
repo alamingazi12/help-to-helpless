@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_margin="10dp"
+    android:background="@color/page_background_tranparent"
+    android:layout_height="match_parent"
+    tools:context=".FragmentSent">
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <EditText
+                android:background="@drawable/edit_text_style"
+                android:padding="10dp"
+                android:drawablePadding="8dp"
+                android:drawableLeft="@drawable/ic_baseline_search_24"
+                android:hint="Search Transaction"
+                android:layout_marginLeft="15dp"
+                android:textSize="14sp"
+
+                android:imeOptions="actionSearch"
+                android:layout_marginRight="15dp"
+                android:layout_marginTop="35sp"
+                android:layout_marginBottom="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+
+
+            <TextView
+                android:layout_marginLeft="12dp"
+                android:textSize="18sp"
+                android:textColor="#adb5bd"
+                android:layout_marginBottom="10dp"
+                android:text="Today"
+
+                android:fontFamily="@font/latom"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/donar_today_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            </androidx.recyclerview.widget.RecyclerView>
+
+            <TextView
+                android:layout_marginLeft="12dp"
+                android:textSize="18sp"
+                android:textColor="#adb5bd"
+                android:text="Yesterday"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:fontFamily="@font/latom"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_below="@+id/donar_today_container"
+                android:id="@+id/donar_yesterday_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            </androidx.recyclerview.widget.RecyclerView>
+            <TextView
+                android:layout_marginLeft="12dp"
+                android:textSize="18sp"
+                android:textColor="#adb5bd"
+                android:layout_marginTop="20dp"
+                android:text="Olders"
+                android:layout_marginBottom="10dp"
+                android:fontFamily="@font/latom"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_below="@+id/donar_yesterday_container"
+                android:id="@+id/donar_old_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            </androidx.recyclerview.widget.RecyclerView>
+            <ProgressBar
+                android:layout_gravity="center"
+                android:id="@+id/_progress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+</LinearLayout>

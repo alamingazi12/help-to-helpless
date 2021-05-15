@@ -379,12 +379,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <Button
-            android:id="@+id/dealer_add"
+            android:id="@+id/give_discount"
             android:fontFamily="sans-serif-light"
             android:background="@drawable/donate_btn_style"
             android:textAllCaps="false"
             android:textColor="#ffffff"
-            android:text="Add Donar"
+            android:text="Donate"
             android:textSize="16sp"
             android:layout_marginRight="3dp"
             android:layout_width="0dp"
@@ -405,23 +405,29 @@
 
     </LinearLayout>
     <LinearLayout
-        android:layout_margin="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+
+        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
+
+
+
         <Button
 
-            android:id="@+id/give_discount"
+            android:id="@+id/view_history"
             android:textSize="17sp"
             android:fontFamily="sans-serif-light"
             android:textColor="#ffffff"
             android:background="@drawable/donate_btn_style"
             android:textAllCaps="false"
-            android:text="Donate"
+            android:text="View Donation History"
             android:layout_marginLeft="3dp"
             android:layout_marginRight="3dp"
-            android:layout_width="0dp"
-            android:layout_weight=".5"
+            android:layout_width="match_parent"
+
             android:layout_height="wrap_content"/>
 
     </LinearLayout>

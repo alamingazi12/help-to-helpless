@@ -15,10 +15,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".DonarProfileActivity" android:theme="@style/AppTheme.CustomThemeProfile"></activity>
+        <activity android:name=".DealerDonationHistory"></activity>
+        <activity
+            android:name=".DonarProfileActivity"
+            android:theme="@style/AppTheme.CustomThemeProfile" />
         <activity
             android:name=".AdminSendMoneyActivity"
-            android:theme="@style/AppTheme.CustomTheme"></activity>
+            android:theme="@style/AppTheme.CustomTheme" />
         <activity
             android:name=".ClientDonationActivity"
             android:configChanges="screenSize|orientation"
@@ -67,7 +70,7 @@
             android:autoRemoveFromRecents="true"
             android:parentActivityName=".DealerLoginActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBarss"/>
+            android:theme="@style/AppTheme.NoActionBarss" />
         <activity
             android:name=".DiscountActivity"
             android:configChanges="orientation|screenSize"
