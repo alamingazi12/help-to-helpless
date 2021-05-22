@@ -2,7 +2,7 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="170dp"
+    android:layout_height="130dp"
     android:layout_margin="10dp"
     app:cardBackgroundColor="#3f37c9"
     app:cardElevation="3dp"
@@ -18,8 +18,8 @@
 
         <com.makeramen.roundedimageview.RoundedImageView
             android:id="@+id/dlr_profile_image"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="90dp"
+            android:layout_height="90dp"
             android:scaleType="fitCenter"
             app:riv_corner_radius="13dip"
             app:riv_mutate_background="true"
@@ -35,7 +35,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="28dp"
+            android:layout_marginTop="16dp"
             android:fontFamily="@font/latom"
             android:text="Alamin Gazi"
             android:textColor="#ffffff"
@@ -74,8 +74,8 @@
             android:id="@+id/donate_dlr"
             android:layout_width="wrap_content"
             android:layout_height="27dp"
-            android:layout_marginBottom="24dp"
 
+            android:layout_marginTop="4dp"
             android:background="@drawable/button_style"
             android:fontFamily="@font/artifika"
             android:text="Donate"
@@ -83,8 +83,8 @@
             android:textColor="#000000"
             android:textFontWeight="500"
             android:textSize="16dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/dlr_contact" />
+            app:layout_constraintStart_toStartOf="@+id/dlr_contact"
+            app:layout_constraintTop_toBottomOf="@+id/dlr_contact" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

@@ -44,6 +44,7 @@
                     android:layout_marginStart="28dp"
                     android:layout_marginTop="8dp"
                     android:text="TK"
+                    android:fontFamily="@font/alexbold"
                     android:textColor="@color/balance_amount_color"
                     android:textSize="20sp"
                     android:textStyle="bold"
@@ -70,7 +71,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="44dp"
                     android:layout_marginTop="16dp"
-                    android:fontFamily="@font/latom"
+
                     android:text="Your Balance"
 
                     android:textColor="@color/balance_color"

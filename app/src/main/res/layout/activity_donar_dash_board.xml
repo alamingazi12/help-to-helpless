@@ -282,7 +282,7 @@
             <Button
                 android:id="@+id/btn_history"
                 android:textFontWeight="400"
-                android:textSize="17sp"
+                android:textSize="@dimen/btn_text_size"
                 android:fontFamily="@font/relway_medium"
                 android:textColor="#ffffff"
                 android:background="@drawable/donate_btn_style"
@@ -291,7 +291,7 @@
 
                 android:layout_width="0dp"
                 android:layout_weight=".5"
-                android:layout_height="56dp"/>
+                android:layout_height="@dimen/button_height"/>
 
         </LinearLayout>
         <LinearLayout
@@ -310,12 +310,12 @@
 
                 android:textColor="#ffffff"
                 android:text="Add Dealer"
-                android:textSize="18sp"
+                android:textSize="@dimen/btn_text_size"
                 android:textFontWeight="500"
                 android:layout_marginRight="5dp"
                 android:layout_width="0dp"
                 android:layout_weight=".5"
-                android:layout_height="56dp"/>
+                android:layout_height="@dimen/button_height"/>
 
             <Button
                 android:id="@+id/donate_to_dealer"
@@ -323,7 +323,7 @@
                 android:layout_marginBottom="10dp"
 
                 android:layout_width="0dp"
-                android:layout_height="56dp"
+                android:layout_height="@dimen/button_height"
                 android:layout_marginLeft="5dp"
                 android:layout_weight=".5"
                 android:background="@drawable/donate_btn_style"
@@ -331,7 +331,7 @@
                 android:text="Donate"
                 android:textAllCaps="false"
                 android:textColor="#ffffff"
-                android:textSize="18sp" />
+                android:textSize="@dimen/btn_text_size" />
 
         </LinearLayout>
 

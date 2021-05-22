@@ -59,7 +59,7 @@ public class DealerDonationHistory extends AppCompatActivity {
         back_button_history.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(DealerDonationHistory.this,DonarDashBoardActivity.class);
+                Intent intent=new Intent(DealerDonationHistory.this,DealerActivity.class);
                 startActivity(intent);
             }
         });

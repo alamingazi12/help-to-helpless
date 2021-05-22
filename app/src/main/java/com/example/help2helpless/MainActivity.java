@@ -1,4 +1,5 @@
 package com.example.help2helpless;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -11,6 +12,7 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.Gravity;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -33,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
     SharedPreferences dealerlogininfo;
     SharedPreferences    adminSharedPreference;
     SharedPreferences   donarinfo;
+    PopupMenu popup;
 
     Button btn_dealer, btn_donar;
     ImageButton menu;
@@ -79,13 +82,16 @@ public class MainActivity extends AppCompatActivity {
            }
        });
 
-
+         initMenu();
         menu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                PopupMenu popup = new PopupMenu(MainActivity.this, menu);
+
+                //popup = new PopupMenu(MainActivity.this, menu);
                 //inflating menu from xml resource
-                popup.inflate(R.menu.item_menu_home);
+              //  popup.inflate(R.menu.item_menu_home);
+             //Menu menu=   popup.getMenu();
+
                 //adding click listener
                 popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
                     @Override
@@ -142,6 +148,18 @@ public class MainActivity extends AppCompatActivity {
        });
 
     }
+
+    private void initMenu() {
+        popup = new PopupMenu(MainActivity.this, menu);
+        //inflating menu from xml resource
+        popup.inflate(R.menu.item_menu_home);
+        Menu menu=   popup.getMenu();
+        if(!Essentials.userExist(this)){
+
+          menu.getItem(0).setVisible(false);
+        }
+    }
+
 
     private void logout() {
 
@@ -216,8 +234,27 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
 
-        return super.onCreateOptionsMenu(menu);
+       // return super.onCreateOptionsMenu(menu);
+      getMenuInflater().inflate(R.menu.item_menu_home,menu);
+      if(!Essentials.userExist(this)){
 
+       menu.getItem(0).setVisible(false);
+      }
+      return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull android.view.MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.logout:
+
+                Essentials.logout(MainActivity.this);
+                break;
+            case R.id.settings:
+                goSettings();
+                break;
+        }
+        return false;
     }
 
     @Override

@@ -39,7 +39,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class DealerActivity extends AppCompatActivity {
-    CardView card_client_con;
+    CardView card_client_con,donar_conn_card;
     Button client_sign,btn_add_dealer,btn_discount,view_donation_history;
     ImageButton back_btn,menu_icon;
     SharedPreferences dealerlogininfo;
@@ -54,6 +54,13 @@ public class DealerActivity extends AppCompatActivity {
 
         initAll();
 
+        donar_conn_card.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(DealerActivity.this,TDonarActivity.class);
+                startActivity(intent);
+            }
+        });
         view_donation_history.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -373,7 +380,7 @@ public class DealerActivity extends AppCompatActivity {
     }
 
     private void initAll() {
-
+        donar_conn_card=findViewById(R.id.card_donar_connection);
         view_donation_history=findViewById(R.id.view_history);
         card_client_con=findViewById(R.id.card_client_conn);
         dealer_balances=findViewById(R.id.dlr_balance);

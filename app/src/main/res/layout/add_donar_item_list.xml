@@ -36,7 +36,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="28dp"
-            android:layout_marginTop="28dp"
+            android:layout_marginTop="16dp"
             android:fontFamily="@font/latom"
             android:text="Rajib Molla"
             android:textColor="#ffffff"
@@ -50,12 +50,10 @@
             android:id="@+id/dnr_address"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="14dp"
             android:fontFamily="@font/latom"
             android:text="Fultala Khulna, Bangladesh"
             android:textColor="#ffffff"
             android:textSize="15dp"
-            app:layout_constraintBottom_toTopOf="@+id/add_donar_request"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/donar_name"
@@ -66,7 +64,7 @@
             android:layout_width="132dp"
             android:layout_height="28dp"
             android:layout_marginStart="4dp"
-            android:layout_marginBottom="16dp"
+            android:layout_marginTop="12dp"
             android:background="@drawable/button_style"
             android:fontFamily="@font/latom"
             android:paddingLeft="8dp"
@@ -75,8 +73,8 @@
             android:textAllCaps="false"
             android:textColor="#000000"
             android:textFontWeight="400"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/dnr_address" />
+            app:layout_constraintStart_toStartOf="@+id/dnr_address"
+            app:layout_constraintTop_toBottomOf="@+id/dnr_address" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

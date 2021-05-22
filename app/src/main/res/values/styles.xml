@@ -5,9 +5,7 @@
         <!-- Customize your theme here. -->
 
         <item name="android:windowLightStatusBar" tools:targetApi="m">true</item>
-
         <item name="colorPrimaryDark">@color/page_background_white</item>
-
         <item name="colorAccent">#a2d2ff</item>
     </style>
     <style name="CustomAlertDialog" parent="Theme.AppCompat.Light.Dialog.Alert">
@@ -50,17 +48,18 @@
         <item name="windowActionBar">false</item>
         <item name="android:windowLightStatusBar" tools:targetApi="m">true</item>
     </style>
-
-
-
-
-
+    <style name="ThemeButton" parent="Widget.MaterialComponents.Button.TextButton">
+        <item name="backgroundColor">#606c38</item>
+        <item name="android:textColor">#ffffff</item>
+        <item name="android:radius">10dp</item>
+    </style>
 
 
     <style name="Custom_Style" parent="TextAppearance.Design.Tab">
         <!-- Customize your theme here. -->
-        <item name="android:textSize">15sp</item>
+        <item name="android:textSize">17sp</item>
         <item name="fontFamily">@font/alexbold</item>
+        <item name="textAllCaps">false</item>
         <item name="android:textColor">#000000</item>
 
     </style>

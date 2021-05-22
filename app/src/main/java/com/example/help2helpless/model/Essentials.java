@@ -119,7 +119,7 @@ public class Essentials {
         dealer_editor.apply();
     }
 
-    public Dealer getDealerData(Context context){
+    public static Dealer getDealerData(Context context){
         SharedPreferences dealerlogininfo=context.getSharedPreferences("dealerinfo",0);
         Gson gson = new Gson();
         String json = dealerlogininfo.getString("MyObject", "");
@@ -179,6 +179,51 @@ public class Essentials {
             context.startActivity(intent);
         }else {
             StyleableToast.makeText(context,"You Did,nt Login",R.style.mytoast).show();
+        }
+
+    }
+
+    public static boolean userExist(Context context) {
+        SharedPreferences adminSharedPreference=context.getSharedPreferences("admininfo",0);
+        String user= adminSharedPreference.getString("adminuser","");
+        SharedPreferences   donarinfo=context.getSharedPreferences("donarinfo",0);
+
+        SharedPreferences dealerlogininfo=context.getSharedPreferences("dealerinfo",0);
+        if(!dealerlogininfo.getString("contact","").equals("")){
+            SharedPreferences.Editor   dealer_editor=dealerlogininfo.edit();
+           // dealer_editor.remove("contact");
+           // dealer_editor.commit();
+           // StyleableToast.makeText(context,"You Logged out Successfully", R.style.greentoast).show();
+           // Intent intent=new Intent(context, MainActivity.class);
+           // context.startActivity(intent);
+            return true;
+        }
+        else if(!TextUtils.isEmpty(user)){
+            SharedPreferences.Editor editor = adminSharedPreference.edit();
+            /*
+            editor.remove("adminuser");
+            editor.commit();
+            StyleableToast.makeText(context,"You Logged out Successfully",R.style.greentoast).show();
+            Intent intent=new Intent(context,MainActivity.class);
+            context.startActivity(intent);
+
+             */
+            return true;
+        }
+        else if(!donarinfo.getString("contact","").equals("")){
+            /*
+            SharedPreferences.Editor donar_editor = donarinfo.edit();
+            donar_editor.remove("contact");
+            donar_editor.commit();
+            StyleableToast.makeText(context,"You Logged out Successfully",R.style.greentoast).show();
+            Intent intent=new Intent(context,MainActivity.class);
+            context.startActivity(intent);
+
+             */
+            return true;
+        }else {
+           return false;
+            //StyleableToast.makeText(context,"You Did,nt Login",R.style.mytoast).show();
         }
 
     }

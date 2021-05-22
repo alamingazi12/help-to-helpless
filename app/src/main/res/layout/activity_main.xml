@@ -37,25 +37,30 @@
             android:layout_marginTop="10dp"
             android:fontFamily="@font/latom"
             android:padding="7dp"
+
             android:text="Welcome to Help2Helpless"
-            android:textColor="#6200EE"
-            android:textSize="23sp"
+            android:textColor="@color/sign_button_text_color"
+            android:textSize="@dimen/heading_text_size"
 
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
+
+
         <Button
             android:id="@+id/btn_donar"
             android:layout_width="0dp"
-            android:layout_height="55dp"
+            android:layout_height="@dimen/button_height"
             android:layout_marginLeft="12dp"
             android:layout_marginRight="5dp"
             android:background="@drawable/button_style"
             android:fontFamily="@font/latom"
             android:text="I am Donar"
+            android:textSize="@dimen/btn_text_size"
             android:textAllCaps="false"
-            android:textColor="#fff"
+            android:theme="@style/Widget.AppCompat.Button.Colored"
+            android:textColor="@color/btn_text_white"
             app:layout_constraintBottom_toBottomOf="@+id/btn_dealer"
             app:layout_constraintEnd_toStartOf="@+id/btn_dealer"
             app:layout_constraintHorizontal_bias="0.5"
@@ -63,19 +68,39 @@
             app:layout_constraintTop_toTopOf="@+id/btn_dealer"
             app:layout_constraintVertical_bias="0.0" />
 
+        <com.google.android.material.button.MaterialButton
+            android:layout_width="wrap_content"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="44dp"
+            app:cornerRadius="15dp"
+            android:visibility="invisible"
+            android:layout_marginTop="56dp"
+            app:backgroundTint="@color/page_background_tranparent"
+
+            android:textColor="@color/colorOrange"
+            android:fontFamily="@font/latom"
+            android:textAllCaps="false"
+
+            android:text="Sign Up"
+            android:backgroundTint="@null"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <Button
             android:id="@+id/btn_dealer"
             android:layout_width="0dp"
-            android:layout_height="55dp"
+            android:layout_height="@dimen/button_height"
             android:layout_marginLeft="5dp"
+            android:backgroundTint="@color/colorOrange"
             android:layout_marginRight="12dp"
             android:layout_marginBottom="148dp"
             android:background="@drawable/button_style"
             android:fontFamily="@font/latom"
             android:text="I am Dealer"
-
+            android:textSize="@dimen/btn_text_size"
             android:textAllCaps="false"
-            android:textColor="#fff"
+            android:textColor="@color/btn_text_white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
@@ -90,7 +115,7 @@
             android:layout_marginTop="36dp"
             android:layout_marginEnd="32dp"
             android:scaleType="fitCenter"
-            android:src="@drawable/trustee"
+            android:src="@drawable/front_image"
             app:layout_anchor="@+id/constraintLayout"
             app:layout_anchorGravity="center"
             app:layout_constraintEnd_toEndOf="parent"
@@ -104,6 +129,7 @@
             android:background="@color/page_background_tranparent"
             android:id="@+id/admin_menu_icon"
             android:layout_marginTop="10dp"
+
             android:layout_marginEnd="13dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -119,6 +145,7 @@
         style="@style/Widget.MaterialComponents.BottomAppBar"
         android:layout_width="match_parent"
         android:layout_height="50dp"
+        android:backgroundTint="@color/colorOrange"
         android:background="#f1faee"
         android:layout_gravity="bottom"
         app:backgroundTint="#ffffff"

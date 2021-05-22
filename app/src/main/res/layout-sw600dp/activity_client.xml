@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:theme="@style/Theme.MaterialComponents.DayNight.DarkActionBar"
+    android:layout_height="match_parent"
+    android:background="@color/page_background_tranparent"
+    tools:context=".DealerRegActivity">
+
+
+    <LinearLayout
+        android:background="#F7F7F7"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <ImageButton
+            android:background="@color/page_background_tranparent"
+            android:layout_marginEnd="12dp"
+            android:layout_marginTop="12dp"
+            android:layout_gravity="right"
+            android:id="@+id/admin_menu_icon"
+            android:layout_width="30dp"
+            android:src="@drawable/ic_menu"
+            android:layout_height="30dp"/>
+
+
+        <ImageButton
+            android:id="@+id/back_icon"
+            android:layout_width="30dp"
+
+            android:layout_height="30dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="-30dp"
+            android:background="@drawable/back_style_background"
+            android:src="@drawable/ic_back" />
+
+
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="50dp"
+            android:layout_marginBottom="30dpdp"
+            android:fontFamily="@font/artifika"
+            android:text="Add Client"
+            android:textColor="#000000"
+            android:textSize="@dimen/heading_text_size"
+            android:textStyle="bold" />
+        <LinearLayout
+            android:layout_marginTop="30dp"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:focusable="true"
+                android:layout_weight="1"
+                android:textColorHint="#adb5bd"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                android:id="@+id/cl_address"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="15dp"
+
+
+                android:focusableInTouchMode="true"
+                android:layout_height="@dimen/edit_text_height">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:hint="Address"
+                    android:inputType="textCapWords
+"                   android:imeOptions="actionNext"
+                    android:ems="10"
+                    android:textSize="@dimen/edit_text_size"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                </com.google.android.material.textfield.TextInputEditText>
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:focusable="true"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                android:id="@+id/client_phone"
+                android:layout_weight="1"
+                android:textColorHint="#adb5bd"
+                android:imeOptions="actionDone"
+                android:layout_marginRight="15dp"
+                android:layout_marginLeft="10dp"
+
+                android:focusableInTouchMode="true"
+                android:layout_height="@dimen/edit_text_height">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:hint="Mobile No"
+                    android:inputType="number"
+                    android:ems="10"
+                    android:textSize="@dimen/edit_text_size"
+                    android:imeOptions="actionDone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                </com.google.android.material.textfield.TextInputEditText>
+            </com.google.android.material.textfield.TextInputLayout>
+
+        </LinearLayout>
+
+
+
+
+       <LinearLayout
+           android:orientation="horizontal"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content">
+           <Button
+               android:layout_weight="1"
+               android:textColor="#000"
+               android:paddingRight="20dp"
+               android:drawableRight="@drawable/ic_down_select"
+               android:background="@drawable/button_style"
+               android:layout_width="match_parent"
+               android:imeOptions="actionDone"
+               android:textSize="19sp"
+               android:textAllCaps="false"
+               android:gravity="center"
+               android:fontFamily="@font/relway_regular"
+               android:text="District,Thana"
+               android:layout_marginRight="10dp"
+               android:layout_marginLeft="15dp"
+
+               android:id="@+id/select_district_thana"
+               android:layout_marginTop="15dp"
+
+               android:layout_height="45dp"/>
+
+
+
+
+           <Spinner
+               android:layout_weight="1"
+               android:dropDownSelector="@drawable/ic_back"
+               android:layout_marginTop="13dp"
+               android:layout_marginLeft="10dp"
+               android:layout_marginRight="15"
+               android:id="@+id/spinner_categories"
+               android:layout_width="match_parent"
+               android:layout_height="45dp"/>
+
+       </LinearLayout>
+
+
+
+
+        <LinearLayout
+
+            android:layout_marginTop="15dp"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="100dp">
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+
+                android:layout_height="match_parent">
+                <ImageView
+                    android:layout_centerVertical="true"
+                    android:layout_marginTop="2dp"
+                    android:layout_centerHorizontal="true"
+                    android:id="@+id/cl_doc_view"
+                    android:src="@drawable/documents"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"/>
+
+
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content">
+
+                <Button
+
+                    android:id="@+id/btn_upload_docs"
+                    android:layout_width="match_parent"
+                    android:imeOptions="actionDone"
+                    android:textSize="@dimen/btn_text_size"
+                    android:layout_height="@dimen/button_height"
+                    android:paddingLeft="30dp"
+                    android:paddingRight="30dp"
+                    android:layout_alignParentTop="true"
+
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginStart="51dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/butttonstyle"
+                    android:padding="5dp"
+                    android:text="Upload Docs"
+                    android:textAllCaps="false"
+                    android:textColor="#ffffff" />
+
+                <TextView
+                    android:textSize="25dp"
+                    android:textColor="#000000"
+                    android:gravity="center"
+                    android:text="Student Id,NID etc"
+                    android:layout_below="@+id/btn_upload_docs"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+            </RelativeLayout>
+
+
+        </LinearLayout>
+
+
+        <Button
+            android:id="@+id/btn_client_sign"
+            android:text="Add Client"
+
+            android:layout_marginTop="35dp"
+            android:textColor="#fff"
+            android:textSize="@dimen/btn_text_size"
+            android:textAllCaps="false"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+            android:fontFamily="@font/latom"
+            android:layout_marginBottom="15dp"
+            android:background="@drawable/butttonstyle"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/button_height"/>
+
+
+    </LinearLayout>
+
+
+</LinearLayout>

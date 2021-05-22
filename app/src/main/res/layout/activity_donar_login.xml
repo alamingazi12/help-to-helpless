@@ -22,7 +22,7 @@
         android:layout_marginTop="12dp"
         android:fontFamily="@font/latom"
         android:text="Welcome To Help2Helpless"
-        android:textColor="#6200EE"
+        android:textColor="@color/sign_button_text_color"
         android:textSize="@dimen/heading_text_size"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -75,7 +75,7 @@
         android:layout_height="@dimen/button_height"
         android:layout_marginStart="32dp"
         android:layout_marginEnd="32dp"
-        android:layout_marginBottom="160dp"
+        android:layout_marginBottom="168dp"
         android:background="@drawable/butttonstyle"
         android:fontFamily="@font/latom"
         android:text="Login"
@@ -101,7 +101,7 @@
 
         android:textAllCaps="false"
         android:textColor="@color/sign_button_text_color"
-        android:textSize="17dp"
+        android:textSize="@dimen/small_btn_text_size"
         app:layout_constraintBottom_toBottomOf="@+id/button4"
         app:layout_constraintEnd_toEndOf="@+id/donar_login"
         app:layout_constraintHorizontal_bias="0.171"
@@ -120,11 +120,11 @@
         android:text="Forget Password"
         android:textAllCaps="false"
         android:textColor="@color/sign_button_text_color"
-        android:textSize="17sp"
+        android:textSize="@dimen/small_btn_text_size"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="@+id/donar_login"
         app:layout_constraintTop_toBottomOf="@+id/donar_login"
-        app:layout_constraintVertical_bias="0.06" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/textView21"

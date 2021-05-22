@@ -24,6 +24,7 @@ import com.example.help2helpless.model.Responses;
 import com.example.help2helpless.model.Student;
 import com.example.help2helpless.model.TotalClients;
 import com.example.help2helpless.model.TotalDealer;
+import com.example.help2helpless.model.TotalDonarResponse;
 import com.example.help2helpless.model.TotalDonars;
 
 import java.util.List;
@@ -98,6 +99,9 @@ public  interface ApiInterface {
 
     @GET("total_donar.php")
     Call<TotalDonars> getTotalDonars(@Query("dlr_contact") String dlr_contact);
+
+    @GET("total_donar_list.php")
+    Call<TotalDonarResponse> getTotalDonarList(@Query("page") int page,@Query("row_per_page") int row_per_page,@Query("dlr_contact") String dlr_contact);
 
     @GET("total_clients.php")
     Call<TotalClients> getTotalClients(@Query("dlr_contact") String dlr_contact);

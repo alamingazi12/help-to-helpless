@@ -2,7 +2,6 @@ package com.example.help2helpless;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
-
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -11,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 
+import com.example.help2helpless.model.Essentials;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.muddzdev.styleabletoast.StyleableToast;
 
@@ -19,11 +19,17 @@ public class SettingActivity extends AppCompatActivity {
     FloatingActionButton fleatin_button;
     ImageButton btn_image_back;
     String type;
+    Button button_logout;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_setting);
         initAll();
+        if(!Essentials.userExist(this)){
+            button_logout.setText("Login");
+        }
+
+
 
         btn_image_back.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -65,7 +71,7 @@ public class SettingActivity extends AppCompatActivity {
             }
         });
 
-        Button button=findViewById(R.id.btn_logout);
+
         Bundle bundle= getIntent().getExtras();
         String data_from_main=bundle.getString("main");
         if(TextUtils.isEmpty(data_from_main)){
@@ -73,27 +79,42 @@ public class SettingActivity extends AppCompatActivity {
 
         }else {
             if(data_from_main.equals("data")){
-                button.setVisibility(View.INVISIBLE);
+                button_logout.setVisibility(View.INVISIBLE);
             }
 
         }
 
-         button.setOnClickListener(new View.OnClickListener() {
+        button_logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-         Bundle bundle= getIntent().getExtras();
-         String type= bundle.getString("user_type");
-             if(TextUtils.isEmpty(type)){
-                 adminLogout();
-                 //StyleableToast.makeText(SettingActivity.this,"its Empty",R.style.mytoast).show();
-             }else{
-                 if(type.equals("donar")){
-                     logout();
-                 }
-                 else if(type.equals("dealer")){
-                     dealerLogout();
-                 }
-             }
+
+
+                if(button_logout.getText().toString().equals("Login")){
+                   Intent intent=new Intent(SettingActivity.this,MainActivity.class);
+                   startActivity(intent);
+
+                }else{
+
+                    Essentials.logout(SettingActivity.this);
+                    /*
+
+                    Bundle bundle= getIntent().getExtras();
+                    String type= bundle.getString("user_type");
+                    if(TextUtils.isEmpty(type)){
+                        adminLogout();
+                        //StyleableToast.makeText(SettingActivity.this,"its Empty",R.style.mytoast).show();
+                    }else{
+                        if(type.equals("donar")){
+                            logout();
+                        }
+                        else if(type.equals("dealer")){
+                            dealerLogout();
+                        }
+                    }
+*/
+                }
+
+
 
 
 
@@ -144,6 +165,7 @@ public class SettingActivity extends AppCompatActivity {
     }
 
     private void initAll() {
+        button_logout=findViewById(R.id.btn_logout);
         btn_image_back=findViewById(R.id.btn_back);
         fleatin_button=findViewById(R.id.orderPlus);
         admin_cardview=findViewById(R.id.card_admin);

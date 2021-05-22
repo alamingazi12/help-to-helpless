@@ -49,7 +49,7 @@ public class AddedDealerActivity extends AppCompatActivity {
     AddedDealerAdapter addedDealerAdapter;
     ImageButton btn_back_image;
 
-   int row ;
+    int row;
     //for pagination
     private boolean isloading=true;
     int pastVisibleItems,totalItemcount,previous_total,visible_item_count=0;
@@ -166,16 +166,13 @@ public class AddedDealerActivity extends AppCompatActivity {
             public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
                 super.onScrolled(recyclerView, dx, dy);
 
-
                 if(!has_more){
                     progressBar.setVisibility(View.GONE);
                 }
 
-
                 visible_item_count=linearLayoutManager.getChildCount();
                 totalItemcount=linearLayoutManager.getItemCount();
                 pastVisibleItems=linearLayoutManager.findFirstVisibleItemPosition();
-
 
                 if(dy>0){
                     if(isloading) {
@@ -212,8 +209,6 @@ public class AddedDealerActivity extends AppCompatActivity {
         addDealerListCall.enqueue(new Callback<AddDealerList>() {
             @Override
             public void onResponse(Call<AddDealerList> call, Response<AddDealerList> response) {
-
-
                 has_more= response.body().isHas_more();
                 if(response.body().getDealerlist().size()>0){
                     addedDealerAdapter.addLists(response.body().getDealerlist());
@@ -236,7 +231,6 @@ public class AddedDealerActivity extends AppCompatActivity {
     }
 
     private void initAll() {
-
         btns_back=findViewById(R.id.btn_back);
         search_dealer=findViewById(R.id.edittext_search_dealer);
         added_dealers=findViewById(R.id.added_dealer_container);

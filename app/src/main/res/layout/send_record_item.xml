@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:tools="http://schemas.android.com/tools"
-    android:layout_height="70dp"
+    android:layout_height="@dimen/record_item_height"
     android:layout_width="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_marginTop="5dp"
@@ -17,8 +17,8 @@
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/dealer_profile_img"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="@dimen/record_item_image_height"
+        android:layout_height="@dimen/record_item_image_height"
         android:src="@drawable/persons"
         android:layout_marginStart="13dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -31,6 +31,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:text="To:"
+        android:textSize="@dimen/record_item_date"
         android:layout_marginTop="14dp"
         app:layout_constraintStart_toEndOf="@+id/dealer_profile_img"
         app:layout_constraintTop_toTopOf="parent" />
@@ -43,19 +44,21 @@
         android:fontFamily="@font/latom"
         android:text="Remo Desuza"
         android:textColor="#000"
-        android:textSize="17sp"
+        android:textSize="@dimen/record_item_heading"
         app:layout_constraintBottom_toBottomOf="@+id/textView19"
         app:layout_constraintStart_toEndOf="@+id/textView19"
-        app:layout_constraintTop_toTopOf="@+id/textView19" />
+        app:layout_constraintTop_toTopOf="@+id/textView19"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/history_day_of_month"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="4dp"
+        android:fontFamily="@font/alexbold"
         android:text="19"
-        android:fontFamily="@font/latom"
+        android:textSize="@dimen/record_item_date"
         app:layout_constraintStart_toEndOf="@+id/textView19"
         app:layout_constraintTop_toBottomOf="@+id/history_dealer_name" />
 
@@ -63,9 +66,10 @@
         android:id="@+id/history_month"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="January"
-        android:fontFamily="@font/latom"
         android:layout_marginStart="2dp"
+        android:fontFamily="@font/alexbold"
+        android:text="January"
+        android:textSize="@dimen/record_item_date"
         app:layout_constraintBottom_toBottomOf="@+id/history_day_of_month"
         app:layout_constraintStart_toEndOf="@+id/history_day_of_month" />
 
@@ -74,7 +78,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="2019"
-        android:fontFamily="@font/latom"
+        android:textSize="@dimen/record_item_date"
+        android:fontFamily="@font/alexbold"
         android:layout_marginStart="3dp"
         app:layout_constraintBottom_toBottomOf="@+id/history_month"
         app:layout_constraintStart_toEndOf="@+id/history_month"
@@ -82,16 +87,17 @@
         app:layout_constraintVertical_bias="1.0" />
 
     <TextView
-        android:textSize="17sp"
+        android:textSize="@dimen/record_item_heading"
         android:textColor="#FA2E69"
         android:id="@+id/history_amount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="15dp"
+        android:layout_marginEnd="17dp"
         android:text="125.00"
         android:layout_marginStart="3dp"
-        android:fontFamily="@font/latom"
+        android:fontFamily="@font/alexbold"
         android:textStyle="bold"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -104,9 +110,9 @@
         android:layout_height="wrap_content"
         android:text="Tk"
         android:layout_marginEnd="3dp"
-        android:fontFamily="@font/latom"
+        android:fontFamily="@font/alexbold"
         android:textStyle="bold"
-        android:textSize="17sp"
+        android:textSize="@dimen/record_item_heading"
         app:layout_constraintBottom_toBottomOf="@+id/history_amount"
         app:layout_constraintEnd_toStartOf="@+id/history_amount"
         app:layout_constraintTop_toTopOf="@+id/history_amount" />

@@ -220,7 +220,7 @@ public class DonateDealerActivity extends AppCompatActivity {
                     Log.d("phone",dcontact);
                     params.put("dnr_cont",dcontact);
                     params.put("dealer_cont",dealer.getPhone());
-                    params.put("month",getMonthString(pdatarr[1]));
+                    params.put("month",getMonthString(pdatarr[1])+pdatarr[2]);
                     params.put("year",pdatarr[2]);
                     params.put("amount",damount.getEditText().getText().toString());
 

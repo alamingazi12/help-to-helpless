@@ -185,7 +185,7 @@ public class ClientDonationActivity extends AppCompatActivity {
                     String pdatarr[]=today.split("-");
                     params.put("cl_contact",cnumber);
                     params.put("dlr_contact",dealerlogininfo.getString("contact",null));
-                    params.put("month",getMonthString(pdatarr[1]));
+                    params.put("month",getMonthString(pdatarr[1])+pdatarr[2]);
                     params.put("year",pdatarr[2]);
                     params.put("amount",amount.getEditText().getText().toString().trim());
                     params.put("date",sdf2.format(date));

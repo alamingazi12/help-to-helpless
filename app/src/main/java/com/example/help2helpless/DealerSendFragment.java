@@ -114,14 +114,17 @@ public class DealerSendFragment extends Fragment {
         today_record_container=view.findViewById(R.id.donar_today_container);
         today_record_container.setHasFixedSize(true);
         today_record_container.setLayoutManager(new LinearLayoutManager(getContext()));
+        today_record_container.getRecycledViewPool().setMaxRecycledViews(0,20);
         // yesterday container
         yesterday_record_container=view.findViewById(R.id.donar_yesterday_container);
         yesterday_record_container.setHasFixedSize(true);
         yesterday_record_container.setLayoutManager(new LinearLayoutManager(getContext()));
+        yesterday_record_container.getRecycledViewPool().setMaxRecycledViews(0,20);
         //older container
         older_record_container=view.findViewById(R.id.donar_old_container);
         older_record_container.setHasFixedSize(true);
         older_record_container.setLayoutManager(new LinearLayoutManager(getContext()));
+        older_record_container.getRecycledViewPool().setMaxRecycledViews(0,20);
     }
 
     private void showYesterdayRecords() {
